@@ -20,6 +20,8 @@ namespace BE
         string Jacuzzi { get; set; }
         string Garden { get; set; }
         string ChildrensAttractions { get; set; }
+        bool AirCondisiner { get; set; }
+        string hikes { get; set; }
         public override string ToString() 
         {
             return "the request details:\n" +
@@ -32,7 +34,8 @@ namespace BE
                 " Type :" + Type+ " Adults :"+ Adults + 
                 " Children :"+ Children+ "\n" +
                 "Pool: " + Pool+ " Jacuzzi: "+ Jacuzzi+ 
-                " Garden: "+ Garden+ " ChildrensAttractions: "+ChildrensAttractions; 
+                " Garden: "+ Garden+ " ChildrensAttractions: "+ChildrensAttractions+
+                " hikes: "+ hikes; 
         }
     }
 }
