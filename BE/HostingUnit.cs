@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace BE
-{
+{ 
     class HostingUnit
     {
       int HostingUnitKey { get; }
