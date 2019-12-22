@@ -11,6 +11,9 @@ namespace DS
          List<BE.HostingUnit> HostingUnits = new List<BE.HostingUnit>();
             
          List<BE.Host> Host = new List<BE.Host>();
+        List<BE.BankBranch> BankBranches = new List<BE.BankBranch>();
+
+
 
         BE.GuestRequest GR1;
        
