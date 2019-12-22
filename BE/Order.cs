@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BE
 {
-    class Order
+   public class Order
     {
         int HostingUnitKey { get; }
         int GuestRequestKey { get; }
