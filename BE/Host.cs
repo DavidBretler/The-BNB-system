@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BE
 {
-    class Host
+    public class Host
     {
         int HostKey { get; }
          string PrivateName { set; get; }
