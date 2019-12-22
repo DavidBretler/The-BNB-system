@@ -13,13 +13,13 @@ namespace BE
         bool pool { get; set; };
         bool Jacuzzi { get; set; }
         bool Garden { get; set; }
-        bool AirCondisiner { get; set; }
+        bool AirConditioner { get; set; }
         bool [,] Dairy = new bool[12,31];     
         public override string ToString() 
         {
             return "HostingUnitKey: " + HostingUnitKey +
                 "/n Owner: " + Owner + "HostingUnitName: " + HostingUnitName +
-                "Num Of Rooms: " + NumOfRooms;
+                "Num Of Rooms: " + NumOfRooms + "AirConditioner: "+ AirConditioner;
                 for (int i = 0; i<12; i++)
 			   {
               for (int j = 0; j<31; j++)

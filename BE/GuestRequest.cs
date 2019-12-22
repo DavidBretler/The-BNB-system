@@ -20,7 +20,7 @@ namespace BE
         string Jacuzzi { get; set; }
         string Garden { get; set; }
         string ChildrensAttractions { get; set; }
-        bool AirCondisiner { get; set; }
+        bool AirConditioner { get; set; }
         string hikes { get; set; }
         public override string ToString() 
         {
@@ -35,7 +35,7 @@ namespace BE
                 " Children :"+ Children+ "\n" +
                 "Pool: " + Pool+ " Jacuzzi: "+ Jacuzzi+ 
                 " Garden: "+ Garden+ " ChildrensAttractions: "+ChildrensAttractions+
-                " hikes: "+ hikes; 
+                " hikes: "+ hikes + "AirConditioner: "+ AirConditioner; 
         }
     }
 }
