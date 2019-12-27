@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace DAL
 {
@@ -17,6 +18,8 @@ namespace DAL
         List<BE.GuestRequest> ListOfAllGuestRequest();
         List<BE.Order> ListOfAllOrder();
         List<BE.BankBranch> ListOfAllBankBranch();
+
+       
     }
 }
 
