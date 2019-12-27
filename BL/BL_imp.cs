@@ -5,7 +5,7 @@ using BE;
 using DAL;
 
 namespace BL
-{
+{ 
     class BL_imp : IBL
     {
         public void AddNewHostingUnit(HostingUnit TheHostingUnit)
@@ -80,19 +80,22 @@ namespace BL
          
         public void UpdateHostingUnit(HostingUnit TheHostingUnit)
         { 
-            throw new NotImplementedException();
+            throw new NotImplementedException(); 
         }
+        // לסיים את הפונקציה מיון לפי איזורים
         public static List<BE.HostingUnit> ListOfHostingUntisInArea(string Area)
         {
             var AraeGroups = from unit in ListOfAllHostingUnits
-                             group unit by HostingUnit. into g
-                             select new { FirstLetter = g.Key, Words = g };
-            foreach (var item in wordGroups)
+                             group unit by HostingUnit.getArea into g
+                              orderby g.Key
+                             select g;
+
+            foreach (var nameGroup in AraeGroups)
             {
-                Console.WriteLine("'{0}':", item.FirstLetter);
-                foreach (var w in item.Words)
-                    Console.WriteLine(w);
-            }
+               
+                foreach (var student in nameGroup)
+                {
+                }
         }
     }
 
