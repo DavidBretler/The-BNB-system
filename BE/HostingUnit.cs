@@ -10,33 +10,43 @@ namespace BE
         public int getHostingUnitKey() { return HostingUnitKey; }
         public void setHostingUnitKey(int key) { HostingUnitKey = key; }
         Host Owner;
-        public int getHostingUnitKey() { return HostingUnitKey; }
-        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        public Host getOwner() { return Owner; }
+        public void setOwner(Host newOwner) { Owner = newOwner; }
         string HostingUnitName;
-        public int getHostingUnitKey() { return HostingUnitKey; }
-        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        public string getHostingUnitName() { return HostingUnitName; }
+        public void setHostingUnitName(string name) { HostingUnitKey = key; }
         int NumOfRooms;
-        public int getHostingUnitKey() { return HostingUnitKey; }
-        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        public int getNumOfRooms() { return NumOfRooms; }
+        public void setNumOfRooms(int newNumOfRooms) { NumOfRooms = newNumOfRooms; }
+       
         bool pool;
-        public int getHostingUnitKey() { return HostingUnitKey; }
-        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        public bool getPool() { return pool; }
+        public void setPool(bool newPool) { pool = newPool; }
         bool Jacuzzi;
-        public int getHostingUnitKey() { return HostingUnitKey; }
-        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
-        string Area;
-        public int getHostingUnitKey() { return HostingUnitKey; }
-        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        public int getJacuzzi() { return HostingUnitKey; }
+        public void setJacuzzi(int key) { HostingUnitKey = key; }
+        string Area;    
+        public void setArea(string newArea) { Area = newArea; }
         public string getArea() { return Area; }
         bool Garden;
-        public int getHostingUnitKey() { return HostingUnitKey; }
-        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        public bool getGarden() { return Garden; }
+        public void setGarden(bool NewGarden) { Garden = NewGarden; }
+        
         bool AirConditioner;
-        public int getHostingUnitKey() { return HostingUnitKey; }
-        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        public bool getAirConditioner() { return AirConditioner; }
+        public void setAirConditioner(bool newAirConditioner) { AirConditioner = newAirConditioner; }
        
         bool [,] Dairy = new bool[12,31];
-        public int getHostingUnitKey() { return HostingUnitKey; }
+        public bool[,] GetDairy() 
+        {
+            for (int i = 0; i < length; i++)
+            {
+                for (int i = 0; i < length; i++)
+                {
+//העתקת המערך החדש לישן 
+                }
+            }
+            return ; }
         public void setHostingUnitKey(int key) { HostingUnitKey = key; }
         public override string ToString() 
         {
