@@ -6,11 +6,12 @@ namespace BE
 { 
    public class HostingUnit
     {
-      int HostingUnitKey { get; }
+        int HostingUnitKey;
+        public int getHostingUnitKey() { return HostingUnitKey; }
        Host Owner { get; }
         string HostingUnitName { get; }
-        int NumOfRooms { get; set; };
-        bool pool { get; set; };
+        int NumOfRooms { get; set; }
+        bool pool { get; set; }
         bool Jacuzzi { get; set; }
         bool Garden { get; set; }
         bool AirConditioner { get; set; }
@@ -28,4 +29,4 @@ namespace BE
                }
          }
     }
-}
+

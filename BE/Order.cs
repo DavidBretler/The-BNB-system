@@ -6,9 +6,11 @@ namespace BE
 {
    public class Order
     {
-        int HostingUnitKey { get; }
+        int HostingUnitKey;
+       public  int getHostingUnitKey() { return HostingUnitKey; }
         int GuestRequestKey { get; }
-        int OrderKey { get; }
+        int OrderKey;
+        public int getOrderKey() { return OrderKey; }
         string Status { get; }
         DateTime CreateDate { get; }
         DateTime OrderDate { get; }

@@ -4,7 +4,10 @@ namespace BE
 {
     public class GuestRequest
     {
-        int GuestRequestKey { get;  }
+        int GuestRequestKey;
+            
+       public int getGuestRequestKey() { return GuestRequestKey; }
+
         string PrivateName { get; set; }
         string MailAddress { get; set; }
         string Status { get; set; }
