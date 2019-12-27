@@ -8,14 +8,36 @@ namespace BE
     {
         int HostingUnitKey;
         public int getHostingUnitKey() { return HostingUnitKey; }
-       Host Owner { get; }
-        string HostingUnitName { get; }
-        int NumOfRooms { get; set; }
-        bool pool { get; set; }
-        bool Jacuzzi { get; set; }
-        bool Garden { get; set; }
-        bool AirConditioner { get; set; }
-        bool [,] Dairy = new bool[12,31];     
+        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        Host Owner;
+        public int getHostingUnitKey() { return HostingUnitKey; }
+        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        string HostingUnitName;
+        public int getHostingUnitKey() { return HostingUnitKey; }
+        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        int NumOfRooms;
+        public int getHostingUnitKey() { return HostingUnitKey; }
+        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        bool pool;
+        public int getHostingUnitKey() { return HostingUnitKey; }
+        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        bool Jacuzzi;
+        public int getHostingUnitKey() { return HostingUnitKey; }
+        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        string Area;
+        public int getHostingUnitKey() { return HostingUnitKey; }
+        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        public string getArea() { return Area; }
+        bool Garden;
+        public int getHostingUnitKey() { return HostingUnitKey; }
+        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+        bool AirConditioner;
+        public int getHostingUnitKey() { return HostingUnitKey; }
+        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+       
+        bool [,] Dairy = new bool[12,31];
+        public int getHostingUnitKey() { return HostingUnitKey; }
+        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
         public override string ToString() 
         {
             return "HostingUnitKey: " + HostingUnitKey +
