@@ -7,7 +7,7 @@ using DS;
 
 namespace DAL 
 {
-    class Dal_imp : IDAL
+  public class Dal_imp : IDAL
     {       
         //public int checkIfExist<T>(List<T> list,T parm)
         //{
