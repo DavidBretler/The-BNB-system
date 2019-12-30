@@ -23,7 +23,9 @@ namespace BE
         public int getNumOfRooms() { return NumOfRooms; }
         public void setNumOfRooms(int NewNumOfRooms) { NumOfRooms = NewNumOfRooms; }
         //
-        int NumOfBeds { get; set; }
+        int NumOfBeds;
+        public int getNumOfBeds() { return NumOfBeds; }
+        public void setNumOfBeds(int NewNumOfBeds) { NumOfBeds = NewNumOfBeds; }
         //
         bool pool;
         public bool getPool() { return pool; }
@@ -45,19 +47,25 @@ namespace BE
         public bool getAirConditioner() { return AirConditioner; }
         public void setAirConditioner(bool NewAirConditioner) { AirConditioner = NewAirConditioner; }
         //
-        public string ChildrensAttractions { get; set; }
+
+        string ChildrensAttractions;
+        public string getChildrensAttractions() { return ChildrensAttractions; }
+        public void setChildrensAttractions(string NewChildrensAttractions) { ChildrensAttractions = NewChildrensAttractions; }
         //
-        string Type { get; set; }
+        string Type;
+        string getType() { return Type; }
+        void setType(string NewType) { Type = NewType; }
         //
-        string hikes { get; set; }
+        string Hikes { get; set; }
+        public string getHikes() { return Hikes; }
+        public void setHikes(string NewHikes) { Hikes = NewHikes; }
         //
-        bool [,] Dairy = new bool[12,31];
-        public bool[,] GetDairy() 
-        {
-            return Dairy; 
-        }
+        bool [,] Diary = new bool[12,31];
+        public bool[,] GetDiary()  {return Diary;  }
+        public void setDiary(bool[,] NewDiary) { Diary = NewDiary; }
+
         //
-        
+
         public override string ToString() 
         {
             return "HostingUnitKey: " + HostingUnitKey +

@@ -7,23 +7,52 @@ namespace BE
         int GuestRequestKey;
             
        public int getGuestRequestKey() { return GuestRequestKey; }
+        //
+        string PrivateName;
+        public string getPrivateName() { return PrivateName; }
+        public void setPrivteName(string NewPrivateName) { PrivateName = NewPrivateName; }
 
-        string PrivateName { get; set; }
-        string MailAddress { get; set; }
-        string Status { get; set; }
-        DateTime RegistrationDate { get; set; }
-        DateTime EntryDate { get; set; }
-        DateTime ReleaseDate { get; set; }
-       public string  Area { get; set; }
-        public int NumOfRooms { get; set; }
+        string FamliyName;
+        public string getFamliyName() { return FamliyName; }
+        public void setAdults(string NewFamliyName) { FamliyName = NewFamliyName; }
+
+        string MailAddress;
+        public string getMailAddress() { return MailAddress; }
+        public void setMailAddress(string NewMailAddress) { MailAddress = NewMailAddress; }
+        
+        string Status;
+        public string getStatus() { return Status; }
+        public void setStatus(string NewStatus) { Status = NewStatus; }
+
+        DateTime RegistrationDate;
+        public DateTime getRegistrationDate() { return RegistrationDate; }
+        public void setRegistrationDate(DateTime NewRegistrationDate) { RegistrationDate = NewRegistrationDate; }
+     
+        DateTime EntryDate;
+        public DateTime getEntryDate() { return EntryDate; }
+        public void setEntryDate(DateTime NewEntryDate) { EntryDate = NewEntryDate; }
+      
+        DateTime ReleaseDate;
+        public DateTime getReleaseDate() { return ReleaseDate; }
+        public void setReleaseDate(DateTime NewReleaseDate) { ReleaseDate = NewReleaseDate; }
+
+        string Area;
+        public string getArea() { return Area; }
+        public void setArea(string NewArea) { Area = NewArea; }
+        
+        int NumOfRooms;
+        public int getNumOfRooms() { return NumOfRooms; }
+        public void setNumOfRooms(int NewNumOfRooms) { NumOfRooms = NewNumOfRooms; }
 
         //Hotel Motel Tzimer
         string Type;
          string getType() { return Type; }
          void setType(string NewType) { Type = NewType; }
+
          int Adults;
         public int getAdults() { return Adults; }
         public void setAdults(int NewAdults) { Adults = NewAdults; }
+
          int Children;
         public int getChildren() { return Children; }
         public void setChildren(int NewChildren) { Children = NewChildren; }
@@ -54,9 +83,9 @@ namespace BE
 
         public override string ToString() 
         {
-            return "the request details:\n" +
+            return "The request details:\n" +
                 "Guest Request Key: "+ GuestRequestKey+"\n"+
-                " PrivateName: "+ PrivateName+ "\n" +
+                " Name: "+ PrivateName+" "+ FamliyName + "\n" +    
                 "MailAddress: " + MailAddress + "\n" + 
                 "Status: " + Status+ "\n" + " RegistrationDate: " + RegistrationDate +
                 " EntryDate: "+ EntryDate + " ReleaseDate: "+ ReleaseDate+ "\n" +
