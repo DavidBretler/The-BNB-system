@@ -88,7 +88,7 @@ namespace BL
             throw new NotImplementedException();
         }
 
-       public IEnumerable<IGrouping<enums.Area, HostingUnit>> ListOfHostingUntisInArea()
+       public IEnumerable<IGrouping<Area, HostingUnit>> ListOfHostingUntisInArea()
         {
             List<BE.HostingUnit> hostingUnits = dal.ListOfHostingUnits();
             var AraeGroups = from unit in hostingUnits
