@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace DAL
 {
-   public  class Dal_imp : IDAL
+   public  class DAL : IDAL
     {
         //public int checkIfExist<T>(List<T> list,T parm)
         //{
@@ -19,8 +19,16 @@ namespace DAL
         //        return -1;
         //}
 
-
-        public void AddNewHostingUnit(HostingUnit TheHostingUnit)
+        private DAL() { }
+    
+       protected static DAL newDAL = null;
+    public static DAL GetDAL()
+        {
+            if (newDAL == null)
+                newDAL = new DAL();
+            return newDAL;
+        }            
+            public void AddNewHostingUnit(HostingUnit TheHostingUnit)
         {
             List<HostingUnit> L = DS.DataSource.ListHostingUnits;
             for (int i = 0; i < L.Count; i++)
@@ -46,7 +54,7 @@ namespace DAL
             if (Flag == false)
                 Console.WriteLine("the HostingUnitKey is not exict");
         }
-        public List<BankBranch> ListOfBankBranch()
+        public List<BankBranch> getListOfBankBranch()
         {
             List<BankBranch> List = new List<BE.BankBranch>();
             for (int i = 0; i < 5; i++)
@@ -56,26 +64,29 @@ namespace DAL
             }            
             return List;
         }
-
-        public List<GuestRequest> ListOfGuestRequest()
+        //returns copies of list by clones
+        public List<GuestRequest> getListOfGuestRequest()
         {
 
-            return DS.DataSource.ListGuestRequests;
+            GuestRequest[] newGuestRequest = new GuestRequest[DataSource.ListGuestRequests.Count];
+            DataSource.ListGuestRequests.CopyTo(newGuestRequest);
+            return newGuestRequest.ToList();
         }
-
-        public List<HostingUnit> ListOfHostingUnits()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Order> ListOfOrder()
-        {
-            throw new NotImplementedException();
-        }
-     
-
-        
        
+        public List<HostingUnit> getListOfHostingUnits()
+        {   //לעשות שכפול לרשימה של היחידות אירוח 
+       
+            HostingUnit[] newHostingUnits = new HostingUnit[DataSource.ListHostingUnits.Count];
+            DataSource.ListHostingUnits.CopyTo(newHostingUnits);
+            return newHostingUnits.ToList();
+     
+        }   
+        public List<Order> getListOfOrder()
+        {
+        Order[] newOrders = new Order[DataSource.ListOrders.Count];
+        DataSource.ListOrders.CopyTo(newOrders);
+        return newOrders.ToList();
+    }            
         /// <summary>
         /// 
         /// </summary>

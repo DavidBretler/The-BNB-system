@@ -30,7 +30,7 @@ namespace BL
 
         public List<HostingUnit> ListOfAllHostingUnits()
         {
-            return DAL.Dal_imp.ListOfAllHostingUnits();
+            return DAL.DAL.getListOfHostingUnits();
         }
 
         public List<Order> ListOfAllOrder()
@@ -83,20 +83,20 @@ namespace BL
             throw new NotImplementedException(); 
         }
         // לסיים את הפונקציה מיון לפי איזורים
-        public static List<BE.HostingUnit> ListOfHostingUntisInArea(string Area)
-        {
-            var AraeGroups = from unit in ListOfAllHostingUnits
-                             group unit by HostingUnit.getArea into g
-                              orderby g.Key
-                             select g;
+        //public static List<BE.HostingUnit> ListOfHostingUntisInArea(string Area)
+        //{
+        //    var AraeGroups = from unit in ListOfAllHostingUnits
+        //                     group unit by HostingUnit.getArea into g
+        //                      orderby g.Key
+        //                     select g;
 
-            foreach (var nameGroup in AraeGroups)
-            {
+        //    foreach (var nameGroup in AraeGroups)
+        //    {
                
-                foreach (var student in nameGroup)
-                {
-                }
-        }
+        //        foreach (var student in nameGroup)
+        //        {
+        //        }
+        //}
     }
 
 }

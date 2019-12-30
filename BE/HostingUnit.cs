@@ -62,7 +62,16 @@ namespace BE
         //
         bool [,] Diary = new bool[12,31];
         public bool[,] GetDiary()  {return Diary;  }
-        public void setDiary(bool[,] NewDiary) { Diary = NewDiary; }
+        public void setDiary(bool[,] NewDiary) 
+        { Diary = NewDiary;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int j = 0; j < 31; j++)
+                {
+                    Diary[i, j] = NewDiary[i, j];
+                }
+            }
+        }
 
         //
 
