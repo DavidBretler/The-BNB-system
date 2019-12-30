@@ -17,7 +17,7 @@ namespace BE
         //
         string HostingUnitName;
         public string getHostingUnitName() { return HostingUnitName; }
-        public void setHostingUnitName(int key) { HostingUnitKey = key; }
+        public void setHostingUnitName(string key) { HostingUnitKey = key; }
         //
         int NumOfRooms;
         public int getNumOfRooms() { return NumOfRooms; }
