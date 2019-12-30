@@ -35,7 +35,7 @@ namespace BE
         public int getJacuzzi() { return HostingUnitKey; }
         public void setJacuzzi(int Key) { HostingUnitKey = Key; }
         //
-        string Area;    
+       public string Area;    
         public void setArea(string NewArea) { Area = NewArea; }
         public string getArea() { return Area; }
         //
