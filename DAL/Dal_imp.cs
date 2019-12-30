@@ -46,11 +46,7 @@ namespace DAL
             if (Flag == false)
                 Console.WriteLine("the HostingUnitKey is not exict");
         }
-        /// <summary>
-        /// /temp func to create 5 bank branches
-        /// </summary>
-        /// <returns></returns>
-        public List<BankBranch> ListOfAllBankBranch()
+        public List<BankBranch> ListOfBankBranch()
         {
             List<BankBranch> List = new List<BE.BankBranch>();
             for (int i = 0; i < 5; i++)
@@ -61,18 +57,18 @@ namespace DAL
             return List;
         }
 
-        public List<GuestRequest> ListOfAllGuestRequest()
+        public List<GuestRequest> ListOfGuestRequest()
         {
 
             return DS.DataSource.ListGuestRequests;
         }
 
-        public List<HostingUnit> ListOfAllHostingUnits()
+        public List<HostingUnit> ListOfHostingUnits()
         {
              return DS.DataSource.ListHostingUnits;
         }
 
-        public List<Order> ListOfAllOrder()
+        public List<Order> ListOfOrder()
         {
             throw new NotImplementedException();
         }
