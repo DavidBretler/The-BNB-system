@@ -63,7 +63,7 @@ namespace DAL
             return DS.DataSource.ListGuestRequests;
         }
 
-        public List<HostingUnit> ListOfHostingUnits()
+         public List<HostingUnit> ListOfHostingUnits()
         {
              return DS.DataSource.ListHostingUnits;
         }
