@@ -60,9 +60,9 @@ namespace BE
         public string getHikes() { return Hikes; }
         public void setHikes(string NewHikes) { Hikes = NewHikes; }
         //
-        bool [,] Dairy = new bool[12,31];
-        public bool[,] GetDairy()  {return Dairy;  }
-        public void setDairy(bool[,] NewDairy) { Dairy = NewDairy; }
+        bool [,] Diary = new bool[12,31];
+        public bool[,] GetDiary()  {return Diary;  }
+        public void setDiary(bool[,] NewDiary) { Diary = NewDiary; }
 
         //
 
