@@ -53,8 +53,8 @@ namespace BE
         public void setChildrensAttractions(string NewChildrensAttractions) { ChildrensAttractions = NewChildrensAttractions; }
         //
         string Type;
-        string getType() { return Type; }
-        void setType(string NewType) { Type = NewType; }
+       public  string getType() { return Type; }
+        public void setType(string NewType) { Type = NewType; }
         //
         string Hikes { get; set; }
         public string getHikes() { return Hikes; }
