@@ -47,7 +47,7 @@ namespace BE
                 }
             }
             return ; }
-        public void setHostingUnitKey(int key) { HostingUnitKey = key; }
+       
         public override string ToString() 
         {
             return "HostingUnitKey: " + HostingUnitKey +

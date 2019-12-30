@@ -11,8 +11,7 @@ namespace DAL
             BE.HostingUnit target = new BE.HostingUnit();
             target.setHostingUnitKey(original.getHostingUnitKey()) ;
 
-            
-            
+           
  return target;
         }
         public static Lecture Clone(this Lecture original)

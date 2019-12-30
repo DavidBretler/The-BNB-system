@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace DAL
 {
-   public  class Dal_imp : Idal
+   public  class Dal_imp : IDAL
     {
         //public int checkIfExist<T>(List<T> list,T parm)
         //{
@@ -46,7 +46,7 @@ namespace DAL
             if (Flag == false)
                 Console.WriteLine("the HostingUnitKey is not exict");
         }
-        public List<BankBranch> ListOfAllBankBranch()
+        public List<BankBranch> ListOfBankBranch()
         {
             List<BankBranch> List = new List<BE.BankBranch>();
             for (int i = 0; i < 5; i++)
@@ -57,18 +57,18 @@ namespace DAL
             return List;
         }
 
-        public List<GuestRequest> ListOfAllGuestRequest()
+        public List<GuestRequest> ListOfGuestRequest()
         {
 
             return DS.DataSource.ListGuestRequests;
         }
 
-        public List<HostingUnit> ListOfAllHostingUnits()
+        public List<HostingUnit> ListOfHostingUnits()
         {
             throw new NotImplementedException();
         }
 
-        public List<Order> ListOfAllOrder()
+        public List<Order> ListOfOrder()
         {
             throw new NotImplementedException();
         }
