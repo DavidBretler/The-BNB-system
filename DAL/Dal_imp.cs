@@ -46,6 +46,10 @@ namespace DAL
             if (Flag == false)
                 Console.WriteLine("the HostingUnitKey is not exict");
         }
+        /// <summary>
+        /// /temp func to create 5 bank branches
+        /// </summary>
+        /// <returns></returns>
         public List<BankBranch> ListOfAllBankBranch()
         {
             List<BankBranch> List = new List<BE.BankBranch>();
