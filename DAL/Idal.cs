@@ -6,7 +6,7 @@ using System.Linq;
 namespace DAL
 {
     interface  IDAL
-    {
+    {   
         void NewGuestRequests(BE.GuestRequest TheGuestRequest);
         void UpdateGuestRequests(BE.GuestRequest TheGuestRequest);
         void AddNewHostingUnit(BE.HostingUnit TheHostingUnit);
@@ -14,10 +14,10 @@ namespace DAL
         void UpdateHostingUnit(BE.HostingUnit TheHostingUnit);
         void NewOrder(BE.Order TheOrder);
         void UpdateDateOrder(BE.Order TheOrder);
-        List<BE.HostingUnit> ListOfHostingUnits();
-        List<BE.GuestRequest> ListOfGuestRequest();
-        List<BE.Order> ListOfOrder();
-        List<BE.BankBranch> ListOfBankBranch();
+        List<BE.HostingUnit> getListOfHostingUnits();
+        List<BE.GuestRequest> getListOfGuestRequest();
+        List<BE.Order> getListOfOrder();
+        List<BE.BankBranch> getListOfBankBranch();
 
       
     }
