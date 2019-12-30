@@ -69,7 +69,7 @@ namespace DAL
 
         public List<HostingUnit> ListOfAllHostingUnits()
         {
-            throw new NotImplementedException();
+             return DS.DataSource.ListHostingUnits;
         }
 
         public List<Order> ListOfAllOrder()

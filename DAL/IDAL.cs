@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace DAL
 {
-    interface  IDAL
+   public interface  IDAL
     {
         void NewGuestRequests(BE.GuestRequest TheGuestRequest);
         void UpdateGuestRequests(BE.GuestRequest TheGuestRequest);

@@ -85,7 +85,7 @@ namespace BL
         // לסיים את הפונקציה מיון לפי איזורים
         public static List<BE.HostingUnit> ListOfHostingUntisInArea(string Area)
         {
-            var AraeGroups = from unit in ListOfAllHostingUnits
+            var AraeGroups = from unit in DAL.IDAL.ListOfAllHostingUnits
                              group unit by HostingUnit.getArea into g
                               orderby g.Key
                              select g;
