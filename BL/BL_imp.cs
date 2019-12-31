@@ -11,6 +11,28 @@ namespace BL
     class BL_imp : IBL
     {
         IDAL dal = FactoryDal.GetDal();
+       
+    
+        public List<BankBranch> getListOfBankBranch()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<GuestRequest> getListOfGuestRequest()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<HostingUnit> getListOfHostingUnits()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Order> getListOfOrder()
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddNewHostingUnit(HostingUnit TheHostingUnit)
         {
             throw new NotImplementedException();
@@ -21,45 +43,6 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public List<BankBranch> ListOfAllBankBranch()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<GuestRequest> ListOfAllGuestRequest()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<HostingUnit> ListOfAllHostingUnits()
-        {
-            return dal.ListOfHostingUnits();
-        }
-
-        public List<Order> ListOfAllOrder()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<BankBranch> ListOfBankBranch()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<GuestRequest> ListOfGuestRequest()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<HostingUnit> ListOfHostingUnits()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Order> ListOfOrder()
-        {
-            throw new NotImplementedException();
-        }
 
         public void NewGuestRequests(GuestRequest TheGuestRequest)
         {
@@ -97,6 +80,11 @@ namespace BL
                              select groupArea;
             return AraeGroups;
 
+        }
+
+        public bool CheakDateIfOk(DateTime StartDate, DateTime EndtDate) 
+        {
+            return (StartDate < EndtDate);
         }
 
 
