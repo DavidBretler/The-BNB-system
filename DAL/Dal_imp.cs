@@ -35,10 +35,8 @@ namespace DAL
             List<HostingUnit> L = DS.DataSource.ListHostingUnits;
             for (int i = 0; i < L.Count; i++)
                 if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
-                {
-                    Console.WriteLine("the HostingUnitKey is alredy exist");
-                    return;
-                }
+                    
+             throw new IDalreadyExistsException("HostingUnit", TheHostingUnit.getHostingUnitKey());
             DS.DataSource.ListHostingUnits.Add(TheHostingUnit);
         }
 
@@ -54,7 +52,7 @@ namespace DAL
                     Flag = true;
                 }
             if (Flag == false)
-                Console.WriteLine("the HostingUnitKey is not exict");
+                throw new MissingIdException("HostingUnit", TheHostingUnit.getHostingUnitKey());
         }
         public List<BankBranch> getListOfBankBranch()
         {
@@ -74,8 +72,15 @@ namespace DAL
             DataSource.ListGuestRequests.CopyTo(newGuestRequest);
             return newGuestRequest.ToList();
         }
-       
-        public List<HostingUnit> getListOfHostingUnits()
+        List<BE.Host> getListOfHost()
+        {
+            Host[] newHost = new Host[DataSource.ListHosts.Count];
+            DataSource.ListHosts.CopyTo(newHost);
+            return newHost.ToList();
+        }
+
+      
+    public List<HostingUnit> getListOfHostingUnits()
         {   //לעשות שכפול לרשימה של היחידות אירוח 
        
             HostingUnit[] newHostingUnits = new HostingUnit[DataSource.ListHostingUnits.Count];
@@ -99,8 +104,8 @@ namespace DAL
             for (int i = 0; i < L.Count; i++)
                 if (L[i].getGuestRequestKey() == TheGuestRequest.getGuestRequestKey())
                 {
-                    Console.WriteLine("the GuestRequestKey is alredy exist");
-                    return;
+                    throw new IDalreadyExistsException("GuestRequest", TheGuestRequest.getGuestRequestKey());
+                   
                 }
             DS.DataSource.ListGuestRequests.Add(TheGuestRequest);
         }
@@ -111,8 +116,8 @@ namespace DAL
             for (int i = 0; i < L.Count; i++)
                 if (L[i].getOrderKey() == TheOrder.getOrderKey())
                 {
-                    Console.WriteLine("the OrderKey is alredy exist");
-                    return;
+                    throw new IDalreadyExistsException("Order", TheOrder.getOrderKey());
+                   
                 }
             DS.DataSource.ListOrders.Add(TheOrder);
         }
@@ -128,7 +133,7 @@ namespace DAL
                     Flag = true;
                 }
             if (Flag == false)
-                Console.WriteLine("the GuestRequestKey is not exict");
+                throw new MissingIdException("GuestRequest", TheGuestRequest.getGuestRequestKey());
 
         }
 
@@ -144,7 +149,7 @@ namespace DAL
                     Flag = true;
                 }
             if (Flag == false)
-                Console.WriteLine("the Order is not exict");
+                throw new MissingIdException("Order", TheOrder.getOrderKey());
         }
 
         public void UpdateHostingUnit(HostingUnit TheHostingUnit)
@@ -158,7 +163,8 @@ namespace DAL
                     Flag = true;
                 }
             if (Flag == false)
-                Console.WriteLine("the Order is not exict");
+                throw new MissingIdException("HostingUnit", TheHostingUnit.getHostingUnitKey());
+                
         }
 
         /// <summary>
@@ -167,17 +173,17 @@ namespace DAL
         /// </summary>
         /// <param name="Area"></param>
         /// <returns> list of hosting units in specified area</returns>
-        public static List<BE.HostingUnit> ListOfHostingUntisInArea(string Area)
-        {
-            List<BE.HostingUnit> ListHostingUnitsByArea = new List<BE.HostingUnit>();
-            var v = from item in DS.DataSource.ListHostingUnits
-                    where item.getArea() == Area
-                    select item;
+        //public static List<BE.HostingUnit> ListOfHostingUntisInArea(string Area)
+        //{
+        //    List<BE.HostingUnit> ListHostingUnitsByArea = new List<BE.HostingUnit>();
+        //    var v = from item in DS.DataSource.ListHostingUnits
+        //            where item.getArea() == Area
+        //            select item;
 
-            foreach (var item in v)
-                ListHostingUnitsByArea.Add(item);
-            return ListHostingUnitsByArea;
-        }
+        //    foreach (var item in v)
+        //        ListHostingUnitsByArea.Add(item);
+        //    return ListHostingUnitsByArea;
+        //}
 
     }
 }

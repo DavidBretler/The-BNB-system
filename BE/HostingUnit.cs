@@ -58,21 +58,37 @@ namespace BE
         string Hikes { get; set; }
         public string getHikes() { return Hikes; }
         public void setHikes(string NewHikes) { Hikes = NewHikes; }
-        //
-        bool [,] Diary = new bool[12,31];
-        public bool[,] GetDiary()  {return Diary;  }
-        public void setDiary(bool[,] NewDiary) 
-        { Diary = NewDiary;
+       //calender that made of array of arrays
+        bool[][] Diary = new bool[12][]
+             {   new bool[31],//January 
+                 new bool[28],//February
+                 new bool[31],//March 
+                 new bool[30],//April 
+                 new bool[31],//May
+                 new bool[30],//June 
+                 new bool[31],//July 
+                 new bool[31],//August 
+                 new bool[30],//September 
+                 new bool[31],//October 
+                 new bool[30],//November 
+                 new bool[31],//December 
+               };
+
+
+        public bool[][] GetDiary() { return Diary; }
+        public void setDiary(bool[][] NewDiary)
+        {
+            Diary = NewDiary;
             for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < 31; j++)
+                for (int j = 0; j < NewDiary[i].Length; j++)
                 {
-                    Diary[i, j] = NewDiary[i, j];
+                    Diary[i][ j] = NewDiary[i][j];
                 }
             }
         }
 
-        //
+        
 
         public override string ToString() 
         {
