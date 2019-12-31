@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace DAL
 {
-   public  class DAL : Idal
+   public  class DAL : IDAL
     {
         //public int checkIfExist<T>(List<T> list,T parm)
         //{
