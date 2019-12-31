@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using BE;
 using DAL;
+using System.Linq;
+
 
 namespace BL
-{ 
+{
     class BL_imp : IBL
     {
+        IDAL dal = FactoryDal.GetDal();
         public void AddNewHostingUnit(HostingUnit TheHostingUnit)
         {
             throw new NotImplementedException();
@@ -30,7 +33,7 @@ namespace BL
 
         public List<HostingUnit> ListOfAllHostingUnits()
         {
-            return DAL.DAL.getListOfHostingUnits();
+            return dal.ListOfHostingUnits();
         }
 
         public List<Order> ListOfAllOrder()
@@ -77,26 +80,46 @@ namespace BL
         {
             throw new NotImplementedException();
         }
-         
-        public void UpdateHostingUnit(HostingUnit TheHostingUnit)
-        { 
-            throw new NotImplementedException(); 
-        }
-        // לסיים את הפונקציה מיון לפי איזורים
-        //public static List<BE.HostingUnit> ListOfHostingUntisInArea(string Area)
-        //{
-        //    var AraeGroups = from unit in ListOfAllHostingUnits
-        //                     group unit by HostingUnit.getArea into g
-        //                      orderby g.Key
-        //                     select g;
 
-        //    foreach (var nameGroup in AraeGroups)
+        public void UpdateHostingUnit(HostingUnit TheHostingUnit)
+        {
+            dal.ListOfHostingUnits();
+
+            throw new NotImplementedException();
+        }
+
+       public IEnumerable<IGrouping<enums.Area, HostingUnit>> ListOfHostingUntisInArea()
+        {
+            List<BE.HostingUnit> hostingUnits = dal.ListOfHostingUnits();
+            var AraeGroups = from unit in hostingUnits
+                             orderby unit.Area
+                             group unit by unit.Area into groupArea
+                             select groupArea;
+            return AraeGroups;
+
+        }
+
+
+        //    public IEnumerable<BE.HostingUnit> ListOfHostingUntisInArea(string Area)
+        //{
+
+        //    var AraeGroups = from unit in dal.ListOfHostingUnits()
+        //                     group unit by unit.getArea into groupArea
+
+        //                     select new { g = groupArea };
+        //    List<BE.HostingUnit> arr = new List<HostingUnit>();
+
+        //    foreach (var unit in AraeGroups)
         //    {
-               
-        //        foreach (var student in nameGroup)
+
+        //        foreach (var unitkey in unit.key)
         //        {
+        //            arr.Add(unitkey);
         //        }
+        //    }
+        //    return arr;
         //}
     }
-
 }
+
+

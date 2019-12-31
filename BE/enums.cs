@@ -4,12 +4,12 @@ using System.Text;
 
 namespace BE
 {
-    class enums
+   public class enums
     {
-        enum ResortType {house , hut, hotel }
-        enum Area { north,east,west,south}
-        enum orderStatus { inProgress,mailSent,close,finish}
-        enum orderGuestRequest {open,finishWithWebsite,closeDueDatePass }
+        public enum ResortType {house , hut, hotel }
+        public enum Area { north,east,west,south}
+        public enum orderStatus { inProgress,mailSent,close,finish}
+        public enum orderGuestRequest {open,finishWithWebsite,closeDueDatePass }
 
     }
 }
