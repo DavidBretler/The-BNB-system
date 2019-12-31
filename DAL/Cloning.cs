@@ -14,8 +14,7 @@ namespace DAL
             target.setOwner(original.getOwner());
             target.setHostingUnitName(original.getHostingUnitName());
             target.setNumOfRooms(original.getNumOfRooms());
-            target.setNumOfBeds(  original.getNumOfBeds());
-           
+            target.setNumOfBeds(  original.getNumOfBeds());         
             target.setPool(original.getPool());
             target.setJacuzzi(original.getJacuzzi());
             target.setArea(original.getArea());
@@ -23,17 +22,11 @@ namespace DAL
             target.setAirConditioner(original.getAirConditioner());
             target.setChildrensAttractions (original.getChildrensAttractions());
             target.setType (original.getType());
-            target.sethikes(original.gethikes());
-            target.setDiary(original.getDiary());    
+            target.setHikes(original.getHikes());
+            target.setDiary(original.GetDiary());    
             return target;
         }   
-        public static Lecture Clone(this Lecture original)
-        {
-            Lecture target = new Lecture();
-            target.id = original.id;
-           
- return target;
-        }
+
         //and so on for each entity…
     }
 }
