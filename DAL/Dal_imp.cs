@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace DAL
 {
-   public  class DAL : IDAL
+   public  class DAL : Idal
     {
         //public int checkIfExist<T>(List<T> list,T parm)
         //{
@@ -20,7 +20,9 @@ namespace DAL
         //}
 
         private DAL() { }
-    
+    /// <summary>
+    /// make sure that we will craete only one object from this class
+    /// </summary>
        protected static DAL newDAL = null;
     public static DAL GetDAL()
         {
