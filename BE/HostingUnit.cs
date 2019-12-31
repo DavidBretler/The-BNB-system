@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace BE
 { 
    public class HostingUnit
@@ -35,9 +34,9 @@ namespace BE
         public int getJacuzzi() { return HostingUnitKey; }
         public void setJacuzzi(int Key) { HostingUnitKey = Key; }
         //
-       public string Area;    
-        public void setArea(string NewArea) { Area = NewArea; }
-        public string getArea() { return Area; }
+       public Area Area;    
+        public void setArea(Area NewArea) { Area = NewArea; }
+        public Area getArea() { return Area; }
         //
         bool Garden;
         public bool getGarden() { return Garden; }
