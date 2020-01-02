@@ -11,7 +11,7 @@ namespace DAL
     /// </summary>
     public class FactoryDal
     {
-        public static IDAL GetDal()
+        public static Idal GetDal()
         {
             return new Dal_imp();
         }

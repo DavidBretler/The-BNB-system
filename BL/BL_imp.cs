@@ -11,7 +11,7 @@ namespace BL
     class BL_imp : IBL
     {
       
-        IDAL dal = FactoryDal.GetDal();
+        Idal dal = FactoryDal.GetDal();
        
     
         public List<BankBranch> getListOfBankBranch()
