@@ -13,7 +13,7 @@ namespace DAL
         void UpdateGuestRequests(BE.GuestRequest TheGuestRequest);
         void AddNewHostingUnit(BE.HostingUnit TheHostingUnit);
         void DeleteHostingUnit(BE.HostingUnit TheHostingUnit);
-        void UpdateHostingUnit();
+         void UpdateHostingUnit(BE.HostingUnit TheHostingUnit);
         void NewOrder(BE.Order TheOrder);
 
         void UpdateDateOrder(BE.Order TheOrder);
@@ -21,8 +21,9 @@ namespace DAL
         List<BE.GuestRequest> getListOfGuestRequest();
         List<BE.Order> getListOfOrder();
         List<BE.BankBranch> getListOfBankBranch();
+        List<BE.Host> getListOfHost();
 
-     
+
     }
 }
 

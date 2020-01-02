@@ -16,6 +16,8 @@ namespace DS
         public static List<BE.BankBranch> ListBankBranches = new List<BE.BankBranch>();
 
         public static List<BE.Order> ListOrders = new List<BE.Order>();
+
+        
         //public static void addGuestRequest(BE.GuestRequest t)
         //  {
         //      ListGuestRequests.Add(t);
