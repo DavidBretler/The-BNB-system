@@ -19,11 +19,13 @@ namespace DAL
         //        return -1;
         //}
 
+
+        /// <summary>
+        /// make sure that we will craete only one object from this class
+        /// </summary>
+        /// 
         private DAL() { }
-    /// <summary>
-    /// make sure that we will craete only one object from this class
-    /// </summary>
-       protected static DAL newDAL = null;
+        protected static DAL newDAL = null;
     public static DAL GetDAL()
         {
             if (newDAL == null)
@@ -72,7 +74,7 @@ namespace DAL
             DataSource.ListGuestRequests.CopyTo(newGuestRequest);
             return newGuestRequest.ToList();
         }
-        List<BE.Host> getListOfHost()
+      public  List<BE.Host> getListOfHost()
         {
             Host[] newHost = new Host[DataSource.ListHosts.Count];
             DataSource.ListHosts.CopyTo(newHost);
@@ -93,7 +95,19 @@ namespace DAL
         Order[] newOrders = new Order[DataSource.ListOrders.Count];
         DataSource.ListOrders.CopyTo(newOrders);
         return newOrders.ToList();
-    }            
+
+            public IEnumerable<Order> GetAllOrders()
+            {
+                var temp = from item in DataSource.ordersList
+                           select item;
+                List<Order> temp2 = (List<Order>)temp;
+                Order[] target = new Order[temp2.Count];
+                temp2.CopyTo(target);
+
+                return target.ToList();
+            }
+
+        }            
         /// <summary>
         /// 
         /// </summary>
@@ -154,6 +168,13 @@ namespace DAL
 
         public void UpdateHostingUnit(HostingUnit TheHostingUnit)
         {
+
+            //var v= from HostingUnit unit in DS.DataSource.ListHostingUnits
+            //where unit.getHostingUnitKey() == TheHostingUnit.getHostingUnitKey()
+            //select unit ;         
+            //foreach (var item in v)
+            //    item = TheHostingUnit;
+
             bool Flag = false;
             List<HostingUnit> L = DS.DataSource.ListHostingUnits;
             for (int i = 0; i < L.Count; i++)
@@ -164,9 +185,9 @@ namespace DAL
                 }
             if (Flag == false)
                 throw new MissingIdException("HostingUnit", TheHostingUnit.getHostingUnitKey());
-                
-        }
 
+           
+        }
         /// <summary>
         /// SQL LInk gets the wanted area of hosting units
         /// and returns all hostins units in the area
