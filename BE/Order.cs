@@ -18,9 +18,9 @@ namespace BE
         public int getOrderKey() { return OrderKey; }
         public void setOrderKey(int NewOrderKey) { OrderKey = NewOrderKey; }
 
-        string Status;
-        public string getStatus() { return Status; }
-        public void setStatus(string NewStatus) { Status = NewStatus; }
+        public  Status Status;
+        public Status getStatus() { return Status; }
+        public void setStatus(Status NewStatus) { Status = NewStatus; }
 
         DateTime CreateDate;
         public DateTime getCreateDate() { return CreateDate; }
