@@ -70,43 +70,47 @@ namespace DAL
         public List<GuestRequest> getListOfGuestRequest()
         {
 
-            GuestRequest[] newGuestRequest = new GuestRequest[DataSource.ListGuestRequests.Count];
-            DataSource.ListGuestRequests.CopyTo(newGuestRequest);
-            return newGuestRequest.ToList();
+            var temp = from item in DataSource.ListHosts
+                       select item;
+            List<GuestRequest> temp2 = (List<GuestRequest>)temp;
+            GuestRequest[] target = new GuestRequest[temp2.Count];
+            temp2.CopyTo(target);
+
+            return target.ToList();
         }
       public  List<BE.Host> getListOfHost()
         {
-            Host[] newHost = new Host[DataSource.ListHosts.Count];
-            DataSource.ListHosts.CopyTo(newHost);
-            return newHost.ToList();
+            var temp = from item in DataSource.ListHosts
+                       select item;
+            List<Host> temp2 = (List<Host>)temp;
+            Host[] target = new Host[temp2.Count];
+            temp2.CopyTo(target);
+
+            return target.ToList();
         }
 
       
     public List<HostingUnit> getListOfHostingUnits()
         {   //לעשות שכפול לרשימה של היחידות אירוח 
-       
-            HostingUnit[] newHostingUnits = new HostingUnit[DataSource.ListHostingUnits.Count];
-            DataSource.ListHostingUnits.CopyTo(newHostingUnits);
-            return newHostingUnits.ToList();
-     
+
+            var temp = from item in DataSource.ListHostingUnits
+                       select item;
+            List<HostingUnit> temp2 = (List<HostingUnit>)temp;
+            HostingUnit[] target = new HostingUnit[temp2.Count];
+            temp2.CopyTo(target);
+
+            return target.ToList();
+
         }   
         public List<Order> getListOfOrder()
-        {
-        Order[] newOrders = new Order[DataSource.ListOrders.Count];
-        DataSource.ListOrders.CopyTo(newOrders);
-        return newOrders.ToList();
-
-            public IEnumerable<Order> GetAllOrders()
-            {
-                var temp = from item in DataSource.ordersList
+        {       
+                var temp = from item in DataSource.ListOrders
                            select item;
                 List<Order> temp2 = (List<Order>)temp;
                 Order[] target = new Order[temp2.Count];
                 temp2.CopyTo(target);
 
-                return target.ToList();
-            }
-
+                return target.ToList();            
         }            
         /// <summary>
         /// 
