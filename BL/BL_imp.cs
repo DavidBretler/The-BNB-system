@@ -11,7 +11,7 @@ namespace BL
     class BL_imp : IBL
     {
       
-        Idal dal = FactoryDal.GetDal();
+        IDAL dal = FactoryDal.GetDal();
        
     
         public List<BankBranch> getListOfBankBranch()
@@ -31,12 +31,19 @@ namespace BL
             return dal.getListOfHostingUnits();
             throw new NotImplementedException();
         }
+        public List<Host> getListOfHost()
+        {
+            return dal.getListOfHost();
+            throw new NotImplementedException();
+        }
+       
 
         public List<Order> getListOfOrder()
         {
             return dal.getListOfOrder();
             throw new NotImplementedException();
         }
+
         /// <summary>
         /// gets the informtion of the new hosting unit and ads in to the data base
         /// </summary>
@@ -61,7 +68,7 @@ namespace BL
             Host host = new Host();
 
 
-            if (cheakIfHostExsits(KeyOfHost,ref host))
+            if (cheakIfHostExsits(KeyOfHost,ref host))//need enter the host key.
             {
                 HostingUnit EnterdHostingUnit = new HostingUnit();
                 EnterdHostingUnit.setHostingUnitName(HostingUnitName);
@@ -79,7 +86,7 @@ namespace BL
                 dal.AddNewHostingUnit(EnterdHostingUnit);
             }
             else
-            throw new Exception MissingIdException(KeyOfHost,"BL_imp","אנא וודא תקינות מספר זיהוי או הוסף את פרטיך לרשימת המארחים");
+            throw new  MissingIdException ("BL_imp", KeyOfHost, "אנא וודא תקינות מספר זיהוי או הוסף את פרטיך לרשימת המארחים");
         }
 
         /// <summary>
@@ -156,7 +163,7 @@ namespace BL
         }
 
         /// <summary>
-        /// create a list by area
+        /// create a list of hosting units by area
         /// </summary>
         /// <returns>list by area</returns>
        public IEnumerable<IGrouping<Area, HostingUnit>> ListOfHostingUntisInArea()
@@ -169,8 +176,66 @@ namespace BL
             return AraeGroups;
 
         }
+        /// <summary>
+        /// create a list of guest request by number of beds
+        /// </summary>
+        /// <returns>list by number of beds</returns>
+        public IEnumerable<IGrouping<int, GuestRequest>> ListOfGustRequestByNumOfBeds()
+        {
+            List<BE.GuestRequest> guestRequests = dal.getListOfGuestRequest();
+            var NumGroups = from unit in guestRequests
+                            orderby unit.getNumOfBeds()
+                             group unit by unit.getNumOfBeds() into groupNum
+                             select groupNum;
+            return NumGroups;
 
-        public bool CheakDateIfOk(DateTime StartDate, DateTime EndtDate) 
+        }
+
+
+        /// <summary>
+        /// create a list of Gust Requests by area
+        /// </summary>
+        /// <returns>list by area</returns>
+        public IEnumerable<IGrouping<Area, GuestRequest>> ListOfGustRequestByArea()
+        {
+            List<BE.GuestRequest> guestRequests = dal.getListOfGuestRequest();
+            var AreaGroups = from unit in guestRequests
+                            orderby unit.getArea()
+                            group unit by unit.getArea() into groupArea
+                            select groupArea;
+            return AreaGroups;
+
+        }
+
+
+        /// <summary>
+        /// create a list of Gust Requests by area
+        /// </summary>
+        /// <returns>list by area</returns>
+        public IEnumerable<IGrouping<Area, GuestRequest>> ListOfHostsByArea()
+        {
+            List<BE.GuestRequest> guestRequests = dal.getListOfGuestRequest();
+            var AreaGroups = from unit in guestRequests
+                             orderby unit.getArea()
+                             group unit by unit.getArea() into groupArea
+                             select groupArea;
+            return AreaGroups;
+
+        }
+
+    }
+    /// <summary>
+    /// create a list of guest request by number of Area
+    /// </summary>
+    /// <returns>list by number of beds</returns>
+   
+
+    //        • רשימת דרישות לקוח מקובצת )Grouping )ע"פ אזור הנופש הנדרש.
+    //• רשימת דרישות לקוח מקובצת )Grouping )ע"פ מספר הנופשים.
+    //• רשימת מארחים מקובצת )Grouping )ע"פ מספר יחידות האירוח שהם מחזיקים
+    //• רשימת יחידות אירוח מקובצת )Grouping )ע"פ אזור הנופש הנדרש.
+
+    public bool CheakDateIfOk(DateTime StartDate, DateTime EndtDate) 
         {
             return (StartDate < EndtDate);
         }

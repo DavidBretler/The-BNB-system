@@ -36,9 +36,9 @@ namespace BE
         public DateTime getReleaseDate() { return ReleaseDate; }
         public void setReleaseDate(DateTime NewReleaseDate) { ReleaseDate = NewReleaseDate; }
 
-        string Area;
-        public string getArea() { return Area; }
-        public void setArea(string NewArea) { Area = NewArea; }
+        Area Area;
+        public Area getArea() { return Area; }
+        public void setArea(Area NewArea) { Area = NewArea; }
         
         int NumOfRooms;
         public int getNumOfRooms() { return NumOfRooms; }
@@ -56,6 +56,11 @@ namespace BE
          int Children;
         public int getChildren() { return Children; }
         public void setChildren(int NewChildren) { Children = NewChildren; }
+
+        int NumOfBeds;
+        public int getNumOfBeds() { return NumOfBeds; }
+        public void setNumOfBeds(int NewNumOfBeds) { NumOfBeds = NewNumOfBeds; }
+
         string Pool;
         public string getPool() { return Pool; }
         public void setPool(string NewPool) { Pool = NewPool; }

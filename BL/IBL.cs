@@ -9,9 +9,9 @@ namespace BL
     {
         void NewGuestRequests(BE.GuestRequest TheGuestRequest);
         void UpdateGuestRequests(BE.GuestRequest TheGuestRequest);
-        void AddNewHostingUnit(BE.Host Owner, string HostingUnitName, int NumOfRooms,
-            int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
-            Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, bool[][] Diary);
+        void AddNewHostingUnit(string HostingUnitName, int NumOfRooms,
+           int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
+           Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, bool[][] Diary, int KeyOfHost)sortType Type, Choice Hikes, bool[][] Diary);
         void DeleteHostingUnit(BE.HostingUnit TheHostingUnit);
         void UpdateHostingUnit(BE.HostingUnit TheHostingUnit);
         void NewOrder(BE.Order TheOrder);
