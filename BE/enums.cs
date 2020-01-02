@@ -9,6 +9,6 @@ namespace BE
         public  enum Area { north,east,west,south}
         public enum orderStatus { inProgress,mailSent,close,finish}
         public enum Status { open,finishWithWebsite,closeDueDatePass }
-
+        public enum Choice { No,Yes,DontCare }
     
 }
