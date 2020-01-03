@@ -12,8 +12,8 @@ namespace BL
     {
       
         IDAL dal = FactoryDal.GetDal();
-       
-    
+#region lists      
+
         public List<BankBranch> getListOfBankBranch()
         {
            return dal.getListOfBankBranch();
@@ -43,6 +43,7 @@ namespace BL
             return dal.getListOfOrder();
             throw new NotImplementedException();
         }
+        #endregion lists
 
         /// <summary>
         /// gets the informtion of the new hosting unit and ads in to the data base
@@ -97,7 +98,7 @@ namespace BL
         bool cheakIfHostExsits(int HostKey, ref Host host)
         {
             List<Host> ListOfhosts = new List<Host>();
-            ListOfhosts = getListOfHost();//צריך להגדיר את הפונקציה להחזרת רשימה של
+            ListOfhosts = getListOfHost();
                 for(int i=0;i<ListOfhosts.Count;i++)
             {
                 if (ListOfhosts[i].getHostKey() == HostKey)
@@ -127,7 +128,7 @@ namespace BL
 
         }
 
-
+        #region NotImplemented
 
         public void DeleteHostingUnit(HostingUnit TheHostingUnit)
         {
@@ -162,11 +163,14 @@ namespace BL
             throw new NotImplementedException();
         }
 
+        #endregion NotImplemented
+
+        #region Grouping
         /// <summary>
         /// create a list of hosting units by area
         /// </summary>
         /// <returns>list by area</returns>
-       public IEnumerable<IGrouping<Area, HostingUnit>> ListOfHostingUntisInArea()
+        public IEnumerable<IGrouping<Area, HostingUnit>> ListOfHostingUntisInArea()
         {
             List<BE.HostingUnit> hostingUnits = dal.getListOfHostingUnits();
             var AraeGroups = from unit in hostingUnits
@@ -245,12 +249,13 @@ namespace BL
         {
             List<BE.Host> hosts = dal.getListOfHost();
             var unitsGroups = from unit in hosts
-                             orderby unit.numberOfUnits descending
-                              group unit by unit.numberOfUnits into groupunits
+                             orderby unit.numberOfUints descending
+                              group unit by unit.numberOfUints into groupunits
                              select groupunits;
             return unitsGroups;
 
         }
+        #endregion Grouping
 
         /// <summary>
         /// cheks if the starting date is before the end date by one day at least
@@ -261,20 +266,27 @@ namespace BL
         public bool CheakDateIfInOrder(DateTime StartDate, DateTime EndtDate)
         {
             return (StartDate < EndtDate);
+            
         }
 
         /// <summary>
-        /// cheks if dates are free to order
+        /// cheks if dates are free  on the range given
         /// </summary>
         /// <param name="StartDate"></param>
         /// <param name="EndtDate"></param>
         /// <returns></returns>
-        public bool CheakDateIsFree(DateTime StartDate, DateTime EndtDate)//לסיים את הפונקציה
+        public bool CheakDatesAreFree(HostingUnit hostingUnit,DateTime StartDate, DateTime EndtDate)//לסיים את הפונקציה
         {
-           for
-            return;
+        
+           while(StartDate< EndtDate )
+            {
+                if (!hostingUnit[StartDate])
+                    return false;
+                StartDate = StartDate.AddDays(1);
+            }
+            return true;
         }
-
+        public 
 
         /// <summary>
         /// cheks if the host has Collection Clearance and  if it dos sends a Email to guest
