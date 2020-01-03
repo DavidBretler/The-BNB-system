@@ -8,16 +8,16 @@ namespace BE
 
         public int getGuestRequestKey() { return GuestRequestKey; }
         //
-        public string PrivateName;
+        public string PrivateName { get; set; }
         public string FamilyName { get; set; }
         public string getPrivateName() { return PrivateName; }
         public void setPrivteName(string NewPrivateName) { PrivateName = NewPrivateName; }
 
-        public string FamliyName;
+        public string FamliyName { get; set; }
         public string getFamliyName() { return FamliyName; }
         public void setAdults(string NewFamliyName) { FamliyName = NewFamliyName; }
 
-        public string MailAddress;
+        public string MailAddress { get; set; }
         public string getMailAddress() { return MailAddress; }
         public void setMailAddress(string NewMailAddress) { MailAddress = NewMailAddress; }
 
@@ -25,17 +25,17 @@ namespace BE
         //public string getStatus() { return Status; }
         //public void setStatus(string NewStatus) { Status = NewStatus; }
 
-        public DateTime RegistrationDate;
+        public DateTime RegistrationDate { get; set; }
         public DateTime getRegistrationDate() { return RegistrationDate; }
         public void setRegistrationDate(DateTime NewRegistrationDate) { RegistrationDate = NewRegistrationDate; }
 
-        public DateTime EntryDate;
+        public DateTime EntryDate { get; set; }
         public DateTime getEntryDate() { return EntryDate; }
         public void setEntryDate(DateTime NewEntryDate) { EntryDate = NewEntryDate; }
 
-        public DateTime ReleaseDate;
-        public DateTime getReleaseDate() { return ReleaseDate; }
-        public void setReleaseDate(DateTime NewReleaseDate) { ReleaseDate = NewReleaseDate; }
+        public DateTime EndDate { get; set; }
+        public DateTime getendDate() { return EndDate; }
+        public void setEndDate(DateTime NewEndDate) { EndDate = NewEndDate; }
 
         public Area Area;
         public Area getArea() { return Area; }

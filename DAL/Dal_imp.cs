@@ -31,7 +31,9 @@ namespace DAL
             if (newDAL == null)
                 newDAL = new Dal_imp();
             return newDAL;
-        }            
+        }
+        
+
             public void AddNewHostingUnit(HostingUnit TheHostingUnit)
         {
             List<HostingUnit> L = DS.DataSource.ListHostingUnits;

@@ -20,7 +20,12 @@ namespace BE
 
         public  Status Status;
         public Status getStatus() { return Status; }
-        public void setStatus(Status NewStatus) { Status = NewStatus; }
+        public void setStatus(Status NewStatus) {
+            if (Status!= (Status)2)
+            Status = NewStatus;
+            else
+                throw new GenralException ("Order", "Order closed,can not change Status.")
+        }
 
         public DateTime CreateDate;
         public DateTime getCreateDate() { return CreateDate; }

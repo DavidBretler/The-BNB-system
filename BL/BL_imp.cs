@@ -141,9 +141,27 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public void NewOrder(Order TheOrder)
+        /// <summary>
+        /// creats a new order and calls func to cotact the custumer if the host has Clearance
+        /// </summary>
+        /// <param name="guestRequest"></param>
+        /// <param name="hostingUnit"></param>
+        public void NewOrder(GuestRequest guestRequest,HostingUnit hostingUnit)
         {
-            throw new NotImplementedException();
+            if (CheakDatesAreFree(hostingUnit, guestRequest.EntryDate, guestRequest.EndDate))
+
+            {
+                Order order = new Order();
+                order.OrderDate = DateTime.Now;
+                order.OrderKey = BE.Configuration.getNewOrderKey();
+                order.GuestRequestKey = guestRequest.GuestRequestKey;
+                order.HostingUnitKey = hostingUnit.HostingUnitKey;
+                order.Status = (Status)0;
+                dal.NewOrder(order);
+                sendEmailIfHasClearance(hostingUnit.Owner, guestRequest);
+
+            }
+            else throw new GenralException("BL_imp", "ERROR in creating order.");
         }
 
         public void UpdateDateOrder(Order TheOrder)
@@ -256,7 +274,8 @@ namespace BL
 
         }
         #endregion Grouping
-
+        //לבדוק איזה פונקציות חוזרות על עצמן בגרופ
+      
         /// <summary>
         /// cheks if the starting date is before the end date by one day at least
         /// </summary>
@@ -265,8 +284,9 @@ namespace BL
         /// <returns></returns>
         public bool CheakDateIfInOrder(DateTime StartDate, DateTime EndtDate)
         {
-            return (StartDate < EndtDate);
-            
+           if(StartDate < EndtDate);
+            return true;
+            throw new DateException("BL_imp", "אנא הזן תאריך התחלה לפחות יום אחד לפני תאיך הסיום.");
         }
 
         /// <summary>
@@ -277,17 +297,49 @@ namespace BL
         /// <returns></returns>
         public bool CheakDatesAreFree(HostingUnit hostingUnit,DateTime StartDate, DateTime EndtDate)//לסיים את הפונקציה
         {
-        
-           while(StartDate< EndtDate )
+
+            if(chekDates(StartDate, EndtDate))
+                
+            while (StartDate < EndtDate)
             {
-                if (!hostingUnit[StartDate])
-                    return false;
-                StartDate = StartDate.AddDays(1);
+               
+                
+                    if (hostingUnit[StartDate])
+                        return false;
+                    StartDate = StartDate.AddDays(1);
+                
+               
             }
             return true;
-        }
-        public 
 
+        }
+
+        /// <summary>
+        /// checks if the dats are in the range of 11 months from now
+        /// </summary>
+        /// <param name="StartDate"></param>
+        /// <param name="EndtDate"></param>
+        /// <returns></returns>
+        public bool checkIfDatesAreInRange(DateTime StartDate, DateTime EndtDate)
+        {
+            DateTime Now = DateTime.Now;
+            if (Now.AddMonths(11) < EndtDate)
+                throw new DateException("BL_imp", " אפשר להזמין עד 11 חודשים קדימה.");
+            return true;
+        }
+
+        /// <summary>
+        /// calls functions that check the range and order of the dates
+        /// </summary>
+        /// <param name="StartDate"></param>
+        /// <param name="EndtDate"></param>
+        /// <returns></returns>
+        public bool chekDates(DateTime StartDate, DateTime EndtDate)
+        {
+            if (checkIfDatesAreInRange(StartDate, EndtDate) && CheakDateIfInOrder(StartDate, EndtDate))
+                return true;
+            return false;
+        }
         /// <summary>
         /// cheks if the host has Collection Clearance and  if it dos sends a Email to guest
         /// </summary>
@@ -296,23 +348,87 @@ namespace BL
         void sendEmailIfHasClearance(Host host,GuestRequest guestRequest)
         {
             if (host.CollectionClearance)
-                guestRequest.Status = 1;
+             guestRequest.Status = (orderStatus) 1;
             else
-                throw new MisinigClearanceException("BL_imp", "חסרה הרשאה לחיוב חשבונך");
+                throw new MisinigClearanceException("BL_imp", "Misinig Collection Clearance,to contact custumer aprove Clearance. ");
 
 
         }
+        //לבדוק מה השגיאות בדוק מדוד
 
+        /// <summary>
+        /// send email to the costumor by the host and change the date 
+        /// </summary>
+        /// <param name="currrentOrder"></param>
+        public void sendEmail(Order currrentOrder)
+        {
+            Console.WriteLine("email have been with order num  " + currrentOrder.OrderKey + "aboute request num :" + currrentOrder.getGuestRequestKey());
+            currrentOrder.OrderDate = DateTime.Now;
+            //לזמן מהפונ שמשנה סטטוס מייל
+        }
+        /// <summary>
+        /// check if the hostingunit that we want to delete  has been booked in a order before 
+        /// if yes send exepction if not use the delete func from dal
+        /// </summary>
+        /// <param name="TheHostingUnit"></param>
+        public void DeleteHostingUnit(HostingUnit TheHostingUnit)
+        {
+
+            List<BE.Order> problomaticOrderS = DS.DataSource.ListOrders.FindAll(delegate (Order order) { return order.HostingUnitKey == TheHostingUnit.HostingUnitKey; });
+            if (problomaticOrderS.Count > 0)
+            {
+                foreach (Order item in problomaticOrderS)
+                    Console.WriteLine("the hosting unit has been book in order num :" + item.OrderKey);
+                throw new keyBeenBooked("hostingUint", TheHostingUnit.HostingUnitKey, problomaticOrderS.Count);
+            }
+            else
+                dal.DeleteHostingUnit(TheHostingUnit);
+        }
+        void DeleteGuestRequests(BE.GuestRequest TheGuestRequest)
+        {
+            List<BE.Order> problomaticOrderS = DS.DataSource.ListOrders.FindAll(delegate (Order order) { return order.HostingUnitKey == TheGuestRequest.GuestRequestKey; });
+            if (problomaticOrderS.Count > 0)
+            {
+                foreach (Order item in problomaticOrderS)
+                    Console.WriteLine("The GuestRequest has been choose in order num :" + item.OrderKey);
+                throw new keyBeenBooked("hostingUint", TheGuestRequest.GuestRequestKey, problomaticOrderS.Count);
+            }
+            else
+                dal.DeleteGuestRequests(TheGuestRequest);
+        }
+        void Deleteorder(BE.Order TheOrder)
+        {
+            Console.WriteLine("send email to the host and cosmumer of the order");
+            dal.Deleteorder(TheOrder);
+        }
+        void DeletHost(BE.Host TheHost)
+        {
+            List<BE.HostingUnit> bookedHostingUint = DS.DataSource.ListHostingUnits
+           .FindAll(checkDateAreFree(ListHostingUnits[i], DateTime.Now, DateTime.Now.AddMonths(11)));
+
+            IEnumerable<BE.HostingUnit> arr2 =
+                from HostingUnit item in bookedHostingUint
+                where item.Owner == TheHost
+                select item;
+            // לבדוק כמה יש לבעל בית הזה יחידות דיור תפוסות 
+            List<BE.HostingUnit> problomaticOrderS = DS.DataSource.ListOrders.FindAll
+                (delegate (Order order) { return order.h == TheHost.HostKey; });
+            if (problomaticOrderS.Count > 0)
+            {
+                foreach (Order item in problomaticOrderS)
+                    Console.WriteLine("the hosting unit has been book in order num :" + item.OrderKey);
+                throw new keyBeenBooked("hostingUint", TheHostingUnit.HostingUnitKey, problomaticOrderS.Count);
+            }
+            else
+                dal.DeletHost(TheHost);
+        }
 
     }
 
 
 
-    //• רשימת מארחים מקובצת )Grouping )ע"פ מספר יחידות האירוח שהם מחזיקים
-
-
-
+    
 }
-}
+
 
 
