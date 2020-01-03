@@ -8,7 +8,7 @@ using System.Linq;
  
 namespace DAL
 {
-   public  class DAL : Idal
+   public  class Dal_imp : IDAL
     {
         //public int checkIfExist<T>(List<T> list,T parm)
         //{
@@ -19,15 +19,17 @@ namespace DAL
         //        return -1;
         //}
 
-        private DAL() { }
-    /// <summary>
-    /// make sure that we will craete only one object from this class
-    /// </summary>
-       protected static DAL newDAL = null;
-    public static DAL GetDAL()
+
+        /// <summary>
+        /// make sure that we will craete only one object from this class
+        /// </summary>
+        /// 
+        private Dal_imp() { }
+        protected static Dal_imp newDAL = null;
+    public static Dal_imp GetDAL()
         {
             if (newDAL == null)
-                newDAL = new DAL();
+                newDAL = new Dal_imp();
             return newDAL;
         }            
             public void AddNewHostingUnit(HostingUnit TheHostingUnit)
@@ -35,11 +37,9 @@ namespace DAL
             List<HostingUnit> L = DS.DataSource.ListHostingUnits;
             for (int i = 0; i < L.Count; i++)
                 if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
-                {
-                    Console.WriteLine("the HostingUnitKey is alredy exist");
-                    return;
-                }
-            DS.DataSource.ListHostingUnits.Add(TheHostingUnit);
+                    
+             throw new IDalreadyExistsException("HostingUnit", TheHostingUnit.getHostingUnitKey());          
+             DS.DataSource.ListHostingUnits.Add(TheHostingUnit);
         }
 
         public void DeleteHostingUnit(HostingUnit TheHostingUnit)
@@ -54,7 +54,7 @@ namespace DAL
                     Flag = true;
                 }
             if (Flag == false)
-                Console.WriteLine("the HostingUnitKey is not exict");
+                throw new MissingIdException("HostingUnit", TheHostingUnit.getHostingUnitKey());
         }
         public List<BankBranch> getListOfBankBranch()
         {
@@ -70,25 +70,48 @@ namespace DAL
         public List<GuestRequest> getListOfGuestRequest()
         {
 
-            GuestRequest[] newGuestRequest = new GuestRequest[DataSource.ListGuestRequests.Count];
-            DataSource.ListGuestRequests.CopyTo(newGuestRequest);
-            return newGuestRequest.ToList();
+            var temp = from item in DataSource.ListHosts
+                       select item;
+            List<GuestRequest> temp2 = (List<GuestRequest>)temp;
+            GuestRequest[] target = new GuestRequest[temp2.Count];
+            temp2.CopyTo(target);
+
+            return target.ToList();
         }
-       
-        public List<HostingUnit> getListOfHostingUnits()
+      public  List<BE.Host> getListOfHost()
+        {
+            var temp = from item in DataSource.ListHosts
+                       select item;
+            List<Host> temp2 = (List<Host>)temp;
+            Host[] target = new Host[temp2.Count];
+            temp2.CopyTo(target);
+
+            return target.ToList();
+        }
+
+      
+    public List<HostingUnit> getListOfHostingUnits()
         {   //לעשות שכפול לרשימה של היחידות אירוח 
-       
-            HostingUnit[] newHostingUnits = new HostingUnit[DataSource.ListHostingUnits.Count];
-            DataSource.ListHostingUnits.CopyTo(newHostingUnits);
-            return newHostingUnits.ToList();
-     
+
+            var temp = from item in DataSource.ListHostingUnits
+                       select item;
+            List<HostingUnit> temp2 = (List<HostingUnit>)temp;
+            HostingUnit[] target = new HostingUnit[temp2.Count];
+            temp2.CopyTo(target);
+
+            return target.ToList();
+
         }   
         public List<Order> getListOfOrder()
-        {
-        Order[] newOrders = new Order[DataSource.ListOrders.Count];
-        DataSource.ListOrders.CopyTo(newOrders);
-        return newOrders.ToList();
-    }            
+        {       
+                var temp = from item in DataSource.ListOrders
+                           select item;
+                List<Order> temp2 = (List<Order>)temp;
+                Order[] target = new Order[temp2.Count];
+                temp2.CopyTo(target);
+
+                return target.ToList();            
+        }            
         /// <summary>
         /// 
         /// </summary>
@@ -99,8 +122,8 @@ namespace DAL
             for (int i = 0; i < L.Count; i++)
                 if (L[i].getGuestRequestKey() == TheGuestRequest.getGuestRequestKey())
                 {
-                    Console.WriteLine("the GuestRequestKey is alredy exist");
-                    return;
+                    throw new IDalreadyExistsException("GuestRequest", TheGuestRequest.getGuestRequestKey());
+                   
                 }
             DS.DataSource.ListGuestRequests.Add(TheGuestRequest);
         }
@@ -111,8 +134,8 @@ namespace DAL
             for (int i = 0; i < L.Count; i++)
                 if (L[i].getOrderKey() == TheOrder.getOrderKey())
                 {
-                    Console.WriteLine("the OrderKey is alredy exist");
-                    return;
+                    throw new IDalreadyExistsException("Order", TheOrder.getOrderKey());
+                   
                 }
             DS.DataSource.ListOrders.Add(TheOrder);
         }
@@ -128,7 +151,7 @@ namespace DAL
                     Flag = true;
                 }
             if (Flag == false)
-                Console.WriteLine("the GuestRequestKey is not exict");
+                throw new MissingIdException("GuestRequest", TheGuestRequest.getGuestRequestKey());
 
         }
 
@@ -144,11 +167,18 @@ namespace DAL
                     Flag = true;
                 }
             if (Flag == false)
-                Console.WriteLine("the Order is not exict");
+                throw new MissingIdException("Order", TheOrder.getOrderKey());
         }
 
         public void UpdateHostingUnit(HostingUnit TheHostingUnit)
         {
+
+            //var v= from HostingUnit unit in DS.DataSource.ListHostingUnits
+            //where unit.getHostingUnitKey() == TheHostingUnit.getHostingUnitKey()
+            //select unit ;         
+            //foreach (var item in v)
+            //    item = TheHostingUnit;
+
             bool Flag = false;
             List<HostingUnit> L = DS.DataSource.ListHostingUnits;
             for (int i = 0; i < L.Count; i++)
@@ -158,26 +188,27 @@ namespace DAL
                     Flag = true;
                 }
             if (Flag == false)
-                Console.WriteLine("the Order is not exict");
-        }
+                throw new MissingIdException("HostingUnit", TheHostingUnit.getHostingUnitKey());
 
+           
+        }
         /// <summary>
         /// SQL LInk gets the wanted area of hosting units
         /// and returns all hostins units in the area
         /// </summary>
         /// <param name="Area"></param>
         /// <returns> list of hosting units in specified area</returns>
-        public static List<BE.HostingUnit> ListOfHostingUntisInArea(string Area)
-        {
-            List<BE.HostingUnit> ListHostingUnitsByArea = new List<BE.HostingUnit>();
-            var v = from item in DS.DataSource.ListHostingUnits
-                    where item.getArea() == Area
-                    select item;
+        //public static List<BE.HostingUnit> ListOfHostingUntisInArea(string Area)
+        //{
+        //    List<BE.HostingUnit> ListHostingUnitsByArea = new List<BE.HostingUnit>();
+        //    var v = from item in DS.DataSource.ListHostingUnits
+        //            where item.getArea() == Area
+        //            select item;
 
-            foreach (var item in v)
-                ListHostingUnitsByArea.Add(item);
-            return ListHostingUnitsByArea;
-        }
+        //    foreach (var item in v)
+        //        ListHostingUnitsByArea.Add(item);
+        //    return ListHostingUnitsByArea;
+        //}
 
     }
 }

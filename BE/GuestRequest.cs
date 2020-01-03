@@ -4,86 +4,79 @@ namespace BE
 {
     public class GuestRequest
     {
-        int GuestRequestKey;
-            
-       public int getGuestRequestKey() { return GuestRequestKey; }
+        public int GuestRequestKey;
+
+        public int getGuestRequestKey() { return GuestRequestKey; }
         //
-        string PrivateName;
+        public string PrivateName;
+        public string FamilyName { get; set; }
         public string getPrivateName() { return PrivateName; }
         public void setPrivteName(string NewPrivateName) { PrivateName = NewPrivateName; }
 
-        string FamliyName;
+        public string FamliyName;
         public string getFamliyName() { return FamliyName; }
         public void setAdults(string NewFamliyName) { FamliyName = NewFamliyName; }
 
-        string MailAddress;
+        public string MailAddress;
         public string getMailAddress() { return MailAddress; }
         public void setMailAddress(string NewMailAddress) { MailAddress = NewMailAddress; }
-        
-        string Status;
-        public string getStatus() { return Status; }
-        public void setStatus(string NewStatus) { Status = NewStatus; }
 
-        DateTime RegistrationDate;
+        public orderStatus Status { get; set; }
+        //public string getStatus() { return Status; }
+        //public void setStatus(string NewStatus) { Status = NewStatus; }
+
+        public DateTime RegistrationDate;
         public DateTime getRegistrationDate() { return RegistrationDate; }
         public void setRegistrationDate(DateTime NewRegistrationDate) { RegistrationDate = NewRegistrationDate; }
-     
-        DateTime EntryDate;
+
+        public DateTime EntryDate;
         public DateTime getEntryDate() { return EntryDate; }
         public void setEntryDate(DateTime NewEntryDate) { EntryDate = NewEntryDate; }
-      
-        DateTime ReleaseDate;
+
+        public DateTime ReleaseDate;
         public DateTime getReleaseDate() { return ReleaseDate; }
         public void setReleaseDate(DateTime NewReleaseDate) { ReleaseDate = NewReleaseDate; }
 
-        Area Area;
+        public Area Area;
         public Area getArea() { return Area; }
         public void setArea(Area NewArea) { Area = NewArea; }
-        
-        int NumOfRooms;
+
+        public int NumOfRooms;
         public int getNumOfRooms() { return NumOfRooms; }
         public void setNumOfRooms(int NewNumOfRooms) { NumOfRooms = NewNumOfRooms; }
 
         //Hotel Motel Tzimer
-        string Type;
-         string getType() { return Type; }
-         void setType(string NewType) { Type = NewType; }
-
-         int Adults;
+        public ResortType Type{ get; set; }
+       
+        public int Adults;
         public int getAdults() { return Adults; }
         public void setAdults(int NewAdults) { Adults = NewAdults; }
 
-         int Children;
+        public int Children;
         public int getChildren() { return Children; }
         public void setChildren(int NewChildren) { Children = NewChildren; }
 
-        int NumOfBeds;
+        public int NumOfBeds;
         public int getNumOfBeds() { return NumOfBeds; }
         public void setNumOfBeds(int NewNumOfBeds) { NumOfBeds = NewNumOfBeds; }
 
-        string Pool;
-        public string getPool() { return Pool; }
-        public void setPool(string NewPool) { Pool = NewPool; }
+        public Choice Pool{ get; set; }
 
-        string Jacuzzi;
-        public string getJacuzzi() { return Jacuzzi; }
-        public void setJacuzzi(string NewJacuzzi) { Jacuzzi = NewJacuzzi; }
 
-        string Garden;
-        public string getGarden() { return Garden; }
-        public void setGarden(string NewGarden) { Garden = NewGarden; }
+    public Choice Jacuzzi { get; set; }
+ 
+        public Choice Garden{ get; set; }
 
-        string ChildrensAttractions;
-        public string getChildrensAttractions() { return ChildrensAttractions; }
-        public void setChildrensAttractions(string NewChildrensAttractions) { ChildrensAttractions = NewChildrensAttractions; }
+        public Choice ChildrensAttractions { get; set; }
 
-        string AirConditioner;
-        public string getAirConditioner() { return AirConditioner; }
-        public void setAirConditioner(string NewAirConditioner) { AirConditioner = NewAirConditioner; }
-    
-        public string Hikes;
-        public string getHikes() { return Hikes; }
-        public void setHikes(string NewHikes) { Hikes = NewHikes; }
+
+        public Choice AirConditioner  { get; set; }
+        //public string getAirConditioner() { return AirConditioner; }
+        //public void setAirConditioner(string NewAirConditioner) { AirConditioner = NewAirConditioner; }
+
+        public Choice Hikes { get; set; }
+        //public string getHikes() { return Hikes; }
+        //public void setHikes(string NewHikes) { Hikes = NewHikes; }
 
 
         public override string ToString() 
