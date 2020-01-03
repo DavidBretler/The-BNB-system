@@ -222,27 +222,85 @@ namespace BL
             return AreaGroups;
 
         }
+        /// <summary>
+        /// create a list of Gust Requests by area
+        /// </summary>
+        /// <returns>list by area</returns>
+        public IEnumerable<IGrouping<Area, GuestRequest>> ListOfguestRequestsByArea()
+        {
+            List<BE.GuestRequest> guestRequests = dal.getListOfGuestRequest();
+            var AreaGroups = from unit in guestRequests
+                             orderby unit.getArea(),unit.getFamliyName()
+                             group unit by unit.getArea() into groupArea
+                             select groupArea;
+            return AreaGroups;
 
-    }
-    /// <summary>
-    /// create a list of guest request by number of Area
-    /// </summary>
-    /// <returns>list by number of beds</returns>
-   
+        }
 
-    //        • רשימת דרישות לקוח מקובצת )Grouping )ע"פ אזור הנופש הנדרש.
-    //• רשימת דרישות לקוח מקובצת )Grouping )ע"פ מספר הנופשים.
-    //• רשימת מארחים מקובצת )Grouping )ע"פ מספר יחידות האירוח שהם מחזיקים
-    //• רשימת יחידות אירוח מקובצת )Grouping )ע"פ אזור הנופש הנדרש.
+        /// <summary>
+        /// create a list of Hosts by number of units they own form highest to lowest
+        /// </summary>
+        /// <returns>list by number of units they own</returns>
+        public IEnumerable<IGrouping<int, Host>> ListOfHostsByNumberOfHostingUnits()
+        {
+            List<BE.Host> hosts = dal.getListOfHost();
+            var unitsGroups = from unit in hosts
+                             orderby unit.numberOfUnits descending
+                              group unit by unit.numberOfUnits into groupunits
+                             select groupunits;
+            return unitsGroups;
 
-    public bool CheakDateIfOk(DateTime StartDate, DateTime EndtDate) 
+        }
+
+        /// <summary>
+        /// cheks if the starting date is before the end date by one day at least
+        /// </summary>
+        /// <param name="StartDate"></param>
+        /// <param name="EndtDate"></param>
+        /// <returns></returns>
+        public bool CheakDateIfInOrder(DateTime StartDate, DateTime EndtDate)
         {
             return (StartDate < EndtDate);
         }
 
+        /// <summary>
+        /// cheks if dates are free to order
+        /// </summary>
+        /// <param name="StartDate"></param>
+        /// <param name="EndtDate"></param>
+        /// <returns></returns>
+        public bool CheakDateIsFree(DateTime StartDate, DateTime EndtDate)//לסיים את הפונקציה
+        {
+           for
+            return;
+        }
 
-      
+
+        /// <summary>
+        /// cheks if the host has Collection Clearance and  if it dos sends a Email to guest
+        /// </summary>
+        /// <param name="host"></param>
+        /// <param name="guestRequest"></param>
+        void sendEmailIfHasClearance(Host host,GuestRequest guestRequest)
+        {
+            if (host.CollectionClearance)
+                guestRequest.Status = 1;
+            else
+                throw new MisinigClearanceException("BL_imp", "חסרה הרשאה לחיוב חשבונך");
+
+
+        }
+
+
     }
+
+
+
+    //• רשימת מארחים מקובצת )Grouping )ע"פ מספר יחידות האירוח שהם מחזיקים
+
+
+
+}
 }
 
 

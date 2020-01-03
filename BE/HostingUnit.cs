@@ -61,19 +61,26 @@ namespace BE
         //
         //calender that  is made of array of  12 arrays
         bool[][] Diary = new bool[12][]
-             {   new bool[31],//January 
-                 new bool[28],//February
-                 new bool[31],//March 
-                 new bool[30],//April 
-                 new bool[31],//May
-                 new bool[30],//June 
-                 new bool[31],//July 
-                 new bool[31],//August 
-                 new bool[30],//September 
-                 new bool[31],//October 
-                 new bool[30],//November 
-                 new bool[31],//December 
-               };
+             //{   new bool[31],//January 
+             //    new bool[28],//February
+             //    new bool[31],//March 
+             //    new bool[30],//April 
+             //    new bool[31],//May
+             //    new bool[30],//June 
+             //    new bool[31],//July 
+             //    new bool[31],//August 
+             //    new bool[30],//September 
+             //    new bool[31],//October 
+             //    new bool[30],//November 
+             //    new bool[31],//December 
+             //  };
+             for (int i = 0; i<length; i++)
+			{
+            for (int i = 0; i<length; i++)
+			{
+
+			}
+			}
 
 
         public bool[][] GetDiary() { return Diary; }

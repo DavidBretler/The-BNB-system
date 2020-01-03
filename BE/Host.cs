@@ -42,7 +42,7 @@ namespace BE
                 "\nHost Key: " + HostKey +
                 "\nPrivate Name:" + PrivateName +
                 "\nFamily Name:" + FamilyName +
-                "\nFhone Number:" + FhoneNumber +
+                "\nFhone Number:" +PhoneNumber +
                 "\nMail Address:" + MailAddress+
                 HostBankAccuont.ToString()+
                 "\npermision to debit from bank:"+ CollectionClearance
