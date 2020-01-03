@@ -8,7 +8,7 @@ using System.Linq;
  
 namespace DAL
 {
-   public  class Dal_imp : IDAL
+    public class Dal_imp : IDAL
     {
         //public int checkIfExist<T>(List<T> list,T parm)
         //{
@@ -26,20 +26,20 @@ namespace DAL
         /// 
         private Dal_imp() { }
         protected static Dal_imp newDAL = null;
-    public static Dal_imp GetDAL()
+        public static Dal_imp GetDAL()
         {
             if (newDAL == null)
                 newDAL = new Dal_imp();
             return newDAL;
-        }            
-            public void AddNewHostingUnit(HostingUnit TheHostingUnit)
+        }
+        public void AddNewHostingUnit(HostingUnit TheHostingUnit)
         {
             List<HostingUnit> L = DS.DataSource.ListHostingUnits;
             for (int i = 0; i < L.Count; i++)
                 if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
-                    
-             throw new IDalreadyExistsException("HostingUnit", TheHostingUnit.getHostingUnitKey());          
-             DS.DataSource.ListHostingUnits.Add(TheHostingUnit);
+
+                    throw new IDalreadyExistsException("HostingUnit", TheHostingUnit.getHostingUnitKey());
+            DS.DataSource.ListHostingUnits.Add(TheHostingUnit);
         }
 
         public void DeleteHostingUnit(HostingUnit TheHostingUnit)
@@ -56,6 +56,50 @@ namespace DAL
             if (Flag == false)
                 throw new MissingIdException("HostingUnit", TheHostingUnit.getHostingUnitKey());
         }
+        void DeleteGuestRequests(BE.GuestRequest theGuestRequests)
+        {
+            bool Flag = false;
+            List<GuestRequest> L = DS.DataSource.ListGuestRequests;
+            for (int i = 0; i < L.Count; i++)
+
+                if (L[i].GuestRequestKey == theGuestRequests.GuestRequestKey)
+                {
+                    L.Remove(L[i]); //need to check if work good
+                    Flag = true;
+                }
+            if (Flag == false)
+                throw new MissingIdException("GuestRequest", theGuestRequests.GuestRequestKey);
+        }
+        void Deleteorder(BE.Order TheOrder)
+        {
+            bool Flag = false;
+            List<Order> L = DS.DataSource.ListOrders;
+            for (int i = 0; i < L.Count; i++)
+
+                if (L[i].GuestRequestKey == TheOrder.OrderKey)
+                {
+                    L.Remove(L[i]); //need to check if work good
+                    Flag = true;
+                }
+            if (Flag == false)
+                throw new MissingIdException("order", TheOrder.OrderKey);
+
+        }
+        void DeletHost(BE.Host TheHost)
+        {
+            bool Flag = false;
+            List<Host> L = DS.DataSource.ListHosts;
+            for (int i = 0; i < L.Count; i++)
+
+                if (L[i].HostKey == TheHost.HostKey)
+                {
+                    L.Remove(L[i]); //need to check if work good
+                    Flag = true;
+                }
+            if (Flag == false)
+                throw new MissingIdException("Host", TheHost.HostKey);
+        }
+
         public List<BankBranch> getListOfBankBranch()
         {
             List<BankBranch> List = new List<BE.BankBranch>();

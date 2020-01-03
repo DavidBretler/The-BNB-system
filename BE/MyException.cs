@@ -19,4 +19,11 @@ namespace BE
         int ID;
         public  IDalreadyExistsException(string ClassName2, int id2) { ID = id2; ClassName = ClassName2; }
     }
+    public class keyBeenBooked : Exception
+    {
+        string ClassName;
+        int key;
+        int numOfTimes;
+        public keyBeenBooked(string ClassName2, int key2,int numOfTimes2) { key = key2; ClassName = ClassName2; numOfTimes = numOfTimes2; }
+    }
 }

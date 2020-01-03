@@ -12,8 +12,99 @@ namespace BL
     {
       
         IDAL dal = FactoryDal.GetDal();
-       
-    
+        /// <summary>
+        /// send email to the costumor by the host and change the date 
+        /// </summary>
+        /// <param name="currrentOrder"></param>
+        public void sendEmail(Order currrentOrder)
+        {
+            Console.WriteLine("email have been with order num  "+ currrentOrder.OrderKey +"aboute request num :" + currrentOrder.getGuestRequestKey());
+            currrentOrder.OrderDate = DateTime.Now;
+            //לזמן מהפונ שמשנה סטטוס מייל
+        }
+        /// <summary>
+        /// check if the hostingunit that we want to delete  has been booked in a order before 
+        /// if yes send exepction if not use the delete func from dal
+        /// </summary>
+        /// <param name="TheHostingUnit"></param>
+        public void DeleteHostingUnit(HostingUnit TheHostingUnit)
+        {
+            
+            List<BE.Order> problomaticOrderS = DS.DataSource.ListOrders.FindAll(delegate (Order order) { return order.HostingUnitKey == TheHostingUnit.HostingUnitKey; });
+            if (problomaticOrderS.Count > 0)
+            {
+                foreach (Order item in problomaticOrderS)
+                    Console.WriteLine("the hosting unit has been book in order num :" + item.OrderKey);
+                throw new keyBeenBooked("hostingUint", TheHostingUnit.HostingUnitKey, problomaticOrderS.Count);
+            }
+            else
+               dal.DeleteHostingUnit(TheHostingUnit);
+        }
+        void DeleteGuestRequests(BE.GuestRequest TheGuestRequest)
+        {
+            List<BE.Order> problomaticOrderS = DS.DataSource.ListOrders.FindAll(delegate (Order order) { return order.HostingUnitKey == TheGuestRequest.GuestRequestKey; });
+            if (problomaticOrderS.Count > 0)
+            {
+                foreach (Order item in problomaticOrderS)
+                    Console.WriteLine("The GuestRequest has been choose in order num :" + item.OrderKey);
+                throw new keyBeenBooked("hostingUint", TheGuestRequest.GuestRequestKey, problomaticOrderS.Count);
+            }
+            else
+                dal.DeleteGuestRequests(TheGuestRequest);
+        }
+        void Deleteorder(BE.Order TheOrder)
+        {
+            Console.WriteLine("send email to the host and cosmumer of the order");
+                dal.Deleteorder(TheOrder);
+        }
+        void DeletHost(BE.Host TheHost)
+        {
+            List<BE.HostingUnit> bookedHostingUint= DS.DataSource.ListHostingUnits
+           .FindAll(checkDateAreFree(ListHostingUnits[i], DateTime.Now, DateTime.Now.AddMonths(11)));
+
+            IEnumerable<BE.HostingUnit> arr2 =
+                from HostingUnit item in bookedHostingUint
+                where item.Owner == TheHost
+                select item;
+// לבדוק כמה יש לבעל בית הזה יחידות דיור תפוסות 
+            List<BE.HostingUnit> problomaticOrderS = DS.DataSource.ListOrders.FindAll
+                (delegate (Order order) { return order.h == TheHost.HostKey; });
+            if (problomaticOrderS.Count > 0)
+            {
+                foreach (Order item in problomaticOrderS)
+                    Console.WriteLine("the hosting unit has been book in order num :" + item.OrderKey);
+                throw new keyBeenBooked("hostingUint", TheHostingUnit.HostingUnitKey, problomaticOrderS.Count);
+            }
+            else
+                dal.DeletHost(TheHost);
+        }
+        public void NewGuestRequests(GuestRequest TheGuestRequest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void NewOrder(Order TheOrder)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateDateOrder(Order TheOrder)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateGuestRequests(GuestRequest TheGuestRequest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateHostingUnit(HostingUnit TheHostingUnit)
+        {
+            dal.getListOfHostingUnits();
+
+            throw new NotImplementedException();
+        }
+
         public List<BankBranch> getListOfBankBranch()
         {
            return dal.getListOfBankBranch();
@@ -129,38 +220,7 @@ namespace BL
 
 
 
-        public void DeleteHostingUnit(HostingUnit TheHostingUnit)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public void NewGuestRequests(GuestRequest TheGuestRequest)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void NewOrder(Order TheOrder)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateDateOrder(Order TheOrder)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateGuestRequests(GuestRequest TheGuestRequest)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateHostingUnit(HostingUnit TheHostingUnit)
-        {
-            dal.getListOfHostingUnits();
-
-            throw new NotImplementedException();
-        }
+        
 
         /// <summary>
         /// create a list of hosting units by area
