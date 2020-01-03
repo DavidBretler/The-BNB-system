@@ -21,6 +21,7 @@ namespace DAL
         List<BE.GuestRequest> getListOfGuestRequest();
         List<BE.Order> getListOfOrder();
         List<BE.BankBranch> getListOfBankBranch();
+
         List<BE.Host> getListOfHost();
 
 

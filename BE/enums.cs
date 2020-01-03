@@ -8,7 +8,7 @@ namespace BE
         public enum ResortType {house , hut, hotel }
         public  enum Area { north,east,west,south}
         public enum orderStatus { inProgress,mailSent,close,finish}
-        public enum orderGuestRequest {open,finishWithWebsite,closeDueDatePass }
-        public enum Choice { No, Yes, DontCare }
-
+        public enum Status { open,finishWithWebsite,closeDueDatePass }
+        public enum Choice { No,Yes,DontCare }
+    
 }
