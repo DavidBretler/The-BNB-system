@@ -99,7 +99,7 @@ namespace DS
              PhoneNumber="05225461",
              MailAddress="asd@aaa.com",
              numberOfUints =5,
-          //   HostBankAccuont =ListBankBranches[0],
+            // HostBankAccuont =ListBankBranches[0],
              CollectionClearance=true, //permision to debit from bank
             },
      new BE.Host()
@@ -121,13 +121,23 @@ namespace DS
 
             new BE.Order()
             {
-             int HostingUnitKey=BE.Configuration.getNewOrderKey(),
-            int GuestRequestKey=BE.Configuration.getNewGuestRequestKey(),
-           int OrderKey=BE.Configuration.getNewOrderKey()   ,
-           Status Status=1   
-          DateTime CreateDate=    
-          DateTime OrderDate;
-    }
+             HostingUnitKey=BE.Configuration.getNewOrderKey(),
+             GuestRequestKey=BE.Configuration.getNewGuestRequestKey(),
+            OrderKey=BE.Configuration.getNewOrderKey() ,
+            Status=0 ,  
+           CreateDate=new DateTime(11,1,2010) ,   
+           OrderDate=new DateTime(11,6,2010),
+            },
+           new BE.Order()
+            {
+             HostingUnitKey=BE.Configuration.getNewOrderKey(),
+             GuestRequestKey=BE.Configuration.getNewGuestRequestKey(),
+            OrderKey=BE.Configuration.getNewOrderKey() ,
+            Status=0 ,
+           CreateDate=new DateTime(15,1,2010) ,
+           OrderDate=new DateTime(20,6,2010),
+            }
+
         };
         
         }
