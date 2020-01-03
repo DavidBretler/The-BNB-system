@@ -8,7 +8,7 @@ using System.Linq;
  
 namespace DAL
 {
-   public  class DAL : IDAL
+   public  class Dal_imp : IDAL
     {
         //public int checkIfExist<T>(List<T> list,T parm)
         //{
@@ -24,12 +24,12 @@ namespace DAL
         /// make sure that we will craete only one object from this class
         /// </summary>
         /// 
-        private DAL() { }
-        protected static DAL newDAL = null;
-    public static DAL GetDAL()
+        private Dal_imp() { }
+        protected static Dal_imp newDAL = null;
+    public static Dal_imp GetDAL()
         {
             if (newDAL == null)
-                newDAL = new DAL();
+                newDAL = new Dal_imp();
             return newDAL;
         }            
             public void AddNewHostingUnit(HostingUnit TheHostingUnit)
@@ -38,8 +38,8 @@ namespace DAL
             for (int i = 0; i < L.Count; i++)
                 if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
                     
-             throw new IDalreadyExistsException("HostingUnit", TheHostingUnit.getHostingUnitKey());
-            DS.DataSource.ListHostingUnits.Add(TheHostingUnit);
+             throw new IDalreadyExistsException("HostingUnit", TheHostingUnit.getHostingUnitKey());          
+             DS.DataSource.ListHostingUnits.Add(TheHostingUnit);
         }
 
         public void DeleteHostingUnit(HostingUnit TheHostingUnit)
