@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 namespace BE
-{ 
-   public class HostingUnit
+{
+    public class HostingUnit
     {
-        //
-         public  int HostingUnitKey;
+       //
+         public int HostingUnitKey;
         public int getHostingUnitKey() { return HostingUnitKey; }
         public void setHostingUnitKey(int Key) { HostingUnitKey = Key; }
-        //
+    //
         public Host Owner;
         public Host getOwner() { return Owner; }
         public void setOwner(Host NewOwner) { Owner = NewOwner; }
@@ -85,6 +85,8 @@ namespace BE
             set => Diary[date.Day - 1, date.Month - 1] = value;
             get => Diary[date.Day - 1, date.Month - 1];
         }
+
+       
         // new bool[31],//January 
         //    new bool[28],//February
         //    new bool[31],//March 

@@ -48,11 +48,12 @@ namespace BE
         public DateException(string ClassName2, string exp) { ClassName = ClassName2; explenation = exp; }
     }
 
+  
     public class keyBeenBooked : Exception
     {
-        string ClassName;
-        int key;
-        int numOfTimes;
-        public keyBeenBooked(string ClassName2, int key2, int numOfTimes2) { key = key2; ClassName = ClassName2; numOfTimes = numOfTimes2; }
+        public string ClassName;
+        public int key;
+        public List<BE.Order> list;
+        public keyBeenBooked(string ClassName2, int key2, List<BE.Order> list2) { key = key2; ClassName = ClassName2; list = list2; }
     }
 }

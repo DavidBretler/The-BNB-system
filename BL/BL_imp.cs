@@ -11,6 +11,7 @@ namespace BL
     class BL_imp : IBL
     {
 
+        
         IDAL dal = FactoryDal.GetDal();
 
         #region lists      
@@ -99,31 +100,25 @@ namespace BL
         /// <param name="TheHostingUnit"></param>
         public void DeleteHostingUnit(HostingUnit TheHostingUnit)
         {
-
-            List<BE.Order> problomaticOrderS = dal.getListOfOrder().FindAll(delegate (Order order) { return order.HostingUnitKey == TheHostingUnit.HostingUnitKey; });
-            if (problomaticOrderS.Count > 0)
+            try
             {
-                foreach (Order item in problomaticOrderS)
-                    Console.WriteLine("the hosting unit has been book in order num :" + item.OrderKey);
-                throw new keyBeenBooked("hostingUint", TheHostingUnit.HostingUnitKey, problomaticOrderS.Count);
-            }
-            else
-                dal.DeleteHostingUnit(TheHostingUnit);
-        }
-
-        bool checkIfHostingUnitBooked(HostingUnit hostingUnit, DateTime now, DateTime endOfYear)
-        {
-            for (int i = 0; i < 12; i++)
-            {
-                for (int j = 0; j < 31; j++)
+                List<BE.Order> problomaticOrderS = dal.getListOfOrder().FindAll(delegate (Order order) { return order.HostingUnitKey == TheHostingUnit.HostingUnitKey; });
+                if (problomaticOrderS.Count > 0)
                 {
-                    if (hostingUnit.Diary[i, j] == true)
-                        return true;
+                    foreach (Order item in problomaticOrderS)
+                        if (item.Status == (Status)2)
+                            if (GetGuestRequestFromOrder(item).EntryDate > DateTime.Now)
+                                throw new keyBeenBooked("hostingUint", TheHostingUnit.HostingUnitKey, problomaticOrderS);
                 }
+                else
+                    dal.DeleteHostingUnit(TheHostingUnit);
             }
-            return false;
-
+            catch (keyBeenBooked e)
+            {
+                throw e;
+            }
         }
+
         #endregion Hosting unit
 
         #region Host
@@ -172,11 +167,17 @@ namespace BL
         /// <param name="TheHost"></param>
         public void DeleteHost(BE.Host TheHost)
         {
-            List<BE.HostingUnit> bookedHostingUint = dal.getListOfHostingUnits()
-           .FindAll(delegate (HostingUnit hostingUnit) { return checkIfHostingUnitBooked(hostingUnit, DateTime.Now, DateTime.Now.AddMonths(11)); });
+            try
+            {
+                List<BE.HostingUnit> bookedHostingUint = dal.getListOfHostingUnits()
+               .FindAll(delegate (HostingUnit hostingUnit) { return !CheakDatesAreFree(hostingUnit, DateTime.Now, DateTime.Now.AddMonths(11)); });
 
-            if (bookedHostingUint.Any(delegate (HostingUnit HostingUnit) { return HostingUnit.Owner.HostKey == TheHost.HostKey; }))
-                throw new GenralException("Host", "the host have a booked hostingunit");
+                if (bookedHostingUint.Any(delegate (HostingUnit HostingUnit) { return HostingUnit.Owner.HostKey == TheHost.HostKey; }))
+                    throw new GenralException("Host", "the host have a booked hostingunit");
+            }
+            catch (GenralException E)
+            { throw E; }
+
         }
         #endregion Host
 
@@ -256,9 +257,32 @@ namespace BL
             {
                 order.Status = (Status)newStatus;
                 if (order.Status == (Status)2)
+                {
+                    BookDates(order);
+                    updateAllOrdersStatus(order);
+
                     return calcCommission(order);
+                }
+
                 return -1;
             }
+
+        }
+
+        /// <summary>
+        /// after booking a order updates all the other orders with
+        /// the same guest request key to Finshed not booked
+        /// </summary>
+        /// <param name="order"></param>
+        public void updateAllOrdersStatus(Order order)
+        {
+
+
+            IEnumerable<Order> RelatedOrders = getListOfOrder().Where(item => item.GuestRequestKey == order.GuestRequestKey);
+            foreach (var item in RelatedOrders)
+                item.Status = (Status)1;
+
+            order.Status = (Status)2;
 
         }
 
@@ -284,17 +308,24 @@ namespace BL
         #region Guest Request
         public void DeleteGuestRequests(BE.GuestRequest TheGuestRequest)
         {
-            List<BE.Order> problomaticOrderS = dal.getListOfOrder().FindAll(delegate (Order order) { return order.HostingUnitKey == TheGuestRequest.GuestRequestKey; });
-            if (problomaticOrderS.Count > 0)
+            try
             {
-                foreach (Order item in problomaticOrderS)
-                    Console.WriteLine("The GuestRequest has been choose in order num :" + item.OrderKey);
-                throw new keyBeenBooked("hostingUint", TheGuestRequest.GuestRequestKey, problomaticOrderS.Count);
-            }
-            else
-                dal.DeleteGuestRequests(TheGuestRequest);
-        }
+                List<BE.Order> problomaticOrderS = dal.getListOfOrder().FindAll(delegate (Order order) { return order.HostingUnitKey == TheGuestRequest.GuestRequestKey; });
+                if (problomaticOrderS.Count > 0)
+                {
 
+                    throw new keyBeenBooked("hostingUint", TheGuestRequest.GuestRequestKey, problomaticOrderS);
+                }
+                else
+                    dal.DeleteGuestRequests(TheGuestRequest);
+            }
+            catch (keyBeenBooked E)
+            {
+                foreach (Order item in E.list)
+                    Console.WriteLine("The GuestRequest has been choose in order num :" + item.OrderKey + "in status: " + item.Status);
+                throw E;
+            }
+        }
         /// <summary>
         /// cheks if the host has Collection Clearance and  if it dos sends a Email to guest
         /// </summary>
@@ -327,19 +358,37 @@ namespace BL
 
         #region NotImplemented
 
+    
 
 
-
-        public void NewGuestRequests(GuestRequest TheGuestRequest)
+        public void NewGuestRequests( string PrivateName 
+        , string FamilyName, string MailAddress, orderStatus Status, 
+            DateTime RegistrationDate, DateTime EntryDate,
+            DateTime EndDate, Area Area, int NumOfRooms, ResortType Type,
+            int Adults, int Children, int NumOfBeds, Choice Pool, Choice Jacuzzi, 
+            Choice Garden , Choice ChildrensAttractions ,Choice AirConditioner 
+            , Choice Hikes)
         {
-            throw new NotImplementedException();
-        }
+            GuestRequest guestRequest = new GuestRequest();
+            guestRequest.GuestRequestKey = Configuration.getNewGuestRequestKey();
+            guestRequest.PrivateName = PrivateName;
+            guestRequest.FamilyName = FamilyName;
+            guestRequest.MailAddress = MailAddress;
+            guestRequest.Status = Status;
+            guestRequest.RegistrationDate = DateTime.Now;
+            guestRequest.EntryDate = EntryDate;
+            guestRequest.EndDate = EndDate;
+            guestRequest.Area = Area;
+            guestRequest.NumOfRooms = NumOfRooms;
+            guestRequest.Pool = Pool;
+            guestRequest.Jacuzzi = Jacuzzi;
+            guestRequest.Garden = Garden;
+            guestRequest.ChildrensAttractions = ChildrensAttractions;
+            guestRequest.AirConditioner = AirConditioner;
+            guestRequest.Hikes = Hikes;
+            dal.NewGuestRequests(guestRequest);
 
-        /// <summary>
-        /// creats a new order and calls func to cotact the custumer if the host has Clearance
-        /// </summary>
-        /// <param name="guestRequest"></param>
-        /// <param name="hostingUnit"></param>
+        }
 
 
         public void UpdateDateOrder(Order TheOrder)
@@ -391,37 +440,6 @@ namespace BL
 
         }
 
-
-        /// <summary>
-        /// create a list of Gust Requests by area
-        /// </summary>
-        /// <returns>list by area</returns>
-        public IEnumerable<IGrouping<Area, GuestRequest>> ListOfGustRequestByArea()
-        {
-            List<BE.GuestRequest> guestRequests = dal.getListOfGuestRequest();
-            var AreaGroups = from unit in guestRequests
-                             orderby unit.getArea()
-                             group unit by unit.getArea() into groupArea
-                             select groupArea;
-            return AreaGroups;
-
-        }
-
-
-        /// <summary>
-        /// create a list of Gust Requests by area
-        /// </summary>
-        /// <returns>list by area</returns>
-        public IEnumerable<IGrouping<Area, GuestRequest>> ListOfHostsByArea()
-        {
-            List<BE.GuestRequest> guestRequests = dal.getListOfGuestRequest();
-            var AreaGroups = from unit in guestRequests
-                             orderby unit.getArea()
-                             group unit by unit.getArea() into groupArea
-                             select groupArea;
-            return AreaGroups;
-
-        }
         /// <summary>
         /// create a list of Gust Requests by area
         /// </summary>
@@ -452,9 +470,27 @@ namespace BL
 
         }
         #endregion Grouping
-        //לבדוק איזה פונקציות חוזרות על עצמן בגרופ
 
         #region Date
+
+        /// <summary>
+        /// gets order and books the dates
+        /// </summary>
+        /// <param name="order"></param>
+        public void BookDates(Order order)
+        {
+            HostingUnit hostingUnit = GetHostingUnitFromOrder(order);
+            DateTime temp= GetGuestRequestFromOrder(order).EntryDate;
+            while (temp < GetGuestRequestFromOrder(order).EndDate)
+            {
+
+                hostingUnit[temp] = true;
+
+                temp = temp.AddDays(1);
+
+            }
+
+        }
 
         /// <summary>
         /// cheks if the starting date is before the end date by one day at least
