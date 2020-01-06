@@ -7,12 +7,15 @@ namespace DAL
 {
 
     public interface  IDAL
-    {    
+    {
 
+        void DeleteHostingUnit(BE.HostingUnit TheHostingUnit);
+        void DeleteGuestRequests(BE.GuestRequest TheGuestRequest);
+        void Deleteorder(BE.Order TheOrder);
+        void DeleteHost(BE.Host TheHost);
         void NewGuestRequests(BE.GuestRequest TheGuestRequest);
         void UpdateGuestRequests(BE.GuestRequest TheGuestRequest);
         void AddNewHostingUnit(BE.HostingUnit TheHostingUnit);
-        void DeleteHostingUnit(BE.HostingUnit TheHostingUnit);
          void UpdateHostingUnit(BE.HostingUnit TheHostingUnit);
         void NewOrder(BE.Order TheOrder);
 

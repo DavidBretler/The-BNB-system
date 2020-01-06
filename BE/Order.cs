@@ -21,19 +21,19 @@ namespace BE
         public  Status Status;
         public Status getStatus() { return Status; }
         public void setStatus(Status NewStatus) {
-            if (Status!= (Status)2)
-            Status = NewStatus;
+            if (Status != (Status)2)
+                Status = NewStatus;
             else
-                throw new GenralException ("Order", "Order closed,can not change Status.")
+                throw new GenralException("Order", "Order closed,can not change Status.");
         }
 
         public DateTime CreateDate;
         public DateTime getCreateDate() { return CreateDate; }
         public void setCreateDate(DateTime NewCreateDate) { CreateDate = NewCreateDate; }
 
-        public DateTime OrderDate;
-        public DateTime getOrderDate() { return OrderDate; }
-        public void setOrderDate(DateTime NewOrderDate) { OrderDate = NewOrderDate; }
+        public DateTime contactCustumerDate;
+        public DateTime getcontactCustumerDate() { return contactCustumerDate; }
+        public void setcontactCustumerDate(DateTime NewcontactCustumerDate) { contactCustumerDate = NewcontactCustumerDate; }
 
         public override string ToString()
         {
@@ -45,8 +45,8 @@ namespace BE
                 "\nOrder Key:" + OrderKey +
                 "\nOrder Status:" + Status +
                 "\nCreate Date:" + CreateDate +
-                "\nOrder Date:" + OrderDate 
-               
+                "\nOrder Date:" + contactCustumerDate
+
 
                 );
 
