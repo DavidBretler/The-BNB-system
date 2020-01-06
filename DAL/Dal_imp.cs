@@ -34,70 +34,89 @@ namespace DAL
         }
         public void AddNewHostingUnit(HostingUnit TheHostingUnit)
         {
-            List<HostingUnit> L = DS.DataSource.ListHostingUnits;
-            for (int i = 0; i < L.Count; i++)
-                if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
+            try
+            {
+                List<HostingUnit> L = DS.DataSource.ListHostingUnits;
+                for (int i = 0; i < L.Count; i++)
+                    if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
 
-                    throw new IDalreadyExistsException("HostingUnit", TheHostingUnit.getHostingUnitKey());
-            DS.DataSource.ListHostingUnits.Add(TheHostingUnit);
-        }
+                        throw new IDalreadyExistsException("HostingUnit", TheHostingUnit.getHostingUnitKey());
+                DS.DataSource.ListHostingUnits.Add(TheHostingUnit);
+            }
+            catch(IDalreadyExistsException E) { throw E; }
+
+            }
 
         public void DeleteHostingUnit(HostingUnit TheHostingUnit)
         {
-            bool Flag = false;
-            List<HostingUnit> L = DS.DataSource.ListHostingUnits;
-            for (int i = 0; i < L.Count; i++)
+            try
+            {
+                bool Flag = false;
+                List<HostingUnit> L = DS.DataSource.ListHostingUnits;
+                for (int i = 0; i < L.Count; i++)
 
-                if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
-                {
-                    L.Remove(L[i]); //need to check if work good
-                    Flag = true;
-                }
-            if (Flag == false)
-                throw new MissingIdException("HostingUnit", TheHostingUnit.getHostingUnitKey());
+                    if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
+                    {
+                        L.Remove(L[i]); //need to check if work good
+                        Flag = true;
+                    }
+                if (Flag == false)
+                    throw new MissingIdException("HostingUnit", TheHostingUnit.getHostingUnitKey());
+            }
+            catch (MissingIdException E) { throw E; }
         }
-        void DeleteGuestRequests(BE.GuestRequest theGuestRequests)
+      public  void DeleteGuestRequests(BE.GuestRequest theGuestRequests)
         {
-            bool Flag = false;
-            List<GuestRequest> L = DS.DataSource.ListGuestRequests;
-            for (int i = 0; i < L.Count; i++)
+            try
+            {
+                bool Flag = false;
+                List<GuestRequest> L = DS.DataSource.ListGuestRequests;
+                for (int i = 0; i < L.Count; i++)
 
-                if (L[i].GuestRequestKey == theGuestRequests.GuestRequestKey)
-                {
-                    L.Remove(L[i]); //need to check if work good
-                    Flag = true;
-                }
-            if (Flag == false)
-                throw new MissingIdException("GuestRequest", theGuestRequests.GuestRequestKey);
+                    if (L[i].GuestRequestKey == theGuestRequests.GuestRequestKey)
+                    {
+                        L.Remove(L[i]); //need to check if work good
+                        Flag = true;
+                    }
+                if (Flag == false)
+                    throw new MissingIdException("GuestRequest", theGuestRequests.GuestRequestKey);
+            }
+            catch (MissingIdException E) { throw E; }
         }
-        void Deleteorder(BE.Order TheOrder)
+        public void Deleteorder(BE.Order TheOrder)
         {
-            bool Flag = false;
-            List<Order> L = DS.DataSource.ListOrders;
-            for (int i = 0; i < L.Count; i++)
+            try { 
+                    bool Flag = false;
+                    List<Order> L = DS.DataSource.ListOrders;
+                    for (int i = 0; i < L.Count; i++)
 
-                if (L[i].GuestRequestKey == TheOrder.OrderKey)
-                {
-                    L.Remove(L[i]); //need to check if work good
-                    Flag = true;
-                }
-            if (Flag == false)
-                throw new MissingIdException("order", TheOrder.OrderKey);
-
+                        if (L[i].GuestRequestKey == TheOrder.OrderKey)
+                        {
+                            L.Remove(L[i]); //need to check if work good
+                            Flag = true;
+                        }
+                    if (Flag == false)
+                        throw new MissingIdException("order", TheOrder.OrderKey);
+                } 
+            catch (MissingIdException E) { throw E; }
         }
-        void DeletHost(BE.Host TheHost)
+       public void DeleteHost(BE.Host TheHost)
         {
-            bool Flag = false;
-            List<Host> L = DS.DataSource.ListHosts;
-            for (int i = 0; i < L.Count; i++)
+            try
+            {
+                bool Flag = false;
+                List<Host> L = DS.DataSource.ListHosts;
+                for (int i = 0; i < L.Count; i++)
 
-                if (L[i].HostKey == TheHost.HostKey)
-                {
-                    L.Remove(L[i]); //need to check if work good
-                    Flag = true;
-                }
-            if (Flag == false)
-                throw new MissingIdException("Host", TheHost.HostKey);
+                    if (L[i].HostKey == TheHost.HostKey)
+                    {
+                        L.Remove(L[i]); //need to check if work good
+                        Flag = true;
+                    }
+                if (Flag == false)
+                    throw new MissingIdException("Host", TheHost.HostKey);
+            }
+            catch (MissingIdException E) { throw E; }
         }
 
         public List<BankBranch> getListOfBankBranch()
@@ -162,56 +181,70 @@ namespace DAL
         /// <param name="TheGuestRequest"></param>
         public void NewGuestRequests(GuestRequest TheGuestRequest)
         {
-            List<GuestRequest> L = DS.DataSource.ListGuestRequests;
-            for (int i = 0; i < L.Count; i++)
-                if (L[i].getGuestRequestKey() == TheGuestRequest.getGuestRequestKey())
-                {
-                    throw new IDalreadyExistsException("GuestRequest", TheGuestRequest.getGuestRequestKey());
-                   
-                }
-            DS.DataSource.ListGuestRequests.Add(TheGuestRequest);
+            try
+            {
+                List<GuestRequest> L = DS.DataSource.ListGuestRequests;
+                for (int i = 0; i < L.Count; i++)
+                    if (L[i].getGuestRequestKey() == TheGuestRequest.getGuestRequestKey())
+                    {
+                        throw new IDalreadyExistsException("GuestRequest", TheGuestRequest.getGuestRequestKey());
+
+                    }
+                DS.DataSource.ListGuestRequests.Add(TheGuestRequest);
+            }
+            catch (IDalreadyExistsException E) { throw E; }
         }
 
         public void NewOrder(BE.Order TheOrder)
-        {
-            List<Order> L = DS.DataSource.ListOrders;
-            for (int i = 0; i < L.Count; i++)
-                if (L[i].getOrderKey() == TheOrder.getOrderKey())
-                {
-                    throw new IDalreadyExistsException("Order", TheOrder.getOrderKey());
-                   
-                }
-            DS.DataSource.ListOrders.Add(TheOrder);
+        {   try
+            {
+                List<Order> L = DS.DataSource.ListOrders;
+                for (int i = 0; i < L.Count; i++)
+                    if (L[i].getOrderKey() == TheOrder.getOrderKey())
+                    {
+                        throw new IDalreadyExistsException("Order", TheOrder.getOrderKey());
+
+                    }
+                DS.DataSource.ListOrders.Add(TheOrder);
+            }
+            catch (IDalreadyExistsException E) { throw E; }
         }
 
         public void UpdateGuestRequests(GuestRequest TheGuestRequest)
         {
-            bool Flag = false;
-            List<GuestRequest> L = DS.DataSource.ListGuestRequests;
-            for (int i = 0; i < L.Count; i++)
-                if (L[i].getGuestRequestKey() == TheGuestRequest.getGuestRequestKey())
-                {
-                    L[i] = TheGuestRequest; //need to check if work good
-                    Flag = true;
-                }
-            if (Flag == false)
-                throw new MissingIdException("GuestRequest", TheGuestRequest.getGuestRequestKey());
-
+            try
+            {
+                bool Flag = false;
+                List<GuestRequest> L = DS.DataSource.ListGuestRequests;
+                for (int i = 0; i < L.Count; i++)
+                    if (L[i].getGuestRequestKey() == TheGuestRequest.getGuestRequestKey())
+                    {
+                        L[i] = TheGuestRequest; //need to check if work good
+                        Flag = true;
+                    }
+                if (Flag == false)
+                    throw new MissingIdException("GuestRequest", TheGuestRequest.getGuestRequestKey());
+            }
+            catch (MissingIdException E) { throw E; }
         }
 
         public void UpdateDateOrder(Order TheOrder)
         {
-            bool Flag = false;
-            List<Order> L = DS.DataSource.ListOrders;
-            for (int i = 0; i < L.Count; i++)
+            try
+            {
+                bool Flag = false;
+                List<Order> L = DS.DataSource.ListOrders;
+                for (int i = 0; i < L.Count; i++)
 
-                if (L[i].getOrderKey() == TheOrder.getOrderKey())
-                {
-                    L[i] = TheOrder; //need to check if work good
-                    Flag = true;
-                }
-            if (Flag == false)
-                throw new MissingIdException("Order", TheOrder.getOrderKey());
+                    if (L[i].getOrderKey() == TheOrder.getOrderKey())
+                    {
+                        L[i] = TheOrder; //need to check if work good
+                        Flag = true;
+                    }
+                if (Flag == false)
+                    throw new MissingIdException("Order", TheOrder.getOrderKey());
+            }
+            catch (MissingIdException E) { throw E; }
         }
 
         public void UpdateHostingUnit(HostingUnit TheHostingUnit)
@@ -222,19 +255,21 @@ namespace DAL
             //select unit ;         
             //foreach (var item in v)
             //    item = TheHostingUnit;
+            try
+            {
+                bool Flag = false;
+                List<HostingUnit> L = DS.DataSource.ListHostingUnits;
+                for (int i = 0; i < L.Count; i++)
+                    if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
+                    {
+                        L[i] = TheHostingUnit; //need to check if work good
+                        Flag = true;
+                    }
+                if (Flag == false)
+                    throw new MissingIdException("HostingUnit", TheHostingUnit.getHostingUnitKey());
+            }
+            catch (MissingIdException E) { throw E; }
 
-            bool Flag = false;
-            List<HostingUnit> L = DS.DataSource.ListHostingUnits;
-            for (int i = 0; i < L.Count; i++)
-                if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
-                {
-                    L[i] = TheHostingUnit; //need to check if work good
-                    Flag = true;
-                }
-            if (Flag == false)
-                throw new MissingIdException("HostingUnit", TheHostingUnit.getHostingUnitKey());
-
-           
         }
         /// <summary>
         /// SQL LInk gets the wanted area of hosting units

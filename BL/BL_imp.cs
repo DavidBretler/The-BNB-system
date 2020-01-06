@@ -8,7 +8,9 @@ using System.Linq;
 
 namespace BL
 {
-    class BL_imp : IBL
+
+
+    public class BL_imp : IBL
     {
 
         IDAL dal = FactoryDal.GetDal();
@@ -99,31 +101,25 @@ namespace BL
         /// <param name="TheHostingUnit"></param>
         public void DeleteHostingUnit(HostingUnit TheHostingUnit)
         {
-
-            List<BE.Order> problomaticOrderS = dal.getListOfOrder().FindAll(delegate (Order order) { return order.HostingUnitKey == TheHostingUnit.HostingUnitKey; });
-            if (problomaticOrderS.Count > 0)
-            {
-                foreach (Order item in problomaticOrderS)
-                    Console.WriteLine("the hosting unit has been book in order num :" + item.OrderKey);
-                throw new keyBeenBooked("hostingUint", TheHostingUnit.HostingUnitKey, problomaticOrderS.Count);
-            }
-            else
-                dal.DeleteHostingUnit(TheHostingUnit);
-        }
-
-        bool checkIfHostingUnitBooked(HostingUnit hostingUnit, DateTime now, DateTime endOfYear)
-        {
-            for (int i = 0; i < 12; i++)
-            {
-                for (int j = 0; j < 31; j++)
+            try {
+                List<BE.Order> problomaticOrderS = dal.getListOfOrder().FindAll(delegate (Order order) { return order.HostingUnitKey == TheHostingUnit.HostingUnitKey; });
+                if (problomaticOrderS.Count > 0)
                 {
-                    if (hostingUnit.Diary[i, j] == true)
-                        return true;
+                    foreach (Order item in problomaticOrderS)
+                       if( item.Status == (Status) 2)
+                            if(GetGuestRequestFromOrder(item).EntryDate>DateTime.Now)
+                    throw new keyBeenBooked("hostingUint", TheHostingUnit.HostingUnitKey, problomaticOrderS);
                 }
-            }
-            return false;
-
+                else
+                    dal.DeleteHostingUnit(TheHostingUnit);
+            }     
+            catch(keyBeenBooked e )
+            {
+                throw e;
+             }
         }
+
+        
         #endregion Hosting unit
 
         #region Host
@@ -172,12 +168,18 @@ namespace BL
         /// <param name="TheHost"></param>
         public void DeleteHost(BE.Host TheHost)
         {
-            List<BE.HostingUnit> bookedHostingUint = dal.getListOfHostingUnits()
-           .FindAll(delegate (HostingUnit hostingUnit) { return checkIfHostingUnitBooked(hostingUnit, DateTime.Now, DateTime.Now.AddMonths(11)); });
+            try
+            {
+                List<BE.HostingUnit> bookedHostingUint = dal.getListOfHostingUnits()
+               .FindAll(delegate (HostingUnit hostingUnit) { return !CheakDatesAreFree(hostingUnit, DateTime.Now, DateTime.Now.AddMonths(11)); });
 
-            if (bookedHostingUint.Any(delegate (HostingUnit HostingUnit) { return HostingUnit.Owner.HostKey == TheHost.HostKey; }))
-                throw new GenralException("Host", "the host have a booked hostingunit");
-        }
+                if (bookedHostingUint.Any(delegate (HostingUnit HostingUnit) { return HostingUnit.Owner.HostKey == TheHost.HostKey; }))
+                    throw new GenralException("Host", "the host have a booked hostingunit");
+            }
+            catch(GenralException E)
+            { throw E; }
+            
+            }
         #endregion Host
 
         #region Order
@@ -284,15 +286,22 @@ namespace BL
         #region Guest Request
         public void DeleteGuestRequests(BE.GuestRequest TheGuestRequest)
         {
-            List<BE.Order> problomaticOrderS = dal.getListOfOrder().FindAll(delegate (Order order) { return order.HostingUnitKey == TheGuestRequest.GuestRequestKey; });
-            if (problomaticOrderS.Count > 0)
+            try
             {
-                foreach (Order item in problomaticOrderS)
-                    Console.WriteLine("The GuestRequest has been choose in order num :" + item.OrderKey);
-                throw new keyBeenBooked("hostingUint", TheGuestRequest.GuestRequestKey, problomaticOrderS.Count);
+                List<BE.Order> problomaticOrderS = dal.getListOfOrder().FindAll(delegate (Order order) { return order.HostingUnitKey == TheGuestRequest.GuestRequestKey; });
+                if (problomaticOrderS.Count > 0)
+                {
+                    
+                    throw new keyBeenBooked("hostingUint", TheGuestRequest.GuestRequestKey, problomaticOrderS);
+                }
+                else
+                    dal.DeleteGuestRequests(TheGuestRequest);
             }
-            else
-                dal.DeleteGuestRequests(TheGuestRequest);
+            catch (keyBeenBooked E)
+            {
+                foreach (Order item in E.list)
+                    Console.WriteLine("The GuestRequest has been choose in order num :" + item.OrderKey +"in status: "+ item.Status);
+                throw E; }
         }
 
         /// <summary>
@@ -326,10 +335,6 @@ namespace BL
         #endregion Guest Request
 
         #region NotImplemented
-
-
-
-
         public void NewGuestRequests(GuestRequest TheGuestRequest)
         {
             throw new NotImplementedException();

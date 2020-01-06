@@ -23,9 +23,10 @@ namespace BL
         List<BE.GuestRequest> getListOfGuestRequest();
         List<BE.Order> getListOfOrder();
         List<BE.BankBranch> getListOfBankBranch();
+        void sendEmail(Order currrentOrder);
 
 
 
-      
+
     }
 }
