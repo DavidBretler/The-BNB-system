@@ -60,7 +60,7 @@ namespace BE
         public void setHikes(Choice NewHikes) { Hikes = NewHikes; }
         //
         //calender that  is made of array of  12 arrays
-        bool[,] Diary = new bool[12, 31];  
+        public bool[,] Diary = new bool[12, 31];  
         public bool[,] GetDiary() { return Diary; }
         public void setDiary(bool[,] NewDiary)
         {

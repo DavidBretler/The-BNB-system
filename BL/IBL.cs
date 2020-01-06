@@ -10,7 +10,7 @@ namespace BL
         void DeleteHostingUnit(BE.HostingUnit TheHostingUnit);
         void DeleteGuestRequests(BE.GuestRequest TheGuestRequest);
         void Deleteorder(BE.Order TheOrder);
-        void DeletHost(BE.Host TheHost);
+        void DeleteHost(BE.Host TheHost);
         void NewGuestRequests(BE.GuestRequest TheGuestRequest);
         void UpdateGuestRequests(BE.GuestRequest TheGuestRequest);
         void AddNewHostingUnit(string HostingUnitName, int NumOfRooms,
@@ -23,9 +23,10 @@ namespace BL
         List<BE.GuestRequest> getListOfGuestRequest();
         List<BE.Order> getListOfOrder();
         List<BE.BankBranch> getListOfBankBranch();
+         void sendEmail(Order currrentOrder);
 
 
 
-      
+
     }
 }
