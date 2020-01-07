@@ -5,7 +5,7 @@ using BE;
 
 namespace BL
 {
-    interface IBL
+    public interface IBL
     {
         double updateStatusOfOrder(Order order, int newStatus);
 
@@ -25,9 +25,10 @@ namespace BL
         List<BE.GuestRequest> getListOfGuestRequest();
         List<BE.Order> getListOfOrder();
         List<BE.BankBranch> getListOfBankBranch();
+        void sendEmail(Order currrentOrder);
 
 
 
-      
+
     }
 }
