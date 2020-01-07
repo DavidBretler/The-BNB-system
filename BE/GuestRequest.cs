@@ -71,13 +71,9 @@ namespace BE
 
 
         public Choice AirConditioner  { get; set; }
-        //public string getAirConditioner() { return AirConditioner; }
-        //public void setAirConditioner(string NewAirConditioner) { AirConditioner = NewAirConditioner; }
-
+        
         public Choice Hikes { get; set; }
-        //public string getHikes() { return Hikes; }
-        //public void setHikes(string NewHikes) { Hikes = NewHikes; }
-
+       
 
         public override string ToString() 
         {
