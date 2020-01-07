@@ -66,7 +66,7 @@ namespace BL
         /// <param name="Diary"></param>
         public void AddNewHostingUnit(string HostingUnitName, int NumOfRooms,
             int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
-            Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, bool[][] Diary, int KeyOfHost)
+            Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, bool[,] Diary, int KeyOfHost)
         {
 
             Host host = new Host();
@@ -306,6 +306,59 @@ namespace BL
         #endregion Order
 
         #region Guest Request
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="PrivateName"></param>
+        /// <param name="FamilyName"></param>
+        /// <param name="MailAddress"></param>
+        /// <param name="Status"></param>
+        /// <param name="RegistrationDate"></param>
+        /// <param name="EntryDate"></param>
+        /// <param name="EndDate"></param>
+        /// <param name="Area"></param>
+        /// <param name="NumOfRooms"></param>
+        /// <param name="Type"></param>
+        /// <param name="Adults"></param>
+        /// <param name="Children"></param>
+        /// <param name="NumOfBeds"></param>
+        /// <param name="Pool"></param>
+        /// <param name="Jacuzzi"></param>
+        /// <param name="Garden"></param>
+        /// <param name="ChildrensAttractions"></param>
+        /// <param name="AirConditioner"></param>
+        /// <param name="Hikes"></param>
+        public void NewGuestRequests(string PrivateName
+        , string FamilyName, string MailAddress, orderStatus Status,
+            DateTime RegistrationDate, DateTime EntryDate,
+            DateTime EndDate, Area Area, int NumOfRooms, ResortType Type,
+            int Adults, int Children, int NumOfBeds, Choice Pool, Choice Jacuzzi,
+            Choice Garden, Choice ChildrensAttractions, Choice AirConditioner
+            , Choice Hikes)
+        {
+            GuestRequest guestRequest = new GuestRequest();
+            guestRequest.GuestRequestKey = Configuration.getNewGuestRequestKey();
+            guestRequest.PrivateName = PrivateName;
+            guestRequest.FamilyName = FamilyName;
+            guestRequest.MailAddress = MailAddress;
+            guestRequest.Status = Status;
+            guestRequest.RegistrationDate = DateTime.Now;
+            guestRequest.EntryDate = EntryDate;
+            guestRequest.EndDate = EndDate;
+            guestRequest.Area = Area;
+            guestRequest.NumOfRooms = NumOfRooms;
+            guestRequest.Pool = Pool;
+            guestRequest.Jacuzzi = Jacuzzi;
+            guestRequest.Garden = Garden;
+            guestRequest.ChildrensAttractions = ChildrensAttractions;
+            guestRequest.AirConditioner = AirConditioner;
+            guestRequest.Hikes = Hikes;
+            dal.NewGuestRequests(guestRequest);
+
+        }
+
         public void DeleteGuestRequests(BE.GuestRequest TheGuestRequest)
         {
             try
@@ -360,61 +413,26 @@ namespace BL
 
     
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="PrivateName"></param>
-        /// <param name="FamilyName"></param>
-        /// <param name="MailAddress"></param>
-        /// <param name="Status"></param>
-        /// <param name="RegistrationDate"></param>
-        /// <param name="EntryDate"></param>
-        /// <param name="EndDate"></param>
-        /// <param name="Area"></param>
-        /// <param name="NumOfRooms"></param>
-        /// <param name="Type"></param>
-        /// <param name="Adults"></param>
-        /// <param name="Children"></param>
-        /// <param name="NumOfBeds"></param>
-        /// <param name="Pool"></param>
-        /// <param name="Jacuzzi"></param>
-        /// <param name="Garden"></param>
-        /// <param name="ChildrensAttractions"></param>
-        /// <param name="AirConditioner"></param>
-        /// <param name="Hikes"></param>
-        public void NewGuestRequests( string PrivateName 
-        , string FamilyName, string MailAddress, orderStatus Status, 
-            DateTime RegistrationDate, DateTime EntryDate,
-            DateTime EndDate, Area Area, int NumOfRooms, ResortType Type,
-            int Adults, int Children, int NumOfBeds, Choice Pool, Choice Jacuzzi, 
-            Choice Garden , Choice ChildrensAttractions ,Choice AirConditioner 
-            , Choice Hikes)
+
+        public void UpdateOrder (GuestRequest guestRequest, HostingUnit hostingUnit,int orderKey)
         {
-            GuestRequest guestRequest = new GuestRequest();
-            guestRequest.GuestRequestKey = Configuration.getNewGuestRequestKey();
-            guestRequest.PrivateName = PrivateName;
-            guestRequest.FamilyName = FamilyName;
-            guestRequest.MailAddress = MailAddress;
-            guestRequest.Status = Status;
-            guestRequest.RegistrationDate = DateTime.Now;
-            guestRequest.EntryDate = EntryDate;
-            guestRequest.EndDate = EndDate;
-            guestRequest.Area = Area;
-            guestRequest.NumOfRooms = NumOfRooms;
-            guestRequest.Pool = Pool;
-            guestRequest.Jacuzzi = Jacuzzi;
-            guestRequest.Garden = Garden;
-            guestRequest.ChildrensAttractions = ChildrensAttractions;
-            guestRequest.AirConditioner = AirConditioner;
-            guestRequest.Hikes = Hikes;
-            dal.NewGuestRequests(guestRequest);
+            try
+            {
+                Order order = new Order();
+                var orignalOrder = dal.getListOfOrder().Where(x => x.OrderKey == orderKey);
+                order = orignalOrder.First();
+                if (orignalOrder.Count() == 0)
+                    throw new MissingIdException("Order", orderKey, "Can not update order dos not exsit");
+                order.GuestRequestKey = guestRequest.GuestRequestKey;
+                order.HostingUnitKey = hostingUnit.HostingUnitKey;
+                order.Status = (Status)0;
+                dal.UpdateDateOrder(order);
+                sendEmailIfHasClearance(order);
+            }
+            catch  ()
+            {
 
-        }
-
-
-        public void UpdateDateOrder(Order TheOrder)
-        {
-            throw new NotImplementedException();
+            }
         }
 
         public void UpdateGuestRequests(GuestRequest TheGuestRequest)
