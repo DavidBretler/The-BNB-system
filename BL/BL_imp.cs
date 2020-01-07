@@ -360,7 +360,28 @@ namespace BL
 
     
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="PrivateName"></param>
+        /// <param name="FamilyName"></param>
+        /// <param name="MailAddress"></param>
+        /// <param name="Status"></param>
+        /// <param name="RegistrationDate"></param>
+        /// <param name="EntryDate"></param>
+        /// <param name="EndDate"></param>
+        /// <param name="Area"></param>
+        /// <param name="NumOfRooms"></param>
+        /// <param name="Type"></param>
+        /// <param name="Adults"></param>
+        /// <param name="Children"></param>
+        /// <param name="NumOfBeds"></param>
+        /// <param name="Pool"></param>
+        /// <param name="Jacuzzi"></param>
+        /// <param name="Garden"></param>
+        /// <param name="ChildrensAttractions"></param>
+        /// <param name="AirConditioner"></param>
+        /// <param name="Hikes"></param>
         public void NewGuestRequests( string PrivateName 
         , string FamilyName, string MailAddress, orderStatus Status, 
             DateTime RegistrationDate, DateTime EntryDate,
