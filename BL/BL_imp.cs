@@ -358,9 +358,6 @@ namespace BL
 
         #region NotImplemented
 
-    
-
-
         public void NewGuestRequests( string PrivateName 
         , string FamilyName, string MailAddress, orderStatus Status, 
             DateTime RegistrationDate, DateTime EntryDate,

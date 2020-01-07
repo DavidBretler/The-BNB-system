@@ -5,7 +5,7 @@ using BE;
 
 namespace BL
 {
-    interface IBL
+    public interface IBL
     {
         double updateStatusOfOrder(Order order, int newStatus);
 
