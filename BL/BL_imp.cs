@@ -66,7 +66,7 @@ namespace BL
         /// <param name="Diary"></param>
         public void AddNewHostingUnit(string HostingUnitName, int NumOfRooms,
             int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
-            Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, bool[,] Diary, int KeyOfHost)
+            Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes,  int KeyOfHost)
         {
 
             Host host = new Host();
@@ -198,6 +198,27 @@ namespace BL
 
             }
             else throw new GenralException("BL_imp", "ERROR in creating order.");
+        }
+
+        public void UpdateOrder(GuestRequest guestRequest, HostingUnit hostingUnit, int orderKey)
+        {
+            try
+            {
+                Order order = new Order();
+                var orignalOrder = dal.getListOfOrder().Where(x => x.OrderKey == orderKey);
+                order = orignalOrder.First();
+                if (orignalOrder.Count() == 0)
+                    throw new MissingIdException("Order", orderKey, "Can not update order dos not exsit");
+                order.GuestRequestKey = guestRequest.GuestRequestKey;
+                order.HostingUnitKey = hostingUnit.HostingUnitKey;
+                order.Status = (Status)0;
+                dal.UpdateDateOrder(order);
+                sendEmailIfHasClearance(order);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public void DeleteOrder(BE.Order TheOrder)
@@ -410,30 +431,6 @@ namespace BL
         #endregion Guest Request
 
         #region NotImplemented
-
-    
-
-
-        public void UpdateOrder (GuestRequest guestRequest, HostingUnit hostingUnit,int orderKey)
-        {
-            try
-            {
-                Order order = new Order();
-                var orignalOrder = dal.getListOfOrder().Where(x => x.OrderKey == orderKey);
-                order = orignalOrder.First();
-                if (orignalOrder.Count() == 0)
-                    throw new MissingIdException("Order", orderKey, "Can not update order dos not exsit");
-                order.GuestRequestKey = guestRequest.GuestRequestKey;
-                order.HostingUnitKey = hostingUnit.HostingUnitKey;
-                order.Status = (Status)0;
-                dal.UpdateDateOrder(order);
-                sendEmailIfHasClearance(order);
-            }
-            catch  ()
-            {
-
-            }
-        }
 
         public void UpdateGuestRequests(GuestRequest TheGuestRequest)
         {

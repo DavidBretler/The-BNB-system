@@ -22,11 +22,12 @@ namespace BL
             , Choice Hikes);
         void UpdateGuestRequests(BE.GuestRequest TheGuestRequest);
         void AddNewHostingUnit(string HostingUnitName, int NumOfRooms,
-           int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
-           Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, bool[][] Diary, int KeyOfHost)sortType Type, Choice Hikes, bool[][] Diary);
+            int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
+            Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, int KeyOfHost);
+
         void UpdateHostingUnit(BE.HostingUnit TheHostingUnit);
         void NewOrder(GuestRequest guestRequest, HostingUnit hostingUnit);
-        void UpdateOrder(BE.Order TheOrder);
+        void UpdateOrder(GuestRequest guestRequest, HostingUnit hostingUnit, int orderKey);
         List<BE.HostingUnit> getListOfHostingUnits();
         List<BE.GuestRequest> getListOfGuestRequest();
         List<BE.Order> getListOfOrder();
