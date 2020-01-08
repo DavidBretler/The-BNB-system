@@ -16,9 +16,9 @@ namespace DS
                     FamilyName = "bornstain",
                     MailAddress = "aaa@aaa.com",
                     Status = 0,
-                    RegistrationDate = new DateTime(2019, 01, 01),
-                    EntryDate = new DateTime(2019, 01, 01),
-                    EndDate = new DateTime(2019, 01, 03),
+                    RegistrationDate = new DateTime(2020, 01, 01),
+                    EntryDate = new DateTime(2020, 01, 01),
+                    EndDate = new DateTime(2020, 01, 03),
                     Type = 0,
                     Area = 0,
                     Adults = 10,
@@ -37,9 +37,9 @@ namespace DS
                     FamilyName = "aquamen",
                     MailAddress = "bbb@aaa.com",
                     Status = 0,
-                    RegistrationDate = new DateTime(2019, 01, 02),
-                    EntryDate = new DateTime(2019, 01, 02),
-                    EndDate = new DateTime(2019, 01, 03),
+                    RegistrationDate = new DateTime(2020, 01, 02),
+                    EntryDate = new DateTime(2020, 01, 02),
+                    EndDate = new DateTime(2020, 01, 03),
                     Type = 0,
                     Area = 0,
                     Adults = 10,
@@ -56,8 +56,8 @@ namespace DS
         {
             new BE.HostingUnit()
             {
-                 HostingUnitKey=4,     
-                // Owner="doby",
+                 HostingUnitKey=1,     
+                 Owner=ListHosts[1],
                   HostingUnitName="the rock",
                  NumOfRooms=5,
                  NumOfBeds=8,
@@ -72,8 +72,8 @@ namespace DS
             },
             new BE.HostingUnit()
             {
-                HostingUnitKey=4,     
-                // Owner="doby",
+                HostingUnitKey=2,     
+                 Owner=ListHosts[0],
                   HostingUnitName="the rock",
                  NumOfRooms=5,
                  NumOfBeds=8,
@@ -121,21 +121,21 @@ namespace DS
 
             new BE.Order()
             {
-             HostingUnitKey=BE.Configuration.getNewOrderKey(),
-             GuestRequestKey=BE.Configuration.getNewGuestRequestKey(),
+             HostingUnitKey=1,
+             GuestRequestKey=1,
             OrderKey=BE.Configuration.getNewOrderKey() ,
             Status=0 ,  
-           CreateDate=new DateTime(11,1,2010) ,   
-           OrderDate=new DateTime(11,6,2010),
+           CreateDate=new DateTime(2020,1,10) ,
+           contactCustumerDate=new DateTime(2020,6,10),
             },
            new BE.Order()
             {
-             HostingUnitKey=BE.Configuration.getNewOrderKey(),
-             GuestRequestKey=BE.Configuration.getNewGuestRequestKey(),
+             HostingUnitKey=2,
+             GuestRequestKey=2,
             OrderKey=BE.Configuration.getNewOrderKey() ,
             Status=0 ,
-           CreateDate=new DateTime(15,1,2010) ,
-           OrderDate=new DateTime(20,6,2010),
+           CreateDate=new DateTime(2020,1,15) ,
+           contactCustumerDate=new DateTime(2020,6,16),
             }
 
         };

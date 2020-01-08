@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using BE;
 
@@ -34,7 +35,10 @@ namespace BL
         List<BE.BankBranch> getListOfBankBranch();
         void sendEmail(Order currrentOrder);
 
-
+         IEnumerable<IGrouping<int, GuestRequest>> ListOfGustRequestByNumOfBeds();
+        IEnumerable<IGrouping<Area, HostingUnit>> ListOfHostingUntisInArea();
+        IEnumerable<IGrouping<Area, GuestRequest>> ListOfguestRequestsByArea();
+        IEnumerable<IGrouping<int, Host>> ListOfHostsByNumberOfHostingUnits();
 
 
     }

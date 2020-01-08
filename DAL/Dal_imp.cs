@@ -34,7 +34,6 @@ namespace DAL
                 List<HostingUnit> L = DS.DataSource.ListHostingUnits;
                 for (int i = 0; i < L.Count; i++)
                     if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
-
                         throw new IDalreadyExistsException("HostingUnit", TheHostingUnit.getHostingUnitKey());
                 DS.DataSource.ListHostingUnits.Add(TheHostingUnit);
             }
@@ -90,13 +89,14 @@ namespace DAL
         {   //לעשות שכפול לרשימה של היחידות אירוח 
 
             var temp = from item in DataSource.ListHostingUnits
-                       select item;
-            List<HostingUnit> temp2 = (List<HostingUnit>)temp;
+                       select item;          
+            List<HostingUnit> temp2 = new List<HostingUnit>();
+            foreach (HostingUnit item in temp)
+                temp2.Add(item);
             HostingUnit[] target = new HostingUnit[temp2.Count];
             temp2.CopyTo(target);
 
-            return target.ToList();
-
+            return target.ToList();     
         }
 
         #endregion Hosting Unit
@@ -159,9 +159,11 @@ namespace DAL
         public List<GuestRequest> getListOfGuestRequest()
         {
 
-            var temp = from item in DataSource.ListHosts
-                       select item;
-            List<GuestRequest> temp2 = (List<GuestRequest>)temp;
+            var temp = from item in DataSource.ListGuestRequests
+                       select item;         
+            List<GuestRequest> temp2 = new List<GuestRequest>();
+            foreach (GuestRequest item in temp)
+                temp2.Add(item);
             GuestRequest[] target = new GuestRequest[temp2.Count];
             temp2.CopyTo(target);
 
@@ -228,9 +230,12 @@ namespace DAL
         public List<Order> getListOfOrder()
         {
             var temp = from item in DataSource.ListOrders
-                       select item;
-            List<Order> temp2 = (List<Order>)temp;
+                    select item;           
+            List<Order> temp2 = new List<Order>();
+            foreach (Order item in temp)
+                temp2.Add(item);
             Order[] target = new Order[temp2.Count];
+            
             temp2.CopyTo(target);
 
             return target.ToList();
@@ -261,9 +266,13 @@ namespace DAL
 
         public List<BE.Host> getListOfHost()
         {
-            var temp = from item in DataSource.ListHosts
-                       select item;
-            List<Host> temp2 = (List<Host>)temp;
+           var temp = from item in DS.DataSource.ListHosts
+                      select item;
+
+            // List<Host> temp2 = (List< Host > )temp;
+            List<Host> temp2= new List<Host>();          
+            foreach (Host item in temp)
+                temp2.Add(item);
             Host[] target = new Host[temp2.Count];
             temp2.CopyTo(target);
 

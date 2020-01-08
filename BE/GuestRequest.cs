@@ -82,7 +82,7 @@ namespace BE
                 " Name: "+ PrivateName+" "+ FamliyName + "\n" +    
                 "MailAddress: " + MailAddress + "\n" + 
                 "Status: " + Status+ "\n" + " RegistrationDate: " + RegistrationDate +
-                " EntryDate: "+ EntryDate + " ReleaseDate: "+ ReleaseDate+ "\n" +
+                " EntryDate: "+ EntryDate + " EndDate: " + EndDate + "\n" +
                 " Area: " + Area +
                 " Type :" + Type+ " Adults :"+ Adults + 
                 " Children :"+ Children+ "\n" +

@@ -9,8 +9,9 @@ namespace UI
     {
         static void Main(string[] args)
         {
-            BL.IBL bl = BL.Factory.GetBL();
-            int op = Convert.ToInt32(Console.ReadLine()); ;
+            Console.WriteLine("what do you want to do?");
+            
+            BL.IBL bl = BL.Factory.GetBL();          
             BE.HostingUnit h;
             h = new BE.HostingUnit()
             {
@@ -50,7 +51,8 @@ namespace UI
                 AirConditioner = 0,
                 NumOfBeds = 0,
             };
-            while (op != 0)
+            int op = Convert.ToInt32(Console.ReadLine()); ;
+            do           
             {
                 
                 Console.WriteLine("what do you want to do?");
@@ -62,41 +64,63 @@ namespace UI
 
                 Console.WriteLine("6. to open new order");
                 Console.WriteLine("7. to get Hosting Unit by Area");
-                  bool[,] Diary = new bool[12, 31]; 
+                 op = Convert.ToInt32(Console.ReadLine()); ;
+
+                
                 switch (op)
                 {
-                    case 1:
-                        List<BE.HostingUnit> List = bl.getListOfHostingUnits();
-                        bl.AddNewHostingUnit("asd", 5,  6, 0, 0, 0, 0, 0, 0, 0, 0, Diary, 1);
+                    case 1:       
+                        bl.AddNewHostingUnit("asd", 5,  6, 0, 0, 0, 0, 0, 0, 0, 0, 1);
+                        foreach(HostingUnit item in bl.getListOfHostingUnits())
+                        Console.WriteLine(item);
                         break;
                     case 2:
-                        bl.AddNewGestreqest();
+                        bl.NewGuestRequests("aa" , "bb", "asd@gmail", 0,
+                        new DateTime(2020,2, 1 ), new DateTime(2020,10, 1 ),
+                        new DateTime( 2020,5, 1),0, 5, 0, 6, 7, 8, 0, 0,0, 0, 0 ,0);
+                        foreach (GuestRequest item in bl.getListOfGuestRequest())
+                            Console.WriteLine(item);
                         break;
                     case 3:
                         Console.WriteLine("Enter order to change status ");
                         Order order;
                         int orderKey = int.Parse(Console.ReadLine());
-                        var orignalOrder = bl.getListOfOrder().Where(x => x.OrderKey == orderKey);
-                        order = orignalOrder.First();
+                        var orignalOrder = bl.getListOfOrder().FindAll(x => x.OrderKey == orderKey);
+                    
+                        if (!(orignalOrder.Count() == 0))
+                        {
+                            order = orignalOrder.First();
+                            bl.updateStatusOfOrder(order, 2);
+                            foreach (var item in bl.getListOfOrder())
+                                Console.WriteLine(item);
+                        }
+                        else
+                        Console.WriteLine("order not exsit ");
 
-                        bl.updateStatusOfOrder(order, 0);
                         break;
                     case 4:
                            bl.UpdateHostingUnit(h);
+                        foreach (var item in bl.getListOfGuestRequest())
+                            Console.WriteLine(item);
+
                         break;
                     case 5:
                         bl.DeleteHostingUnit(h);
+                        Console.WriteLine(bl.getListOfHostingUnits());
                         break;
                     case 6:
                         bl.NewOrder(GR, h);
+                        Console.WriteLine( bl.getListOfOrder() );
                         break;
                     case 7:
-                        bl.list
+                        bl.ListOfHostingUntisInArea();
+                        IEnumerable<IGrouping<Area, HostingUnit>> temp = bl.ListOfHostingUntisInArea();
+                        Console.WriteLine(temp);
                         break;
 
-                }
-            }
-            
+                } 
+            } while (op != 0);
+
         }
     }
 }

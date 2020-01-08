@@ -44,7 +44,7 @@ namespace BE
                 "\nFamily Name:" + FamilyName +
                 "\nFhone Number:" + PhoneNumber +
                 "\nMail Address:" + MailAddress+
-                HostBankAccuont.ToString()+
+  //              HostBankAccuont.ToString()+
                 "\npermision to debit from bank:"+ CollectionClearance
 
                 );

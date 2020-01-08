@@ -66,7 +66,7 @@ namespace BL
         /// <param name="Diary"></param>
         public void AddNewHostingUnit(string HostingUnitName, int NumOfRooms,
             int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
-            Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes,  int KeyOfHost)
+            Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, int KeyOfHost)
         {
 
             Host host = new Host();
@@ -91,14 +91,14 @@ namespace BL
             }
             else
                 throw new MissingIdException("BL_imp", KeyOfHost, "אנא וודא תקינות מספר זיהוי או הוסף את פרטיך לרשימת המארחים");
-        
+           }
 
         /// <summary>
         /// check if the hostingunit that we want to delete  has been booked in a order before 
         /// if yes send exepction if not use the delete func from dal
         /// </summary>
         /// <param name="TheHostingUnit"></param>
-         void DeleteHostingUnit(HostingUnit TheHostingUnit)
+         public void DeleteHostingUnit(HostingUnit TheHostingUnit)
         {
             try
             {
@@ -234,8 +234,8 @@ namespace BL
         /// <returns></returns>
         public GuestRequest GetGuestRequestFromOrder(Order order)
         {
-            var guestRequest = dal.getListOfGuestRequest().Where(x => x.GuestRequestKey == order.GuestRequestKey);
-            return guestRequest.First();
+            var guestRequest = dal.getListOfGuestRequest().Find(x => x.GuestRequestKey == order.GuestRequestKey);
+            return guestRequest;
         }
         /// <summary>
         /// given a specific order returns the HostingUnit
@@ -245,8 +245,8 @@ namespace BL
 
         public HostingUnit GetHostingUnitFromOrder(Order order)
         {
-            var HostingUnit = dal.getListOfHostingUnits().Where(x => x.HostingUnitKey == order.HostingUnitKey);
-            return HostingUnit.First();
+            var HostingUnit = dal.getListOfHostingUnits().Find(x => x.HostingUnitKey == order.HostingUnitKey);
+            return HostingUnit;
         }
 
         /// <summary>
@@ -432,14 +432,13 @@ namespace BL
 
         public void UpdateGuestRequests(GuestRequest TheGuestRequest)
         {
-            throw new NotImplementedException();
+           dal.UpdateGuestRequests(TheGuestRequest);
         }
 
         public void UpdateHostingUnit(HostingUnit TheHostingUnit)
         {
-            dal.getListOfHostingUnits();
-
-            throw new NotImplementedException();
+            dal.UpdateHostingUnit(TheHostingUnit);
+          
         }
 
         #endregion NotImplemented
@@ -534,7 +533,7 @@ namespace BL
         /// <returns></returns>
         public bool CheakDateIfInOrder(DateTime StartDate, DateTime EndtDate)
         {
-            if (StartDate < EndtDate) ;
+            if (StartDate < EndtDate) 
             return true;
             throw new DateException("BL_imp", "אנא הזן תאריך התחלה לפחות יום אחד לפני תאיך הסיום.");
         }
