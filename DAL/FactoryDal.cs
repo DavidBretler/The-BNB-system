@@ -13,7 +13,7 @@ namespace DAL
     {
         public static IDAL GetDal()
         {
-            return new Dal_imp();
+            return  Dal_imp.GetDAL();
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace BL
 {
-    class BL_imp : IBL
+    public class BL_imp : IBL
     {
 
         
@@ -91,14 +91,14 @@ namespace BL
             }
             else
                 throw new MissingIdException("BL_imp", KeyOfHost, "אנא וודא תקינות מספר זיהוי או הוסף את פרטיך לרשימת המארחים");
-        }
+        
 
         /// <summary>
         /// check if the hostingunit that we want to delete  has been booked in a order before 
         /// if yes send exepction if not use the delete func from dal
         /// </summary>
         /// <param name="TheHostingUnit"></param>
-        public void DeleteHostingUnit(HostingUnit TheHostingUnit)
+         void DeleteHostingUnit(HostingUnit TheHostingUnit)
         {
             try
             {
@@ -343,8 +343,6 @@ namespace BL
 
 
         }
-
-
         /// <summary>
         /// send email to the costumor by the host and change the date 
         /// </summary>
