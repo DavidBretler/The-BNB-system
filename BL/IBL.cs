@@ -9,7 +9,7 @@ namespace BL
     {
         double updateStatusOfOrder(Order order, int newStatus);
 
-        void DeleteHostingUnit(BE.HostingUnit TheHostingUnit);
+        void DeleteHostingUnit(HostingUnit TheHostingUnit);
         void DeleteGuestRequests(BE.GuestRequest TheGuestRequest);
         void DeleteOrder(BE.Order TheOrder);
         void DeleteHost(BE.Host TheHost);

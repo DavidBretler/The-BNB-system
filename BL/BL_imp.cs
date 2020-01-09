@@ -64,9 +64,10 @@ namespace BL
         /// <param name="Type"></param>
         /// <param name="Hikes"></param>
         /// <param name="Diary"></param>
+        
         public void AddNewHostingUnit(string HostingUnitName, int NumOfRooms,
             int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
-            Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes,  int KeyOfHost)
+            Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, int KeyOfHost)
         {
 
             Host host = new Host();
@@ -91,14 +92,14 @@ namespace BL
             }
             else
                 throw new MissingIdException("BL_imp", KeyOfHost, "אנא וודא תקינות מספר זיהוי או הוסף את פרטיך לרשימת המארחים");
-        
 
+        }
         /// <summary>
         /// check if the hostingunit that we want to delete  has been booked in a order before 
         /// if yes send exepction if not use the delete func from dal
         /// </summary>
         /// <param name="TheHostingUnit"></param>
-         void DeleteHostingUnit(HostingUnit TheHostingUnit)
+        public void DeleteHostingUnit(HostingUnit TheHostingUnit)
         {
             try
             {
