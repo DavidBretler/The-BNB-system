@@ -6,12 +6,38 @@ using System.Text;
 namespace DS
 {
     public class DataSource
+
     {
+        public static List<BE.Host> ListHosts = new List<BE.Host>
+        {
+            new BE.Host()
+            {
+             HostKey=BE.Configuration.getNewHostKey() ,
+             PrivateName="dfg",
+             FamilyName="dfggg",
+             PhoneNumber="05225461",
+             MailAddress="asd@aaa.com",
+             numberOfUints =5,
+            // HostBankAccuont =ListBankBranches[0],
+             CollectionClearance=true, //permision to debit from bank
+            },
+     new BE.Host()
+            {
+             HostKey=BE.Configuration.getNewHostKey() ,
+             PrivateName="aba",
+             FamilyName="sba",
+             PhoneNumber="0527893446",
+             MailAddress="atyl@aaa.com",
+             numberOfUints =6,
+          //   HostBankAccuont =ListBankBranches[0],
+             CollectionClearance=true, //permision to debit from bank
+            },
+        };
         public static List<BE.GuestRequest> ListGuestRequests = new List<BE.GuestRequest>
         {
                 new BE.GuestRequest()
                 {
-                   GuestRequestKey= BE.Configuration.getNewHostingUnitKey(),
+                   GuestRequestKey= BE.Configuration.getNewGuestRequestKey(),
                     PrivateName = "david",
                     FamilyName = "bornstain",
                     MailAddress = "aaa@aaa.com",
@@ -32,7 +58,7 @@ namespace DS
                 },
             new BE.GuestRequest()
             {
-                 GuestRequestKey= BE.Configuration.getNewHostingUnitKey(),
+                 GuestRequestKey= BE.Configuration.getNewGuestRequestKey(),
             PrivateName = "dov",
                     FamilyName = "aquamen",
                     MailAddress = "bbb@aaa.com",
@@ -56,14 +82,14 @@ namespace DS
         {
             new BE.HostingUnit()
             {
-                 HostingUnitKey=1,     
+                 HostingUnitKey=Configuration.getNewHostingUnitKey(),     
                  Owner=ListHosts[1],
                   HostingUnitName="the rock",
                  NumOfRooms=5,
                  NumOfBeds=8,
                  pool=0,
                  Jacuzzi=0,
-                 Area=0,
+                 Area=(Area)0,
                  Garden=0,
                  AirConditioner=0,
                  ChildrensAttractions=0,
@@ -72,14 +98,14 @@ namespace DS
             },
             new BE.HostingUnit()
             {
-                HostingUnitKey=2,     
+                HostingUnitKey=Configuration.getNewHostingUnitKey(),     
                  Owner=ListHosts[0],
                   HostingUnitName="the rock",
                  NumOfRooms=5,
                  NumOfBeds=8,
                  pool=0,
                  Jacuzzi=0,
-                 Area=0,
+                 Area=(Area)0,
                  Garden=0,
                  AirConditioner=0,
                  ChildrensAttractions=0,
@@ -89,34 +115,10 @@ namespace DS
 
         };
 
-        public static List<BE.Host> ListHosts = new List<BE.Host>
-        {
-            new BE.Host()
-            {
-             HostKey=BE.Configuration.getNewHostKey() ,
-             PrivateName="dfg",
-             FamilyName="dfggg",
-             PhoneNumber="05225461",
-             MailAddress="asd@aaa.com",
-             numberOfUints =5,
-            // HostBankAccuont =ListBankBranches[0],
-             CollectionClearance=true, //permision to debit from bank
-            },
-     new BE.Host()
-            {
-             HostKey=BE.Configuration.getNewHostKey() ,
-             PrivateName="aba",
-             FamilyName="sba",
-             PhoneNumber="0527893446",
-             MailAddress="atyl@aaa.com",
-             numberOfUints =6,
-          //   HostBankAccuont =ListBankBranches[0],
-             CollectionClearance=false, //permision to debit from bank
-            },
-        };
+        
         public static List<BE.BankBranch> ListBankBranches = new List<BE.BankBranch>();
 
-        public static List<BE.Order> ListOrders = new List<BE.Order>
+        public static List<Order> ListOrders = new List<BE.Order>
         {
 
             new BE.Order()

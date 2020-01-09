@@ -44,11 +44,6 @@ namespace DAL
         public void UpdateHostingUnit(HostingUnit TheHostingUnit)
         {
 
-            //var v= from HostingUnit unit in DS.DataSource.ListHostingUnits
-            //where unit.getHostingUnitKey() == TheHostingUnit.getHostingUnitKey()
-            //select unit ;         
-            //foreach (var item in v)
-            //    item = TheHostingUnit;
             try
             {
                 bool Flag = false;
@@ -56,7 +51,7 @@ namespace DAL
                 for (int i = 0; i < L.Count; i++)
                     if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
                     {
-                        L[i] = TheHostingUnit; //need to check if work good
+                        L[i] = TheHostingUnit; 
                         Flag = true;
                     }
                 if (Flag == false)
@@ -66,7 +61,7 @@ namespace DAL
 
         }
 
-        public void DeleteHostingUnit(HostingUnit TheHostingUnit)
+        public void DeleteHostingUnit(int hostUnitKey)
         {
             try
             {
@@ -74,13 +69,13 @@ namespace DAL
                 List<HostingUnit> L = DS.DataSource.ListHostingUnits;
                 for (int i = 0; i < L.Count; i++)
 
-                    if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
+                    if (L[i].getHostingUnitKey() == hostUnitKey)
                     {
                         L.Remove(L[i]); //need to check if work good
                         Flag = true;
                     }
                 if (Flag == false)
-                    throw new MissingIdException("HostingUnit", TheHostingUnit.getHostingUnitKey());
+                    throw new MissingIdException("HostingUnit", hostUnitKey);
             }
             catch (MissingIdException E) { throw E; }
         }
@@ -229,16 +224,22 @@ namespace DAL
          
         public List<Order> getListOfOrder()
         {
-            var temp = from item in DataSource.ListOrders
-                    select item;           
-            List<Order> temp2 = new List<Order>();
-            foreach (Order item in temp)
-                temp2.Add(item);
-            Order[] target = new Order[temp2.Count];
-            
-            temp2.CopyTo(target);
+          //  List<Order> temp2 = DS.DataSource.ListOrders;
 
-            return target.ToList();
+           // if (temp2.Count!=0)
+          //  {
+                var temp = from item in DS.DataSource.ListOrders
+                           select item;
+                List<Order> temp2 = new List<Order>();
+                foreach (Order item in temp)
+                    temp2.Add(item);
+                Order[] target = new Order[temp2.Count];
+
+                temp2.CopyTo(target);
+
+                return target.ToList();
+         //   }
+         //   else { Order[] target = new Order[4]; return target.ToList(); }
         }
         #endregion Order
 

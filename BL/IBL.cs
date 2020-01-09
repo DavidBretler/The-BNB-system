@@ -10,7 +10,7 @@ namespace BL
     {
         double updateStatusOfOrder(Order order, int newStatus);
 
-        void DeleteHostingUnit(BE.HostingUnit TheHostingUnit);
+        void DeleteHostingUnit(int hostUnitKey);
         void DeleteGuestRequests(BE.GuestRequest TheGuestRequest);
         void DeleteOrder(BE.Order TheOrder);
         void DeleteHost(BE.Host TheHost);
@@ -21,12 +21,20 @@ namespace BL
             int Adults, int Children, int NumOfBeds, Choice Pool, Choice Jacuzzi,
             Choice Garden, Choice ChildrensAttractions, Choice AirConditioner
             , Choice Hikes);
-        void UpdateGuestRequests(BE.GuestRequest TheGuestRequest);
+        void UpdateGuestRequests(string PrivateName
+        , string FamilyName, string MailAddress, orderStatus Status,
+            DateTime RegistrationDate, DateTime EntryDate,
+            DateTime EndDate, Area Area, int NumOfRooms, ResortType Type,
+            int Adults, int Children, int NumOfBeds, Choice Pool, Choice Jacuzzi,
+            Choice Garden, Choice ChildrensAttractions, Choice AirConditioner
+            , Choice Hikes);
         void AddNewHostingUnit(string HostingUnitName, int NumOfRooms,
             int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
             Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, int KeyOfHost);
 
-        void UpdateHostingUnit(BE.HostingUnit TheHostingUnit);
+        void UpdateHostingUnit(string HostingUnitName, int NumOfRooms,
+               int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
+               Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, int KeyOfHost);
         void NewOrder(GuestRequest guestRequest, HostingUnit hostingUnit);
         void UpdateOrder(GuestRequest guestRequest, HostingUnit hostingUnit, int orderKey);
         List<BE.HostingUnit> getListOfHostingUnits();
