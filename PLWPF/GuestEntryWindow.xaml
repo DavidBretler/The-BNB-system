@@ -1,0 +1,14 @@
+﻿<Window x:Class="PLWPF.GuestEntryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="GuestEntryWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="GoBack" Content="הקודם" HorizontalAlignment="Left" Height="48" Margin="643,372,0,0" VerticalAlignment="Top" Width="122" Click="Go_back_Click"  FontSize="24" FontFamily="David" />
+        <Button Content=" הזמנה קיימת" HorizontalAlignment="Left" Height="81" Margin="59,53,0,0" VerticalAlignment="Top" Width="136" FontSize="24" FontFamily="David"/>
+        <Button x:Name="___NewOrderButton_" Content=" הזמנה חדשה" HorizontalAlignment="Left" Height="81" Margin="380,53,0,0" VerticalAlignment="Top" Width="136" FontSize="24" FontFamily="David" Click="___NewOrderButton__Click"/>
+    </Grid>
+</Window>

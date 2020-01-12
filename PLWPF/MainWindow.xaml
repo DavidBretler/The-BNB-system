@@ -1,0 +1,17 @@
+﻿<Window x:Class="PLWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"    
+ 
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="HostEntryButton" Content="כניסה למארחים" HorizontalAlignment="Left" Height="70" Margin="64,90,0,0" VerticalAlignment="Top" Width="250" FontSize="24" FontFamily="David" Click="HostEntryButton_Click"  />
+        <Button x:Name="GuestEntryButton" Content="כניסה לאורחים" HorizontalAlignment="Left" Height="70" Margin="455,90,0,0" VerticalAlignment="Top" Width="245" FontSize="24" FontFamily="David" Click="GuestEntryButton_Click"/>
+        <Button x:Name="MangerEntryButton" Content="כניסה למנהל האתר" HorizontalAlignment="Left" Height="56" Margin="43,333,0,0" VerticalAlignment="Top" Width="160" FontSize="20" FontFamily="David" Click="MangerEntryButton_Click"/>
+
+    </Grid>
+
+</Window>

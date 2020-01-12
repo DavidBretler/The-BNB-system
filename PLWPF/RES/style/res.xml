@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Resources>
+<Style Key="MyStyle" TargetType="Control">
+  <Setter Property="HorizontalAlignment" Value="Center" />
+  <Setter Property="FontFamily" Value="Comic Sans MS"/>
+  <Setter Property="FontSize" Value="14"/>
+</Style>
+</Resources>

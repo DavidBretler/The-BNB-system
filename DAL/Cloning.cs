@@ -25,12 +25,12 @@ namespace DAL
         //    target.setDiary(original.GetDiary());    
         //    return target;
         //}      
-            public static Clonable Clone(this Clonable original)
-            {
-                Clonable target = Activator.CreateInstance(original.GetType());
+       //     public static Clonable Clone(this Clonable original)
+        //    {
+              //  Clonable target = Activator.CreateInstance(original.GetType());
                 //...
-                return target;
-            }       
+             //   return target;
+         //   }       
         //and so on for each entity…
     }
 }

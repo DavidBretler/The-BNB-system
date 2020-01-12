@@ -1,0 +1,12 @@
+﻿<Window x:Class="PLWPF.MangerEntryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="MangerEntryWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="goBack" Content="הקודם" HorizontalAlignment="Left" Height="54" Margin="634,356,0,0" VerticalAlignment="Top" Width="123" FontSize="24" FontFamily="David" Click="goBack_Click"/> 
+    </Grid>
+</Window>

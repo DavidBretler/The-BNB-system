@@ -1,0 +1,87 @@
+﻿<Window x:Class="PLWPF.NewGuestRequestWindoy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="newOrder" Height="450" Width="800">
+    <Grid x:Name="newGuestRequestGrid">
+
+        <StackPanel Margin="542,71,79.6,121" RenderTransformOrigin="0.46,0.546">
+            <Label Content="שם פרטי"/>
+            <Label Content="שם משפחה"/>
+            <Label Content="דואר אלקטרוני"/>
+            <Label Content="צ'ק אין"/>
+            <Label Content="צ'ק אאוט"/>
+            <Label Content=" מבוגרים"/>
+            <Label Content="ילדים"/>
+            <Label Content="אזור"/>
+            <Label Content="סוג אתר נופש"/>
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="220
+                    " Margin="315,71,0,0" VerticalAlignment="Top" Width="189">
+            <TextBox Height="32" TextWrapping="Wrap" Text="{Binding PrivateName}" Margin="0,0,-0.2,0" />
+            <TextBox Height="28" TextWrapping="Wrap" Text="{Binding FamilyName}" Margin="0,0,-0.2,0"/>
+            <TextBox Height="25" TextWrapping="Wrap" Text="{Binding MailAddress}" Margin="0,0,-0.2,0"/>
+            <DatePicker DisplayDateStart="01.01.2011" DisplayDateEnd="01.20.2011" SelectedDate="{Binding EntryDate}" Name="EntryDatePicker">
+
+            </DatePicker>
+            <DatePicker SelectedDate="{Binding EndDate}" Name="EndDatePicker"/>
+            <ComboBox SelectedItem="{Binding Adults}" >
+             <ComboBoxItem Content="1" />
+             <ComboBoxItem Content="2" />
+             <ComboBoxItem Content="3" />
+             <ComboBoxItem Content="4" />
+             <ComboBoxItem Content="5" />
+             <ComboBoxItem Content="6" />
+             <ComboBoxItem Content="7" />
+             <ComboBoxItem Content="8" />
+             <ComboBoxItem Content="9" />
+             <ComboBoxItem Content="10" />
+            </ComboBox>
+
+
+
+            
+            <ComboBox SelectedItem="{Binding Children}">
+                <ComboBoxItem Content="0" />
+                <ComboBoxItem Content="1" />
+              <ComboBoxItem Content="2" />
+              <ComboBoxItem Content="3" />
+              <ComboBoxItem Content="4" />
+               <ComboBoxItem Content="5" />
+               <ComboBoxItem Content="6" />
+               <ComboBoxItem Content="7" />
+               <ComboBoxItem Content="8" />
+               <ComboBoxItem Content="9" />
+               <ComboBoxItem Content="10" />
+            </ComboBox>
+            <ComboBox SelectedItem="{Binding Area}" Name="AreaCB" SelectionChanged="AreaCB_SelectionChanged"/>
+            <ComboBox SelectedItem = "{Binding ResortType}" Name="ResortTypeCB" />
+            <ComboBox/>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Left" Height="220" Margin="114,71,0,0" VerticalAlignment="Top" Width="86">
+            <Label Content="בריכה"/>
+            <Label Content="ג'קוזי "/>
+            <Label Content="גינה"/>
+            <Label Content="אטרקציות"/>
+            <Label Content="מזגן"/>
+            <Label Content=" טיולים באזור"/>
+          </StackPanel>
+        <Button Content="לסיום הזמנה" HorizontalAlignment="Left" Margin="280,346,0,0" VerticalAlignment="Top" Width="115" Height="38" Name="FinishGusetRequest" Click="FinishGusetRequest_Click"/>
+        <StackPanel HorizontalAlignment="Left" Height="200
+                    " Margin="10,71,0,0" VerticalAlignment="Top" Width="83">
+            <ComboBox SelectedItem="{Binding Pool}" Name="PoolCB"/>
+            <ComboBox SelectedItem="{Binding Jacuzzi}" Name="JacuzziCB"/>
+            <ComboBox SelectedItem="{Binding Garden}" Name="GardenCB"/>
+            <ComboBox SelectedItem="{Binding ChildrensAttractions}" Name="ChildrensAttractionsCB"/>
+            <ComboBox SelectedItem="{Binding AirConditioner}" Name="AirConditionerCB"/>
+            <ComboBox SelectedItem="{Binding Hikes}" Name="HikesCB"/>
+        </StackPanel>
+        <TextBlock HorizontalAlignment="Left" Height="67" Margin="10,224,0,0" TextWrapping="Wrap" Text="{Binding GuestRequestKey}" VerticalAlignment="Top" Width="212" Name="DisplayG_R_Key" Visibility="Hidden"/>
+
+    </Grid>
+</Window>

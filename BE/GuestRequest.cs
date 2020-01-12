@@ -4,7 +4,7 @@ namespace BE
 {
     public class GuestRequest
     {
-        public int GuestRequestKey;
+        public int GuestRequestKey { get; set; }
 
         public int getGuestRequestKey() { return GuestRequestKey; }
         //
@@ -12,10 +12,7 @@ namespace BE
         public string FamilyName { get; set; }
         public string getPrivateName() { return PrivateName; }
         public void setPrivteName(string NewPrivateName) { PrivateName = NewPrivateName; }
-
-        public string FamliyName { get; set; }
-        public string getFamliyName() { return FamliyName; }
-        public void setAdults(string NewFamliyName) { FamliyName = NewFamliyName; }
+   
 
         public string MailAddress { get; set; }
         public string getMailAddress() { return MailAddress; }
@@ -40,26 +37,26 @@ namespace BE
         public DateTime getendDate() { return EndDate; }
         public void setEndDate(DateTime NewEndDate) { EndDate = NewEndDate; }
 
-        public Area Area;
+        public Area Area { get; set; }
         public Area getArea() { return Area; }
         public void setArea(Area NewArea) { Area = NewArea; }
 
-        public int NumOfRooms;
+        public int NumOfRooms { get; set; }
         public int getNumOfRooms() { return NumOfRooms; }
         public void setNumOfRooms(int NewNumOfRooms) { NumOfRooms = NewNumOfRooms; }
 
         //Hotel Motel Tzimer
         public ResortType Type{ get; set; }
        
-        public int Adults;
+        public int Adults { get; set; }
         public int getAdults() { return Adults; }
         public void setAdults(int NewAdults) { Adults = NewAdults; }
 
-        public int Children;
+        public int Children { get; set; }
         public int getChildren() { return Children; }
         public void setChildren(int NewChildren) { Children = NewChildren; }
 
-        public int NumOfBeds;
+        public int NumOfBeds { get; set; }
         public int getNumOfBeds() { return NumOfBeds; }
         public void setNumOfBeds(int NewNumOfBeds) { NumOfBeds = NewNumOfBeds; }
 
@@ -82,7 +79,7 @@ namespace BE
         {
             return "The request details:\n" +
                 "Guest Request Key: "+ GuestRequestKey+"\n"+
-                " Name: "+ PrivateName+" "+ FamliyName + "\n" +    
+                " Name: "+ PrivateName+" "+ FamilyName + "\n" +    
                 "MailAddress: " + MailAddress + "\n" + 
                 "Status: " + Status+ "\n" + " RegistrationDate: " + RegistrationDate +
                 " EntryDate: "+ EntryDate + " EndDate: " + EndDate + "\n" +

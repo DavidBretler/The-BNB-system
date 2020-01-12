@@ -14,13 +14,15 @@ namespace BL
         void DeleteGuestRequests(BE.GuestRequest TheGuestRequest);
         void DeleteOrder(BE.Order TheOrder);
         void DeleteHost(BE.Host TheHost);
-        void NewGuestRequests(string PrivateName
-        , string FamilyName, string MailAddress, orderStatus Status,
-            DateTime RegistrationDate, DateTime EntryDate,
-            DateTime EndDate, Area Area, int NumOfRooms, ResortType Type,
-            int Adults, int Children, int NumOfBeds, Choice Pool, Choice Jacuzzi,
-            Choice Garden, Choice ChildrensAttractions, Choice AirConditioner
-            , Choice Hikes);
+        //void NewGuestRequests(string PrivateName
+        //, string FamilyName, string MailAddress, orderStatus Status,
+        //    DateTime RegistrationDate, DateTime EntryDate,
+        //    DateTime EndDate, Area Area, int NumOfRooms, ResortType Type,
+        //    int Adults, int Children, int NumOfBeds, Choice Pool, Choice Jacuzzi,
+        //    Choice Garden, Choice ChildrensAttractions, Choice AirConditioner
+        //    , Choice Hikes);
+
+         void NewGuestRequests(GuestRequest guestRequest);
         void UpdateGuestRequests(string PrivateName
         , string FamilyName, string MailAddress, orderStatus Status,
             DateTime RegistrationDate, DateTime EntryDate,
