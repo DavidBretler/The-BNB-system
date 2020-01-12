@@ -22,7 +22,7 @@ namespace PLWPF
         BL.IBL ibl;
         BE.GuestRequest guestRequest;
 
-        public NewGuestRequestWindoy()
+        public NewGuestRequestWindoy ()
         {
             InitializeComponent();
             guestRequest = new BE.GuestRequest(); 
