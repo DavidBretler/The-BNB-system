@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 namespace BE
 {
-    public class HostingUnit
+    public class HostingUnit : Clonable
     {
        //
          public int HostingUnitKey;

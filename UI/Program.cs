@@ -11,6 +11,7 @@ namespace UI
         {
             try
             {
+                
                 Console.WriteLine("what do you want to do?");
 
                 BL.IBL bl = BL.Factory.GetBL();
@@ -98,10 +99,11 @@ namespace UI
                             }
                             else
                                 Console.WriteLine("order not exsit ");
-
+                            
                             break;
                         case 4:
-                            bl.UpdateHostingUnit(h);
+                            bl.UpdateHostingUnit("the blob", 20,20, (Choice)1,
+                                (Choice)1,(Area)1,(Choice)1, 0,0,0,0,0);
                             foreach (var item in bl.getListOfHostingUnits())
                                 Console.WriteLine(item);
 
