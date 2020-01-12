@@ -25,6 +25,9 @@ namespace BE
         //public string getStatus() { return Status; }
         //public void setStatus(string NewStatus) { Status = NewStatus; }
 
+        /// <summary>
+        /// the date the guest request was created
+        /// </summary>
         public DateTime RegistrationDate { get; set; }
         public DateTime getRegistrationDate() { return RegistrationDate; }
         public void setRegistrationDate(DateTime NewRegistrationDate) { RegistrationDate = NewRegistrationDate; }
@@ -82,7 +85,7 @@ namespace BE
                 " Name: "+ PrivateName+" "+ FamliyName + "\n" +    
                 "MailAddress: " + MailAddress + "\n" + 
                 "Status: " + Status+ "\n" + " RegistrationDate: " + RegistrationDate +
-                " EntryDate: "+ EntryDate + " ReleaseDate: "+ ReleaseDate+ "\n" +
+                " EntryDate: "+ EntryDate + " EndDate: " + EndDate + "\n" +
                 " Area: " + Area +
                 " Type :" + Type+ " Adults :"+ Adults + 
                 " Children :"+ Children+ "\n" +

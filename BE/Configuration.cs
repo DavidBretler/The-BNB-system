@@ -9,7 +9,7 @@ namespace BE
         static int  HostingUnitKey ;
         static int GuestRequestKey;
         static int HostKey;
-        static int OrderKey;
+        static int OrderKey=0;
         static double Commission = 10; //commission for orders
 
         static public double getCommission() { return Commission; }

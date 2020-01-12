@@ -102,8 +102,8 @@ namespace BE
         public override string ToString() 
         {
             return "HostingUnitKey: " + HostingUnitKey +
-                "/n Owner: " + Owner + "HostingUnitName: " + HostingUnitName +
-                "Num Of Rooms: " + NumOfRooms + "AirConditioner: "+ AirConditioner;
+                "\n Owner: " + Owner + " HostingUnitName: " +  HostingUnitName +
+                " Num Of Rooms: " + NumOfRooms + " AirConditioner: "+ AirConditioner;
                }
          }
     }

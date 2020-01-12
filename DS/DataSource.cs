@@ -6,89 +6,8 @@ using System.Text;
 namespace DS
 {
     public class DataSource
+
     {
-        public static List<BE.GuestRequest> ListGuestRequests = new List<BE.GuestRequest>
-        {
-                new BE.GuestRequest()
-                {
-                   GuestRequestKey= BE.Configuration.getNewHostingUnitKey(),
-                    PrivateName = "david",
-                    FamilyName = "bornstain",
-                    MailAddress = "aaa@aaa.com",
-                    Status = 0,
-                    RegistrationDate = new DateTime(2019, 01, 01),
-                    EntryDate = new DateTime(2019, 01, 01),
-                    EndDate = new DateTime(2019, 01, 03),
-                    Type = 0,
-                    Area = 0,
-                    Adults = 10,
-                    Pool = 0,
-                    Jacuzzi = 0,
-                    Garden = 0,
-                    ChildrensAttractions = 0,
-                    Hikes =0,
-                    AirConditioner=0,
-                    NumOfBeds=0,
-                },
-            new BE.GuestRequest()
-            {
-                 GuestRequestKey= BE.Configuration.getNewHostingUnitKey(),
-            PrivateName = "dov",
-                    FamilyName = "aquamen",
-                    MailAddress = "bbb@aaa.com",
-                    Status = 0,
-                    RegistrationDate = new DateTime(2019, 01, 02),
-                    EntryDate = new DateTime(2019, 01, 02),
-                    EndDate = new DateTime(2019, 01, 03),
-                    Type = 0,
-                    Area = 0,
-                    Adults = 10,
-                    Pool = 0,
-                    Jacuzzi = 0,
-                    Garden = 0,
-                    ChildrensAttractions = 0,
-                    Hikes =0,
-                    AirConditioner=0,
-                    NumOfBeds=0,
-                 }
-        };
-        public static List<BE.HostingUnit> ListHostingUnits = new List<BE.HostingUnit>
-        {
-            new BE.HostingUnit()
-            {
-                 HostingUnitKey=4,     
-                // Owner="doby",
-                  HostingUnitName="the rock",
-                 NumOfRooms=5,
-                 NumOfBeds=8,
-                 pool=0,
-                 Jacuzzi=0,
-                 Area=0,
-                 Garden=0,
-                 AirConditioner=0,
-                 ChildrensAttractions=0,
-                 Type=0,
-                 Hikes=0,
-            },
-            new BE.HostingUnit()
-            {
-                HostingUnitKey=4,     
-                // Owner="doby",
-                  HostingUnitName="the rock",
-                 NumOfRooms=5,
-                 NumOfBeds=8,
-                 pool=0,
-                 Jacuzzi=0,
-                 Area=0,
-                 Garden=0,
-                 AirConditioner=0,
-                 ChildrensAttractions=0,
-                 Type=0,
-                 Hikes=0,
-            }
-
-        };
-
         public static List<BE.Host> ListHosts = new List<BE.Host>
         {
             new BE.Host()
@@ -111,31 +30,114 @@ namespace DS
              MailAddress="atyl@aaa.com",
              numberOfUints =6,
           //   HostBankAccuont =ListBankBranches[0],
-             CollectionClearance=false, //permision to debit from bank
+             CollectionClearance=true, //permision to debit from bank
             },
         };
+        public static List<BE.GuestRequest> ListGuestRequests = new List<BE.GuestRequest>
+        {
+                new BE.GuestRequest()
+                {
+                   GuestRequestKey= BE.Configuration.getNewGuestRequestKey(),
+                    PrivateName = "david",
+                    FamilyName = "bornstain",
+                    MailAddress = "aaa@aaa.com",
+                    Status = 0,
+                    RegistrationDate = new DateTime(2020, 01, 01),
+                    EntryDate = new DateTime(2020, 01, 01),
+                    EndDate = new DateTime(2020, 01, 03),
+                    Type = 0,
+                    Area = 0,
+                    Adults = 10,
+                    Pool = 0,
+                    Jacuzzi = 0,
+                    Garden = 0,
+                    ChildrensAttractions = 0,
+                    Hikes =0,
+                    AirConditioner=0,
+                    NumOfBeds=0,
+                },
+            new BE.GuestRequest()
+            {
+                 GuestRequestKey= BE.Configuration.getNewGuestRequestKey(),
+            PrivateName = "dov",
+                    FamilyName = "aquamen",
+                    MailAddress = "bbb@aaa.com",
+                    Status = 0,
+                    RegistrationDate = new DateTime(2020, 01, 02),
+                    EntryDate = new DateTime(2020, 01, 02),
+                    EndDate = new DateTime(2020, 01, 03),
+                    Type = 0,
+                    Area = 0,
+                    Adults = 10,
+                    Pool = 0,
+                    Jacuzzi = 0,
+                    Garden = 0,
+                    ChildrensAttractions = 0,
+                    Hikes =0,
+                    AirConditioner=0,
+                    NumOfBeds=0,
+                 }
+        };
+        public static List<BE.HostingUnit> ListHostingUnits = new List<BE.HostingUnit>
+        {
+            new BE.HostingUnit()
+            {
+                 HostingUnitKey=Configuration.getNewHostingUnitKey(),     
+                 Owner=ListHosts[1],
+                  HostingUnitName="the rock",
+                 NumOfRooms=5,
+                 NumOfBeds=8,
+                 pool=0,
+                 Jacuzzi=0,
+                 Area=(Area)0,
+                 Garden=0,
+                 AirConditioner=0,
+                 ChildrensAttractions=0,
+                 Type=0,
+                 Hikes=0,
+            },
+            new BE.HostingUnit()
+            {
+                HostingUnitKey=Configuration.getNewHostingUnitKey(),     
+                 Owner=ListHosts[0],
+                  HostingUnitName="the rock",
+                 NumOfRooms=5,
+                 NumOfBeds=8,
+                 pool=0,
+                 Jacuzzi=0,
+                 Area=(Area)0,
+                 Garden=0,
+                 AirConditioner=0,
+                 ChildrensAttractions=0,
+                 Type=0,
+                 Hikes=0,
+            }
+
+        };
+
+        
         public static List<BE.BankBranch> ListBankBranches = new List<BE.BankBranch>();
 
-        public static List<BE.Order> ListOrders = new List<BE.Order>
+        public static List<Order> ListOrders = new List<BE.Order>
         {
 
             new BE.Order()
             {
-             HostingUnitKey=BE.Configuration.getNewOrderKey(),
-             GuestRequestKey=BE.Configuration.getNewGuestRequestKey(),
+             HostingUnitKey=1,
+             GuestRequestKey=1,
             OrderKey=BE.Configuration.getNewOrderKey() ,
             Status=0 ,  
-           CreateDate=new DateTime(11,1,2010) ,   
-           OrderDate=new DateTime(11,6,2010),
+           CreateDate=new DateTime(2020,1,10) ,
+           contactCustumerDate=new DateTime(2020,6,10),
             },
            new BE.Order()
             {
-             HostingUnitKey=BE.Configuration.getNewOrderKey(),
-             GuestRequestKey=BE.Configuration.getNewGuestRequestKey(),
+             HostingUnitKey=2,
+             GuestRequestKey=2,
             OrderKey=BE.Configuration.getNewOrderKey() ,
             Status=0 ,
-           CreateDate=new DateTime(15,1,2010) ,
-           OrderDate=new DateTime(20,6,2010),
+           CreateDate=new DateTime(2020,1,15) ,
+           contactCustumerDate=new DateTime(2020,6,16),
             }
 
         };
