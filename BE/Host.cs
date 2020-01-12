@@ -23,11 +23,13 @@ namespace BE
         public string getPhoneNumber() { return PhoneNumber; }
         public void setPhoneNumber(string NewPhoneNumber) { PhoneNumber = NewPhoneNumber; }
         //
-        public string MailAddress;
+        public string MailAddress { get; set; }
         public string getMailAddress() { return MailAddress; }
         public void setMailAddress(string NewMailAddress) { MailAddress = NewMailAddress; }
         //
         public int  numberOfUints { get; set; }
+       
+
         public BankAccount HostBankAccuont;
         public BankAccount getHostBankAccuont() { return HostBankAccuont; }
         public void setHostBankAccuont(BankAccount NewHostBankAccuont) { HostBankAccuont = NewHostBankAccuont; }

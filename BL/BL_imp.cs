@@ -470,7 +470,8 @@ namespace BL
                 dal.UpdateGuestRequests(guestRequest);
 
             }
-            catch { throw; }
+            catch 
+            { throw; }
         }
 
 
@@ -501,8 +502,6 @@ namespace BL
         /// <param name="guestRequest"></param>
         void sendEmailIfHasClearance(Order order)
         {
-            try
-            {
                 if (GetHostFromOrder(order).CollectionClearance)
                 {
                     GetGuestRequestFromOrder(order).Status = (orderStatus)1;
@@ -510,8 +509,7 @@ namespace BL
                 }
                 else
                     throw new MisinigClearanceException("BL_imp", "Misinig Collection Clearance,to contact custumer aprove Clearance. ");
-            }
-            catch { throw; }
+            
 
         }
         /// <summary>
