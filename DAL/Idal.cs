@@ -8,7 +8,6 @@ namespace DAL
 
     public interface  IDAL
     {
-
         void DeleteHostingUnit(int hostUnitKey);
         void DeleteGuestRequests(BE.GuestRequest TheGuestRequest);
         void Deleteorder(BE.Order TheOrder);
