@@ -30,8 +30,8 @@ namespace PLWPF
  
         private void HostEntryButton_Click(object sender, RoutedEventArgs e)
         {
-            Window HostEntryWindow = new HostEntryWindow();
-            HostEntryWindow.Show();
+            Window FindHostWindow = new FindHostWindow();
+            FindHostWindow.Show();
         }
 
         private void MangerEntryButton_Click(object sender, RoutedEventArgs e)

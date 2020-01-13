@@ -8,7 +8,7 @@
         Title="GuestEntryWindow" Height="450" Width="800">
     <Grid>
         <Button x:Name="GoBack" Content="הקודם" HorizontalAlignment="Left" Height="48" Margin="643,372,0,0" VerticalAlignment="Top" Width="122" Click="Go_back_Click"  FontSize="24" FontFamily="David" />
-        <Button Content=" הזמנה קיימת" HorizontalAlignment="Left" Height="81" Margin="59,53,0,0" VerticalAlignment="Top" Width="136" FontSize="24" FontFamily="David"/>
+        <Button Content=" הזמנה קיימת" HorizontalAlignment="Left" Height="81" Margin="59,53,0,0" VerticalAlignment="Top" Width="136" FontSize="24" FontFamily="David" Click="Button_Click_1"/>
         <Button x:Name="___NewOrderButton_" Content=" הזמנה חדשה" HorizontalAlignment="Left" Height="81" Margin="380,53,0,0" VerticalAlignment="Top" Width="136" FontSize="24" FontFamily="David" Click="___NewOrderButton__Click"/>
     </Grid>
 </Window>

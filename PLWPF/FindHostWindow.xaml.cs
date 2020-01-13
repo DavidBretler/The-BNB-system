@@ -19,17 +19,23 @@ namespace PLWPF
     /// </summary>
     public partial class FindHostWindow : Window
     {
+        BL.IBL ibl;
+        public static BE.Host host = new BE.Host();           
         public FindHostWindow()
         {
             InitializeComponent();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        { BE.Host host = new BE.Host();
-           // host= SearchHostByKey(HostNum.Text);
-          //  if(host.password== hostPassword.Text)
-                Window HostEntryWindow = new HostEntryWindow();
-                HostEntryWindow.Show();
+        {
+            ibl = BL.Factory.GetBL();
+           // BE.Host host = new BE.Host();
+            Window HostEntryWindow = new HostEntryWindow();
+            host = ibl.SearchForHostByKey(Int32.Parse(HostNum.Text));
+           this.DataContext = host;
+           if (host.password == Int32.Parse(hostPassword.Text))               
+               HostEntryWindow.Show();
             else
                 MessageBox.Show("אחד הפרטים שהכנסת אינו נכון");
         }

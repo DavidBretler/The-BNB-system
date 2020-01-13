@@ -39,5 +39,10 @@ namespace PLWPF
             Window NewGuestRequestWindoy = new NewGuestRequestWindoy();
             NewGuestRequestWindoy.Show();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
