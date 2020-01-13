@@ -16,7 +16,6 @@ namespace BL
          GuestRequest SearchGetGuestRequestByKey(int Key);
 
         double updateStatusOfOrder(Order order, int newStatus);
-         Host SearchForHostByKey(int Key);
         void DeleteHostingUnit(int hostUnitKey);
         void DeleteGuestRequests(BE.GuestRequest TheGuestRequest);
         void DeleteOrder(BE.Order TheOrder);
