@@ -7,8 +7,7 @@ namespace DAL
 {
 
     public interface  IDAL
-    {
-        GuestRequests FinedGuestRequestByKEY(int key);
+    {       
         void DeleteHostingUnit(int hostUnitKey);
         void DeleteGuestRequests(BE.GuestRequest TheGuestRequest);
         void Deleteorder(BE.Order TheOrder);
