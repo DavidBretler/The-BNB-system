@@ -8,6 +8,13 @@ namespace BL
 {
     public interface IBL
     {
+        IEnumerable<HostingUnit> getListOfHostingUnitsByOwnerKey(int OwnerKey);
+
+         Host SearchForHostByKey(int Key);
+
+        GuestRequest GetGuestRequestFromOrder(Order order);
+         GuestRequest SearchGetGuestRequestByKey(int Key);
+
         double updateStatusOfOrder(Order order, int newStatus);
 
         void DeleteHostingUnit(int hostUnitKey);

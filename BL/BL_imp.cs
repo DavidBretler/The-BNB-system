@@ -292,14 +292,14 @@ namespace BL
         {
             
             
-                return SerchGetGuestRequestByKey(order.GuestRequestKey);
+                return SearchGetGuestRequestByKey(order.GuestRequestKey);
         }
         /// <summary>
         /// serches the guest requests by key
         /// </summary>
         /// <param name="Key"></param>
         /// <returns></returns>
-        public GuestRequest SerchGetGuestRequestByKey(int Key)
+        public GuestRequest SearchGetGuestRequestByKey(int Key)
         {
 
             var guestRequest = dal.getListOfGuestRequest().Find(x => x.GuestRequestKey == Key);

@@ -64,6 +64,9 @@
     <Compile Include="GuestEntryWindow.xaml.cs">
       <DependentUpon>GuestEntryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Update_Guest_Request.xaml.cs">
+      <DependentUpon>Update_Guest_Request.xaml</DependentUpon>
+    </Compile>
     <Page Include="findG_RByKey.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NewGuestRequestWindoy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Update_Guest_Request.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

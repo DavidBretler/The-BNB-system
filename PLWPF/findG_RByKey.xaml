@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="findG_RByKey" Height="300" Width="600">
+        Title="findG_RByKey" Height="300" Width="300.33">
     <Grid>
-        <Label Content="נא הכנס מס הזמנה " HorizontalAlignment="Left" Height="60" Margin="180,32,0,0" VerticalAlignment="Top" Width="212"/>
-        <TextBox HorizontalAlignment="Left" Height="49" Margin="180,128,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="212"/>
-        <Button Content="מצא הזמנה " HorizontalAlignment="Left" Height="44" Margin="180,202,0,0" VerticalAlignment="Top" Width="212"/>
+        <Label Content="נא הכנס מס הזמנה " HorizontalAlignment="Left" Height="60" Margin="29,26,0,0" VerticalAlignment="Top" Width="212"/>
+        <TextBox x:Name="___GuestRequest_key_textbox_" HorizontalAlignment="Center" Height="49" Margin="29,119,51,0" TextWrapping="Wrap"  Text="הכנס מספר הזמנה כאן"  VerticalAlignment="Top" Width="212" TextChanged="TextBox_TextChanged_1"/>
+        <Button x:Name="___FinedGuestRequest_Button_" Content="מצא הזמנה " HorizontalAlignment="Left" Height="44" Margin="29,201,0,0" VerticalAlignment="Top" Width="212" Click="___FinedGuestRequest_Button__Click"/>
 
     </Grid>
 </Window>

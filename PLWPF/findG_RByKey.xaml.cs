@@ -19,9 +19,29 @@ namespace PLWPF
     /// </summary>
     public partial class findG_RByKey : Window
     {
+        BL.IBL myIBL;
+
+        public static BE.GuestRequest guestRequest;
         public findG_RByKey()
         {
             InitializeComponent();
+        }
+
+        private void ___FinedGuestRequest_Button__Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                guestRequest = myIBL.SearchGetGuestRequestByKey(Int32.Parse(___GuestRequest_key_textbox_.Text));
+
+                Window Update_Guest_Request = new Update_Guest_Request();
+                Update_Guest_Request.Show();
+                this.Close();
+
+            }
+            catch(BE.MissingIdException ex)
+            {
+               ///not implemnted
+            }
         }
     }
 }

@@ -16,10 +16,10 @@ namespace BE
     {
         string ClassName;
         int ID;
-        string explenation;
+        new string  Message;
 
         public MissingIdException(string ClassName2, int id2) { ID = id2; ClassName = ClassName2; }
-        public MissingIdException(string ClassName2, int id2, string exp) { ID = id2; ClassName = ClassName2; explenation = exp; }
+        public MissingIdException(string ClassName2, int id2, string exp) { ID = id2; ClassName = ClassName2; Message = exp; }
     }
     //
     public class IDalreadyExistsException : Exception
