@@ -19,9 +19,12 @@ namespace PLWPF
     /// </summary>
     public partial class HostEntryWindow : Window
     {
+       BE. Host host;
         public HostEntryWindow()
         {
             InitializeComponent();
+            host = new BE.Host();
+            this.hostDeteil.DataContext = host;
         }
 
         private void goBack_Click(object sender, RoutedEventArgs e)

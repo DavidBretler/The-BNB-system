@@ -1,0 +1,15 @@
+﻿<Window x:Class="PLWPF.FindHostWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="FindHostWindow" Height="300" Width="600">
+    <Grid HorizontalAlignment="Left" Height="202" Margin="59,46,0,0" VerticalAlignment="Top" Width="457">
+        <Label Content="נא הכנס מס מארח וסיסמה" HorizontalAlignment="Left" Margin="260,25,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="HostNum" HorizontalAlignment="Left" Height="40" Margin="260,69,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="149"/>
+        <Button Content="מצא פרטי מארח " HorizontalAlignment="Left" Margin="88,125,0,0" VerticalAlignment="Top" Width="111" Height="46" Click="Button_Click"/>
+        <TextBox x:Name="hostPassword" HorizontalAlignment="Left" Height="45" Margin="260,126,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="149"/>
+    </Grid>
+</Window>

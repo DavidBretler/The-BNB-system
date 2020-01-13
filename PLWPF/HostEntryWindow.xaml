@@ -6,8 +6,28 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="HostEntryWindow" Height="450" Width="800">
-    <Grid>
+    <Grid x:Name="hostDeteil">
         <Button x:Name="goBack" Content="הקודם" HorizontalAlignment="Left" Height="54" Margin="634,356,0,0" VerticalAlignment="Top" Width="123" FontSize="24" FontFamily="David" Click="goBack_Click"/>
+        <StackPanel HorizontalAlignment="Left" Height="207" Margin="558,58,0,0" VerticalAlignment="Top" Width="140">
+            <Label Content="קוד מארח"/>
+            <Label Content="שם פרטי"/>
+            <Label Content="שם משפחה"/>
+            <Label Content="מספר טלפון "/>
+            <Label Content="דואר אלקטרוני"/>
+            <Label Content="מספר יחדות "/>
+            <Label Content="חשבון בנק"/>
+            <Label Content="האם קיים אישור מהבנק"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="198" Margin="381,57,0,0" VerticalAlignment="Top" Width="133">
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+            <CheckBox Content="CheckBox"/>
+        </StackPanel>
 
     </Grid>
 </Window>
