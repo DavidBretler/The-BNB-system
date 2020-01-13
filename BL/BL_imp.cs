@@ -180,7 +180,7 @@ namespace BL
             ListOfhosts = getListOfHost();
             for (int i = 0; i < ListOfhosts.Count; i++)
             {
-                if (ListOfhosts[i].getHostKey() == HostKey)
+                if (ListOfhosts[i].HostKey == HostKey)
                 {
                     host = ListOfhosts[i];
                     return true;
@@ -197,11 +197,11 @@ namespace BL
                             string MailAddress, BankAccount HostBankAccuont)
         {
             Host EnterdHost = new Host();
-            EnterdHost.setHostKey(BE.Configuration.getNewHostKey());
-            EnterdHost.setPrivateName(PrivateName);
-            EnterdHost.setFamilyName(FamilyName);
-            EnterdHost.setPhoneNumber(PhoneNumber);
-            EnterdHost.setMailAddress(MailAddress);
+            EnterdHost.HostKey=BE.Configuration.getNewHostKey();
+            EnterdHost.PrivateName=PrivateName;
+            EnterdHost.FamilyName=FamilyName;
+            EnterdHost.PhoneNumber=PhoneNumber;
+            EnterdHost.MailAddress=MailAddress;
 
             return EnterdHost;
 
@@ -226,6 +226,15 @@ namespace BL
             { throw E; }
 
         }
+
+        IEnumerable<HostingUnit> getListOfHostingUnitsByOwnerKey(int OwnerKey)
+        {
+            IEnumerable<HostingUnit> hostingUnitsOfOwner = getListOfHostingUnits().Where(item => item.Owner.HostKey== OwnerKey);
+            if (!hostingUnitsOfOwner.Any())
+                throw new GenralException("host", "אין יחידות אירוח למארח זה.");
+            return hostingUnitsOfOwner;
+        }
+
         #endregion Host
 
         #region Order
@@ -282,10 +291,21 @@ namespace BL
         public GuestRequest GetGuestRequestFromOrder(Order order)
         {
             
-                var guestRequest = dal.getListOfGuestRequest().Find(x => x.GuestRequestKey == order.GuestRequestKey);
+            
+                return SerchGetGuestRequestByKey(order.GuestRequestKey);
+        }
+        /// <summary>
+        /// serches the guest requests by key
+        /// </summary>
+        /// <param name="Key"></param>
+        /// <returns></returns>
+        public GuestRequest SerchGetGuestRequestByKey(int Key)
+        {
+
+            var guestRequest = dal.getListOfGuestRequest().Find(x => x.GuestRequestKey == Key);
             if (guestRequest == null)
-                throw new MissingIdException("GuestRequest", order.GuestRequestKey, "The guest request dos not exsit");
-                return guestRequest;
+                throw new MissingIdException("GuestRequest", Key, "מספר הזמנה שגוי, אנא נסה שוב.");
+            return guestRequest;
         }
         /// <summary>
         /// given a specific order returns the HostingUnit
@@ -301,6 +321,8 @@ namespace BL
             return HostingUnit;
         }
 
+
+
         /// <summary>
         /// given a specific order returns the Host
         /// </summary>
@@ -314,6 +336,13 @@ namespace BL
             return Host;
         }
 
+        public Host SearchForHostByKey(int  Key)
+        {
+            var Host = dal.getListOfHost().Find(x => x.HostKey == Key);
+            if (Host == null)
+                throw new MissingIdException("Host", Key, "The order dos not exsit");
+            return Host;
+        }
 
         /// <summary>
         /// update order status 
@@ -393,11 +422,7 @@ namespace BL
 
             
         }
-        GuestRequest FinedGuestRequestByKEY(int key)
-        {
-
-            return DAL.Dal_imp.FinedGuestRequestByKEY(int key);
-        }
+        
         ///// <summary>
         ///// 
         ///// </summary>
@@ -533,7 +558,7 @@ namespace BL
         /// <param name="currrentOrder"></param>
         public void sendEmail(Order currrentOrder)
         {
-            Console.WriteLine("email have been with order num  " + currrentOrder.OrderKey + "aboute request num :" + currrentOrder.getGuestRequestKey());
+            Console.WriteLine("email have been with order num  " + currrentOrder.OrderKey + "aboute request num :" + currrentOrder.GuestRequestKey);
             currrentOrder.contactCustumerDate = DateTime.Now;
         }
         #endregion Guest Request
@@ -562,7 +587,7 @@ namespace BL
         {
             List<BE.GuestRequest> guestRequests = dal.getListOfGuestRequest();
             var NumGroups = from unit in guestRequests
-                            group unit by unit.getNumOfBeds() into groupNum
+                            group unit by unit.NumOfBeds into groupNum
                             orderby groupNum.Key
                             select groupNum;
             return NumGroups;
@@ -577,7 +602,7 @@ namespace BL
         {
             List<BE.GuestRequest> guestRequests = dal.getListOfGuestRequest();
             var AreaGroups = from unit in guestRequests
-                             group unit by unit.getArea() into groupArea
+                             group unit by unit.Area into groupArea
                              orderby groupArea.Key
                             
                              select groupArea;

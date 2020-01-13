@@ -8,7 +8,6 @@ namespace BL
 {
     public interface IBL
     {
-        GuestRequest FinedGuestRequestByKEY(int key); 
         double updateStatusOfOrder(Order order, int newStatus);
 
         void DeleteHostingUnit(int hostUnitKey);
