@@ -46,11 +46,10 @@ namespace PLWPF
             try
             {
                 guestRequest.GuestRequestKey = BE.Configuration.getNewGuestRequestKey();
-                ibl.NewGuestRequests(guestRequest);
-                DisplayG_R_Key.Visibility = Visibility.Visible;
+                  ibl.NewGuestRequests(guestRequest);              
+                MessageBox.Show("מס ההזמנה שלך הוא :" + guestRequest.GuestRequestKey.ToString() );
                 guestRequest = new BE.GuestRequest();
-                this.newGuestRequestGrid.DataContext = guestRequest;
-               
+                this.newGuestRequestGrid.DataContext = guestRequest;               
                 this.Close();
             }
             catch 

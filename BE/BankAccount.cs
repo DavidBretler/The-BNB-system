@@ -6,11 +6,11 @@ namespace BE
 {
    public class BankAccount
     {
-        string BankName { get; }
-        int BranchNumber { get; }
-        string BranchAddress { get; }
-        string BranchCity { get; }
-        int BankAccountNumber { get; }
+       public string BankName { get; set; }
+        public int BranchNumber { get; set; }
+        public string BranchAddress { get; set; }
+        public string BranchCity { get; set; }
+        public int BankAccountNumber { get; set; }
 
         public override string ToString()
         {

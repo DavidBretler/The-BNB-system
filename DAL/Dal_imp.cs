@@ -153,16 +153,12 @@ namespace DAL
 
         public List<GuestRequest> getListOfGuestRequest()
         {
-
             var temp = from item in DataSource.ListGuestRequests
-                       select item;         
+                       select item;
             List<GuestRequest> temp2 = new List<GuestRequest>();
             foreach (GuestRequest item in temp)
-                temp2.Add(item);
-            GuestRequest[] target = new GuestRequest[temp2.Count];
-            temp2.CopyTo(target);
-
-            return target.ToList();
+             temp2.Add(Cloning.Clone(item));
+            return temp2;
         }
 
         #endregion Guest Requests
@@ -294,16 +290,7 @@ namespace DAL
             return List;
         }
      
-      
-   
-      
-
      
-       
-
-        
-        
-
     }
 }
 
