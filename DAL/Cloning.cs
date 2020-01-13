@@ -38,23 +38,30 @@ namespace DAL
             original.Garden = target.Garden;
             original.ChildrensAttractions = target.ChildrensAttractions;
             original.GuestRequestKey = target.GuestRequestKey;
+            original.Hikes = target.Hikes;
+            original.AirConditioner = target.AirConditioner;
             return target;
         }
-        //public static BE.Order Clone(this BE.Order original)
-        //   {
-        //        BE.Order target = new BE.Order(original.Status, original.CreateDate, original.OrderDate, original.HostingunitKey, original.GuestrequestKey, original.Orderkey);
+        public static BE.Order Clone(this BE.Order original)
+        {
+            BE.Order target = new BE.Order();
+                target.CreateDate = original.CreateDate;
+            target.HostingUnitKey = original.HostingUnitKey;
+            target.GuestRequestKey = original.GuestRequestKey;
+            target.Status = original.Status;
+            target.contactCustumerDate = original.contactCustumerDate;
 
-
-        //         return target;
-        //   }
-        //    public static BE.HostingUnit Clone(this BE.HostingUnit original)
-        //    {
-        //        BE.HostingUnit target = new BE.HostingUnit(original.Owner, original.Area, original.HostingUnitName, original.Hostingunitkey);
-        //        target.Diary = original.Diary;
-
-        //        return target;
-        //    }
-        //};
+            return target;
+      
     }
+        //public static BE.HostingUnit Clone(this BE.HostingUnit original)
+        //{
+        //    BE.HostingUnit target = new BE.HostingUnit(); original.Owner original.Area, original.HostingUnitName, original.Hostingunitkey);
+        //    target.Diary = original.Diary;
+
+        //    return target;
+        //}
+    };
 }
+
 

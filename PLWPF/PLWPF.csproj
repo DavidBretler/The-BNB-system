@@ -55,9 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="findG_RByKey.xaml.cs">
+      <DependentUpon>findG_RByKey.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GuestEntryWindow.xaml.cs">
       <DependentUpon>GuestEntryWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="findG_RByKey.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GuestEntryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

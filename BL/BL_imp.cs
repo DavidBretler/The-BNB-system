@@ -393,7 +393,11 @@ namespace BL
 
             
         }
+        GuestRequest FinedGuestRequestByKEY(int key)
+        {
 
+            return DAL.Dal_imp.FinedGuestRequestByKEY(int key);
+        }
         ///// <summary>
         ///// 
         ///// </summary>
