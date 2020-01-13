@@ -16,7 +16,7 @@ namespace BL
          GuestRequest SearchGetGuestRequestByKey(int Key);
 
         double updateStatusOfOrder(Order order, int newStatus);
-
+         Host SearchForHostByKey(int Key);
         void DeleteHostingUnit(int hostUnitKey);
         void DeleteGuestRequests(BE.GuestRequest TheGuestRequest);
         void DeleteOrder(BE.Order TheOrder);
@@ -28,8 +28,8 @@ namespace BL
         //    int Adults, int Children, int NumOfBeds, Choice Pool, Choice Jacuzzi,
         //    Choice Garden, Choice ChildrensAttractions, Choice AirConditioner
         //    , Choice Hikes);
-
-         void NewGuestRequests(GuestRequest guestRequest);
+        void UpdateHost(BE.Host theHost);
+        void NewGuestRequests(GuestRequest guestRequest);
         void UpdateGuestRequests(string PrivateName
         , string FamilyName, string MailAddress, orderStatus Status,
             DateTime RegistrationDate, DateTime EntryDate,

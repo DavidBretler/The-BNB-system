@@ -16,6 +16,7 @@ namespace DAL
         void UpdateGuestRequests(BE.GuestRequest TheGuestRequest);
         void AddNewHostingUnit(BE.HostingUnit TheHostingUnit);
          void UpdateHostingUnit(BE.HostingUnit TheHostingUnit);
+        void UpdateHost(BE.Host theHost);
         void NewOrder(BE.Order TheOrder);
 
         void UpdateDateOrder(BE.Order TheOrder);

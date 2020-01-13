@@ -14,6 +14,15 @@ namespace BL
         
         IDAL dal = FactoryDal.GetDal();
 
+        private BL_imp() { }
+        protected static BL_imp newBL = null;
+        public static BL_imp GetBL()
+        {
+            if (newBL == null)
+                newBL = new BL_imp();
+            return newBL;
+        }
+
         #region lists      
 
         public List<BankBranch> getListOfBankBranch()
@@ -174,6 +183,8 @@ namespace BL
         /// </summary>
         /// <param name="HostKey"></param>
         /// <returns>return true if exsits and by reference the host</returns>
+       public void UpdateHost(BE.Host theHost)
+        { dal.UpdateHost(theHost); }
         bool cheakIfHostExsits(int HostKey, ref Host host)
         {
             List<Host> ListOfhosts = new List<Host>();
@@ -227,7 +238,7 @@ namespace BL
 
         }
 
-        IEnumerable<HostingUnit> getListOfHostingUnitsByOwnerKey(int OwnerKey)
+       public  IEnumerable<HostingUnit> getListOfHostingUnitsByOwnerKey(int OwnerKey)
         {
             IEnumerable<HostingUnit> hostingUnitsOfOwner = getListOfHostingUnits().Where(item => item.Owner.HostKey== OwnerKey);
             if (!hostingUnitsOfOwner.Any())

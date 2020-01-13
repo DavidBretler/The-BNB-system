@@ -17,19 +17,27 @@ namespace PLWPF
     /// <summary>
     /// Interaction logic for HostEntryWindow.xaml
     /// </summary>
-    public partial class HostEntryWindow : Window
+    public partial class HostEntryWindow : Window 
     {
-       BE. Host host;
+        BL.IBL bl;
+       
         public HostEntryWindow()
         {
             InitializeComponent();
-            host = new BE.Host();
-            this.hostDeteil.DataContext = host;
+           // host = new BE.Host();
+          
         }
 
         private void goBack_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.hostDeteil.DataContext = FindHostWindow.host;
+            //this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            bl = BL.Factory.GetBL();
+            bl.UpdateHost((BE.Host)this.hostDeteil.DataContext);
         }
     }
 }

@@ -171,9 +171,9 @@ namespace DAL
             {
                 List<Order> L = DS.DataSource.ListOrders;
                 for (int i = 0; i < L.Count; i++)
-                    if (L[i].getOrderKey() == TheOrder.getOrderKey())
+                    if (L[i].OrderKey == TheOrder.OrderKey)
                     {
-                        throw new IDalreadyExistsException("Order", TheOrder.getOrderKey());
+                        throw new IDalreadyExistsException("Order", TheOrder.OrderKey);
 
                     }
                 DS.DataSource.ListOrders.Add(TheOrder);
@@ -189,13 +189,13 @@ namespace DAL
                 List<Order> L = DS.DataSource.ListOrders;
                 for (int i = 0; i < L.Count; i++)
 
-                    if (L[i].getOrderKey() == TheOrder.getOrderKey())
+                    if (L[i].OrderKey == TheOrder.OrderKey)
                     {
                         L[i] = TheOrder; //need to check if works good
                         Flag = true;
                     }
                 if (Flag == false)
-                    throw new MissingIdException("Order", TheOrder.getOrderKey(),"Can not update order dos not exsit");
+                    throw new MissingIdException("Order", TheOrder.OrderKey,"Can not update order dos not exsit");
             }
             catch (MissingIdException E) { throw E; }
         }
@@ -240,7 +240,23 @@ namespace DAL
         #endregion Order
 
         #region Host
-
+        public void UpdateHost(BE.Host theHost)
+        {
+            try
+            {
+                bool Flag = false;
+                List<Host> L = DS.DataSource.ListHosts;
+                for (int i = 0; i < L.Count; i++)
+                    if (L[i].HostKey == theHost.HostKey)
+                    {
+                        L[i] = theHost; //need to check if work good
+                        Flag = true;
+                    }
+                if (Flag == false)
+                    throw new MissingIdException("GuestRequest", theHost.HostKey);
+            }
+            catch (MissingIdException E) { throw E; }
+        } 
         public void DeleteHost(BE.Host TheHost)
         {
             try
