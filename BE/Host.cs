@@ -6,33 +6,32 @@ namespace BE
 {
     public class Host
     {
+
         //
-       public int HostKey;
-       public int getHostKey() { return HostKey; }
-        public void setHostKey(int Key) { HostKey = Key; }
+
+       public int HostKey { get; set; }
+
         //
-        public string PrivateName;
-        public string getPrivateName() { return PrivateName; }
-        public void setPrivateName(string NewPrivateName) { PrivateName = NewPrivateName; }
+
+        public int password { get; set; }
         //
-        public string FamilyName;
-        public string getFamilyName() { return FamilyName; }
-        public void setFamilyName(string NewFamilyName) { FamilyName = NewFamilyName; }
+        public string PrivateName { get; set; }
+     
         //
-        public string PhoneNumber;
-        public string getPhoneNumber() { return PhoneNumber; }
-        public void setPhoneNumber(string NewPhoneNumber) { PhoneNumber = NewPhoneNumber; }
+        public string FamilyName { get; set; }
+   
+        //
+        public string PhoneNumber { get; set; }
+      
         //
         public string MailAddress { get; set; }
-        public string getMailAddress() { return MailAddress; }
-        public void setMailAddress(string NewMailAddress) { MailAddress = NewMailAddress; }
+      
         //
         public int  numberOfUints { get; set; }
        
 
-        public BankAccount HostBankAccuont;
-        public BankAccount getHostBankAccuont() { return HostBankAccuont; }
-        public void setHostBankAccuont(BankAccount NewHostBankAccuont) { HostBankAccuont = NewHostBankAccuont; }
+        public BankAccount HostBankAccuont { get; set; }
+     
         //
         public bool CollectionClearance { set; get; }//permision to debit from bank
 
