@@ -25,11 +25,12 @@ namespace PLWPF
         public Update_Guest_Request()
         {
             InitializeComponent();
+      
             guestRequest = findG_RByKey.guestRequest;
             this.UpadateGuestRequestGrid.DataContext = guestRequest;
             ibl = BL.Factory.GetBL();
 
-          //  this.AreaCB.ItemsSource = Enum.GetValues(typeof(BE.Area));
+            this.AreaCB.ItemsSource = Enum.GetValues(typeof(BE.Area));
             this.PoolCB.ItemsSource = Enum.GetValues(typeof(BE.Choice));
             this.JacuzziCB.ItemsSource = Enum.GetValues(typeof(BE.Choice));
             this.GardenCB.ItemsSource = Enum.GetValues(typeof(BE.Choice));
@@ -44,16 +45,16 @@ namespace PLWPF
         {
             try
             {
-                guestRequest.GuestRequestKey = BE.Configuration.getNewGuestRequestKey();
-                ibl.NewGuestRequests(guestRequest);
+                
+                ibl.UpdateGuestRequests(guestRequest);
                 MessageBox.Show("מס ההזמנה שלך הוא :" + guestRequest.GuestRequestKey.ToString());
-                guestRequest = new BE.GuestRequest();
+               
                 this.UpadateGuestRequestGrid.DataContext = guestRequest;
                 this.Close();
             }
-            catch
+            catch(Exception exp)
             {
-
+                MessageBox.Show(exp.ToString()) ;
             }
 
         }
@@ -65,5 +66,7 @@ namespace PLWPF
             // Load data by setting the CollectionViewSource.Source property:
             // guestRequestViewSource.Source = [generic data source]
         }
+
+    
     }
 }

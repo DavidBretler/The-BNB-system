@@ -16,19 +16,18 @@
             <Label Content="שם פרטי"/>
             <Label Content="שם משפחה"/>
             <Label Content="דואר אלקטרוני"/>
-            <Label Content="צ'ק אין"/>
-            <Label Content="צ'ק אאוט"/>
             <Label Content=" מבוגרים"/>
             <Label Content="ילדים"/>
             <Label Content="אזור"/>
             <Label Content="סוג אתר נופש" Height="42"/>
+            <Label Content="צ'ק אאוט"/>
 
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" Height="220                     " Margin="397,60,0,0" VerticalAlignment="Top" Width="189">
             <TextBox Height="32" TextWrapping="Wrap" Text="{Binding PrivateName}" Margin="0,0,-0.2,0" />
             <TextBox Height="28" TextWrapping="Wrap" Text="{Binding FamilyName}" Margin="0,0,-0.2,0"/>
             <TextBox Height="25" TextWrapping="Wrap" Text="{Binding MailAddress}" Margin="0,0,-0.2,0"/>
-            <ComboBox SelectedItem="{Binding Adults}" >
+            <ComboBox SelectedItem="{Binding Adults}" x:Name="AdultsC_B"  >
                 <ComboBoxItem Content="1" />
                 <ComboBoxItem Content="2" />
                 <ComboBoxItem Content="3" />
@@ -44,7 +43,7 @@
 
 
 
-            <ComboBox SelectedItem="{Binding Children}">
+            <ComboBox SelectedItem="{Binding Children}" x:Name="ChildrenC_B">
                 <ComboBoxItem Content="0" />
                 <ComboBoxItem Content="1" />
                 <ComboBoxItem Content="2" />
@@ -56,10 +55,11 @@
                 <ComboBoxItem Content="8" />
                 <ComboBoxItem Content="9" />
                 <ComboBoxItem Content="10" />
+              
             </ComboBox>
             <ComboBox SelectedItem="{Binding Area}" x:Name="AreaCB" />
             <ComboBox SelectedItem = "{Binding ResortType}" x:Name="ResortTypeCB" />
-            <ComboBox/>
+        
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Left" Height="220" Margin="114,71,0,0" VerticalAlignment="Top" Width="86">
@@ -80,8 +80,8 @@
             <ComboBox SelectedItem="{Binding Hikes}" x:Name="HikesCB"/>
         </StackPanel>
         <TextBlock HorizontalAlignment="Left" Height="67" Margin="10,224,0,0" TextWrapping="Wrap" Text="{Binding GuestRequestKey}" VerticalAlignment="Top" Width="212" x:Name="DisplayG_R_Key" Visibility="Collapsed"/>
-        <Calendar HorizontalAlignment="Left" Margin="205,39,0,0" VerticalAlignment="Top" SelectedDate="{Binding EntryDate}"/>
-        <Calendar HorizontalAlignment="Left" Margin="205,224,0,0" VerticalAlignment="Top" SelectedDate="{Binding EndDate}"/>
+        <Calendar HorizontalAlignment="Left" Margin="205,39,0,0" VerticalAlignment="Top" SelectedDate="{Binding EntryDate, Mode=TwoWay}" />
+        <Calendar HorizontalAlignment="Left" Margin="205,224,0,0" VerticalAlignment="Top" SelectedDate="{Binding EndDate ,Mode=TwoWay}"/>
         <PasswordBox HorizontalAlignment="Left" Margin="552,340,0,0" VerticalAlignment="Top" Height="50" Width="154"/>
 
     </Grid>

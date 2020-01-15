@@ -120,7 +120,7 @@ namespace DAL
                 for (int i = 0; i < L.Count; i++)
                     if (L[i].getGuestRequestKey() == TheGuestRequest.getGuestRequestKey())
                     {
-                        L[i] = TheGuestRequest; //need to check if work good
+                        L[i] = TheGuestRequest;
                         Flag = true;
                     }
                 if (Flag == false)

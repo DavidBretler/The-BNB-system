@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,16 +16,16 @@ using System.Windows.Shapes;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for findG_RByKey.xaml
+    /// Interaction logic for fiend_G_RByKe_Delete.xaml
     /// </summary>
-    public partial class findG_RByKey : Window
+    public partial class fiend_G_RByKe_Delete : Window
     {
         BL.IBL myIBL;
 
-     
+
 
         public static BE.GuestRequest guestRequest;
-        public findG_RByKey()
+        public fiend_G_RByKe_Delete()
         {
             InitializeComponent();
         }
@@ -34,23 +35,30 @@ namespace PLWPF
 
             try
             {
-             
+
                 myIBL = BL.Factory.GetBL();
-            
                 int temp = Int32.Parse(___GuestRequest_key_textbox_.Text);
                 guestRequest = myIBL.SearchGetGuestRequestByKey(temp);
+                if(MessageBox.Show("האם אתה בטוח שברצונך לבטל את ההזמנה?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                    myIBL.DeleteGuestRequests(guestRequest);
+                }
+            else
+                {
+                    this.Close();
+                }
 
-                Window Update_Guest_Request = new Update_Guest_Request();
-                Update_Guest_Request.Show();
-                this.Close();
+                //Window Update_Guest_Request = new Update_Guest_Request();
+                //Update_Guest_Request.Show();
+                //this.Close();
 
             }
-            catch(BE.MissingIdException ex)
+            catch (BE.MissingIdException ex)
             {
-               ///not implemnted
+                ///not implemnted
             }
         }
 
-      
+
     }
 }
