@@ -46,5 +46,13 @@ namespace PLWPF
             Window GuestEntryWindow  = new GuestEntryWindow();
             GuestEntryWindow.Show();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            System.Windows.Data.CollectionViewSource hostViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("hostViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // hostViewSource.Source = [generic data source]
+        }
     }
 }

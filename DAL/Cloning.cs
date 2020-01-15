@@ -55,7 +55,7 @@ namespace DAL
       
     }
         public static BE.HostingUnit Clone(this BE.HostingUnit original)
-        {//לסיים העתקת היומן !!
+        {
             BE.HostingUnit target = new BE.HostingUnit();
             target.Owner = original.Owner;
           target.Area = original.Area;
@@ -73,7 +73,8 @@ namespace DAL
             DateTime time = DateTime.Today, time2 = DateTime.Today.AddMonths(11);
             while(time<time2)
             {
-              //  target.Diary[time] = original.Diary[time];             
+                target[time] = original[time];
+                time=time.AddDays(1);
             }
 
             return target;
@@ -88,7 +89,7 @@ namespace DAL
                 target.PhoneNumber = original.PhoneNumber;
                 target.MailAddress = original.MailAddress;
                 target.numberOfUints = original.numberOfUints;
-
+            target.HostBankAccuont = new BankAccount();
             target.HostBankAccuont.BankName = original.HostBankAccuont.BankName;
             target.HostBankAccuont.BankAccountNumber = original.HostBankAccuont.BankAccountNumber;
             target.HostBankAccuont.BranchAddress = original.HostBankAccuont.BranchAddress;

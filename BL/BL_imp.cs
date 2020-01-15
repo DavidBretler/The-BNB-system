@@ -163,7 +163,7 @@ namespace BL
                         if (item.Status == (Status)2)
                         
                             if (GetGuestRequestFromOrder(item).EntryDate > DateTime.Now)
-                                throw new keyBeenBooked("hostingUint", hostUnitKey, problomaticOrderS);                                       
+                                throw new keyBeenBooked("hostingUint", hostUnitKey, problomaticOrderS," מס ההזמנה הוזמן כבר");                                       
                                 dal.DeleteHostingUnit(hostUnitKey);
                 }
                 else
@@ -351,7 +351,7 @@ namespace BL
         {
             var Host = dal.getListOfHost().Find(x => x.HostKey == Key);
             if (Host == null)
-                throw new MissingIdException("Host", Key, "The order dos not exsit");
+                throw new MissingIdException("Host", Key, "The host dose not exsit");         
             return Host;
         }
 
@@ -534,7 +534,7 @@ namespace BL
                 if (problomaticOrderS.Count > 0)
                 {
 
-                    throw new keyBeenBooked("hostingUint", TheGuestRequest.GuestRequestKey, problomaticOrderS);
+                    throw new keyBeenBooked("hostingUint", TheGuestRequest.GuestRequestKey, problomaticOrderS," מס ההזמנה הוזמן כבר");
                 }
                 else
                     dal.DeleteGuestRequests(TheGuestRequest);

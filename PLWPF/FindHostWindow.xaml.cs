@@ -29,15 +29,19 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ibl = BL.Factory.GetBL();
-           // BE.Host host = new BE.Host();
-            Window HostEntryWindow = new HostEntryWindow();
-            host = ibl.SearchForHostByKey(Int32.Parse(HostNum.Text));
-           this.DataContext = host;
-           if (host.password == Int32.Parse(hostPassword.Text))               
-               HostEntryWindow.Show();
-            else
-                MessageBox.Show("אחד הפרטים שהכנסת אינו נכון");
+            try
+            {
+                ibl = BL.Factory.GetBL();
+                // BE.Host host = new BE.Host();
+                Window HostEntryWindow = new HostEntryWindow();
+                host = ibl.SearchForHostByKey(Int32.Parse(HostNum.Text));
+                this.DataContext = host;
+                if (host.password == Int32.Parse(hostPassword.Text))
+                    HostEntryWindow.Show();
+                else
+                    MessageBox.Show("אחד הפרטים שהכנסת אינו נכון");
+            }
+            catch (Exception E) { MessageBox.Show(E.ToString()); }
         }
     }
 }
