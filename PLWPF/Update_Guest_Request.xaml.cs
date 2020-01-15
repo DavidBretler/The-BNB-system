@@ -29,7 +29,7 @@ namespace PLWPF
             this.UpadateGuestRequestGrid.DataContext = guestRequest;
             ibl = BL.Factory.GetBL();
 
-            this.AreaCB.ItemsSource = Enum.GetValues(typeof(BE.Area));
+          //  this.AreaCB.ItemsSource = Enum.GetValues(typeof(BE.Area));
             this.PoolCB.ItemsSource = Enum.GetValues(typeof(BE.Choice));
             this.JacuzziCB.ItemsSource = Enum.GetValues(typeof(BE.Choice));
             this.GardenCB.ItemsSource = Enum.GetValues(typeof(BE.Choice));
@@ -57,6 +57,14 @@ namespace PLWPF
 
             }
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            System.Windows.Data.CollectionViewSource guestRequestViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("guestRequestViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // guestRequestViewSource.Source = [generic data source]
         }
     }
 }

@@ -7,8 +7,12 @@
         mc:Ignorable="d"
         Title="HostEntryWindow" Height="450" Width="800">
     <Grid x:Name="hostDeteil">
-        <Button x:Name="goBack" Content="הצג פרטים" HorizontalAlignment="Left" Height="54" Margin="634,356,0,0" VerticalAlignment="Top" Width="123" FontSize="24" FontFamily="David" Click="goBack_Click"/>
-        <StackPanel HorizontalAlignment="Left" Height="207" Margin="558,58,0,0" VerticalAlignment="Top" Width="140">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="goBack" Content="הצג פרטים" HorizontalAlignment="Left" Height="54" Margin="634,356,0,0" VerticalAlignment="Top" Width="123" FontSize="24" FontFamily="David" Click="goBack_Click" Grid.ColumnSpan="2"/>
+        <StackPanel HorizontalAlignment="Left" Height="207" Margin="558,58,0,0" VerticalAlignment="Top" Width="140" Grid.ColumnSpan="2">
             <Label Content="קוד מארח"/>
             <Label Content="שם פרטי"/>
             <Label Content="שם משפחה"/>
@@ -18,20 +22,20 @@
             <Label Content="חשבון בנק"/>
             <Label Content="האם קיים אישור מהבנק"/>
         </StackPanel>
-        <StackPanel x:Name="HostD" HorizontalAlignment="Left" Height="208" Margin="381,57,0,0" VerticalAlignment="Top" Width="133">
+        <StackPanel x:Name="HostD" HorizontalAlignment="Left" Height="208" Margin="381,57,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2">
             <TextBox Height="27" TextWrapping="Wrap" Text="{Binding HostKey }" Margin="0,0,-0.2,0"/>
             <TextBox Height="29" TextWrapping="Wrap" Text="{Binding PrivateName }" Margin="0,0,-0.2,0"/>
             <TextBox Height="29" TextWrapping="Wrap" Text="{Binding FamilyName }" Margin="0,0,-0.2,0"/>
             <TextBox Height="28" TextWrapping="Wrap" Text="{Binding PhoneNumber }" Margin="0,0,-0.2,0"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding MailAddress }"/>
             <TextBox Height="27" TextWrapping="Wrap" Text="{Binding numberOfUints }" Margin="0,0,-0.2,0"/>
-            <TextBox Height="26" TextWrapping="Wrap" Text="{Binding HostBankAccuont }" Margin="0,0,-0.2,0"/>
+            <TextBox x:Name="BankText" Height="26" TextWrapping="Wrap" Text="" Margin="0,0,-0.2,0" />
             <CheckBox Content="CheckBox" IsChecked="{Binding CollectionClearance }"/>
         </StackPanel>
-        <Button Content="עדכן פרטים" HorizontalAlignment="Left" Height="50" Margin="381,329,0,0" VerticalAlignment="Top" Width="133" Click="Button_Click"/>
-        <Button Content="הצג יחדות אירוח" HorizontalAlignment="Left" Height="67" Margin="96,84,0,0" VerticalAlignment="Top" Width="146"/>
-        <Button Content="הצג בקשות הזמנה" HorizontalAlignment="Left" Height="72" Margin="96,193,0,0" VerticalAlignment="Top" Width="146"/>
-        <Button Content="הצג הזמנות שלי " HorizontalAlignment="Left" Height="65" Margin="96,314,0,0" VerticalAlignment="Top" Width="146"/>
+        <Button Content="עדכן פרטים" HorizontalAlignment="Left" Height="50" Margin="381,329,0,0" VerticalAlignment="Top" Width="133" Click="Button_Click" Grid.ColumnSpan="2"/>
+        <Button Content="הצג יחדות אירוח" HorizontalAlignment="Left" Height="67" Margin="96,84,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2"/>
+        <Button Content="הצג בקשות הזמנה" HorizontalAlignment="Left" Height="72" Margin="96,193,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2"/>
+        <Button Content="הצג הזמנות שלי " HorizontalAlignment="Left" Height="65" Margin="96,314,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

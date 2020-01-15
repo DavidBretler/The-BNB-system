@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PLWPF
-{
+{//  לראות האם להשתמש בuser control  !!
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
