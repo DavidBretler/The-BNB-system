@@ -29,8 +29,9 @@ namespace PLWPF
         }
 
         private void goBack_Click(object sender, RoutedEventArgs e)
-        {
+        {    
             this.hostDeteil.DataContext = FindHostWindow.host;
+            BankText.Text = FindHostWindow.host.HostBankAccuont.BankAccountNumber.ToString();
             //this.Close();
         }
 
@@ -39,5 +40,7 @@ namespace PLWPF
             bl = BL.Factory.GetBL();
             bl.UpdateHost((BE.Host)this.hostDeteil.DataContext);
         }
+
+
     }
 }

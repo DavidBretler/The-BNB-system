@@ -33,8 +33,8 @@ namespace DAL
             {
                 List<HostingUnit> L = DS.DataSource.ListHostingUnits;
                 for (int i = 0; i < L.Count; i++)
-                    if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
-                        throw new IDalreadyExistsException("HostingUnit", TheHostingUnit.getHostingUnitKey());
+                    if (L[i].HostingUnitKey == TheHostingUnit.HostingUnitKey)
+                        throw new IDalreadyExistsException("HostingUnit", TheHostingUnit.HostingUnitKey);
                 DS.DataSource.ListHostingUnits.Add(TheHostingUnit);
             }
             catch (IDalreadyExistsException E) { throw E; }
@@ -49,13 +49,13 @@ namespace DAL
                 bool Flag = false;
                 List<HostingUnit> L = DS.DataSource.ListHostingUnits;
                 for (int i = 0; i < L.Count; i++)
-                    if (L[i].getHostingUnitKey() == TheHostingUnit.getHostingUnitKey())
+                    if (L[i].HostingUnitKey == TheHostingUnit.HostingUnitKey)
                     {
                         L[i] = TheHostingUnit; 
                         Flag = true;
                     }
                 if (Flag == false)
-                    throw new MissingIdException("HostingUnit", TheHostingUnit.getHostingUnitKey());
+                    throw new MissingIdException("HostingUnit", TheHostingUnit.HostingUnitKey);
             }
             catch (MissingIdException E) { throw E; }
 
@@ -69,7 +69,7 @@ namespace DAL
                 List<HostingUnit> L = DS.DataSource.ListHostingUnits;
                 for (int i = 0; i < L.Count; i++)
 
-                    if (L[i].getHostingUnitKey() == hostUnitKey)
+                    if (L[i].HostingUnitKey == hostUnitKey)
                     {
                         L.Remove(L[i]); //need to check if work good
                         Flag = true;
@@ -84,14 +84,11 @@ namespace DAL
         {   //לעשות שכפול לרשימה של היחידות אירוח 
 
             var temp = from item in DataSource.ListHostingUnits
-                       select item;          
+                       select item;
             List<HostingUnit> temp2 = new List<HostingUnit>();
-            foreach (HostingUnit item in temp)
-                temp2.Add(item);
-            HostingUnit[] target = new HostingUnit[temp2.Count];
-            temp2.CopyTo(target);
-
-            return target.ToList();     
+            foreach (var item in temp)
+                temp2.Add(Cloning.Clone(item));
+            return temp2;
         }
 
         #endregion Hosting Unit
@@ -220,22 +217,12 @@ namespace DAL
          
         public List<Order> getListOfOrder()
         {
-          //  List<Order> temp2 = DS.DataSource.ListOrders;
-
-           // if (temp2.Count!=0)
-          //  {
-                var temp = from item in DS.DataSource.ListOrders
-                           select item;
-                List<Order> temp2 = new List<Order>();
-                foreach (Order item in temp)
-                    temp2.Add(item);
-                Order[] target = new Order[temp2.Count];
-
-                temp2.CopyTo(target);
-
-                return target.ToList();
-         //   }
-         //   else { Order[] target = new Order[4]; return target.ToList(); }
+            var temp = from item in DataSource.ListOrders
+                       select item;
+            List<Order> temp2 = new List<Order>();
+            foreach (var item in temp)
+                temp2.Add(Cloning.Clone(item));
+            return temp2;
         }
         #endregion Order
 
@@ -279,17 +266,12 @@ namespace DAL
 
         public List<BE.Host> getListOfHost()
         {
-           var temp = from item in DS.DataSource.ListHosts
-                      select item;
-
-            // List<Host> temp2 = (List< Host > )temp;
-            List<Host> temp2= new List<Host>();          
-            foreach (Host item in temp)
-                temp2.Add(item);
-            Host[] target = new Host[temp2.Count];
-            temp2.CopyTo(target);
-
-            return target.ToList();
+            var temp = from item in DataSource.ListHosts
+                       select item;
+            List<Host> temp2 = new List<Host>();
+            foreach (var item in temp)
+                temp2.Add(Cloning.Clone(item));
+            return temp2;
         }
 
         #endregion Host

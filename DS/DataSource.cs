@@ -8,6 +8,7 @@ namespace DS
     public class DataSource
 
     {
+
         public static List<BE.Host> ListHosts = new List<BE.Host>
         {
             new BE.Host()
@@ -18,8 +19,9 @@ namespace DS
              PhoneNumber="05225461",
              MailAddress="asd@aaa.com",
              numberOfUints =5,
-            // HostBankAccuont =ListBankBranches[0],
-             CollectionClearance=true, //permision to debit from bank
+             HostBankAccuont= new BankAccount(),
+
+        CollectionClearance=true, //permision to debit from bank
             },
      new BE.Host()
             {
@@ -142,6 +144,6 @@ namespace DS
 
         };
         
-        }
-   
+    }
+    
 }

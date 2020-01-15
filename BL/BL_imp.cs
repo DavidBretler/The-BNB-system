@@ -85,18 +85,18 @@ namespace BL
             {
                 HostingUnit EnterdHostingUnit = new HostingUnit();
                 EnterdHostingUnit.HostingUnitKey = Configuration.getNewHostingUnitKey();
-                EnterdHostingUnit.setHostingUnitName(HostingUnitName);
-                EnterdHostingUnit.setNumOfRooms(NumOfRooms);
-                EnterdHostingUnit.setNumOfBeds(NumOfBeds);
-                EnterdHostingUnit.setPool(pool);
-                EnterdHostingUnit.setJacuzzi(Jacuzzi);
-                EnterdHostingUnit.setArea(Area);
-                EnterdHostingUnit.setGarden(Garden);
-                EnterdHostingUnit.setAirConditioner(AirConditioner);
-                EnterdHostingUnit.setChildrensAttractions(ChildrensAttractions);
-                EnterdHostingUnit.setType(Type);
-                EnterdHostingUnit.setHikes(Hikes);
-                EnterdHostingUnit.setOwner(host);
+                EnterdHostingUnit.HostingUnitName=HostingUnitName;
+                EnterdHostingUnit.NumOfRooms=NumOfRooms;
+                EnterdHostingUnit.NumOfBeds=NumOfBeds;
+                EnterdHostingUnit.pool=pool;
+                EnterdHostingUnit.Jacuzzi=Jacuzzi;
+                EnterdHostingUnit.Area=Area;
+                EnterdHostingUnit.Garden=Garden;
+                EnterdHostingUnit.AirConditioner=(AirConditioner);
+                EnterdHostingUnit.ChildrensAttractions=(ChildrensAttractions);
+                EnterdHostingUnit.Type=(Type);
+                EnterdHostingUnit.Hikes=(Hikes);
+                EnterdHostingUnit.Owner=(host);
                 dal.AddNewHostingUnit(EnterdHostingUnit);
             }
             else
@@ -128,18 +128,18 @@ namespace BL
             {
                 HostingUnit EnterdHostingUnit = new HostingUnit();
                 EnterdHostingUnit.HostingUnitKey = Configuration.getNewHostingUnitKey();
-                EnterdHostingUnit.setHostingUnitName(HostingUnitName);
-                EnterdHostingUnit.setNumOfRooms(NumOfRooms);
-                EnterdHostingUnit.setNumOfBeds(NumOfBeds);
-                EnterdHostingUnit.setPool(pool);
-                EnterdHostingUnit.setJacuzzi(Jacuzzi);
-                EnterdHostingUnit.setArea(Area);
-                EnterdHostingUnit.setGarden(Garden);
-                EnterdHostingUnit.setAirConditioner(AirConditioner);
-                EnterdHostingUnit.setChildrensAttractions(ChildrensAttractions);
-                EnterdHostingUnit.setType(Type);
-                EnterdHostingUnit.setHikes(Hikes);
-                EnterdHostingUnit.setOwner(host);
+                EnterdHostingUnit.HostingUnitName=HostingUnitName;
+                EnterdHostingUnit.NumOfRooms=NumOfRooms;
+                EnterdHostingUnit.NumOfBeds=NumOfBeds;
+                EnterdHostingUnit.pool=pool;
+                EnterdHostingUnit.Jacuzzi=Jacuzzi;
+                EnterdHostingUnit.Area=Area;
+                EnterdHostingUnit.Garden=Garden;
+                EnterdHostingUnit.AirConditioner=(AirConditioner);
+                EnterdHostingUnit.ChildrensAttractions=(ChildrensAttractions);
+                EnterdHostingUnit.Type=(Type);
+                EnterdHostingUnit.Hikes=(Hikes);
+                EnterdHostingUnit.Owner=(host);
                 dal.UpdateHostingUnit(EnterdHostingUnit);
             }
             else

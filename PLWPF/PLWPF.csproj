@@ -135,6 +135,20 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\BE.BankAccount.datasource" />
+    <None Include="Properties\DataSources\BE.BankBranch.datasource" />
+    <None Include="Properties\DataSources\BE.Clonable.datasource" />
+    <None Include="Properties\DataSources\BE.Configuration.datasource" />
+    <None Include="Properties\DataSources\BE.DateException.datasource" />
+    <None Include="Properties\DataSources\BE.GenralException.datasource" />
+    <None Include="Properties\DataSources\BE.GuestRequest.datasource" />
+    <None Include="Properties\DataSources\BE.Host.datasource" />
+    <None Include="Properties\DataSources\BE.HostingUnit.datasource" />
+    <None Include="Properties\DataSources\BE.IDalreadyExistsException.datasource" />
+    <None Include="Properties\DataSources\BE.keyBeenBooked.datasource" />
+    <None Include="Properties\DataSources\BE.MisinigClearanceException.datasource" />
+    <None Include="Properties\DataSources\BE.MissingIdException.datasource" />
+    <None Include="Properties\DataSources\BE.Order.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

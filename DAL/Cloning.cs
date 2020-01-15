@@ -54,14 +54,52 @@ namespace DAL
             return target;
       
     }
-        //public static BE.HostingUnit Clone(this BE.HostingUnit original)
-        //{
-        //    BE.HostingUnit target = new BE.HostingUnit(); original.Owner original.Area, original.HostingUnitName, original.Hostingunitkey);
-        //    target.Diary = original.Diary;
+        public static BE.HostingUnit Clone(this BE.HostingUnit original)
+        {//לסיים העתקת היומן !!
+            BE.HostingUnit target = new BE.HostingUnit();
+            target.Owner = original.Owner;
+          target.Area = original.Area;
+            target.HostingUnitName = original.HostingUnitName;
+            target.HostingUnitKey = original.HostingUnitKey;
+            target.NumOfRooms = original.NumOfRooms;
+            target.NumOfBeds = original.NumOfBeds;
+            target.pool = original.pool;
+            target.Jacuzzi = original.Jacuzzi;
+            target.Garden = original.Garden;
+            target.AirConditioner = original.AirConditioner;
+            target.ChildrensAttractions = original.ChildrensAttractions;
+            target.Type = original.Type;
+            target.Hikes = original.Hikes;
+            DateTime time = DateTime.Today, time2 = DateTime.Today.AddMonths(11);
+            while(time<time2)
+            {
+              //  target.Diary[time] = original.Diary[time];             
+            }
 
-        //    return target;
-        //}
-    };
+            return target;
+        }
+        public static BE.Host Clone(this BE.Host original)
+        {
+            BE.Host target = new BE.Host();
+            target.HostKey = original.HostKey;
+                target.password = original.password;
+                target.PrivateName = original.PrivateName;
+                target.FamilyName = original.FamilyName;
+                target.PhoneNumber = original.PhoneNumber;
+                target.MailAddress = original.MailAddress;
+                target.numberOfUints = original.numberOfUints;
+
+            target.HostBankAccuont.BankName = original.HostBankAccuont.BankName;
+            target.HostBankAccuont.BankAccountNumber = original.HostBankAccuont.BankAccountNumber;
+            target.HostBankAccuont.BranchAddress = original.HostBankAccuont.BranchAddress;
+            target.HostBankAccuont.BranchCity = original.HostBankAccuont.BranchCity;
+            target.HostBankAccuont.BranchNumber = original.HostBankAccuont.BranchNumber;
+           
+            target.CollectionClearance = original.CollectionClearance;
+
+            return target;
+        }
+        };
 }
 
 
