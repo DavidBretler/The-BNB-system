@@ -20,10 +20,11 @@ namespace PLWPF
     public partial class HostEntryWindow : Window 
     {
         BL.IBL bl;
-       
+      
         public HostEntryWindow()
         {
-            InitializeComponent();
+           
+                InitializeComponent();
            // host = new BE.Host();
           
         }
@@ -37,8 +38,14 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            bl = BL.Factory.GetBL();
-            bl.UpdateHost((BE.Host)this.hostDeteil.DataContext);
+            try
+            {
+                bl = BL.Factory.GetBL();
+                bl.UpdateHost((BE.Host)this.hostDeteil.DataContext);
+                MessageBox.Show("פרטיך עודכנו בהצלחה ");
+            }
+            catch (Exception E) { MessageBox.Show( E.ToString()); }
+            //catch (BE.MissingIdException E2) { MessageBox.Show(E2.ToString()); }
         }
 
 

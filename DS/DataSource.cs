@@ -31,7 +31,7 @@ namespace DS
              PhoneNumber="0527893446",
              MailAddress="atyl@aaa.com",
              numberOfUints =6,
-          //   HostBankAccuont =ListBankBranches[0],
+             HostBankAccuont= new BankAccount(),
              CollectionClearance=true, //permision to debit from bank
             },
         };
