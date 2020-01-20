@@ -125,12 +125,13 @@ namespace DS
 
             new BE.Order()
             {
-             HostingUnitKey=1,
+             HostingUnitKey=1,           
              GuestRequestKey=91,
             OrderKey=BE.Configuration.getNewOrderKey() ,
             Status=0 ,  
            CreateDate=new DateTime(2020,1,10) ,
            contactCustumerDate=new DateTime(2020,6,10),
+
             },
            new BE.Order()
             {

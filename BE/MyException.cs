@@ -21,7 +21,7 @@ namespace BE
         // special constructor for our custom exception       
         override public string ToString()
         {
-            return "OverloadCapacityException: "+ Message;
+            return  Message;
         }
     }
     public class MissingIdException : Exception

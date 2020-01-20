@@ -28,6 +28,10 @@ namespace BE
 
 
         public DateTime contactCustumerDate { get; set; }
+        public Order GetCopy()
+        {
+            return (Order)this.MemberwiseClone();
+        }
 
         public override string ToString()
         {

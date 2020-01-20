@@ -6,7 +6,7 @@ namespace BE
     {
         public int GuestRequestKey { get; set; }
 
-        public int getGuestRequestKey() { return GuestRequestKey; }
+      
         //
         public string PrivateName { get; set; }
         public string FamilyName { get; set; }
@@ -58,7 +58,10 @@ namespace BE
         public Choice AirConditioner  { get; set; }
         
         public Choice Hikes { get; set; }
-       
+        public GuestRequest GetCopy()
+        {
+            return (GuestRequest)this.MemberwiseClone();
+        }
 
         public override string ToString() 
         {

@@ -101,9 +101,9 @@ namespace DAL
             {
                 List<GuestRequest> L = DS.DataSource.ListGuestRequests;
                 for (int i = 0; i < L.Count; i++)
-                    if (L[i].getGuestRequestKey() == TheGuestRequest.getGuestRequestKey())
+                    if (L[i].GuestRequestKey == TheGuestRequest.GuestRequestKey)
                     {
-                        throw new IDalreadyExistsException("GuestRequest", TheGuestRequest.getGuestRequestKey());
+                        throw new IDalreadyExistsException("GuestRequest", TheGuestRequest.GuestRequestKey);
 
                     }
                 DS.DataSource.ListGuestRequests.Add(TheGuestRequest);
@@ -118,13 +118,13 @@ namespace DAL
                 bool Flag = false;
                 List<GuestRequest> L = DS.DataSource.ListGuestRequests;
                 for (int i = 0; i < L.Count; i++)
-                    if (L[i].getGuestRequestKey() == TheGuestRequest.getGuestRequestKey())
+                    if (L[i].GuestRequestKey == TheGuestRequest.GuestRequestKey)
                     {
                         L[i] = TheGuestRequest;
                         Flag = true;
                     }
                 if (Flag == false)
-                    throw new MissingIdException("GuestRequest", TheGuestRequest.getGuestRequestKey());
+                    throw new MissingIdException("GuestRequest", TheGuestRequest.GuestRequestKey);
             }
             catch (MissingIdException E) { throw E; }
         }

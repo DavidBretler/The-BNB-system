@@ -55,5 +55,12 @@ namespace PLWPF
             hostingWin.Show();
 
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            
+            Window Order_ByHost = new Order_ByHost();
+            Order_ByHost.Show();
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace BL
          Host SearchForHostByKey(int Key);
         GuestRequest GetGuestRequestFromOrder(Order order);
          GuestRequest SearchGetGuestRequestByKey(int Key);
-
+        IEnumerable<Order> getListOfOrdersByOwnerKey(int OwnerKey);
         double updateStatusOfOrder(Order order, int newStatus);
         void DeleteHostingUnit(int hostUnitKey);
         void DeleteGuestRequests(BE.GuestRequest TheGuestRequest);

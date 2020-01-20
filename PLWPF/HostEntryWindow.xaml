@@ -23,7 +23,7 @@
             <Label Content="האם קיים אישור מהבנק"/>
         </StackPanel>
         <StackPanel x:Name="HostD" HorizontalAlignment="Left" Height="208" Margin="439,161,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2">
-            <TextBox Height="27" TextWrapping="Wrap" Text="{Binding HostKey }" Margin="0,0,-0.2,0"/>
+            <TextBox Height="27" TextWrapping="Wrap" Text="{Binding HostKey }" Margin="0,0,-0.2,0" IsEnabled="False"/>
             <TextBox Height="29" TextWrapping="Wrap" Text="{Binding PrivateName }" Margin="0,0,-0.2,0"/>
             <TextBox Height="29" TextWrapping="Wrap" Text="{Binding FamilyName }" Margin="0,0,-0.2,0"/>
             <TextBox Height="28" TextWrapping="Wrap" Text="{Binding PhoneNumber }" Margin="0,0,-0.2,0"/>
@@ -35,7 +35,7 @@
         <Button Content="עדכן פרטים" HorizontalAlignment="Left" Height="50" Margin="439,88,0,0" VerticalAlignment="Top" Width="133" Click="Button_Click" Grid.ColumnSpan="2"/>
         <Button Content="הצג יחדות אירוח" HorizontalAlignment="Left" Height="67" Margin="96,84,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2" Click="Button_Click_1"/>
         <Button Content="הצג בקשות הזמנה" HorizontalAlignment="Left" Height="72" Margin="96,193,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2"/>
-        <Button Content="הצג הזמנות שלי " HorizontalAlignment="Left" Height="65" Margin="96,314,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2" />
+        <Button Content="הצג הזמנות שלי " HorizontalAlignment="Left" Height="65" Margin="96,314,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2" Click="Button_Click_2" />
 
     </Grid>
 </Window>

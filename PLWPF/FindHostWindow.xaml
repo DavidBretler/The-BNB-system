@@ -16,9 +16,9 @@
         <Grid HorizontalAlignment="Left" Height="100" Margin="-167,16.6,0,-86.2" Grid.Row="3" VerticalAlignment="Top" Width="100"/>
 
         <Label Content="נא הכנס מס מארח וסיסמה" HorizontalAlignment="Left" Margin="260,25,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="HostNum" HorizontalAlignment="Left" Height="40" Margin="260,69,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="HostNum" HorizontalAlignment="Left" Height="40" Margin="260,69,0,0" TextWrapping="Wrap" Text="host number" VerticalAlignment="Top" Width="149"/>
         <Button Content="מצא פרטי מארח " HorizontalAlignment="Left" Margin="88,125,0,0" VerticalAlignment="Top" Width="111" Height="46" Click="Button_Click"/>
-        <TextBox x:Name="hostPassword" HorizontalAlignment="Left" Height="45" Margin="260,126,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="hostPassword" HorizontalAlignment="Left" Height="45" Margin="260,126,0,0" TextWrapping="Wrap" Text="passward" VerticalAlignment="Top" Width="149"/>
     </Grid>
 
 

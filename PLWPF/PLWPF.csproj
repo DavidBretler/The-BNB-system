@@ -70,8 +70,8 @@
     <Compile Include="HostigUnitWin.xaml.cs">
       <DependentUpon>HostigUnitWin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="hostingWin2.xaml.cs">
-      <DependentUpon>hostingWin2.xaml</DependentUpon>
+    <Compile Include="Order_ByHost.xaml.cs">
+      <DependentUpon>Order_ByHost.xaml</DependentUpon>
     </Compile>
     <Compile Include="Update_Guest_Request.xaml.cs">
       <DependentUpon>Update_Guest_Request.xaml</DependentUpon>
@@ -100,10 +100,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="hostingWin2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -124,6 +120,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NewGuestRequestWindoy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Order_ByHost.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

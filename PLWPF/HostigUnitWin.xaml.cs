@@ -22,34 +22,63 @@ namespace PLWPF
        
             BL.IBL bl;
         BE.HostingUnit hostingUnit;
-        public  HostigUnitWin()
+        BE.GuestRequest GuestRequest;
+        public HostigUnitWin()
         {
-            InitializeComponent();
-            hostingUnit = null;
-            bl = BL.Factory.GetBL();
+            try
+            {
+                InitializeComponent();
+                hostingUnit = null;
+                GuestRequest = null;
+                bl = BL.Factory.GetBL();
 
-            this.studentsComboBox.ItemsSource = bl.getListOfHostingUnitsByOwnerKey(FindHostWindow.host.HostKey).ToList();
-           this.studentsComboBox.DisplayMemberPath =  "HostingUnitName";
-            this.studentsComboBox.SelectedValuePath = "HostingUnitKey";
-            //this.DataContext = studentsComboBox.SelectedItem;
-           //// this.studentsComboBox.ItemsSource = bl.GetAllStudents();
-           // this.studentsComboBox.DisplayMemberPath = "StudentName";
-           // this.studentsComboBox.SelectedValuePath = "StudentId";
-           //// this.registerSemesterComboBox.ItemsSource = Enum.GetValues(typeof(BE.Semester));
-           // this.registerSemesterComboBox.SelectedIndex = 0;
+                this.studentsComboBox.ItemsSource = bl.getListOfHostingUnitsByOwnerKey(FindHostWindow.host.HostKey).ToList();
+                this.studentsComboBox.DisplayMemberPath = "HostingUnitName";
+                this.studentsComboBox.SelectedValuePath = "HostingUnitKey";
+
+                this.guestRequestCB.ItemsSource = bl.getListOfGuestRequest().ToList();
+                this.guestRequestCB.DisplayMemberPath = "GuestRequestKey";
+                this.guestRequestCB.SelectedValuePath = "GuestRequestKey";
+
+                this.areaComboBox.ItemsSource = Enum.GetValues(typeof(BE.Area));
+                this.poolComboBox.ItemsSource = Enum.GetValues(typeof(BE.Choice));
+                this.jacuzziComboBox.ItemsSource = Enum.GetValues(typeof(BE.Choice));
+                this.gardenComboBox.ItemsSource = Enum.GetValues(typeof(BE.Choice));
+                this.hikesComboBox.ItemsSource = Enum.GetValues(typeof(BE.Choice));
+                this.childrensAttractionsComboBox.ItemsSource = Enum.GetValues(typeof(BE.Choice));
+                this.airConditionerComboBox.ItemsSource = Enum.GetValues(typeof(BE.Choice));
+                this.typeComboBox.ItemsSource = Enum.GetValues(typeof(BE.ResortType));
+
+                //this.DataContext = studentsComboBox.SelectedItem;
+                //// this.studentsComboBox.ItemsSource = bl.GetAllStudents();
+                // this.studentsComboBox.DisplayMemberPath = "StudentName";
+                // this.studentsComboBox.SelectedValuePath = "StudentId";
+                //// this.registerSemesterComboBox.ItemsSource = Enum.GetValues(typeof(BE.Semester));
+                // this.registerSemesterComboBox.SelectedIndex = 0;
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.ToString());
+            }
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+            private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            System.Windows.Data.CollectionViewSource hostingUnitViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("hostingUnitViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // hostingUnitViewSource.Source = [generic data source]
+            try
+            {
+                System.Windows.Data.CollectionViewSource hostingUnitViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("hostingUnitViewSource")));
+                // Load data by setting the CollectionViewSource.Source property:
+                // hostingUnitViewSource.Source = [generic data source]
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.ToString());
+            }
         }
         private void studentsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.studentsComboBox.SelectedItem is BE.HostingUnit) { 
                 this.hostingUnit = ((BE.HostingUnit)this.studentsComboBox.SelectedItem).GetCopy();
-                this.DataContext = hostingUnit; 
+                this.hostigUnit.DataContext = hostingUnit; 
             }
         }
 
@@ -62,6 +91,54 @@ namespace PLWPF
                 MessageBox.Show("פרטיך עודכנו בהצלחה ");
             }
             catch (Exception E) { MessageBox.Show(E.ToString()); }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+               
+                if (MessageBox.Show("האם אתה בטוח שברצונך לבטל את ההזמנה?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                    this.Close();
+                }
+                else
+                {
+
+                    bl.DeleteHostingUnit(this.hostingUnit.HostingUnitKey);
+                    this.Close();
+
+                }
+
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.guestRequestCB.SelectedItem is BE.GuestRequest)
+            {
+                this.GuestRequest = ((BE.GuestRequest)this.guestRequestCB.SelectedItem).GetCopy();
+                this.DataContext = GuestRequest;
+            }
+
+    }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bl.NewOrder(GuestRequest, hostingUnit);
+                MessageBox.Show("your order have been craeted" );
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
         }
     }
 }

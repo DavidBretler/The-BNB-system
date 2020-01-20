@@ -152,8 +152,8 @@ namespace BL
         /// <param name="TheHostingUnit"></param>
         public void DeleteHostingUnit(int hostUnitKey)
         {
-            try
-            {
+           // try
+           // {
                 List<BE.Order> problomaticOrderS = dal.getListOfOrder().FindAll(delegate (Order order) { return order.HostingUnitKey == hostUnitKey; });
                 if (problomaticOrderS.Count > 0)
                 {
@@ -166,11 +166,11 @@ namespace BL
                 }
                 else
                     dal.DeleteHostingUnit(hostUnitKey);
-            }
-            catch 
-            {
-                throw ;
-            }
+           // }
+           // catch 
+           // {
+            //    throw ;
+           // }
 
         }
 
@@ -258,7 +258,7 @@ namespace BL
         {
             IEnumerable<Order> OrderOfOwner = getListOfOrder().FindAll(item => SearchForHostinUnitByKey((item.HostingUnitKey)).Owner.HostKey== OwnerKey);
             if (!OrderOfOwner.Any())
-                throw new GenralException("host", "אין יחידות אירוח למארח זה.");
+                throw new GenralException("host", " this host dose not have any order");
             return OrderOfOwner;
         }
         #endregion Host

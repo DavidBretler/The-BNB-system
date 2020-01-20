@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.HostigUnitWin"
         mc:Ignorable="d"
-        Title="HostigUnitWin" Height="450" Width="800" >
-    <Grid>
-        
-        
+        Title="HostigUnitWin" Height="763.6" Width="1014.8"  >
+
+    <Grid Margin="0,0,17,-70.4">
+
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -21,8 +22,8 @@
             <Label Content="בחר יחידת אירוח" />
 
         </StackPanel>
-        <DockPanel Grid.Row="2" LastChildFill="True" Margin="5,4.8,354.6,5.4" >
-            <Expander Header="בחר יחדת אירוח" DockPanel.Dock="Top">
+        <DockPanel x:Name="hostigUnit" Grid.Row="2" LastChildFill="True" Margin="5,94.8,473,4.6" >
+            <Expander Header="בחר יחדת אירוח" DockPanel.Dock="Top" Height="509" Margin="0,0,255,0">
                 <Expander.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFEAE0E0" Offset="0.004"/>
@@ -35,58 +36,106 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal"/>
                     <DockPanel/>
-                    <ComboBox x:Name="studentsComboBox" MinWidth="100" Margin="0,0,0,-0.4" SelectionChanged="studentsComboBox_SelectionChanged" Text=" בחר פה"
+                    <ComboBox x:Name="studentsComboBox"  MinWidth="100" Margin="0,0,0,-0.4" SelectionChanged="studentsComboBox_SelectionChanged" Text=" chose here"
                       SelectedValue="{Binding HostingUnitKey, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" />
+                    <Grid x:Name="grid1"  HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Air Conditioner:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="airConditionerComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="Auto" Text="{Binding AirConditioner}" ItemsSource="{Binding AirConditioner}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                        <Label Content="Area:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="areaComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Area}" ItemsSource="{Binding Area}" Margin="3" Grid.Row="1" VerticalAlignment="Center" Width="120">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                        <Label Content="Childrens Attractions:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="childrensAttractionsComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding ChildrensAttractions}" ItemsSource="{Binding ChildrensAttractions}" Margin="3" Grid.Row="2" VerticalAlignment="Center" Width="120">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                        <Label Content="Garden:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="gardenComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Garden}" ItemsSource="{Binding Garden}" Margin="3" Grid.Row="3" VerticalAlignment="Center" Width="120">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                        <Label Content="Hikes:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="hikesComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Hikes}" ItemsSource="{Binding Hikes}" Margin="3" Grid.Row="4" VerticalAlignment="Center" Width="120">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                        <Label Content="Hosting Unit Key:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+                        <TextBox x:Name="hostingUnitKeyTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding HostingUnitKey, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="Hosting Unit Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+                        <TextBox x:Name="hostingUnitNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding HostingUnitName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="Jacuzzi:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="jacuzziComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Jacuzzi}" ItemsSource="{Binding Jacuzzi}" Margin="3" Grid.Row="7" VerticalAlignment="Center" Width="120">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                        <Label Content="Num Of Beds:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center"/>
+                        <TextBox x:Name="numOfBedsTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding NumOfBeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="Num Of Rooms:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center"/>
+                        <TextBox x:Name="numOfRoomsTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="9" Text="{Binding NumOfRooms, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="pool:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="10" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="poolComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding pool}" ItemsSource="{Binding pool}" Margin="3" Grid.Row="10" VerticalAlignment="Center" Width="120">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                        <Label Content="Type:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="11" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="typeComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Type}" ItemsSource="{Binding Type}" Margin="3" Grid.Row="11" VerticalAlignment="Center" Width="120">
+                            <ComboBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel/>
+                                </ItemsPanelTemplate>
+                            </ComboBox.ItemsPanel>
+                        </ComboBox>
+                    </Grid>
                 </StackPanel>
             </Expander>
-            <StackPanel Grid.Column="1" Margin="5,4.6" DockPanel.Dock="Right" Width="399" >
-                <Grid x:Name="grid1" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Label Content="Air Conditioner:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-                    <TextBox x:Name="airConditionerTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding AirConditioner, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="Area:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-                    <TextBox x:Name="areaTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Area, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="Childrens Attractions:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-                    <TextBox x:Name="childrensAttractionsTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding ChildrensAttractions, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="Garden:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-                    <TextBox x:Name="gardenTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding Garden, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="Hikes:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-                    <TextBox x:Name="hikesTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding Hikes, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="Hosting Unit Key:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
-                    <TextBox x:Name="hostingUnitKeyTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding HostingUnitKey, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" IsEnabled="False"/>
-                    <Label Content="Hosting Unit Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
-                    <TextBox x:Name="hostingUnitNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding HostingUnitName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="Jacuzzi:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center"/>
-                    <TextBox x:Name="jacuzziTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="7" Text="{Binding Jacuzzi, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="Num Of Beds:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center"/>
-                    <TextBox x:Name="numOfBedsTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding NumOfBeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="Num Of Rooms:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center"/>
-                    <TextBox x:Name="numOfRoomsTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="9" Text="{Binding NumOfRooms, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="pool:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="10" VerticalAlignment="Center"/>
-                    <TextBox x:Name="poolTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="10" Text="{Binding pool, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="Type:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="11" VerticalAlignment="Center"/>
-                    <TextBox x:Name="typeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="11" Text="{Binding Type, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-                </Grid>
-            </StackPanel>
         </DockPanel>
-        <Button Content="עדכן יחידת אירוח " HorizontalAlignment="Left" Height="73" Margin="463,94.8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="165" Click="Button_Click"/>
-        <Button Content="מחק יחידת אירוח" HorizontalAlignment="Left" Height="69" Margin="463,221.8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="165"/>
+        <Button Content="עדכן יחידת אירוח " HorizontalAlignment="Left" Height="73" Margin="308,21.8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="165" Click="Button_Click"/>
+        <Button Content="מחק יחידת אירוח" HorizontalAlignment="Left" Height="69" Margin="74,21.8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="165" Click="Button_Click_1"/>
+        <ComboBox x:Name="guestRequestCB" HorizontalAlignment="Left" Text="choose geust request" Height="37" Margin="674,116.8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="192" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Button Content="craete new order" HorizontalAlignment="Left" Height="58" Margin="674,271.8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="192" Click="Button_Click_2"/>
     </Grid>
 </Window>
