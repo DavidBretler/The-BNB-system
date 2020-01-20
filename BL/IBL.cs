@@ -9,9 +9,7 @@ namespace BL
     public interface IBL
     {
         IEnumerable<HostingUnit> getListOfHostingUnitsByOwnerKey(int OwnerKey);
-
          Host SearchForHostByKey(int Key);
-
         GuestRequest GetGuestRequestFromOrder(Order order);
          GuestRequest SearchGetGuestRequestByKey(int Key);
 
@@ -29,13 +27,7 @@ namespace BL
         //    , Choice Hikes);
         void UpdateHost(BE.Host theHost);
         void NewGuestRequests(GuestRequest guestRequest);
-        void UpdateGuestRequests(string PrivateName
-        , string FamilyName, string MailAddress, orderStatus Status,
-            DateTime RegistrationDate, DateTime EntryDate,
-            DateTime EndDate, Area Area, int NumOfRooms, ResortType Type,
-            int Adults, int Children, int NumOfBeds, Choice Pool, Choice Jacuzzi,
-            Choice Garden, Choice ChildrensAttractions, Choice AirConditioner
-            , Choice Hikes);
+        void UpdateGuestRequests(GuestRequest guestRequest);
         void AddNewHostingUnit(string HostingUnitName, int NumOfRooms,
             int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
             Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, int KeyOfHost);

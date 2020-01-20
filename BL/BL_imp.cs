@@ -329,6 +329,7 @@ namespace BL
         {
 
             var guestRequest = dal.getListOfGuestRequest().Find(x => x.GuestRequestKey == Key);
+
             if (guestRequest == null)
                 throw new MissingIdException("GuestRequest", Key, "מספר הזמנה שגוי, אנא נסה שוב.");
             return guestRequest;
@@ -450,95 +451,19 @@ namespace BL
             
         }
         
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="PrivateName"></param>
-        ///// <param name="FamilyName"></param>
-        ///// <param name="MailAddress"></param>
-        ///// <param name="Status"></param>
-        ///// <param name="RegistrationDate"></param>
-        ///// <param name="EntryDate"></param>
-        ///// <param name="EndDate"></param>
-        ///// <param name="Area"></param>
-        ///// <param name="NumOfRooms"></param>
-        ///// <param name="Type"></param>
-        ///// <param name="Adults"></param>
-        ///// <param name="Children"></param>
-        ///// <param name="NumOfBeds"></param>
-        ///// <param name="Pool"></param>
-        ///// <param name="Jacuzzi"></param>
-        ///// <param name="Garden"></param>
-        ///// <param name="ChildrensAttractions"></param>
-        ///// <param name="AirConditioner"></param>
-        ///// <param name="Hikes"></param>
-        //public void NewGuestRequests(string PrivateName
-        //, string FamilyName, string MailAddress, orderStatus Status,
-        //    DateTime RegistrationDate, DateTime EntryDate,
-        //    DateTime EndDate, Area Area, int NumOfRooms, ResortType Type,
-        //    int Adults, int Children, int NumOfBeds, Choice Pool, Choice Jacuzzi,
-        //    Choice Garden, Choice ChildrensAttractions, Choice AirConditioner
-        //    , Choice Hikes)
-        //{
-        //    GuestRequest guestRequest = new GuestRequest();
-        //    guestRequest.GuestRequestKey = Configuration.getNewGuestRequestKey();
-        //    guestRequest.PrivateName = PrivateName;
-        //    guestRequest.FamilyName = FamilyName;
-        //    guestRequest.MailAddress = MailAddress;
-        //    guestRequest.Status = Status;
-        //    guestRequest.RegistrationDate = DateTime.Now;
-        //    guestRequest.EntryDate = EntryDate;
-        //    guestRequest.EndDate = EndDate;
-        //    guestRequest.Area = Area;
-        //    guestRequest.NumOfRooms = NumOfRooms;
-        //    guestRequest.Pool = Pool;
-        //    guestRequest.Jacuzzi = Jacuzzi;
-        //    guestRequest.Garden = Garden;
-        //    guestRequest.ChildrensAttractions = ChildrensAttractions;
-        //    guestRequest.AirConditioner = AirConditioner;
-        //    guestRequest.Hikes = Hikes;
-        //    dal.NewGuestRequests(guestRequest);
-
-        //}
+       
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="TheGuestRequest"></param>
-        public void UpdateGuestRequests(string PrivateName
-        , string FamilyName, string MailAddress, orderStatus Status,
-            DateTime RegistrationDate, DateTime EntryDate,
-            DateTime EndDate, Area Area, int NumOfRooms, ResortType Type,
-            int Adults, int Children, int NumOfBeds, Choice Pool, Choice Jacuzzi,
-            Choice Garden, Choice ChildrensAttractions, Choice AirConditioner
-            , Choice Hikes)
+        public void UpdateGuestRequests(GuestRequest guestRequest)
         {
 
-            try
-            {
-                GuestRequest guestRequest = new GuestRequest();
-                guestRequest.GuestRequestKey = Configuration.getNewGuestRequestKey();
-                guestRequest.PrivateName = PrivateName;
-                guestRequest.FamilyName = FamilyName;
-                guestRequest.MailAddress = MailAddress;
-                guestRequest.Status = Status;
-                guestRequest.RegistrationDate = DateTime.Now;
-                guestRequest.EntryDate = EntryDate;
-                guestRequest.EndDate = EndDate;
-                guestRequest.Area = Area;
-                guestRequest.NumOfRooms = NumOfRooms;
-                guestRequest.Pool = Pool;
-                guestRequest.Jacuzzi = Jacuzzi;
-                guestRequest.Garden = Garden;
-                guestRequest.ChildrensAttractions = ChildrensAttractions;
-                guestRequest.AirConditioner = AirConditioner;
-                guestRequest.Hikes = Hikes;
-                checkDates(guestRequest.EntryDate, guestRequest.EndDate);
+               
                 dal.UpdateGuestRequests(guestRequest);
 
-            }
-            catch 
-            { throw; }
+           
         }
 
 
@@ -546,7 +471,7 @@ namespace BL
         {
             try
             {
-                List<BE.Order> problomaticOrderS = dal.getListOfOrder().FindAll(delegate (Order order) { return order.HostingUnitKey == TheGuestRequest.GuestRequestKey; });
+                List<BE.Order> problomaticOrderS = dal.getListOfOrder().FindAll(delegate (Order order) { return order.GuestRequestKey == TheGuestRequest.GuestRequestKey; });
                 if (problomaticOrderS.Count > 0)
                 {
 

@@ -24,10 +24,7 @@ namespace PLWPF
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
 
         private void Go_back_Click(object sender, RoutedEventArgs e)
         {
@@ -42,7 +39,16 @@ namespace PLWPF
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            Window findG_RByKey = new findG_RByKey();
+            findG_RByKey.Show();
+            this.Close();
+        }
 
+        private void Cancel_Guest_Request_Click(object sender, RoutedEventArgs e)
+        {
+            Window fiend_G_RByKe_Delete = new fiend_G_RByKe_Delete();
+            fiend_G_RByKe_Delete.Show();
+            this.Close();
         }
     }
 }

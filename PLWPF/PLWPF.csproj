@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="fiend_G_RByKe_Delete.xaml.cs">
+      <DependentUpon>fiend_G_RByKe_Delete.xaml</DependentUpon>
+    </Compile>
     <Compile Include="findG_RByKey.xaml.cs">
       <DependentUpon>findG_RByKey.xaml</DependentUpon>
     </Compile>
@@ -73,6 +76,10 @@
     <Compile Include="Update_Guest_Request.xaml.cs">
       <DependentUpon>Update_Guest_Request.xaml</DependentUpon>
     </Compile>
+    <Page Include="fiend_G_RByKe_Delete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="findG_RByKey.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

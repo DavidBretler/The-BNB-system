@@ -22,24 +22,25 @@ namespace DAL
         public static BE.GuestRequest Clone(this BE.GuestRequest original)
         {
             BE.GuestRequest target = new BE.GuestRequest();
-            original.PrivateName = target.PrivateName;
-            original.FamilyName = target.FamilyName;
-            original.MailAddress = target.MailAddress;
-            original.Status = target.Status;
-            original.RegistrationDate = target.RegistrationDate;
-            original.EntryDate = target.EndDate;
-            original.EndDate = target.EndDate;
-            original.Type = target.Type;
-            original.Area = target.Area;
-            original.Adults = target.Adults;
-            original.Children = target.Children;
-            original.Pool = target.Pool;
-            original.Jacuzzi = target.Jacuzzi;
-            original.Garden = target.Garden;
-            original.ChildrensAttractions = target.ChildrensAttractions;
-            original.GuestRequestKey = target.GuestRequestKey;
-            original.Hikes = target.Hikes;
-            original.AirConditioner = target.AirConditioner;
+            target.GuestRequestKey = original.GuestRequestKey;
+            target.PrivateName = original.PrivateName;
+            target.FamilyName = original.FamilyName;
+            target.MailAddress = original.MailAddress;
+            target.Status = original.Status;
+            target.RegistrationDate = original.RegistrationDate;
+            target.EntryDate = original.EntryDate;
+            target.EndDate = original.EndDate;
+            target.Type = original.Type;
+            target.Area = original.Area;
+            target.Adults = original.Adults;
+            target.Children = original.Children;
+            target.Pool = original.Pool;
+            target.Jacuzzi = original.Jacuzzi;
+            target.Garden = original.Garden;
+            target.ChildrensAttractions = original.ChildrensAttractions;
+            target.GuestRequestKey = original.GuestRequestKey;
+            target.Hikes = original.Hikes;
+            target.AirConditioner = original.AirConditioner;
             return target;
         }
         public static BE.Order Clone(this BE.Order original)
