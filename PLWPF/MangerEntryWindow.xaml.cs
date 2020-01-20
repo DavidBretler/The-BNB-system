@@ -28,5 +28,34 @@ namespace PLWPF
         {
             this.Close();
         }
+
+        
+
+        private void Manger_Order_Button(object sender, RoutedEventArgs e)
+        {
+            Window Manger_Oreder_win = new Manger_Oreder_win();
+            Manger_Oreder_win.Show();
+        }
+
+        private void Guest_Request_button_Click(object sender, RoutedEventArgs e)
+        {
+           
+
+            Window Manger_GuestRequest_win = new Manger_GuestRequest_win();
+            Manger_GuestRequest_win.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+                 Window Manger_Hosting_Unit_win = new Manger_Hosting_Unit_win();
+            Manger_Hosting_Unit_win.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Window Manger_Hosts_win = new Manger_Hosts_win();
+            Manger_Hosts_win.Show();
+        }
     }
 }

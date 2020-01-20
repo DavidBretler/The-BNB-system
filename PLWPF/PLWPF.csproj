@@ -73,6 +73,21 @@
     <Compile Include="Order_ByHost.xaml.cs">
       <DependentUpon>Order_ByHost.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Manger_GuestRequest_win.xaml.cs">
+      <DependentUpon>Manger_GuestRequest_win.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manger_Hosting_Unit_win.xaml.cs">
+      <DependentUpon>Manger_Hosting_Unit_win.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manger_Hosts_win.xaml.cs">
+      <DependentUpon>Manger_Hosts_win.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manger_Oreder_win.xaml.cs">
+      <DependentUpon>Manger_Oreder_win.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manger_Password.xaml.cs">
+      <DependentUpon>Manger_Password.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Update_Guest_Request.xaml.cs">
       <DependentUpon>Update_Guest_Request.xaml</DependentUpon>
     </Compile>
@@ -116,6 +131,26 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MangerEntryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manger_GuestRequest_win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manger_Hosting_Unit_win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manger_Hosts_win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manger_Oreder_win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manger_Password.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,6 +225,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="RES\style\res.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Guset\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -20,10 +20,11 @@ namespace PLWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        BL.IBL myIBL;
         public MainWindow()
         {
             InitializeComponent();
-           BL.IBL myIBL;
+        
 
 
         }
@@ -37,8 +38,8 @@ namespace PLWPF
         private void MangerEntryButton_Click(object sender, RoutedEventArgs e)
         {
             
-            Window MangerEntryWindow = new MangerEntryWindow();
-            MangerEntryWindow.Show();
+            Window Manger_Password = new Manger_Password();
+            Manger_Password.Show();
         }
 
         private void GuestEntryButton_Click(object sender, RoutedEventArgs e)

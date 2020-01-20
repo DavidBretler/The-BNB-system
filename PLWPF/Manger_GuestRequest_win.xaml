@@ -1,0 +1,44 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Manger_GuestRequest_win"
+        mc:Ignorable="d"
+        Title="Manger_GuestRequest_win" Height="450" Width="1264.5" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="guestRequestViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:GuestRequest}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource guestRequestViewSource}" Margin="0,0,2,0">
+
+        <DataGrid x:Name="guestRequestDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,0,10,10" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="guestRequestKeyColumn" Width="SizeToHeader" Header="Key" Binding="{Binding GuestRequestKey}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="adultsColumn" Width="SizeToHeader" Header="Adults" Binding="{Binding Adults}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="childrenColumn" Width="SizeToHeader" Header="Children" Binding="{Binding Children}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="endDateColumn" Width="SizeToHeader" Header="End Date" Binding="{Binding EndDate}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="entryDateColumn" Width="SizeToHeader" Header="Entry Date" Binding="{Binding EntryDate}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="registrationDateColumn" Width="SizeToHeader" Header="Registration Date" Binding="{Binding RegistrationDate}" IsReadOnly="True"/>
+
+                <DataGridTextColumn x:Name="familyNameColumn" Width="SizeToHeader" Header="Family Name" Binding="{Binding FamilyName}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="privateNameColumn" Width="SizeToHeader" Header="Private Name" Binding="{Binding PrivateName}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="mailAddressColumn" Width="SizeToHeader" Header="email" Binding="{Binding MailAddress}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="statusColumn" Width="70" Header="Status" Binding="{Binding Status}"/>
+
+                <DataGridTextColumn x:Name="airConditionerColumn" Width="SizeToHeader" Header="AC" Binding="{Binding AirConditioner}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="areaColumn" Width="SizeToHeader" Header="Area" Binding="{Binding Area}"/>
+                <DataGridTextColumn x:Name="childrensAttractionsColumn" Width="SizeToHeader" Header="Attractions" Binding="{Binding ChildrensAttractions}" IsReadOnly="True"/>
+
+                <DataGridTextColumn x:Name="gardenColumn" Width="SizeToHeader" Header="Garden" Binding="{Binding Garden}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="hikesColumn" Width="SizeToHeader" Header="Hikes" Binding="{Binding Hikes}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="jacuzziColumn" Width="SizeToHeader" Header="Jacuzzi" Binding="{Binding Jacuzzi}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="numOfBedsColumn" Width="SizeToHeader" Header="Beds" Binding="{Binding NumOfBeds}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="numOfRoomsColumn" Width="SizeToHeader" Header="Rooms" Binding="{Binding NumOfRooms}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="poolColumn" Width="SizeToHeader" Header="Pool" Binding="{Binding Pool}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="typeColumn" Width="40" Header="Type" Binding="{Binding Type}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

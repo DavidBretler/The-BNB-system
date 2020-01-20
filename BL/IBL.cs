@@ -39,6 +39,8 @@ namespace BL
         List<BE.GuestRequest> getListOfGuestRequest();
         List<BE.Order> getListOfOrder();
         List<BE.BankBranch> getListOfBankBranch();
+        List<Host> getListOfHost();
+
         void sendEmail(Order currrentOrder);
 
          IEnumerable<IGrouping<int, GuestRequest>> ListOfGustRequestByNumOfBeds();

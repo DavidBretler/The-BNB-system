@@ -1,0 +1,33 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Manger_Hosts_win"
+        mc:Ignorable="d"
+        Title="Manger_Hosts_win" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="hostViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Host}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource hostViewSource}">
+
+        <DataGrid x:Name="hostDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,10,125,10" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn x:Name="collectionClearanceColumn" Width="SizeToHeader" Header="Collection Clearance" Binding="{Binding CollectionClearance}"/>
+                <DataGridTextColumn x:Name="familyNameColumn" Width="SizeToHeader" Header="Family Name" Binding="{Binding FamilyName}"/>
+                <DataGridTextColumn x:Name="hostKeyColumn" Width="SizeToHeader" Header="Host Key" Binding="{Binding HostKey}"/>
+                <DataGridTextColumn x:Name="mailAddressColumn" Width="SizeToHeader" Header="Mail Address" Binding="{Binding MailAddress}"/>
+                <DataGridTextColumn x:Name="numberOfUintsColumn" Width="SizeToHeader" Header="number Of Uints" Binding="{Binding numberOfUints}"/>
+                <DataGridTextColumn x:Name="passwordColumn" Width="SizeToHeader" Header="password" Binding="{Binding password}"/>
+                <DataGridTextColumn x:Name="phoneNumberColumn" Width="SizeToHeader" Header="Phone Number" Binding="{Binding PhoneNumber}"/>
+                <DataGridTextColumn x:Name="privateNameColumn" Width="SizeToHeader" Header="Private Name" Binding="{Binding PrivateName}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Delete" HorizontalAlignment="Left" Height="36" Margin="691,91,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click"/>
+        <TextBox x:Name="Delete_Textbox" HorizontalAlignment="Left" Height="25" Margin="691,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="91"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="691,40,0,0" TextWrapping="Wrap" Text="Enter Key" VerticalAlignment="Top" Width="91"/>
+
+    </Grid>
+</Window>

@@ -12,7 +12,8 @@ namespace BE
         static int OrderKey=0;
         static double Commission = 10; //commission for orders
         static int Password = 999;
-
+        static string MangerPassword = "9999";
+        static public String getMangerPassword() { return MangerPassword; }
         static public int getPassword() { return ++Password; }
         static public double getCommission() { return Commission; }
         static public int getNewHostingUnitKey() { return ++HostingUnitKey; }//the func in adding one to the num and then returning the new num
