@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="FindHostWindow" Height="614.052" Width="783.909">
+        Title="FindHostWindow" Height="358.88" Width="500.001">
 
 
 
-    <Grid HorizontalAlignment="Left" Height="496" Margin="24,46,0,0" VerticalAlignment="Top" Width="709">
+    <Grid HorizontalAlignment="Left" Height="352" Margin="24,46,0,0" VerticalAlignment="Top" Width="480">
 
 
-        
+
         <Grid HorizontalAlignment="Left" Height="100" Margin="-167,16.6,0,-86.2" Grid.Row="3" VerticalAlignment="Top" Width="100"/>
 
         <Label Content="נא הכנס מס מארח וסיסמה" HorizontalAlignment="Left" Margin="260,25,0,0" VerticalAlignment="Top"/>

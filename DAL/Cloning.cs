@@ -51,7 +51,7 @@ namespace DAL
             target.GuestRequestKey = original.GuestRequestKey;
             target.Status = original.Status;
             target.contactCustumerDate = original.contactCustumerDate;
-
+            target.OrderKey = original.OrderKey;
             return target;
       
     }

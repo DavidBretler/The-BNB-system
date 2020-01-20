@@ -17,12 +17,10 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="5">
-            <Label Content="בחר יחידת אירוח" />
-
-        </StackPanel>
-        <DockPanel x:Name="hostigUnit" Grid.Row="2" LastChildFill="True" Margin="5,94.8,473,4.6" >
+        
+        
+        
+        <DockPanel x:Name="hostigUnit" Grid.Row="2" LastChildFill="True" Margin="5,203.8,487,4.6" >
             <Expander Header="בחר יחדת אירוח" DockPanel.Dock="Top" Height="509" Margin="0,0,255,0">
                 <Expander.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -133,9 +131,10 @@
                 </StackPanel>
             </Expander>
         </DockPanel>
-        <Button Content="עדכן יחידת אירוח " HorizontalAlignment="Left" Height="73" Margin="308,21.8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="165" Click="Button_Click"/>
-        <Button Content="מחק יחידת אירוח" HorizontalAlignment="Left" Height="69" Margin="74,21.8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="165" Click="Button_Click_1"/>
-        <ComboBox x:Name="guestRequestCB" HorizontalAlignment="Left" Text="choose geust request" Height="37" Margin="674,116.8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="192" SelectionChanged="ComboBox_SelectionChanged"/>
-        <Button Content="craete new order" HorizontalAlignment="Left" Height="58" Margin="674,271.8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="192" Click="Button_Click_2"/>
+        <Button Content="עדכן יחידת אירוח " HorizontalAlignment="Left" Height="73" Margin="536,332,0,0" Grid.Row="2" VerticalAlignment="Top" Width="165" Click="Button_Click"/>
+        <Button Content="מחק יחידת אירוח" HorizontalAlignment="Left" Height="69" Margin="536,423.8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="165" Click="Button_Click_1"/>
+        <ComboBox x:Name="guestRequestCB" HorizontalAlignment="Left" Text="choose geust request" Height="37" Margin="744,273,0,0" Grid.Row="2" VerticalAlignment="Top" Width="192" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Button Content="craete new order" HorizontalAlignment="Left" Height="58" Margin="538,239,0,0" Grid.Row="2" VerticalAlignment="Top" Width="163" Click="Button_Click_2"/>
+        <Label Content="choose geust request" HorizontalAlignment="Left" Margin="782,229,0,0" Grid.Row="2" VerticalAlignment="Top"/>
     </Grid>
 </Window>

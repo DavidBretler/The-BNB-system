@@ -28,8 +28,9 @@ namespace PLWPF
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-           
+        {//passward cheack...
+            Window HostEntryWindow = new HostEntryWindow();
+            HostEntryWindow.Show();
         }
     }
 }
