@@ -15,7 +15,7 @@ namespace BL
         IDAL dal = FactoryDal.GetDal();
 
         private BL_imp() { }
-        protected static BL_imp newBL = null;
+        protected static BL_imp newBL =  null;
         public static BL_imp GetBL()
         {
             if (newBL == null)
