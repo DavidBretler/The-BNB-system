@@ -45,9 +45,9 @@ namespace PLWPF
                 this.Close();
 
             }
-            catch(BE.MissingIdException ex)
+            catch(Exception exp)
             {
-               ///not implemnted
+                MessageBox.Show(exp.Message);
             }
         }
 

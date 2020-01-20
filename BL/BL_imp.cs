@@ -455,7 +455,7 @@ namespace BL
         {
             try
             {
-                List<BE.Order> problomaticOrderS = dal.getListOfOrder().FindAll(delegate (Order order) { return order.HostingUnitKey == TheGuestRequest.GuestRequestKey; });
+                List<BE.Order> problomaticOrderS = dal.getListOfOrder().FindAll(delegate (Order order) { return order.GuestRequestKey == TheGuestRequest.GuestRequestKey; });
                 if (problomaticOrderS.Count > 0)
                 {
 

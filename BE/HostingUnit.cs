@@ -7,7 +7,7 @@ namespace BE
     {
        //
          public int HostingUnitKey;    
-    //
+        //
         public Host Owner; 
         //
         public string HostingUnitName;

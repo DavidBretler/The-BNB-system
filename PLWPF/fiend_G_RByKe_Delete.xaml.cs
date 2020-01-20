@@ -40,22 +40,21 @@ namespace PLWPF
                 int temp = Int32.Parse(___GuestRequest_key_textbox_.Text);
                 guestRequest = myIBL.SearchGetGuestRequestByKey(temp);
                 if(MessageBox.Show("האם אתה בטוח שברצונך לבטל את ההזמנה?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
-            {
-                    myIBL.DeleteGuestRequests(guestRequest);
-                }
+                 {
+                    this.Close();
+                  }
             else
                 {
+                   
+                    myIBL.DeleteGuestRequests(guestRequest);
                     this.Close();
+
                 }
 
-                //Window Update_Guest_Request = new Update_Guest_Request();
-                //Update_Guest_Request.Show();
-                //this.Close();
-
             }
-            catch (BE.MissingIdException ex)
+            catch (Exception exp)
             {
-                ///not implemnted
+                MessageBox.Show(exp.Message);
             }
         }
 
