@@ -29,7 +29,7 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
+            try 
             {
                 ibl = BL.Factory.GetBL();
                 // BE.Host host = new BE.Host();
