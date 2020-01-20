@@ -6,46 +6,48 @@ namespace BE
     public class HostingUnit : Clonable
     {
        //
-         public int HostingUnitKey;    
+         public int HostingUnitKey { get; set; }  
     //
-        public Host Owner; 
+        public Host Owner { get; set; }
         //
-        public string HostingUnitName;
+        public string HostingUnitName { get; set; }
+        public int NumOfRooms { get; set; }
         //
-        public int NumOfRooms;
+        public int NumOfBeds { get; set; }
         //
-        public int NumOfBeds;
-       //
-        public Choice pool;
+        public Choice pool { get; set; }
         //
-        public Choice Jacuzzi;     
+        public Choice Jacuzzi { get; set; }
         //
-       public Area Area;    
+        public Area Area { get; set; }
         //
-        public Choice Garden;  
+        public Choice Garden { get; set; }
         //
-       public  Choice AirConditioner;
+        public  Choice AirConditioner { get; set; }
         //
-        public Choice ChildrensAttractions;
+        public Choice ChildrensAttractions { get; set; }
         //
-        public ResortType Type;     
+        public ResortType Type { get; set; }
         //
-        public Choice Hikes;
+        public Choice Hikes { get; set; }
         //
         //calender that  is made of array of  12 arrays
-        public bool[,] Diary = new bool[12, 31];  
-        
+        public bool[,] Diary = new bool[12, 31];
+        public HostingUnit GetCopy() { 
+            return (HostingUnit)this.MemberwiseClone();
+        }
+
         /// <summary>
         /// indexer for hosting unit
         /// </summary>
         /// <param name="date"></param>
         /// <returns>true/false if the unit is free or ocuipided on the givin date</returns>
-       
-      
+
+
         public bool this[DateTime date]
         {
-            set => Diary[date.Day - 1, date.Month - 1] = value;
-            get => Diary[date.Day - 1, date.Month - 1];
+            set => Diary[ date.Month - 1,date.Day - 1] = value;
+            get => Diary[ date.Month - 1, date.Day - 1];
         }
 
        

@@ -118,32 +118,30 @@ namespace BL
         /// <param name="Type"></param>
         /// <param name="Hikes"></param>
         /// <param name="KeyOfHost"></param>
-        public void UpdateHostingUnit(string HostingUnitName, int NumOfRooms,
-               int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
-               Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, int KeyOfHost)
+        public void UpdateHostingUnit(BE.HostingUnit theHostingUnit)
 
         {
             Host host = new Host();
-            if (cheakIfHostExsits(KeyOfHost, ref host))//need enter the host key.
+            if (cheakIfHostExsits(theHostingUnit.Owner.HostKey, ref host))//need enter the host key.
             {
-                HostingUnit EnterdHostingUnit = new HostingUnit();
-                EnterdHostingUnit.HostingUnitKey = Configuration.getNewHostingUnitKey();
-                EnterdHostingUnit.HostingUnitName=HostingUnitName;
-                EnterdHostingUnit.NumOfRooms=NumOfRooms;
-                EnterdHostingUnit.NumOfBeds=NumOfBeds;
-                EnterdHostingUnit.pool=pool;
-                EnterdHostingUnit.Jacuzzi=Jacuzzi;
-                EnterdHostingUnit.Area=Area;
-                EnterdHostingUnit.Garden=Garden;
-                EnterdHostingUnit.AirConditioner=(AirConditioner);
-                EnterdHostingUnit.ChildrensAttractions=(ChildrensAttractions);
-                EnterdHostingUnit.Type=(Type);
-                EnterdHostingUnit.Hikes=(Hikes);
-                EnterdHostingUnit.Owner=(host);
-                dal.UpdateHostingUnit(EnterdHostingUnit);
+                //HostingUnit EnterdHostingUnit = new HostingUnit();
+                //EnterdHostingUnit.HostingUnitKey = Configuration.getNewHostingUnitKey();
+                //EnterdHostingUnit.HostingUnitName=HostingUnitName;
+                //EnterdHostingUnit.NumOfRooms=NumOfRooms;
+                //EnterdHostingUnit.NumOfBeds=NumOfBeds;
+                //EnterdHostingUnit.pool=pool;
+                //EnterdHostingUnit.Jacuzzi=Jacuzzi;
+                //EnterdHostingUnit.Area=Area;
+                //EnterdHostingUnit.Garden=Garden;
+                //EnterdHostingUnit.AirConditioner=(AirConditioner);
+                //EnterdHostingUnit.ChildrensAttractions=(ChildrensAttractions);
+                //EnterdHostingUnit.Type=(Type);
+                //EnterdHostingUnit.Hikes=(Hikes);
+                //EnterdHostingUnit.Owner=(host);
+                dal.UpdateHostingUnit(theHostingUnit);
             }
             else
-                throw new MissingIdException("BL_imp", KeyOfHost, "Please cheack the id number of host.");
+                throw new MissingIdException("HostingUnit", theHostingUnit.Owner.HostKey, "בדוק את מספר התעודה של המארח.");
 
         }
 
@@ -173,7 +171,17 @@ namespace BL
             {
                 throw ;
             }
+
         }
+
+        public HostingUnit SearchForHostinUnitByKey(int Key)
+        {
+            var hostingUnit = dal.getListOfHostingUnits().Find(x => x.HostingUnitKey == Key);
+            if (hostingUnit == null)
+                throw new MissingIdException("hostingUnit", Key, "The hostingUnit dose not exsit");
+            return hostingUnit;
+        }
+
 
         #endregion Hosting unit
 
@@ -183,7 +191,7 @@ namespace BL
         /// </summary>
         /// <param name="HostKey"></param>
         /// <returns>return true if exsits and by reference the host</returns>
-       public void UpdateHost(BE.Host theHost)
+        public void UpdateHost(BE.Host theHost)
         { dal.UpdateHost(theHost); }
         bool cheakIfHostExsits(int HostKey, ref Host host)
         {
@@ -240,12 +248,19 @@ namespace BL
 
        public  IEnumerable<HostingUnit> getListOfHostingUnitsByOwnerKey(int OwnerKey)
         {
-            IEnumerable<HostingUnit> hostingUnitsOfOwner = getListOfHostingUnits().Where(item => item.Owner.HostKey== OwnerKey);
+            IEnumerable<HostingUnit> hostingUnitsOfOwner = getListOfHostingUnits().FindAll(item => item.Owner.HostKey== OwnerKey);
             if (!hostingUnitsOfOwner.Any())
                 throw new GenralException("host", "אין יחידות אירוח למארח זה.");
             return hostingUnitsOfOwner;
         }
+        public IEnumerable<Order> getListOfOrdersByOwnerKey(int OwnerKey)
 
+        {
+            IEnumerable<Order> OrderOfOwner = getListOfOrder().FindAll(item => SearchForHostinUnitByKey((item.HostingUnitKey)).Owner.HostKey== OwnerKey);
+            if (!OrderOfOwner.Any())
+                throw new GenralException("host", "אין יחידות אירוח למארח זה.");
+            return OrderOfOwner;
+        }
         #endregion Host
 
         #region Order
@@ -354,6 +369,7 @@ namespace BL
                 throw new MissingIdException("Host", Key, "The host dose not exsit");         
             return Host;
         }
+
 
         /// <summary>
         /// update order status 

@@ -40,9 +40,7 @@ namespace BL
             int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
             Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, int KeyOfHost);
 
-        void UpdateHostingUnit(string HostingUnitName, int NumOfRooms,
-               int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
-               Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, int KeyOfHost);
+        void UpdateHostingUnit(BE.HostingUnit theHostingUnit);
         void NewOrder(GuestRequest guestRequest, HostingUnit hostingUnit);
         void UpdateOrder(GuestRequest guestRequest, HostingUnit hostingUnit, int orderKey);
         List<BE.HostingUnit> getListOfHostingUnits();

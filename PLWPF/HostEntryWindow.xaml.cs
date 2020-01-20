@@ -48,6 +48,12 @@ namespace PLWPF
             //catch (BE.MissingIdException E2) { MessageBox.Show(E2.ToString()); }
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
+            Window hostingWin = new HostigUnitWin();
+            hostingWin.Show();
 
+        }
     }
 }

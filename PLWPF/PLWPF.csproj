@@ -64,6 +64,12 @@
     <Compile Include="GuestEntryWindow.xaml.cs">
       <DependentUpon>GuestEntryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HostigUnitWin.xaml.cs">
+      <DependentUpon>HostigUnitWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="hostingWin2.xaml.cs">
+      <DependentUpon>hostingWin2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Update_Guest_Request.xaml.cs">
       <DependentUpon>Update_Guest_Request.xaml</DependentUpon>
     </Compile>
@@ -80,6 +86,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HostEntryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HostigUnitWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="hostingWin2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
