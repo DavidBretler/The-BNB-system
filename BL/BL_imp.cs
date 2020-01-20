@@ -240,6 +240,10 @@ namespace BL
 
                 if (bookedHostingUint.Any(delegate (HostingUnit HostingUnit) { return HostingUnit.Owner.HostKey == TheHost.HostKey; }))
                     throw new GenralException("Host", "the host have a booked hostingunit");
+                else
+                    dal.DeleteHost(TheHost);
+
+
             }
             catch (GenralException E)
             { throw E; }
@@ -441,7 +445,7 @@ namespace BL
         public void NewGuestRequests(GuestRequest guestRequest)
         {
             guestRequest.Status = 0;
-            guestRequest.RegistrationDate = DateTime.Now;
+            guestRequest.RegistrationDate = DateTime.Today;
             guestRequest.NumOfBeds = guestRequest.Adults + guestRequest.Children;
             
             checkDates(guestRequest.EntryDate, guestRequest.EndDate);

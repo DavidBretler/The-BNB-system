@@ -1,0 +1,37 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Manger_Oreder_win"
+        mc:Ignorable="d"
+        Title="Manger_Oreder_win" Height="450" Width="800" >
+
+
+    <DataGrid x:Name="orderDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="33,41,112,88" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5" >
+      
+        <DataGrid.Columns>
+            <DataGridTemplateColumn x:Name="contactCustumerDateColumn" Width="SizeToHeader" Header="Date custumer contacted">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <DatePicker SelectedDate="{Binding contactCustumerDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true }" IsEnabled="False"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn x:Name="createDateColumn" Width="SizeToHeader" Header="Date created" >
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <DatePicker SelectedDate="{Binding CreateDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsEnabled="False"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTextColumn x:Name="guestRequestKeyColumn" Width="SizeToHeader" Header="Guest Request Key" Binding="{Binding GuestRequestKey}"/>
+            <DataGridTextColumn x:Name="hostingUnitKeyColumn" Width="SizeToHeader" Header="Hosting Unit Key" Binding="{Binding HostingUnitKey}"/>
+            <DataGridTextColumn x:Name="orderKeyColumn" Width="SizeToHeader" Header="Order Key" Binding="{Binding OrderKey}"/>
+            <DataGridTextColumn x:Name="statusColumn" Width="SizeToHeader" Header="Status" Binding="{Binding Status}"/>
+               
+        </DataGrid.Columns>
+    </DataGrid>
+
+</Window>

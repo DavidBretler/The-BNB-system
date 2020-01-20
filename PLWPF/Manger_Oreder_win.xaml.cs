@@ -15,21 +15,23 @@ using System.Windows.Shapes;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for FindHostWindow.xaml
+    /// Interaction logic for Manger_Oreder_win.xaml
     /// </summary>
-    public partial class FindHostWindow : Window
+    public partial class Manger_Oreder_win : Window
     {
-        BL.IBL ibl;
-        public static BE.Host host = new BE.Host();           
-        public FindHostWindow()
+        BL.IBL myIBL;
+
+
+        public Manger_Oreder_win()
         {
+
+            myIBL = BL.Factory.GetBL();
+
             InitializeComponent();
             
+            orderDataGrid.ItemsSource = myIBL.getListOfOrder();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
     }
 }
+

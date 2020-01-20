@@ -102,9 +102,9 @@ namespace DS
             {
                 HostingUnitKey=Configuration.getNewHostingUnitKey(),     
                  Owner=ListHosts[0],
-                  HostingUnitName="the rock",
-                 NumOfRooms=5,
-                 NumOfBeds=8,
+                  HostingUnitName="dov's houes",
+                 NumOfRooms=12,
+                 NumOfBeds=2,
                  pool=0,
                  Jacuzzi=0,
                  Area=(Area)0,
