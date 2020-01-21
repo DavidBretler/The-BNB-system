@@ -227,6 +227,20 @@ namespace DAL
         #endregion Order
 
         #region Host
+
+        public void AddNewHost(Host TheHost)
+        {
+            try
+            {
+                List<HostingUnit> L = DS.DataSource.ListHostingUnits;
+                for (int i = 0; i < L.Count; i++)
+                    if (L[i].HostingUnitKey == TheHost.HostKey)
+                        throw new IDalreadyExistsException("Host", TheHost.HostKey);
+                DS.DataSource.ListHosts.Add(TheHost);
+            }
+            catch (IDalreadyExistsException E) { throw E; }
+
+        }
         public void UpdateHost(BE.Host theHost)
         {
             try

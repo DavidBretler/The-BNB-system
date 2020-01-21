@@ -13,6 +13,8 @@ namespace DAL
         void Deleteorder(BE.Order TheOrder);
         void DeleteHost(BE.Host TheHost);
         void NewGuestRequests(BE.GuestRequest TheGuestRequest);
+        void AddNewHost(BE.Host TheHost);
+
         void UpdateGuestRequests(BE.GuestRequest TheGuestRequest);
         void AddNewHostingUnit(BE.HostingUnit TheHostingUnit);
          void UpdateHostingUnit(BE.HostingUnit TheHostingUnit);

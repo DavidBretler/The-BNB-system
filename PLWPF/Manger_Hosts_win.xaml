@@ -28,6 +28,7 @@
         <Button Content="Delete" HorizontalAlignment="Left" Height="36" Margin="691,91,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click"/>
         <TextBox x:Name="Delete_Textbox" HorizontalAlignment="Left" Height="25" Margin="691,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="91"/>
         <TextBlock HorizontalAlignment="Left" Height="26" Margin="691,40,0,0" TextWrapping="Wrap" Text="Enter Key" VerticalAlignment="Top" Width="91"/>
+        <Button Content="To add new Host" HorizontalAlignment="Left" Margin="672,353,0,0" VerticalAlignment="Top" Width="110" Height="36" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
