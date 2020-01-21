@@ -1,0 +1,48 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.HostingUnit_byArea"
+        mc:Ignorable="d"
+        Title="HostingUnit_byArea" Height="528" Width="1084.158" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="hostingUnitViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:HostingUnit}, CreateList=True}"/>
+        <CollectionViewSource x:Key="hostViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Host}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource hostingUnitViewSource}" Margin="30,-45,106,16">
+        <DataGrid x:Name="hostingUnitDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}"  RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,80,59,245.4">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="hostingUnitKeyColumn" Binding="{Binding HostingUnitKey}" Header="Hosting Unit Key" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="airConditionerColumn" Binding="{Binding AirConditioner}" Header="Air Conditioner" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="areaColumn" Binding="{Binding Area}" Header="Area" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="childrensAttractionsColumn" Binding="{Binding ChildrensAttractions}" Header="Childrens Attractions" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="gardenColumn" Binding="{Binding Garden}" Header="Garden" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="hikesColumn" Binding="{Binding Hikes}" Header="Hikes" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="hostingUnitNameColumn" Binding="{Binding HostingUnitName}" Header="Hosting Unit Name" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="jacuzziColumn" Binding="{Binding Jacuzzi}" Header="Jacuzzi" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="numOfBedsColumn" Binding="{Binding NumOfBeds}" Header="Num Of Beds" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="numOfRoomsColumn" Binding="{Binding NumOfRooms}" Header="Num Of Rooms" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="ownerColumn" Header="Owner" Width="SizeToHeader" Binding ="{Binding Owner.FamilyName}">
+                </DataGridTextColumn>
+                <DataGridTextColumn x:Name="poolColumn" Binding="{Binding pool}" Header="pool" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Type" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="hostDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource hostViewSource}}" Margin="130,327,82.6,10.4" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="hostKeyColumn" Binding="{Binding HostKey}" Header="Host Key" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="collectionClearanceColumn" Binding="{Binding CollectionClearance}" Header="Collection Clearance" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="familyNameColumn" Binding="{Binding FamilyName}" Header="Family Name" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="mailAddressColumn" Binding="{Binding MailAddress}" Header="Mail Address" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="numberOfUintsColumn" Binding="{Binding numberOfUints}" Header="number Of Uints" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="passwordColumn" Binding="{Binding password}" Header="password" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="phoneNumberColumn" Binding="{Binding PhoneNumber}" Header="Phone Number" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="privateNameColumn" Binding="{Binding PrivateName}" Header="Private Name" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="  host by number of unit" HorizontalAlignment="Left" Height="32" Margin="369,295,0,0" VerticalAlignment="Top" Width="149"/>
+        <Label Content="hosting unit by area" HorizontalAlignment="Left" Height="37" Margin="369,43,0,0" VerticalAlignment="Top" Width="138"/>
+    </Grid>
+</Window>

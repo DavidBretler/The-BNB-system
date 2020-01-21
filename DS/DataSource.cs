@@ -56,7 +56,7 @@ namespace DS
                     ChildrensAttractions = (Choice)1,
                     Hikes =(Choice)1,
                     AirConditioner=(Choice)1,
-                    NumOfBeds=0,
+                    NumOfBeds=2,
                 },
             new BE.GuestRequest()
             {
@@ -77,7 +77,7 @@ namespace DS
                     ChildrensAttractions = 0,
                     Hikes =0,
                     AirConditioner=0,
-                    NumOfBeds=0,
+                    NumOfBeds=3,
                  }
         };
         public static List<BE.HostingUnit> ListHostingUnits = new List<BE.HostingUnit>
@@ -107,7 +107,7 @@ namespace DS
                  NumOfBeds=2,
                  pool=0,
                  Jacuzzi=0,
-                 Area=(Area)0,
+                 Area=(Area)1,
                  Garden=0,
                  AirConditioner=0,
                  ChildrensAttractions=0,

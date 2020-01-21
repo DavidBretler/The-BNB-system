@@ -67,8 +67,14 @@
     <Compile Include="GuestEntryWindow.xaml.cs">
       <DependentUpon>GuestEntryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Guestrequest_ByAreaAndNumOfBeds.xaml.cs">
+      <DependentUpon>Guestrequest_ByAreaAndNumOfBeds.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HostigUnitWin.xaml.cs">
       <DependentUpon>HostigUnitWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HostingUnit_byArea.xaml.cs">
+      <DependentUpon>HostingUnit_byArea.xaml</DependentUpon>
     </Compile>
     <Compile Include="Order_ByHost.xaml.cs">
       <DependentUpon>Order_ByHost.xaml</DependentUpon>
@@ -107,11 +113,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Guestrequest_ByAreaAndNumOfBeds.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HostEntryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HostigUnitWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HostingUnit_byArea.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

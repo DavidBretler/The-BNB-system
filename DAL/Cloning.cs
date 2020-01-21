@@ -41,6 +41,8 @@ namespace DAL
             target.GuestRequestKey = original.GuestRequestKey;
             target.Hikes = original.Hikes;
             target.AirConditioner = original.AirConditioner;
+            target.NumOfBeds = original.NumOfBeds;
+            target.NumOfRooms = original.NumOfRooms;
             return target;
         }
         public static BE.Order Clone(this BE.Order original)
@@ -59,7 +61,7 @@ namespace DAL
         {
             BE.HostingUnit target = new BE.HostingUnit();
             target.Owner = original.Owner;
-          target.Area = original.Area;
+            target.Area = original.Area;
             target.HostingUnitName = original.HostingUnitName;
             target.HostingUnitKey = original.HostingUnitKey;
             target.NumOfRooms = original.NumOfRooms;

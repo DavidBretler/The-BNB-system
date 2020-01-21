@@ -16,5 +16,7 @@
         <Button x:Name="Guest_Request_button" Content="Guest Requests" HorizontalAlignment="Left" Height="47" Margin="77,119,0,0" VerticalAlignment="Top" Width="172" Click="Guest_Request_button_Click"/>
         <Button Content="Hosting Units" HorizontalAlignment="Left" Height="40" Margin="77,57,0,0" VerticalAlignment="Top" Width="172" Click="Button_Click"/>
         <Button Content="hosts" HorizontalAlignment="Left" VerticalAlignment="Top" Width="171" Margin="77,226,0,0" Height="40" Click="Button_Click_1"/>
+        <Button Content="hosting unit by area and host by number of unit" HorizontalAlignment="Left" Height="63" Margin="486,57,0,0" VerticalAlignment="Top" Width="271" Click="Button_Click_2"/>
+        <Button Content="List of guest request by area , by number of beds" HorizontalAlignment="Left" Height="50" Margin="486,171,0,0" VerticalAlignment="Top" Width="271" Click="Button_Click_3"/>
     </Grid>
 </Window>

@@ -57,5 +57,17 @@ namespace PLWPF
             Window Manger_Hosts_win = new Manger_Hosts_win();
             Manger_Hosts_win.Show();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Window HostingUnit_byArea = new HostingUnit_byArea();
+            HostingUnit_byArea.Show();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Window Guestrequest_ByAreaAndNumOfBeds = new Guestrequest_ByAreaAndNumOfBeds();
+            Guestrequest_ByAreaAndNumOfBeds.Show();
+        }
     }
 }

@@ -31,6 +31,7 @@ namespace PLWPF
                 hostingUnit = null;
                 GuestRequest = null;
                 bl = BL.Factory.GetBL();
+                guestRequestDataGrid.ItemsSource = bl.getListOfGuestRequest();
 
                 this.studentsComboBox.ItemsSource = bl.getListOfHostingUnitsByOwnerKey(FindHostWindow.host.HostKey).ToList();
                 this.studentsComboBox.DisplayMemberPath = "HostingUnitName";
@@ -88,7 +89,7 @@ namespace PLWPF
             {
                 bl = BL.Factory.GetBL();
                 bl.UpdateHostingUnit(hostingUnit);
-                MessageBox.Show("פרטיך עודכנו בהצלחה ");
+                MessageBox.Show("your detail have been update  ");
             }
             catch (Exception E) { MessageBox.Show(E.ToString()); }
         }
@@ -99,7 +100,7 @@ namespace PLWPF
             {
 
                
-                if (MessageBox.Show("האם אתה בטוח שברצונך לבטל את ההזמנה?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                if (MessageBox.Show("are you sure you want to delete this hosting unit?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
                     this.Close();
                 }
@@ -139,6 +140,14 @@ namespace PLWPF
             {
                 MessageBox.Show(exp.ToString());
             }
+        }
+
+        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+            System.Windows.Data.CollectionViewSource guestRequestViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("guestRequestViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // guestRequestViewSource.Source = [generic data source]
         }
     }
 }

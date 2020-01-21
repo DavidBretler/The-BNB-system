@@ -532,6 +532,7 @@ namespace BL
                              group unit by unit.Area into groupArea
                              orderby groupArea.Key
                              select groupArea;
+
             return AraeGroups;
             
             }
@@ -548,12 +549,7 @@ namespace BL
                             select groupNum;
             return NumGroups;
             
-        }
-
-        /// <summary>
-        /// create a list of Gust Requests by area
-        /// </summary>
-        /// <returns>list by area</returns>
+        }    
         public IEnumerable<IGrouping<Area, GuestRequest>> ListOfguestRequestsByArea()
         {
             List<BE.GuestRequest> guestRequests = dal.getListOfGuestRequest();
