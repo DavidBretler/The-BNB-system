@@ -79,6 +79,9 @@
     <Compile Include="Order_ByHost.xaml.cs">
       <DependentUpon>Order_ByHost.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Manger_Add_Host_win.xaml.cs">
+      <DependentUpon>Manger_Add_Host_win.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Manger_GuestRequest_win.xaml.cs">
       <DependentUpon>Manger_GuestRequest_win.xaml</DependentUpon>
     </Compile>
@@ -145,6 +148,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MangerEntryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manger_Add_Host_win.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

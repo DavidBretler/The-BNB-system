@@ -20,7 +20,16 @@
             <Label Content="ילדים"/>
             <Label Content="אזור"/>
             <Label Content="סוג אתר נופש" Height="42"/>
-            <Label Content="צ'ק אאוט"/>
+            <Label Content="" Height="4" RenderTransformOrigin="0.5,0.5">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
 
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" Height="220                     " Margin="397,60,0,0" VerticalAlignment="Top" Width="189">
@@ -55,11 +64,11 @@
                 <ComboBoxItem Content="8" />
                 <ComboBoxItem Content="9" />
                 <ComboBoxItem Content="10" />
-              
+
             </ComboBox>
             <ComboBox SelectedItem="{Binding Area}" x:Name="AreaCB" />
             <ComboBox SelectedItem = "{Binding ResortType}" x:Name="ResortTypeCB" />
-        
+
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Left" Height="220" Margin="114,71,0,0" VerticalAlignment="Top" Width="86">

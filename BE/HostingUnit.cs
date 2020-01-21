@@ -33,7 +33,8 @@ namespace BE
         //
         //calender that  is made of array of  12 arrays
         public bool[,] Diary = new bool[12, 31];
-        public HostingUnit GetCopy() { 
+        public HostingUnit GetCopy() 
+        { 
             return (HostingUnit)this.MemberwiseClone();
         }
 

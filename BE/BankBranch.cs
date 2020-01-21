@@ -15,5 +15,9 @@ namespace BE
             BankName = BankName2; BranchNumber = BranchNumber2;
             BranchAddress = BranchAddress2; BranchCity = BranchCity2;
         }
+        public BankBranch GetCopy()
+        {
+            return (BankBranch)this.MemberwiseClone();
+        }
     }
 }

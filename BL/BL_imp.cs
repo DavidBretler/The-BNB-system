@@ -211,18 +211,11 @@ namespace BL
         /// receives the info of the  new Host
         /// </summary>
         /// <returns></returns>
-        public Host NewHost(int HostKey, string PrivateName,
-                            string FamilyName, string PhoneNumber,
-                            string MailAddress, BankAccount HostBankAccuont)
+        public void NewHost(Host host)
         {
-            Host EnterdHost = new Host();
-            EnterdHost.HostKey=BE.Configuration.getNewHostKey();
-            EnterdHost.PrivateName=PrivateName;
-            EnterdHost.FamilyName=FamilyName;
-            EnterdHost.PhoneNumber=PhoneNumber;
-            EnterdHost.MailAddress=MailAddress;
+            
+            dal.AddNewHost(host);
 
-            return EnterdHost;
 
         }
         /// <summary>

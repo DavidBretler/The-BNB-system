@@ -57,5 +57,12 @@ namespace PLWPF
             }
 
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Window Manger_Add_Host_win = new Manger_Add_Host_win();
+            Manger_Add_Host_win.Show();
+            this.Close();
+        }
     }
 }
