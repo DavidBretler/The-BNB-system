@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="findG_RByKey" Height="300" Width="300.33">
     <Grid>
-        <Label Content="נא הכנס מס הזמנה " HorizontalAlignment="Left" Height="60" Margin="29,26,0,0" VerticalAlignment="Top" Width="212"/>
-        <TextBox x:Name="___GuestRequest_key_textbox_" HorizontalAlignment="Center" Height="49" Margin="29,119,51,0" TextWrapping="Wrap"  Text="הכנס מספר הזמנה כאן"  VerticalAlignment="Top" Width="212" />
-        <Button x:Name="___FinedGuestRequest_Button_" Content="מצא הזמנה " HorizontalAlignment="Left" Height="44" Margin="29,201,0,0" VerticalAlignment="Top" Width="212" Click="___FinedGuestRequest_Button__Click"/>
+        <Label Content="Enter Guest Request Key " HorizontalAlignment="Left" Height="60" Margin="29,64,0,0" VerticalAlignment="Top" Width="212"/>
+        <TextBox x:Name="___GuestRequest_key_textbox_" HorizontalAlignment="Center" Height="49" Margin="29,124,51,0" TextWrapping="Wrap"    VerticalAlignment="Top" Width="212" />
+        <Button x:Name="___FinedGuestRequest_Button_" Content="Find Guest Request " HorizontalAlignment="Left" Height="44" Margin="29,173,0,0" VerticalAlignment="Top" Width="212" Click="___FinedGuestRequest_Button__Click"/>
 
     </Grid>
 </Window>

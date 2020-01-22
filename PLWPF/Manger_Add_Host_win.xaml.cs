@@ -40,11 +40,19 @@ namespace PLWPF
         {
             try
             {
+                MainWindow.IsEmpty(numberOfUintsTextBox.Text);
+                MainWindow.IsInt(numberOfUintsTextBox.Text);
+                MainWindow.IsEmpty(familyNameTextBox.Text);
+                MainWindow.IsEmpty(mailAddressTextBox.Text);
+                MainWindow.IsEmpty(passwordTextBox.Text);
+                MainWindow.IsEmpty(phoneNumberTextBox.Text);
+                MainWindow.IsEmpty(privateNameTextBox.Text);
+                         
                 bank.BankAccountNumber = Int32.Parse(Bank_Number_Textbox.Text);
                 host.HostBankAccuont = bank;
                 host.HostKey = BE.Configuration.getNewHostKey();
                 myIBL.NewHost(host);
-                MessageBox.Show("Host added Successfuly. /n key: " + host.HostKey);
+                MessageBox.Show("Host added Successfuly.  key: " + host.HostKey);
                 this.Close();
                 Window Manger_Hosts_win = new Manger_Hosts_win();
                 Manger_Hosts_win.Show();

@@ -28,7 +28,32 @@ namespace PLWPF
 
 
         }
- 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+           static public bool IsInt (string a)
+        {
+            int n;
+            if (int.TryParse(a, out n))
+                if (n >= 0)
+                    return true;
+                     else
+                    throw new Exception("Must enter a  positive number.");
+            throw new Exception("Must enter a number.");
+        }
+        static public bool IsEmpty(string a)
+        {
+            if (a == "")
+                throw new Exception("Must Fill all the data.");
+            else
+                return true;
+          
+        }
+      
+
         private void HostEntryButton_Click(object sender, RoutedEventArgs e)
         {
             Window FindHostWindow = new FindHostWindow();
