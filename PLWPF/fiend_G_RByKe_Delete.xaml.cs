@@ -30,16 +30,19 @@ namespace PLWPF
             InitializeComponent();
         }
 
+
         private void ___FinedGuestRequest_Button__Click(object sender, RoutedEventArgs e)
         {
 
             try
             {
+                MainWindow.IsEmpty(___GuestRequest_key_textbox_.Text);
+                MainWindow.IsInt(___GuestRequest_key_textbox_.Text);
 
                 myIBL = BL.Factory.GetBL();
                 int temp = Int32.Parse(___GuestRequest_key_textbox_.Text);
                 guestRequest = myIBL.SearchGetGuestRequestByKey(temp);
-                if(MessageBox.Show("האם אתה בטוח שברצונך לבטל את ההזמנה?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                if(MessageBox.Show("Are you sure you want to delete?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                  {
                     this.Close();
                   }

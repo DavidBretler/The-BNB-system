@@ -36,7 +36,10 @@ namespace PLWPF
             {
              
                 myIBL = BL.Factory.GetBL();
-            
+
+                MainWindow.IsEmpty(___GuestRequest_key_textbox_.Text);
+                MainWindow.IsInt(___GuestRequest_key_textbox_.Text);
+
                 int temp = Int32.Parse(___GuestRequest_key_textbox_.Text);
                 guestRequest = myIBL.SearchGetGuestRequestByKey(temp);
 
