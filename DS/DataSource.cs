@@ -42,7 +42,7 @@ namespace DS
                    GuestRequestKey= BE.Configuration.getNewGuestRequestKey(),
                     PrivateName = "david",
                     FamilyName = "bornstain",
-                    MailAddress = "aaa@aaa.com",
+                    MailAddress ="dovbaker@gmail.com",
                     Status = 0,
                     RegistrationDate = new DateTime(2020, 01, 01),
                     EntryDate = new DateTime(2020, 01, 01),
@@ -63,7 +63,7 @@ namespace DS
                  GuestRequestKey= BE.Configuration.getNewGuestRequestKey(),
             PrivateName = "dov",
                     FamilyName = "aquamen",
-                    MailAddress = "bbb@aaa.com",
+                    MailAddress = "dovbaker@gmail.com",
                     Status = 0,
                     RegistrationDate = new DateTime(2020, 01, 02),
                     EntryDate = new DateTime(2020, 01, 02),
@@ -85,7 +85,7 @@ namespace DS
             new BE.HostingUnit()
             {
                  HostingUnitKey=Configuration.getNewHostingUnitKey(),     
-                 Owner=ListHosts[1],
+                 Owner=ListHosts[0],
                   HostingUnitName="the rock",
                  NumOfRooms=5,
                  NumOfBeds=8,
@@ -126,7 +126,7 @@ namespace DS
             new BE.Order()
             {
              HostingUnitKey=1,           
-             GuestRequestKey=91,
+             GuestRequestKey=1,
             OrderKey=BE.Configuration.getNewOrderKey() ,
             Status=0 ,  
            CreateDate=new DateTime(2020,1,10) ,
@@ -139,7 +139,7 @@ namespace DS
              GuestRequestKey=2,
             OrderKey=BE.Configuration.getNewOrderKey() ,
             Status=0 ,
-           CreateDate=new DateTime(2020,1,15) ,
+           CreateDate= DateTime.Today ,
            contactCustumerDate=new DateTime(2020,6,16),
             }
 

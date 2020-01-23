@@ -4,6 +4,8 @@ using System.Text;
 using BE;
 using DAL;
 using System.Linq;
+using System.Net.Mail;
+
 
 
 namespace BL
@@ -439,6 +441,7 @@ namespace BL
         {
             guestRequest.Status = 0;
             guestRequest.RegistrationDate = DateTime.Today;
+            
             guestRequest.NumOfBeds = guestRequest.Adults + guestRequest.Children;
             
             checkDates(guestRequest.EntryDate, guestRequest.EndDate);
@@ -507,7 +510,37 @@ namespace BL
         /// <param name="currrentOrder"></param>
         public void sendEmail(Order currrentOrder)
         {
-            Console.WriteLine("email have been with order num  " + currrentOrder.OrderKey + "aboute request num :" + currrentOrder.GuestRequestKey);
+           // יצירת אובייקט MailMessage
+            MailMessage mail = new MailMessage();
+
+            //כתובת הנמען)ניתן להוסיף יותר מאחד( //
+             mail.To.Add("dovbaker@gmail.com");
+           // הכתובת ממנה נשלח המייל //
+             mail.From = new MailAddress("dovbaker@gmail.com");
+           // נושא ההודעה //
+             mail.Subject = "order booked";
+            //תוכן ההודעה )נניח שתוכן ההודעה בפורמט HTML //(
+             mail.Body = "You are now one step away from your dream vaction . pleas contact:" +(GetHostFromOrder ( currrentOrder)).MailAddress+ "to confirm. ";
+          //  הגדרה שתוכן ההודעה בפורמט HTML //
+         mail.IsBodyHtml = true;
+
+           // יצירת עצם מסוג Smtp //
+            SmtpClient smtp = new SmtpClient();
+            //הגדרת השרת של gmail //
+             smtp.Host = "smtp.gmail.com";
+            // פרטי הכניסה )שם משתמש וסיסמה(לחשבון ה gmail //
+
+             smtp.Credentials = new System.Net.NetworkCredential("dovbaker@gmail.com",
+            "pinball91");
+           // ע"פ דרישת השר, חובה לאפשר במקרה זה SSL //
+            smtp.EnableSsl = true;
+
+               // שליחת ההודעה //
+ smtp.Send(mail);
+            
+     
+
+            Console.WriteLine("email has been sent to order num  " + currrentOrder.OrderKey + "aboute request num :" + currrentOrder.GuestRequestKey);
             currrentOrder.contactCustumerDate = DateTime.Now;
         }
         #endregion Guest Request
