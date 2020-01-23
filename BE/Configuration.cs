@@ -6,13 +6,13 @@ namespace BE
 {
   public   class Configuration
     {
-        static int  HostingUnitKey ;
-        static int GuestRequestKey;
-        static int HostKey;
-        static int OrderKey=0;
-        static double Commission = 10; //commission for orders
-        static int Password = 999;
-        static string MangerPassword = "9999";
+        public static int  HostingUnitKey ;
+        public static int GuestRequestKey;
+        public static int HostKey;
+        public static int OrderKey=0;
+        public static double Commission = 10; //commission for orders
+        public static int Password = 999;
+        public static string MangerPassword = "9999";
         static public String getMangerPassword() { return MangerPassword; }
         static public int getPassword() { return ++Password; }
         static public double getCommission() { return Commission; }
