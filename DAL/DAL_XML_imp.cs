@@ -42,37 +42,37 @@ namespace DAL
             return result;
         }
 
-        public static T AddNewObject<T>( object sourceToAdd, string path )
-        {
+        //public static T AddNewObject<T>( object sourceToAdd, string path )
+        //{
 
-            List < T>  tempList = new List< T >() ; 
-            tempList = LoadFromXML<T.GetType>(path);
-            tempList.Add(temp);
-            SaveToXML( source,  path);
-        }
+        //    List < T>  tempList = new List< T >() ; 
+        //    tempList = LoadFromXML<T.GetType>(path);
+        //    tempList.Add(temp);
+        //    SaveToXML( source,  path);
+        //}
 
-        private void SaveConfigToXml()
-        {
-            configRoot = new XElement("config");
-            try
-            {
-                configRoot.Add(new XElement("HostingUnitKey", BE.Configuration.HostingUnitKey),
-                               new XElement("GuestRequestKey", BE.Configuration.GuestRequestKey),
-                               new XElement("HostKey", BE.Configuration.HostKey),
-                               new XElement("OrderKey", BE.Configuration.OrderKey),
-                               new XElement("Commission", BE.Configuration.Commission),
-                               new XElement("Password", BE.Configuration.Password),
-                               new XElement("MangerPassword", BE.Configuration.MangerPassword),;                           
-                configRoot.Save(configPath);     
-            }
-            catch (Exception)
-            { }
-        }
+        //private void SaveConfigToXml()
+        //{
+        //    configRoot = new XElement("config");
+        //    try
+        //    {
+        //        configRoot.Add(new XElement("HostingUnitKey", BE.Configuration.HostingUnitKey),
+        //                       new XElement("GuestRequestKey", BE.Configuration.GuestRequestKey),
+        //                       new XElement("HostKey", BE.Configuration.HostKey),
+        //                       new XElement("OrderKey", BE.Configuration.OrderKey),
+        //                       new XElement("Commission", BE.Configuration.Commission),
+        //                       new XElement("Password", BE.Configuration.Password),
+        //                       new XElement("MangerPassword", BE.Configuration.MangerPassword);                           
+        //        configRoot.Save(configPath);     
+        //    }
+        //    catch (Exception)
+        //    { }
+        //}
         internal DAL_XML_imp()
         {
             if (!File.Exists(configPath))
             {
-                SaveConfigToXml();
+               // SaveConfigToXml();
             }
             else
             {

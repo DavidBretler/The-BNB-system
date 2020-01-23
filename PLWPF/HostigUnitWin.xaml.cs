@@ -11,6 +11,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Collections;
+using System.ComponentModel;
+using System.Drawing;
+using System.Threading;
+
 
 namespace PLWPF
 {
@@ -19,8 +24,10 @@ namespace PLWPF
     /// </summary>
     public partial class HostigUnitWin : Window
     {
+            BackgroundWorker workerThread;
        
-            BL.IBL bl;
+
+        BL.IBL bl;
         BE.HostingUnit hostingUnit;
         BE.GuestRequest GuestRequest;
         public HostigUnitWin()
@@ -28,6 +35,9 @@ namespace PLWPF
             try
             {
                 InitializeComponent();
+
+
+
                 hostingUnit = null;
                 GuestRequest = null;
                 bl = BL.Factory.GetBL();
@@ -134,6 +144,15 @@ namespace PLWPF
             try
             {
                 bl.NewOrder(GuestRequest, hostingUnit);
+
+                
+                workerThread = new BackgroundWorker();
+                workerThread.DoWork += new DoWorkEventHandler(workerThread_DoWork);
+                workerThread.RunWorkerCompleted += new RunWorkerCompletedEventHandler(workerThread_RunWorkerCompleted);
+                workerThread.RunWorkerAsync();
+
+
+      
                 MessageBox.Show("your order have been craeted" );
             }
             catch (Exception exp)
@@ -142,6 +161,15 @@ namespace PLWPF
             }
         }
 
+        void workerThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("email sent.");
+
+        }
+        void workerThread_DoWork(object sender, DoWorkEventArgs e)
+        {
+            bl.sendEmailIfHasClearance(bl.getListOfOrder().Last());
+        }
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
 

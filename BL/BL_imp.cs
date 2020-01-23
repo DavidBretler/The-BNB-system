@@ -275,7 +275,7 @@ namespace BL
                 order.HostingUnitKey = hostingUnit.HostingUnitKey;
                 order.Status = (Status)0;
                 dal.NewOrder(order);
-                sendEmailIfHasClearance(order);
+                
 
             }
             else throw new GenralException("BL_imp", "ERROR in creating order.");
@@ -492,7 +492,7 @@ namespace BL
         /// </summary>
         /// <param name="host"></param>
         /// <param name="guestRequest"></param>
-        void sendEmailIfHasClearance(Order order)
+       public void sendEmailIfHasClearance(Order order)
         {
                 if (GetHostFromOrder(order).CollectionClearance)
                 {
@@ -514,31 +514,22 @@ namespace BL
             MailMessage mail = new MailMessage();
 
             //כתובת הנמען)ניתן להוסיף יותר מאחד( //
-             mail.To.Add("dovbaker@gmail.com");
+             mail.To.Add(SearchGetGuestRequestByKey(currrentOrder.GuestRequestKey).MailAddress);
            // הכתובת ממנה נשלח המייל //
-             mail.From = new MailAddress("dovbaker@gmail.com");
-           // נושא ההודעה //
-             mail.Subject = "order booked";
-            //תוכן ההודעה )נניח שתוכן ההודעה בפורמט HTML //(
+             mail.From = new MailAddress("israelhostingservice@gmail.com");
+             mail.Subject = "VACTION!";
              mail.Body = "You are now one step away from your dream vaction . pleas contact:" +(GetHostFromOrder ( currrentOrder)).MailAddress+ "to confirm. ";
-          //  הגדרה שתוכן ההודעה בפורמט HTML //
-         mail.IsBodyHtml = true;
+              mail.IsBodyHtml = true;
 
-           // יצירת עצם מסוג Smtp //
             SmtpClient smtp = new SmtpClient();
-            //הגדרת השרת של gmail //
-             smtp.Host = "smtp.gmail.com";
-            // פרטי הכניסה )שם משתמש וסיסמה(לחשבון ה gmail //
-
-             smtp.Credentials = new System.Net.NetworkCredential("dovbaker@gmail.com",
-            "pinball91");
-           // ע"פ דרישת השר, חובה לאפשר במקרה זה SSL //
+            smtp.Port = 587;
+            smtp.Host = "smtp.gmail.com"; //for gmail host  
             smtp.EnableSsl = true;
-
-               // שליחת ההודעה //
- smtp.Send(mail);
-            
-     
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("israelhostingservice@gmail.com",
+             "israel0000");
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Send(mail);
 
             Console.WriteLine("email has been sent to order num  " + currrentOrder.OrderKey + "aboute request num :" + currrentOrder.GuestRequestKey);
             currrentOrder.contactCustumerDate = DateTime.Now;
