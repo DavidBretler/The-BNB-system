@@ -356,7 +356,7 @@ namespace DAL
                 throw new IDalreadyExistsException("the order is already exit");
             try
             {
-                XElement O = new XElement("Order");
+                XElement O = new XElement("Order") ;
                 O.Add(new XElement("ID", TheOrder.GuestRequestKey.ToString()),
                       new XElement("FirstName", TheOrder.OrderKey.ToString()),
                       new XElement("LastName", TheOrder.Status.ToString()),
