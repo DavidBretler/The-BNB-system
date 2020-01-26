@@ -29,7 +29,7 @@ namespace DS
              PrivateName="aba",
              FamilyName="sba",
              PhoneNumber="0527893446",
-             MailAddress="dovb15@walla.com",
+             MailAddress="ddkill8@gmail.com",
              numberOfUints =6,
              HostBankAccuont= new BankAccount(),
              CollectionClearance=true, //permision to debit from bank
