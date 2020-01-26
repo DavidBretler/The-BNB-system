@@ -690,6 +690,7 @@ namespace BL
         }
 
         #endregion Date
+        public void GetBankXml() { dal.GetBankXml(); }
     }
 }
 

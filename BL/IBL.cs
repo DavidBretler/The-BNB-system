@@ -30,11 +30,12 @@ namespace BL
         void NewGuestRequests(GuestRequest guestRequest);
         void UpdateGuestRequests(GuestRequest guestRequest);
         void AddNewHostingUnit(HostingUnit NewHostingUnit);
-
+        void  sendEmailIfHasClearance(Order order);
         void UpdateHostingUnit(BE.HostingUnit theHostingUnit);
         void NewOrder(GuestRequest guestRequest, HostingUnit hostingUnit);
         void UpdateOrder(GuestRequest guestRequest, HostingUnit hostingUnit, int orderKey);
         List<BE.HostingUnit> getListOfHostingUnits();
+         void GetBankXml();
         List<BE.GuestRequest> getListOfGuestRequest();
         List<BE.Order> getListOfOrder();
         List<BE.BankBranch> getListOfBankBranch();

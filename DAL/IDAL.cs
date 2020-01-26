@@ -20,7 +20,7 @@ namespace DAL
          void UpdateHostingUnit(BE.HostingUnit TheHostingUnit);
         void UpdateHost(BE.Host theHost);
         void NewOrder(BE.Order TheOrder);
-
+         void GetBankXml();
         void UpdateDateOrder(BE.Order TheOrder);
         List<BE.HostingUnit> getListOfHostingUnits();
         List<BE.GuestRequest> getListOfGuestRequest();

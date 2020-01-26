@@ -51,7 +51,7 @@ namespace PLWPF
                    
                     myIBL.DeleteGuestRequests(guestRequest);
                     this.Close();
-
+                    MessageBox.Show("the guest Request have beet deleted");
                 }
 
             }
