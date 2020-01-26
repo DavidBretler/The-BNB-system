@@ -13,8 +13,8 @@ namespace DAL
     {
         public static IDAL GetDal()
         {
-            //return Dal_imp.GetDAL();
-             return DAL_XML_imp.GetDALXml(); 
+            return Dal_imp.GetDAL();
+            // return DAL_XML_imp.GetDALXml(); 
         }
     }
 }

@@ -507,7 +507,8 @@ namespace BL
         /// send email to the costumor by the host and change the date 
         /// </summary>
         /// <param name="currrentOrder"></param>
-        public void sendEmail(Order currrentOrder)
+       
+       public void sendEmail(Order currrentOrder)
         {
            // יצירת אובייקט MailMessage
             MailMessage mail = new MailMessage();
@@ -524,7 +525,7 @@ namespace BL
             smtp.Port = 587;
             smtp.Host = "smtp.gmail.com"; //for gmail host  
             smtp.EnableSsl = true;
-            smtp.UseDefaultCredentials = false;
+           // smtp.UseDefaultCredentials = false;
             smtp.Credentials = new System.Net.NetworkCredential("israelhostingservice@gmail.com",
              "israel0000");
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
@@ -532,7 +533,11 @@ namespace BL
 
             Console.WriteLine("email has been sent to order num  " + currrentOrder.OrderKey + "aboute request num :" + currrentOrder.GuestRequestKey);
             currrentOrder.contactCustumerDate = DateTime.Now;
-        }
+        
+    
+
+    
+    }
         #endregion Guest Request
 
         #region Grouping

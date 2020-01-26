@@ -15,6 +15,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace PLWPF
 {//  לראות האם להשתמש בuser control  !!
@@ -65,6 +66,15 @@ namespace PLWPF
           
         }
       
+            public static bool IsValidEmailAddress( string s)
+            {
+                Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+            if (!regex.IsMatch(s))
+                throw new Exception("the email is incorecct.");
+            return true;
+            }
+        
+
 
         private void HostEntryButton_Click(object sender, RoutedEventArgs e)
         {

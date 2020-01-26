@@ -45,16 +45,23 @@ namespace PLWPF
         {
             try
             {
+                MainWindow.IsEmpty(last_name_textbox.Text);
+                MainWindow.IsEmpty(privte_Name_textbox.Text);
+
+                MainWindow.IsEmpty(email_text_box.Text);
+                MainWindow.IsValidEmailAddress(email_text_box.Text);
+
+
                 guestRequest.GuestRequestKey = BE.Configuration.getNewGuestRequestKey();
                   ibl.NewGuestRequests(guestRequest);              
-                MessageBox.Show("מס ההזמנה שלך הוא :" + guestRequest.GuestRequestKey.ToString() );
+                MessageBox.Show("guest request key is:" + guestRequest.GuestRequestKey.ToString() );
                 guestRequest = new BE.GuestRequest();
                 this.newGuestRequestGrid.DataContext = guestRequest;               
                 this.Close();
             }
-            catch 
+            catch (Exception exp)
             {
-
+                MessageBox.Show(exp.Message);
             }
          
         }

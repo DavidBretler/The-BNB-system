@@ -41,7 +41,7 @@ namespace BL
         List<BE.BankBranch> getListOfBankBranch();
         List<Host> getListOfHost();
 
-        void sendEmailIfHasClearance(Order order);
+      
         void sendEmail(Order currrentOrder);
 
          IEnumerable<IGrouping<int, GuestRequest>> ListOfGustRequestByNumOfBeds();
