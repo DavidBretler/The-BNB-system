@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -19,13 +20,24 @@ namespace DAL
             HostPath = @"HostXML.xml",
             GuestRequestPath = @"GuestRequestXML.xml",
             BankBranchPath = @"BankBranchXML.xml",
-            configPath = @"configPathXML.xml";
+            configPath = @"ConfigurationPathXML.xml";
 
         public static List<BE.HostingUnit> ListHostingUnit = new List<HostingUnit>();
         public static List<BE.Host> ListHost = new List<Host>();
         public static List<BE.GuestRequest> ListGuestRequest = new List<GuestRequest>();
         public static List<BE.BankBranch> ListBankBranch = new List<BankBranch>();
         public static List<BE.Order> ListOrder = new List<Order>();
+
+        //  private Dal_imp() { }
+       // public static DAL_XML_imp GetDALXml();
+        protected static DAL_XML_imp newDAL = null;
+        public static DAL_XML_imp GetDALXml()
+        {
+            if (newDAL == null)
+                newDAL = new DAL_XML_imp();
+            return newDAL;
+        }
+
 
         internal DAL_XML_imp()////////////////////////////////////////////////////////////////////
         {
@@ -46,8 +58,10 @@ namespace DAL
             }
 
             if (!File.Exists(OrderPath))
+            {
                 OrderRoot = new XElement("Order");
-            OrderRoot.Save(OrderPath);
+                OrderRoot.Save(OrderPath);
+            }
 
             if (!File.Exists(HostPath))
                 SaveToXML(new List<Host>(), HostPath);
@@ -55,14 +69,17 @@ namespace DAL
             if (!File.Exists(HostingUnitPath))
                 SaveToXML(new List<HostingUnit>(), HostingUnitPath);
 
-            if (!File.Exists(GuestRequestPath))
-                SaveToXML(new List<Configuration>(), GuestRequestPath);
+            if (!File.Exists(GuestRequestPath) )
+                SaveToXML(new List<GuestRequest>(), GuestRequestPath);
+           
+            if (!File.Exists(BankBranchPath))
+                SaveToXML(new List<BankBranch>(), BankBranchPath);
 
-            ListGuestRequest = LoadFromXML<List<GuestRequest>>(GuestRequestPath);
-            ListHost = LoadFromXML<List<Host>>(HostPath);
-            ListBankBranch = LoadFromXML<List<BankBranch>>(BankBranchPath);
+           OrderRoot = XElement.Load(OrderPath);
+            ListHost = LoadFromXML<List<Host>>(HostPath);        
             ListHostingUnit = LoadFromXML<List<HostingUnit>>(HostingUnitPath);
-
+            ListGuestRequest = LoadFromXML<List<GuestRequest>>(GuestRequestPath);
+            ListBankBranch = LoadFromXML<List<BankBranch>>(BankBranchPath);
         }
         ~DAL_XML_imp()
         {
@@ -72,8 +89,7 @@ namespace DAL
             SaveToXML<List<Host>>(ListHost, HostPath);
 
             SaveConfigToXml();
-        }
-
+        }       
         # region XmL And ConfigtoXml Func
         public static void SaveToXML<T>(T source, string path)
         {
@@ -295,18 +311,18 @@ namespace DAL
         {
             try
             {
-                BE.Order aa = new BE.Order();
+                BE.Order TempOrder = new BE.Order();
                 foreach (var order in OrderRoot.Elements())
                 {
-                    BE.Order TempOrder = new BE.Order();
-                    TempOrder.OrderKey = Int32.Parse(order.Element("OrderKey").Value);
-                    TempOrder.GuestRequestKey = Int32.Parse(order.Element("GuestRequestKey").Value);
-                    TempOrder.Status = (Status)Enum.Parse(typeof(Status), order.Element("Status").Value);
+                    BE.Order TempOrder1 = new BE.Order();
+                    TempOrder1.OrderKey = Int32.Parse(order.Element("OrderKey").Value);
+                    TempOrder1.GuestRequestKey = Int32.Parse(order.Element("GuestRequestKey").Value);
+                    TempOrder1.Status = (Status)Enum.Parse(typeof(Status), order.Element("Status").Value);
 
-                    TempOrder.contactCustumerDate = DateTime.Parse(order.Element("contactCustumerDate").Value);
-                    TempOrder.CreateDate = DateTime.Parse(order.Element("CreateDate").Value);
+                    TempOrder1.contactCustumerDate = DateTime.Parse(order.Element("contactCustumerDate").Value);
+                    TempOrder1.CreateDate = DateTime.Parse(order.Element("CreateDate").Value);
 
-                    ListOrder.Add(TempOrder);
+                    ListOrder.Add(TempOrder1);
                 }
                 return ListOrder;
             }
@@ -357,7 +373,19 @@ namespace DAL
         }
         public void UpdateDateOrder(BE.Order TheOrder)
         {
-           
+            try
+            {
+                XElement t = (from item in OrderRoot.Elements()
+                              where item.Element("OrderKey").Value == TheOrder.OrderKey.ToString()
+                              select item).FirstOrDefault();
+                
+                  t.Element("Status").Value = TheOrder.Status.ToString();
+                OrderRoot.Save(OrderPath);
+            }
+            catch (Exception)
+            {
+                throw new KeyNotFoundException("שגיאה בעדכון התלמיד " + TheOrder.OrderKey);
+            }
         }
         #endregion Order
         public List<BankBranch> getListOfBankBranch()
@@ -366,13 +394,33 @@ namespace DAL
             var temp = from item in ListBankBranch
                        select item;
             List<BankBranch> temp2 = new List<BankBranch>();
-            for (int i = 0; i < 5; i++)
-            {
-                BankBranch bankBranch = new BankBranch("laomy", i, "hatabor", "jerusalem");
-                temp2.Add(bankBranch);
-            }
+            foreach (var item in temp)
+                temp2.Add(Cloning.Clone(item));
             return temp2;
+        }                  
+    public void  GetBankXml()
+        {
+            const string xmlLocalPath = @"atm.xml";
+            WebClient wc = new WebClient();
+            try
+            {
+                string xmlServerPath =
+               @"http://www.jct.ac.il/~coshri/atm.xml";
+                wc.DownloadFile(xmlServerPath, xmlLocalPath);
+            }
+            catch (Exception)
+            {
+                string xmlServerPath = @"http://www.jct.ac.il/~coshri/atm.xml";
+                wc.DownloadFile(xmlServerPath, xmlLocalPath);
+            }
+            finally
+            {
+                wc.Dispose();
+            }
+
         }
+
+
     }
 
 }

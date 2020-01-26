@@ -19,6 +19,19 @@ namespace DAL
             return target;
 
         }
+        public static BE.BankBranch Clone(this BE.BankBranch original)
+        {
+            BE.BankBranch target = new BankBranch();
+
+
+            target.BankName = original.BankName;
+            target.BranchNumber = original.BranchNumber;
+            target.BranchAddress = original.BranchAddress;
+            target.BranchCity = original.BranchCity;           
+            return target;
+
+        }
+
         public static BE.GuestRequest Clone(this BE.GuestRequest original)
         {
             BE.GuestRequest target = new BE.GuestRequest();

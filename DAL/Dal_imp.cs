@@ -4,8 +4,8 @@ using System.Text;
 using BE;
 using DS;
 using System.Linq;
+using System.Net;
 
- 
 namespace DAL
 {
     public class Dal_imp : IDAL
@@ -26,7 +26,25 @@ namespace DAL
         }
 
         #region Hosting Unit
-
+        public void GetBankXml() {
+            const string xmlLocalPath = @"atm.xml";
+            //WebClient wc = new WebClient();
+            //try
+            //{
+            //    string xmlServerPath =
+            //@"http://www.jct.ac.il/~coshri/atm.xml";
+            //    wc.DownloadFile(xmlServerPath, xmlLocalPath);
+            //}
+            //catch (Exception)
+            //{
+            //    string xmlServerPath = @"http://www.jct.ac.il/~coshri/atm.xml";
+            //    wc.DownloadFile(xmlServerPath, xmlLocalPath);
+            //}
+            //finally
+            //{
+            //    wc.Dispose();
+            //}
+        }
         public void AddNewHostingUnit(HostingUnit TheHostingUnit)
         {
             try

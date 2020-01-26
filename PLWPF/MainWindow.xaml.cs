@@ -10,8 +10,11 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections;
+using System.ComponentModel;
+using System.Drawing;
+using System.Threading;
 
 namespace PLWPF
 {//  לראות האם להשתמש בuser control  !!
@@ -21,20 +24,29 @@ namespace PLWPF
     public partial class MainWindow : Window
     {
         BL.IBL myIBL;
+        BackgroundWorker workerThread;
+
         public MainWindow()
         {
             InitializeComponent();
-        
 
+            myIBL = BL.Factory.GetBL();
+            workerThread = new BackgroundWorker();
+            workerThread.DoWork += new DoWorkEventHandler(workerThread_DoWork);
+            workerThread.RunWorkerAsync();
 
         }
-
+      
+        void workerThread_DoWork(object sender, DoWorkEventArgs e)
+        {
+            myIBL.GetBankXml();
+        }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>
-           static public bool IsInt (string a)
+        static public bool IsInt (string a)
         {
             int n;
             if (int.TryParse(a, out n))
