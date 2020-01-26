@@ -193,11 +193,11 @@ namespace DAL
         {//לעשות פונ מיוחדת למטריצה              
             try
             {
-                for (int i = 0; i < ListHostingUnit.Count; i++)
-                    if (ListHostingUnit[i].HostingUnitKey == GuestRequestToAdd.GuestRequestKey)
+                for (int i = 0; i < ListGuestRequest.Count; i++)
+                    if (ListGuestRequest[i].GuestRequestKey == GuestRequestToAdd.GuestRequestKey)
                         throw new IDalreadyExistsException("GuestRequest", GuestRequestToAdd.GuestRequestKey);
                 ListGuestRequest.Add(GuestRequestToAdd);
-                SaveToXML(ListHostingUnit, HostingUnitPath);
+                SaveToXML(ListGuestRequest, GuestRequestPath);
             }
             catch (Exception E) { throw E; }
         }
@@ -205,11 +205,11 @@ namespace DAL
         {
             try
             {
-                for (int i = 0; i < ListHostingUnit.Count; i++)
-                    if (ListHostingUnit[i].HostingUnitKey == GuestRequestToUpdate.GuestRequestKey)
+                for (int i = 0; i < ListGuestRequest.Count; i++)
+                    if (ListGuestRequest[i].GuestRequestKey == GuestRequestToUpdate.GuestRequestKey)
                     {
                         ListGuestRequest[i] = GuestRequestToUpdate;
-                        SaveToXML(ListHostingUnit, HostingUnitPath);
+                        SaveToXML(ListGuestRequest, GuestRequestPath);
                         return;
                     }
                 throw new IDalreadyExistsException("HostingUnit", GuestRequestToUpdate.GuestRequestKey);
@@ -248,11 +248,11 @@ namespace DAL
         {//לעשות פונ מיוחדת למטריצה              
             try
             {
-                for (int i = 0; i < ListHostingUnit.Count; i++)
-                    if (ListHostingUnit[i].HostingUnitKey == HostToAdd.HostKey)
-                        throw new IDalreadyExistsException("HostingUnit", HostToAdd.HostKey);
+                for (int i = 0; i < ListHost.Count; i++)
+                    if (ListHost[i].HostKey == HostToAdd.HostKey)
+                        throw new IDalreadyExistsException("Host", HostToAdd.HostKey);
                 ListHost.Add(HostToAdd);
-                SaveToXML(ListHostingUnit, HostingUnitPath);
+                SaveToXML(ListHost, HostPath);
             }
             catch (Exception E) { throw E; }
         }
@@ -260,17 +260,16 @@ namespace DAL
 
         public void UpdateHost(Host HostToUpdate)
         {
-
             try
             {
                 for (int i = 0; i < ListHost.Count; i++)
                     if (ListHost[i].HostKey == HostToUpdate.HostKey)
                     {
                         ListHost[i] = HostToUpdate;
-                        SaveToXML(ListHostingUnit, HostingUnitPath);
+                        SaveToXML(ListHost, HostPath);
                         return;
                     }
-                throw new IDalreadyExistsException("HostingUnit", HostToUpdate.HostKey);
+                throw new MissingIdException("HostUnit", HostToUpdate.HostKey);
             }
             catch (Exception E) { throw E; }
         }
@@ -280,7 +279,7 @@ namespace DAL
         {
             try
             {
-                for (int i = 0; i < ListHostingUnit.Count; i++)
+                for (int i = 0; i < ListHost.Count; i++)
                     if (ListHost[i].HostKey == Host.HostKey)
                     {
                         ListHost.Remove(ListHost[i]);
@@ -357,7 +356,7 @@ namespace DAL
                 throw new IDalreadyExistsException("the order is already exit");
             try
             {
-                XElement O = new XElement("Order");
+                XElement O = new XElement("Order") ;
                 O.Add(new XElement("ID", TheOrder.GuestRequestKey.ToString()),
                       new XElement("FirstName", TheOrder.OrderKey.ToString()),
                       new XElement("LastName", TheOrder.Status.ToString()),
