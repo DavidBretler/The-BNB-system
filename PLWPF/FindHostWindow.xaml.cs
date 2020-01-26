@@ -37,7 +37,11 @@ namespace PLWPF
                 host = ibl.SearchForHostByKey(Int32.Parse(HostNum.Text));
                 this.DataContext = host;
                 if (host.password == Int32.Parse(hostPassword.Text))
+                {
                     HostEntryWindow.Show();
+                    this.Close();
+                }
+
                 else
                     MessageBox.Show("One of the detalis is not corect");
             }

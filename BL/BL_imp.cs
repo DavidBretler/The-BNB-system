@@ -4,6 +4,8 @@ using System.Text;
 using BE;
 using DAL;
 using System.Linq;
+using System.Net.Mail;
+
 
 
 namespace BL
@@ -272,7 +274,7 @@ namespace BL
                 order.HostingUnitKey = hostingUnit.HostingUnitKey;
                 order.Status = (Status)0;
                 dal.NewOrder(order);
-                sendEmailIfHasClearance(order);
+                
 
             }
             else throw new GenralException("BL_imp", "ERROR in creating order.");
@@ -438,6 +440,7 @@ namespace BL
         {
             guestRequest.Status = 0;
             guestRequest.RegistrationDate = DateTime.Today;
+            
             guestRequest.NumOfBeds = guestRequest.Adults + guestRequest.Children;
             
             checkDates(guestRequest.EntryDate, guestRequest.EndDate);
@@ -488,7 +491,7 @@ namespace BL
         /// </summary>
         /// <param name="host"></param>
         /// <param name="guestRequest"></param>
-        void sendEmailIfHasClearance(Order order)
+       public void sendEmailIfHasClearance(Order order)
         {
                 if (GetHostFromOrder(order).CollectionClearance)
                 {
@@ -506,7 +509,28 @@ namespace BL
         /// <param name="currrentOrder"></param>
         public void sendEmail(Order currrentOrder)
         {
-            Console.WriteLine("email have been with order num  " + currrentOrder.OrderKey + "aboute request num :" + currrentOrder.GuestRequestKey);
+           // יצירת אובייקט MailMessage
+            MailMessage mail = new MailMessage();
+
+            //כתובת הנמען)ניתן להוסיף יותר מאחד( //
+             mail.To.Add(SearchGetGuestRequestByKey(currrentOrder.GuestRequestKey).MailAddress);
+           // הכתובת ממנה נשלח המייל //
+             mail.From = new MailAddress("israelhostingservice@gmail.com");
+             mail.Subject = "VACTION!";
+             mail.Body = "You are now one step away from your dream vaction . pleas contact:" +(GetHostFromOrder ( currrentOrder)).MailAddress+ "to confirm. ";
+              mail.IsBodyHtml = true;
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Port = 587;
+            smtp.Host = "smtp.gmail.com"; //for gmail host  
+            smtp.EnableSsl = true;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("israelhostingservice@gmail.com",
+             "israel0000");
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Send(mail);
+
+            Console.WriteLine("email has been sent to order num  " + currrentOrder.OrderKey + "aboute request num :" + currrentOrder.GuestRequestKey);
             currrentOrder.contactCustumerDate = DateTime.Now;
         }
         #endregion Guest Request
