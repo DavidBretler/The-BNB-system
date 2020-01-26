@@ -29,6 +29,8 @@ namespace PLWPF
         {
             try
             {
+                if (MainWindow.IsEmpty(Password_box.Password)) ;
+
 
                 if (BE.Configuration.getMangerPassword() == (Password_box.Password))
                 {

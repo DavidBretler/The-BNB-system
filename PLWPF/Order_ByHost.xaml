@@ -7,10 +7,10 @@
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Order_ByHost"
         mc:Ignorable="d"
         Title="Order_ByHost" Height="450" Width="800" >
-   
+
     <Grid >
         <ComboBox x:Name="OrderCB" Text="choose order " HorizontalAlignment="Left" Margin="139,51,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="OrderCB_SelectionChanged"/>
-        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="218,159,0,0" VerticalAlignment="Top">
+        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="275,68,0,0" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -42,7 +42,7 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
         </Grid>
-        <Button Content="update order" HorizontalAlignment="Left" Height="55" Margin="576,159,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
+        <Button Content="update order" HorizontalAlignment="Left" Height="55" Margin="609,295,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
 
     </Grid>
 </Window>

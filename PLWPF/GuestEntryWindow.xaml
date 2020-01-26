@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="GuestEntryWindow" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="GoBack" Content="הקודם" HorizontalAlignment="Left" Height="48" Margin="643,372,0,0" VerticalAlignment="Top" Width="122" Click="Go_back_Click"  FontSize="24" FontFamily="David" />
-        <Button x:Name="exsiting_Guest_Request_button_" Content=" הזמנה קיימת" HorizontalAlignment="Left" Height="81" Margin="59,53,0,0" VerticalAlignment="Top" Width="136" FontSize="24" FontFamily="David" Click="Button_Click_1"/>
-        <Button x:Name="___NewOrderButton_" Content=" הזמנה חדשה" HorizontalAlignment="Left" Height="81" Margin="380,53,0,0" VerticalAlignment="Top" Width="136" FontSize="24" FontFamily="David" Click="___NewOrderButton__Click"/>
-        <Button  x:Name="Cancel_Guest_Request" Content="ביטול הזמנה" HorizontalAlignment="Left" Height="89" Margin="59,222,0,0" VerticalAlignment="Top" Width="173" Click="Cancel_Guest_Request_Click"/>
+        Title="GuestEntryWindow" Height="450" Width="824">
+    <Grid Margin="0,0,2,0">
+        <Button x:Name="GoBack" Content="back" HorizontalAlignment="Left"  Margin="413,278,0,0" VerticalAlignment="Top"  Click="Go_back_Click"  FontFamily="David" />
+        <Button x:Name="exsiting_Guest_Request_button_" Content=" existing request" HorizontalAlignment="Left" Margin="235,82,0,0" VerticalAlignment="Top" FontFamily="David" Click="Button_Click_1"/>
+        <Button x:Name="___NewOrderButton_" Content="new request" HorizontalAlignment="Left" Margin="59,82,0,0" VerticalAlignment="Top"   FontFamily="David" Click="___NewOrderButton__Click"/>
+        <Button  x:Name="Cancel_Guest_Request" Content="cancell request" HorizontalAlignment="Left"  Margin="413,82,0,0" VerticalAlignment="Top"  Click="Cancel_Guest_Request_Click"/>
     </Grid>
 </Window>

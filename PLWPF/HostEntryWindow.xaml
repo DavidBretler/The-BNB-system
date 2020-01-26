@@ -11,30 +11,39 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="goBack" Content="הצג פרטים" HorizontalAlignment="Left" Height="54" Margin="593,84,0,0" VerticalAlignment="Top" Width="123" FontSize="24" FontFamily="David" Click="goBack_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="goBack" Content="show details" HorizontalAlignment="Left" Height="65" Margin="53,252,0,0" VerticalAlignment="Top" Width="150" FontSize="24" FontFamily="David" Click="goBack_Click" Grid.ColumnSpan="2"/>
         <StackPanel HorizontalAlignment="Left" Height="207" Margin="616,162,0,0" VerticalAlignment="Top" Width="140" Grid.ColumnSpan="2">
-            <Label Content="קוד מארח"/>
-            <Label Content="שם פרטי"/>
-            <Label Content="שם משפחה"/>
-            <Label Content="מספר טלפון "/>
-            <Label Content="דואר אלקטרוני"/>
-            <Label Content="מספר יחדות "/>
-            <Label Content="חשבון בנק"/>
-            <Label Content="האם קיים אישור מהבנק"/>
+            <Label Content="Host key"/>
+            <Label Content="privte name"/>
+            <Label Content="last name"/>
+            <Label Content="phone number "/>
+            <Label Content="E mail"/>
+            <Label Content="number of units "/>
+            <Label Content="account number"/>
+            <Label Content="Collection Clearance"/>
         </StackPanel>
-        <StackPanel x:Name="HostD" HorizontalAlignment="Left" Height="208" Margin="439,161,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2">
+        <StackPanel x:Name="HostD" HorizontalAlignment="Left" Height="208" Margin="477,161,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2">
             <TextBox Height="27" TextWrapping="Wrap" Text="{Binding HostKey }" Margin="0,0,-0.2,0" IsEnabled="False"/>
             <TextBox Height="29" TextWrapping="Wrap" Text="{Binding PrivateName }" Margin="0,0,-0.2,0"/>
             <TextBox Height="29" TextWrapping="Wrap" Text="{Binding FamilyName }" Margin="0,0,-0.2,0"/>
             <TextBox Height="28" TextWrapping="Wrap" Text="{Binding PhoneNumber }" Margin="0,0,-0.2,0"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding MailAddress }"/>
             <TextBox Height="27" TextWrapping="Wrap" Text="{Binding numberOfUints }" Margin="0,0,-0.2,0"/>
-            <TextBox x:Name="BankText" Height="26" TextWrapping="Wrap" Text="" Margin="0,0,-0.2,0" />
+            <TextBox x:Name="BankText" Height="26" TextWrapping="Wrap" Text="" Margin="0,0,-1,0" RenderTransformOrigin="0.5,0.5" >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0.271"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
             <CheckBox Content="CheckBox" IsChecked="{Binding CollectionClearance }"/>
         </StackPanel>
-        <Button Content="עדכן פרטים" HorizontalAlignment="Left" Height="50" Margin="439,88,0,0" VerticalAlignment="Top" Width="133" Click="Button_Click" Grid.ColumnSpan="2"/>
-        <Button Content="show my hosting unit and craete a new order" HorizontalAlignment="Left" Height="59" Margin="53,112,0,0" VerticalAlignment="Top" Width="326" Grid.ColumnSpan="2" Click="Button_Click_1"/>
-        <Button Content="הצג הזמנות שלי " HorizontalAlignment="Left" Height="65" Margin="126,246,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2" Click="Button_Click_2" />
+        <Button Content="update details" HorizontalAlignment="Left" Margin="53,324,0,0" VerticalAlignment="Top"  Click="Button_Click" Grid.ColumnSpan="2"/>
+        <Button Content="new order" HorizontalAlignment="Left" Height="65" Margin="53,112,0,0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="2" Click="Button_Click_1"/>
+        <Button Content="my orders" HorizontalAlignment="Left" Height="65" Margin="53,182,0,0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="2" Click="Button_Click_2" />
 
     </Grid>
 </Window>

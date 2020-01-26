@@ -59,6 +59,9 @@ namespace PLWPF
         {
             try
             {
+                if (MainWindow.IsEmpty(guestRequestKeyTextBox.Text)) 
+                if (MainWindow.IsEmpty(hostingUnitKeyTextBox.Text)) 
+
                 bl = BL.Factory.GetBL();
                 bl.updateStatusOfOrder(order,(int)order.Status);
                 MessageBox.Show("your details update successfully ");

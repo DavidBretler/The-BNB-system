@@ -31,6 +31,11 @@ namespace PLWPF
         {
             try 
             {
+
+                MainWindow.IsEmpty(HostNum.Text);
+                MainWindow.IsEmpty(hostPassword.Text);
+                MainWindow.IsInt(HostNum.Text);
+                MainWindow.IsInt(hostPassword.Text);
                 ibl = BL.Factory.GetBL();
                 // BE.Host host = new BE.Host();
                 Window HostEntryWindow = new HostEntryWindow();

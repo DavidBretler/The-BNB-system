@@ -98,6 +98,8 @@ namespace PLWPF
             try
             {
                 bl = BL.Factory.GetBL();
+                MainWindow.IsEmpty(guestRequestCB.Text);
+
                 bl.UpdateHostingUnit(hostingUnit);
                 MessageBox.Show("your detail have been update  ");
             }
