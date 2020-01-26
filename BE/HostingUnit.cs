@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
+
 namespace BE
 {
-    public class HostingUnit : Clonable
+    public class HostingUnit 
     {
        //
          public int HostingUnitKey { get; set; }  
@@ -31,21 +33,30 @@ namespace BE
         //
         public Choice Hikes { get; set; }
         //
-        //calender that  is made of array of  12 arrays
-        public bool[,] Diary = new bool[12, 31];
+       
+       [XmlIgnore]//tell the serlaizer to ignore so we can do at by flatt and xml linq
+        public bool[,] Diary = new bool[12, 31]; //calender that  is made of array of  12 arrays
         public HostingUnit GetCopy() 
         { 
             return (HostingUnit)this.MemberwiseClone();
         }
 
-        /// <summary>
-        /// indexer for hosting unit
-        /// </summary>
-        /// <param name="date"></param>
-        /// <returns>true/false if the unit is free or ocuipided on the givin date</returns>
+        [XmlArray("Diary")]
+        public bool[] DiaryFlatt
+        {
+            get { return Diary.Flatten(); }// turn the metrix to one dementiom metrix
+            set { Diary = value.Expand(12); } //12 is the number of roes in the matrix
+        }
+    
+
+    /// <summary>
+    /// indexer for hosting unit
+    /// </summary>
+    /// <param name="date"></param>
+    /// <returns>true/false if the unit is free or ocuipided on the givin date</returns>
 
 
-        public bool this[DateTime date]
+    public bool this[DateTime date]
         {
             set => Diary[ date.Month - 1,date.Day - 1] = value;
             get => Diary[ date.Month - 1, date.Day - 1];
@@ -69,7 +80,7 @@ namespace BE
             return "HostingUnitKey: " + HostingUnitKey +
                 "\n Owner: " + Owner + " HostingUnitName: " +  HostingUnitName +
                 " Num Of Rooms: " + NumOfRooms + " AirConditioner: "+ AirConditioner;
-               }
-         }
+        }
     }
+ }
 

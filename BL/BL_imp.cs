@@ -73,34 +73,33 @@ namespace BL
         /// <param name="Type"></param>
         /// <param name="Hikes"></param>
         /// <param name="Diary"></param>
-        public void AddNewHostingUnit(string HostingUnitName, int NumOfRooms,
-            int NumOfBeds, Choice pool, Choice Jacuzzi, Area Area, Choice Garden,
-            Choice AirConditioner, Choice ChildrensAttractions, ResortType Type, Choice Hikes, int KeyOfHost)
+        public void AddNewHostingUnit(HostingUnit NewHostingUnit)
         {
 
             Host host = new Host();
 
 
-            if (cheakIfHostExsits(KeyOfHost, ref host))//need enter the host key.
+            if (cheakIfHostExsits(NewHostingUnit.Owner.HostKey, ref host))//need enter the host key.
             {
-                HostingUnit EnterdHostingUnit = new HostingUnit();
-                EnterdHostingUnit.HostingUnitKey = Configuration.getNewHostingUnitKey();
-                EnterdHostingUnit.HostingUnitName=HostingUnitName;
-                EnterdHostingUnit.NumOfRooms=NumOfRooms;
-                EnterdHostingUnit.NumOfBeds=NumOfBeds;
-                EnterdHostingUnit.pool=pool;
-                EnterdHostingUnit.Jacuzzi=Jacuzzi;
-                EnterdHostingUnit.Area=Area;
-                EnterdHostingUnit.Garden=Garden;
-                EnterdHostingUnit.AirConditioner=(AirConditioner);
-                EnterdHostingUnit.ChildrensAttractions=(ChildrensAttractions);
-                EnterdHostingUnit.Type=(Type);
-                EnterdHostingUnit.Hikes=(Hikes);
-                EnterdHostingUnit.Owner=(host);
-                dal.AddNewHostingUnit(EnterdHostingUnit);
+                //HostingUnit EnterdHostingUnit = new HostingUnit();
+                //EnterdHostingUnit.HostingUnitKey = Configuration.getNewHostingUnitKey();
+                //EnterdHostingUnit.HostingUnitName= NewHostingUnit.HostingUnitName;
+                //EnterdHostingUnit.NumOfRooms= NewHostingUnit.NumOfRooms;
+                //EnterdHostingUnit.NumOfBeds= NewHostingUnit.NumOfBeds;
+                //EnterdHostingUnit.pool= NewHostingUnit.pool;
+                //EnterdHostingUnit.Jacuzzi= NewHostingUnit.Jacuzzi;
+                //EnterdHostingUnit.Area= NewHostingUnit.Area;
+                //EnterdHostingUnit.Garden= NewHostingUnit.Garden;
+                //EnterdHostingUnit.AirConditioner=(NewHostingUnit.AirConditioner);
+                //EnterdHostingUnit.ChildrensAttractions=(NewHostingUnit.ChildrensAttractions);
+                //EnterdHostingUnit.Type=(NewHostingUnit.Type);
+                //EnterdHostingUnit.Hikes=(NewHostingUnit.Hikes);
+                //EnterdHostingUnit.Owner=(host); //??
+                NewHostingUnit.HostingUnitKey= Configuration.getNewHostingUnitKey();
+                dal.AddNewHostingUnit(NewHostingUnit);
             }
             else
-                throw new MissingIdException("BL_imp", KeyOfHost, "אנא וודא תקינות מספר זיהוי או הוסף את פרטיך לרשימת המארחים");
+                throw new MissingIdException("HostingUnit", NewHostingUnit.Owner.HostKey, "the host does not exict");
            }
 
         /// <summary>

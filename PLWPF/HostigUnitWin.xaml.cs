@@ -28,10 +28,13 @@ namespace PLWPF
             try
             {
                 InitializeComponent();
-                hostingUnit = null;
+                //hostingUnit = null;
                 GuestRequest = null;
                 bl = BL.Factory.GetBL();
                 guestRequestDataGrid.ItemsSource = bl.getListOfGuestRequest();
+                
+                 hostingUnit = new BE.HostingUnit ();
+                this.hostigUnit.DataContext = hostingUnit;
 
                 this.studentsComboBox.ItemsSource = bl.getListOfHostingUnitsByOwnerKey(FindHostWindow.host.HostKey).ToList();
                 this.studentsComboBox.DisplayMemberPath = "HostingUnitName";
@@ -148,6 +151,20 @@ namespace PLWPF
             System.Windows.Data.CollectionViewSource guestRequestViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("guestRequestViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // guestRequestViewSource.Source = [generic data source]
+        }
+
+        private void NewHostinUnit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                hostingUnit.Owner = FindHostWindow.host;
+                bl.AddNewHostingUnit( hostingUnit);
+                MessageBox.Show("your Hosting Unit have been added");
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
         }
     }
 }

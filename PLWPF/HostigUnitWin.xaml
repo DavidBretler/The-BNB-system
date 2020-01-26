@@ -24,7 +24,7 @@
 
 
         <DockPanel x:Name="hostigUnit" Grid.Row="2" LastChildFill="True" Margin="5,203.8,487,4.6" >
-            <Expander Header="choose hosting unit" DockPanel.Dock="Top" Height="494" Margin="0,0,255.2,0">
+            <Expander Header="choose hosting unit" DockPanel.Dock="Top" Height="494" Margin="0,0,226.2,0">
                 <Expander.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFEAE0E0" Offset="0.004"/>
@@ -59,7 +59,7 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Label Content="Air Conditioner:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="airConditionerComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="Auto" Text="{Binding AirConditioner}" ItemsSource="{Binding AirConditioner}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
+                        <ComboBox x:Name="airConditionerComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="Auto" Text="{Binding AirConditioner}" ItemsSource="{Binding AirConditioner}" SelectedItem="{Binding AirConditioner}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel/>
@@ -67,7 +67,7 @@
                             </ComboBox.ItemsPanel>
                         </ComboBox>
                         <Label Content="Area:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="areaComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Area}" ItemsSource="{Binding Area}" Margin="3" Grid.Row="1" VerticalAlignment="Center" Width="120">
+                        <ComboBox x:Name="areaComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Area}" ItemsSource="{Binding Area}" SelectedItem="{Binding Area}" Margin="3" Grid.Row="1" VerticalAlignment="Center" Width="120">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel/>
@@ -75,7 +75,7 @@
                             </ComboBox.ItemsPanel>
                         </ComboBox>
                         <Label Content="Childrens Attractions:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="childrensAttractionsComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding ChildrensAttractions}" ItemsSource="{Binding ChildrensAttractions}" Margin="3" Grid.Row="2" VerticalAlignment="Center" Width="120">
+                        <ComboBox x:Name="childrensAttractionsComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding ChildrensAttractions}" ItemsSource="{Binding ChildrensAttractions}" SelectedItem="{Binding ChildrensAttractions}" Margin="3" Grid.Row="2" VerticalAlignment="Center" Width="120">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel/>
@@ -83,7 +83,7 @@
                             </ComboBox.ItemsPanel>
                         </ComboBox>
                         <Label Content="Garden:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="gardenComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Garden}" ItemsSource="{Binding Garden}" Margin="3" Grid.Row="3" VerticalAlignment="Center" Width="120">
+                        <ComboBox x:Name="gardenComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Garden}" ItemsSource="{Binding Garden}" SelectedItem="{Binding Garden}" Margin="3" Grid.Row="3" VerticalAlignment="Center" Width="120">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel/>
@@ -91,7 +91,7 @@
                             </ComboBox.ItemsPanel>
                         </ComboBox>
                         <Label Content="Hikes:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="hikesComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Hikes}" ItemsSource="{Binding Hikes}" Margin="3" Grid.Row="4" VerticalAlignment="Center" Width="120">
+                        <ComboBox x:Name="hikesComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Hikes}" ItemsSource="{Binding Hikes}" SelectedItem="{Binding Hikes}" Margin="3" Grid.Row="4" VerticalAlignment="Center" Width="120">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel/>
@@ -99,11 +99,11 @@
                             </ComboBox.ItemsPanel>
                         </ComboBox>
                         <Label Content="Hosting Unit Key:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
-                        <TextBox x:Name="hostingUnitKeyTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding HostingUnitKey, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <TextBox x:Name="hostingUnitKeyTextBox" IsEnabled="False" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding HostingUnitKey, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                         <Label Content="Hosting Unit Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
                         <TextBox x:Name="hostingUnitNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding HostingUnitName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                         <Label Content="Jacuzzi:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="jacuzziComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Jacuzzi}" ItemsSource="{Binding Jacuzzi}" Margin="3" Grid.Row="7" VerticalAlignment="Center" Width="120">
+                        <ComboBox x:Name="jacuzziComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Jacuzzi}" ItemsSource="{Binding Jacuzzi}" SelectedItem="{Binding Jacuzzi}" Margin="3" Grid.Row="7" VerticalAlignment="Center" Width="120">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel/>
@@ -115,7 +115,7 @@
                         <Label Content="Num Of Rooms:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="9" VerticalAlignment="Center"/>
                         <TextBox x:Name="numOfRoomsTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="9" Text="{Binding NumOfRooms, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                         <Label Content="pool:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="10" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="poolComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding pool}" ItemsSource="{Binding pool}" Margin="3" Grid.Row="10" VerticalAlignment="Center" Width="120">
+                        <ComboBox x:Name="poolComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding pool}" ItemsSource="{Binding pool}" SelectedItem="{Binding pool}" Margin="3" Grid.Row="10" VerticalAlignment="Center" Width="120">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel/>
@@ -123,7 +123,7 @@
                             </ComboBox.ItemsPanel>
                         </ComboBox>
                         <Label Content="Type:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="11" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="typeComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Type}" ItemsSource="{Binding Type}" Margin="3" Grid.Row="11" VerticalAlignment="Center" Width="120">
+                        <ComboBox x:Name="typeComboBox" Grid.Column="1"  HorizontalAlignment="Left" Height="Auto" Text="{Binding Type}" ItemsSource="{Binding Type}" SelectedItem="{Binding Type}" Margin="3" Grid.Row="11" VerticalAlignment="Center" Width="120">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel/>
@@ -168,5 +168,6 @@
         </DataGrid>
         <Label Content="choose a hosting unit and a guest request to fraete new order" HorizontalAlignment="Left" Margin="626,250,0,0" Grid.Row="2" VerticalAlignment="Top"/>
         <Label Content="all the guest request" HorizontalAlignment="Left" Height="44" Margin="206,-30,0,0" VerticalAlignment="Top" Width="507" Grid.RowSpan="3"/>
+        <Button x:Name="NewHostinUnit" Content="add new hosting unit " HorizontalAlignment="Left" Height="60" Margin="626,605,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="177" Click="NewHostinUnit_Click"/>
     </Grid>
 </Window>

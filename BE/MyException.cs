@@ -71,7 +71,7 @@ namespace BE
         override public string ToString()
         {
 
-            return base.Message + ID + "חסרה במחלקה  " + ClassName + "שגיאה :תעודת זהות כבר קיימת  : תעודת הזהות ";
+            return base.Message  ;
         }
     }
         //Misinig Clearance Exceptions
@@ -115,4 +115,18 @@ namespace BE
             return base.Message;
         }
     }
+    public class FileProblem : Exception
+    {
+        public string ClassName;
+      
+        public FileProblem( string exp) : base(exp) {  }
+        override public string ToString()
+        {
+
+            return base.Message;
+        }
+    }
+
+
+
 }
