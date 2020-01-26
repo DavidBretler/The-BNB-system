@@ -50,7 +50,7 @@ namespace PLWPF
 
                 MainWindow.IsEmpty(email_text_box.Text);
                 MainWindow.IsValidEmailAddress(email_text_box.Text);
-
+                 
 
                 guestRequest.GuestRequestKey = BE.Configuration.getNewGuestRequestKey();
                   ibl.NewGuestRequests(guestRequest);              
