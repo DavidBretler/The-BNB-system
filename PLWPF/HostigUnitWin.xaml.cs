@@ -35,7 +35,7 @@ namespace PLWPF
             try
             {
                 InitializeComponent();
-                hostingUnit = null;
+               // hostingUnit = null;
                 GuestRequest = null;
                 bl = BL.Factory.GetBL();
                 guestRequestDataGrid.ItemsSource = bl.getListOfGuestRequest();
