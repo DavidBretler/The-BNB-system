@@ -131,7 +131,7 @@ namespace DAL
                 configRoot.Save(configPath);
             }
             catch (Exception e)
-            { throw e; }
+            {      throw e; }
         }
         #endregion  XmL And ConfigtoXml Func
 
