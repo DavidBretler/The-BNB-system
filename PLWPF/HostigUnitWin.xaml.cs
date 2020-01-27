@@ -193,6 +193,7 @@ namespace PLWPF
                 hostingUnit.Owner = FindHostWindow.host;
                 bl.AddNewHostingUnit( hostingUnit);
                 MessageBox.Show("your Hosting Unit have been added");
+                 
             }
             catch (Exception exp)
             {
