@@ -277,7 +277,7 @@ namespace BL
                 
 
             }
-            else throw new GenralException("BL_imp", "ERROR in creating order.");
+            else throw new GenralException("Order", "ERROR in creating order.");
         }
 
         public void UpdateOrder(GuestRequest guestRequest, HostingUnit hostingUnit, int orderKey)
@@ -303,7 +303,7 @@ namespace BL
 
         public void DeleteOrder(BE.Order TheOrder)
         {
-            Console.WriteLine("send email to the host and cosmumer of the order");
+            //send email to the host and cosmumer of the order"
             dal.Deleteorder(TheOrder);
         }
 
@@ -390,10 +390,10 @@ namespace BL
                 {
                     BookDates(order);
                     updateAllOrdersStatus(order);
-
+                    dal.UpdateDateOrder(order);
                     return calcCommission(order);
                 }
-
+                dal.UpdateDateOrder(order);
                 return -1;
             }
 

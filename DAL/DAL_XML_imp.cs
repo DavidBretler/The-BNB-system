@@ -13,6 +13,7 @@ namespace DAL
     {
         XElement configRoot;
         XElement OrderRoot;
+        XElement bankAccuntsRoot;
 
         static private readonly string
             OrderPath = @"OrderXML.xml",
@@ -28,8 +29,9 @@ namespace DAL
         public static List<BE.BankBranch> ListBankBranch = new List<BankBranch>();
         public static List<BE.Order> ListOrder = new List<Order>();
 
+        bool ListOrderChange;
         //  private Dal_imp() { }
-       // public static DAL_XML_imp GetDALXml();
+        // public static DAL_XML_imp GetDALXml();
         protected static DAL_XML_imp newDAL = null;
         public static DAL_XML_imp GetDALXml()
         {
@@ -75,7 +77,7 @@ namespace DAL
             if (!File.Exists(BankBranchPath))
                 SaveToXML(new List<BankBranch>(), BankBranchPath);
 
-           OrderRoot = XElement.Load(OrderPath);
+            OrderRoot = XElement.Load(OrderPath);
             ListHost = LoadFromXML<List<Host>>(HostPath);        
             ListHostingUnit = LoadFromXML<List<HostingUnit>>(HostingUnitPath);
             ListGuestRequest = LoadFromXML<List<GuestRequest>>(GuestRequestPath);
@@ -310,19 +312,26 @@ namespace DAL
         {
             try
             {
-                BE.Order TempOrder = new BE.Order();
-                foreach (var order in OrderRoot.Elements())
-                {
-                    BE.Order TempOrder1 = new BE.Order();
-                    TempOrder1.OrderKey = Int32.Parse(order.Element("OrderKey").Value);
-                    TempOrder1.GuestRequestKey = Int32.Parse(order.Element("GuestRequestKey").Value);
-                    TempOrder1.Status = (Status)Enum.Parse(typeof(Status), order.Element("Status").Value);
+               //if(ListOrderChange==true)
+              //  {
+                    ListOrder.Clear();
+                    BE.Order TempOrder = new BE.Order();
+                    foreach (var order in OrderRoot.Elements())
+                    {
+                        BE.Order TempOrder1 = new BE.Order();
+                        TempOrder1.OrderKey = Int32.Parse(order.Element("OrderKey").Value);
+                        TempOrder1.HostingUnitKey = Int32.Parse(order.Element("HostingUnitKey").Value);
+                        TempOrder1.GuestRequestKey = Int32.Parse(order.Element("GuestRequestKey").Value);
+                        TempOrder1.Status = (Status)Enum.Parse(typeof(Status), order.Element("Status").Value);
 
-                    TempOrder1.contactCustumerDate = DateTime.Parse(order.Element("contactCustumerDate").Value);
-                    TempOrder1.CreateDate = DateTime.Parse(order.Element("CreateDate").Value);
+                        TempOrder1.contactCustumerDate = DateTime.Parse(order.Element("contactCustumerDate").Value);
+                        TempOrder1.CreateDate = DateTime.Parse(order.Element("CreateDate").Value);
 
-                    ListOrder.Add(TempOrder1);
-                }
+                        ListOrder.Add(TempOrder1);
+                    }
+               
+              //  }
+                ListOrderChange = false;
                 return ListOrder;
             }
             catch (Exception)
@@ -334,7 +343,7 @@ namespace DAL
         public void Deleteorder(BE.Order TheOrder)
         {
             XElement OrderElement = (from t in OrderRoot.Elements()
-                                       where Int32.Parse(t.Element("ID").Value) == TheOrder.OrderKey
+                                       where Int32.Parse(t.Element("OrderKey").Value) == TheOrder.OrderKey
                                      select t).FirstOrDefault();
             if (OrderElement == null)
                 throw new KeyNotFoundException("לא נמצא תלמיד שמספרו " + TheOrder.OrderKey);
@@ -357,12 +366,14 @@ namespace DAL
             try
             {
                 XElement O = new XElement("Order") ;
-                O.Add(new XElement("ID", TheOrder.GuestRequestKey.ToString()),
-                      new XElement("FirstName", TheOrder.OrderKey.ToString()),
-                      new XElement("LastName", TheOrder.Status.ToString()),
-                      new XElement("BirthDate", TheOrder.contactCustumerDate.ToString()),
-                      new XElement("Gender", TheOrder.CreateDate.ToString())   );
+                O.Add(new XElement("GuestRequestKey", TheOrder.GuestRequestKey.ToString()),
+                     new XElement("HostingUnitKey", TheOrder.HostingUnitKey.ToString()),
+                    new XElement("OrderKey", TheOrder.OrderKey.ToString()),
+                      new XElement("Status", TheOrder.Status.ToString()),
+                      new XElement("contactCustumerDate", TheOrder.contactCustumerDate.ToString()),
+                      new XElement("CreateDate", TheOrder.CreateDate.ToString())   );
 
+                ListOrderChange = true;
                 OrderRoot.Add(O);
                 OrderRoot.Save(OrderPath);
               // ListChainged = true;
@@ -390,12 +401,24 @@ namespace DAL
         public List<BankBranch> getListOfBankBranch()
         {                      //לראות מה עושים עם הרשימת בנקים... 
 
-            var temp = from item in ListBankBranch
-                       select item;
-            List<BankBranch> temp2 = new List<BankBranch>();
-            foreach (var item in temp)
-                temp2.Add(Cloning.Clone(item));
-            return temp2;
+            try
+            {
+                return (from bankAccunt in bankAccuntsRoot.Elements()
+                        select new BankAccunt()
+                        {
+                            BankName = bankAccunt.Element("שם_בנק").Value.Trim(),
+                            BankNumber = Convert.ToInt32(bankAccunt.Element("קוד_בנק").Value.Trim()),
+                            BranchAddress = bankAccunt.Element("כתובת_ה-ATM").Value.Trim(),
+                            BranchCity = bankAccunt.Element("ישוב").Value.Trim(),
+                            BranchNumber = Convert.ToInt32(bankAccunt.Element("קוד_סניף").Value.Trim())
+                        }
+                        ).Distinct().ToList();
+            }
+            catch (Exception ex)
+            {
+                // throw new Exception("file_problem_Order");
+                throw ex;
+            }
         }                  
     public void  GetBankXml()
         {

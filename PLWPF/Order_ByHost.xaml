@@ -43,6 +43,7 @@
             </ComboBox>
         </Grid>
         <Button Content="update order" HorizontalAlignment="Left" Height="55" Margin="609,295,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
+        <Button Content="delete order" HorizontalAlignment="Left" Height="51" Margin="609,227,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

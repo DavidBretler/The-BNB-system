@@ -63,12 +63,19 @@ namespace PLWPF
                 if (MainWindow.IsEmpty(hostingUnitKeyTextBox.Text)) 
 
                 bl = BL.Factory.GetBL();
-                bl.updateStatusOfOrder(order,(int)order.Status);
+                bl.updateStatusOfOrder(order,(int)this.statusComboBox.SelectedItem);
                 MessageBox.Show("your details update successfully ");
             }
             catch (Exception E) { MessageBox.Show(E.ToString()); }
         }
 
-    
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bl.DeleteOrder(order);
+            }
+            catch(Exception E) { MessageBox.Show(E.ToString()); }
+        }
     }
 }

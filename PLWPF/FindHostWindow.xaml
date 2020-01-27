@@ -16,9 +16,9 @@
 
 
         <Grid HorizontalAlignment="Left" Height="100" Margin="-167,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
-        <TextBox x:Name="HostNum" HorizontalAlignment="Left" Height="40" Margin="33,-9,0,0" TextWrapping="Wrap" Text="host number" VerticalAlignment="Top" Width="111"/>
+        <TextBox x:Name="HostNum" HorizontalAlignment="Left" Height="51" Margin="22,-20,-13,0" TextWrapping="Wrap" Text="host number" VerticalAlignment="Top" Width="145"/>
         <Button Content="Find Host " HorizontalAlignment="Left" Margin="33,76,0,0" VerticalAlignment="Top" Width="111" Height="46" Click="Button_Click"/>
-        <TextBox x:Name="hostPassword" HorizontalAlignment="Left" Height="45" Margin="33,31,0,0" TextWrapping="Wrap" Text="passward" VerticalAlignment="Top" Width="111" />
+        <TextBox x:Name="hostPassword" HorizontalAlignment="Left" Height="45" Margin="22,31,-13,0" TextWrapping="Wrap" Text="passward" VerticalAlignment="Top" Width="145" />
 
 
 
