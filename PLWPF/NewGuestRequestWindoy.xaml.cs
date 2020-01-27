@@ -39,6 +39,7 @@ namespace PLWPF
             this.ResortTypeCB.ItemsSource = Enum.GetValues(typeof(BE.ResortType));
             //EntryDatePicker.SelectedDate = DateTime.Today;
             //EndDatePicker.SelectedDate = DateTime.Today.AddDays(1);
+
         }
 
         private void FinishGusetRequest_Click(object sender, RoutedEventArgs e)
