@@ -516,7 +516,7 @@ namespace BL
             //כתובת הנמען)ניתן להוסיף יותר מאחד( //
              mail.To.Add(SearchGetGuestRequestByKey(currrentOrder.GuestRequestKey).MailAddress);
            // הכתובת ממנה נשלח המייל //
-             mail.From = new MailAddress("israelhostingservice@gmail.com");
+             mail.From = new MailAddress(Configuration.SystemEmail);
              mail.Subject = "VACTION!";
              mail.Body = "You are now one step away from your dream vaction . pleas contact:" +(GetHostFromOrder ( currrentOrder)).MailAddress+ "to confirm. ";
               mail.IsBodyHtml = true;
@@ -526,8 +526,8 @@ namespace BL
             smtp.Host = "smtp.gmail.com"; //for gmail host  
             smtp.EnableSsl = true;
            // smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential("israelhostingservice@gmail.com",
-             "israel0000");
+            smtp.Credentials = new System.Net.NetworkCredential(Configuration.SystemEmail,
+             Configuration.SystemEmailPassward);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Send(mail);
 
@@ -543,7 +543,7 @@ namespace BL
             //כתובת הנמען)ניתן להוסיף יותר מאחד( //
             mail.To.Add(SearchGetGuestRequestByKey(currrentOrder.GuestRequestKey).MailAddress);
             // הכתובת ממנה נשלח המייל //
-            mail.From = new MailAddress("israelhostingservice@gmail.com");
+            mail.From = new MailAddress(Configuration.SystemEmail);
             mail.Subject = "VACTION!";
             mail.Body = "Youre vaction has been canceld for more information .please contact:" + (GetHostFromOrder(currrentOrder)).MailAddress + "to confirm. ";
             mail.IsBodyHtml = true;
@@ -553,8 +553,8 @@ namespace BL
             smtp.Host = "smtp.gmail.com"; //for gmail host  
             smtp.EnableSsl = true;
             // smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential("israelhostingservice@gmail.com",
-             "israel0000");
+            smtp.Credentials = new System.Net.NetworkCredential(Configuration.SystemEmail,
+             Configuration.SystemEmailPassward);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Send(mail);
         }

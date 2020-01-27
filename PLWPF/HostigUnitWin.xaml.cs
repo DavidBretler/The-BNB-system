@@ -43,13 +43,7 @@ namespace PLWPF
                  hostingUnit = new BE.HostingUnit ();
                 this.hostigUnit.DataContext = hostingUnit;
 
-                this.studentsComboBox.ItemsSource = bl.getListOfHostingUnitsByOwnerKey(FindHostWindow.host.HostKey).ToList();
-                this.studentsComboBox.DisplayMemberPath = "HostingUnitName";
-                this.studentsComboBox.SelectedValuePath = "HostingUnitKey";
-
-                this.guestRequestCB.ItemsSource = bl.getListOfGuestRequest().ToList();
-                this.guestRequestCB.DisplayMemberPath = "GuestRequestKey";
-                this.guestRequestCB.SelectedValuePath = "GuestRequestKey";
+                
 
                 this.areaComboBox.ItemsSource = Enum.GetValues(typeof(BE.Area));
                 this.poolComboBox.ItemsSource = Enum.GetValues(typeof(BE.Choice));
@@ -60,6 +54,14 @@ namespace PLWPF
                 this.airConditionerComboBox.ItemsSource = Enum.GetValues(typeof(BE.Choice));
                 this.typeComboBox.ItemsSource = Enum.GetValues(typeof(BE.ResortType));
 
+
+                this.studentsComboBox.ItemsSource = bl.getListOfHostingUnitsByOwnerKey(FindHostWindow.host.HostKey).ToList();
+                this.studentsComboBox.DisplayMemberPath = "HostingUnitName";
+                this.studentsComboBox.SelectedValuePath = "HostingUnitKey";
+
+                this.guestRequestCB.ItemsSource = bl.getListOfGuestRequest().ToList();
+                this.guestRequestCB.DisplayMemberPath = "GuestRequestKey";
+                this.guestRequestCB.SelectedValuePath = "GuestRequestKey";
                 //this.DataContext = studentsComboBox.SelectedItem;
                 //// this.studentsComboBox.ItemsSource = bl.GetAllStudents();
                 // this.studentsComboBox.DisplayMemberPath = "StudentName";

@@ -44,6 +44,7 @@ namespace DAL
 
         internal DAL_XML_imp()////////////////////////////////////////////////////////////////////
         {
+
             GetBankXml();
 
             if (!File.Exists(configPath))
@@ -59,7 +60,9 @@ namespace DAL
                 BE.Configuration.Commission = Convert.ToInt32(configRoot.Element("Commission").Value);
                 BE.Configuration.Password = Convert.ToInt32(configRoot.Element("Password").Value);
                 BE.Configuration.MangerPassword = configRoot.Element("MangerPassword").Value;
-
+                BE.Configuration.SystemEmail = configRoot.Element("SystemEmail").Value;
+                BE.Configuration.SystemEmailPassward = configRoot.Element("SystemEmailPassward").Value;
+                
             }
 
             if (!File.Exists(OrderPath))
@@ -140,7 +143,10 @@ namespace DAL
                                new XElement("OrderKey", BE.Configuration.OrderKey),
                                new XElement("Commission", BE.Configuration.Commission),
                                new XElement("Password", BE.Configuration.Password),
-                               new XElement("MangerPassword", BE.Configuration.MangerPassword));
+                               new XElement("MangerPassword", BE.Configuration.MangerPassword),
+                               new XElement("MangerPassword", BE.Configuration.MangerPassword),
+                               new XElement("SystemEmail", BE.Configuration.SystemEmail) ,
+                               new XElement("SystemEmailPassward", BE.Configuration.SystemEmailPassward));
                 configRoot.Save(configPath);
             }
             catch (Exception e)
@@ -429,7 +435,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                 throw new Exception("file_problem_Order");
+                 throw new FileProblem("file_problem_banks_brunches ");
                // throw ex;
             }
         }                  
@@ -445,7 +451,7 @@ namespace DAL
             }
             catch (Exception)
             {
-                string xmlServerPath = @"http://www.jct.ac.il/~coshri/atm.xml";
+                string xmlServerPath = @"https://drive.google.com/file/d/1FpcqslnRD6naLHOjrCvKArCg3Ihkb9hR/view?usp=sharing";
                 wc.DownloadFile(xmlServerPath, xmlLocalPath);
             }
             finally

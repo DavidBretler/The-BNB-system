@@ -59,7 +59,7 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Label Content="Air Conditioner:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-                        <ComboBox x:Name="airConditionerComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="Auto" Text="{Binding AirConditioner}" ItemsSource="{Binding AirConditioner}" SelectedItem="{Binding AirConditioner}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
+                        <ComboBox x:Name="airConditionerComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="Auto" Text="{Binding AirConditioner}"  SelectedItem="{Binding AirConditioner}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel/>
