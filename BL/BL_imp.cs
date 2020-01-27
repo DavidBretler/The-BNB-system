@@ -303,7 +303,7 @@ namespace BL
 
         public void DeleteOrder(BE.Order TheOrder)
         {
-            //send email to the host and cosmumer of the order"
+            //send email to the guest"
             dal.Deleteorder(TheOrder);
         }
 
@@ -533,11 +533,31 @@ namespace BL
 
             Console.WriteLine("email has been sent to order num  " + currrentOrder.OrderKey + "aboute request num :" + currrentOrder.GuestRequestKey);
             currrentOrder.contactCustumerDate = DateTime.Now;
-        
-    
-
-    
+     
     }
+        public void sendEmailToCancell(Order currrentOrder)
+        {
+            // יצירת אובייקט MailMessage
+            MailMessage mail = new MailMessage();
+
+            //כתובת הנמען)ניתן להוסיף יותר מאחד( //
+            mail.To.Add(SearchGetGuestRequestByKey(currrentOrder.GuestRequestKey).MailAddress);
+            // הכתובת ממנה נשלח המייל //
+            mail.From = new MailAddress("israelhostingservice@gmail.com");
+            mail.Subject = "VACTION!";
+            mail.Body = "Youre vaction has been canceld for more information .please contact:" + (GetHostFromOrder(currrentOrder)).MailAddress + "to confirm. ";
+            mail.IsBodyHtml = true;
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Port = 587;
+            smtp.Host = "smtp.gmail.com"; //for gmail host  
+            smtp.EnableSsl = true;
+            // smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("israelhostingservice@gmail.com",
+             "israel0000");
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Send(mail);
+        }
         #endregion Guest Request
 
         #region Grouping
@@ -603,6 +623,24 @@ namespace BL
         #region Date
 
         /// <summary>
+        /// resets the dates a month back evrey time the program is activted
+        /// </summary>
+        public void deleteDatesMonthBack()
+        {
+            foreach(var hostingUnit in getListOfHostingUnits())
+            {
+                DateTime temp = DateTime.Now.AddMonths(-1);
+                while(temp<DateTime.Now)
+                {
+                    hostingUnit[temp] = false;
+                    temp = temp.AddDays(1);
+                }
+            }
+
+        }
+
+
+        /// <summary>
         /// gets order and books the dates
         /// </summary>
         /// <param name="order"></param>
@@ -632,10 +670,15 @@ namespace BL
         /// <returns></returns>
         public bool CheakDateIfInOrder(DateTime StartDate, DateTime EndtDate)
         {
-            if (StartDate < EndtDate) 
-            return true;
+
+            if ((StartDate < EndtDate))
+                if (!(StartDate >= DateTime.Now))
+                    throw new DateException("Date", "pleas enter start date after today.");
+                   else
+                     return true;
             throw new DateException("Date", "pleas enter start date before end date.");
         }
+       
 
         /// <summary>
         /// cheks if dates are free  on the range given

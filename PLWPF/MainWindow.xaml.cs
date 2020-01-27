@@ -30,17 +30,20 @@ namespace PLWPF
         public MainWindow()
         {
             InitializeComponent();
-
+           
             myIBL = BL.Factory.GetBL();
             workerThread = new BackgroundWorker();
+            workerThread.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
             workerThread.DoWork += new DoWorkEventHandler(workerThread_DoWork);
             workerThread.RunWorkerAsync();
 
         }
       
+        //the thred get the bank info and resets the diary off the hosting units
         void workerThread_DoWork(object sender, DoWorkEventArgs e)
         {
             myIBL.GetBankXml();
+            myIBL.deleteDatesMonthBack();
         }
         /// <summary>
         /// 
@@ -95,12 +98,14 @@ namespace PLWPF
             GuestEntryWindow.Show();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
-            System.Windows.Data.CollectionViewSource hostViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("hostViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // hostViewSource.Source = [generic data source]
+           
+            if (e.Error != null)
+            {
+                MessageBox.Show("Error: " + e.Error.Message);
+            }
+           
         }
     }
 }

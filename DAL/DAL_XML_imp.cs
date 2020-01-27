@@ -131,7 +131,7 @@ namespace DAL
                 configRoot.Save(configPath);
             }
             catch (Exception e)
-            {      throw e; }///////////////////////////////////////////////////
+            {      throw e; }
         }
         #endregion  XmL And ConfigtoXml Func
 
@@ -399,27 +399,28 @@ namespace DAL
         }
         #endregion Order
         public List<BankBranch> getListOfBankBranch()
-        {                      //לראות מה עושים עם הרשימת בנקים... 
+        { return ListBankBranch; }
+        //{                      //לראות מה עושים עם הרשימת בנקים... 
 
-            try
-            {
-                return (from bankAccunt in bankAccuntsRoot.Elements()
-                        select new BankAccunt()
-                        {
-                            BankName = bankAccunt.Element("שם_בנק").Value.Trim(),
-                            BankNumber = Convert.ToInt32(bankAccunt.Element("קוד_בנק").Value.Trim()),
-                            BranchAddress = bankAccunt.Element("כתובת_ה-ATM").Value.Trim(),
-                            BranchCity = bankAccunt.Element("ישוב").Value.Trim(),
-                            BranchNumber = Convert.ToInt32(bankAccunt.Element("קוד_סניף").Value.Trim())
-                        }
-                        ).Distinct().ToList();
-            }
-            catch (Exception ex)
-            {
-                // throw new Exception("file_problem_Order");
-                throw ex;
-            }
-        }                  
+        //    try
+        //    {
+        //        return (from bankAccunt in bankAccuntsRoot.Elements()
+        //                select new BankAccunt()
+        //                {
+        //                    BankName = bankAccunt.Element("שם_בנק").Value.Trim(),
+        //                    BankNumber = Convert.ToInt32(bankAccunt.Element("קוד_בנק").Value.Trim()),
+        //                    BranchAddress = bankAccunt.Element("כתובת_ה-ATM").Value.Trim(),
+        //                    BranchCity = bankAccunt.Element("ישוב").Value.Trim(),
+        //                    BranchNumber = Convert.ToInt32(bankAccunt.Element("קוד_סניף").Value.Trim())
+        //                }
+        //                ).Distinct().ToList();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // throw new Exception("file_problem_Order");
+        //        throw ex;
+        //    }
+        //}                  
     public void  GetBankXml()
         {
             const string xmlLocalPath = @"atm.xml";

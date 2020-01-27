@@ -9,7 +9,7 @@
         Title="Manger_Oreder_win" Height="450" Width="800" >
 
 
-    <DataGrid x:Name="orderDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="33,41,112,88" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5" >
+    <DataGrid x:Name="orderDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="33,41,112,140" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5" >
       
         <DataGrid.Columns>
             <DataGridTemplateColumn x:Name="contactCustumerDateColumn" Width="SizeToHeader" Header="Date custumer contacted">

@@ -76,6 +76,9 @@
     <Compile Include="HostingUnit_byArea.xaml.cs">
       <DependentUpon>HostingUnit_byArea.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Manger_Commission_win.xaml.cs">
+      <DependentUpon>Manger_Commission_win.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Order_ByHost.xaml.cs">
       <DependentUpon>Order_ByHost.xaml</DependentUpon>
     </Compile>
@@ -152,6 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Manger_Add_Host_win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manger_Commission_win.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

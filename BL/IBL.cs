@@ -8,7 +8,9 @@ namespace BL
 {
     public interface IBL
     {
-        void NewHost(Host host); 
+        void NewHost(Host host);
+
+        void sendEmailToCancell(Order order);
         IEnumerable<HostingUnit> getListOfHostingUnitsByOwnerKey(int OwnerKey);
          Host SearchForHostByKey(int Key);
         GuestRequest GetGuestRequestFromOrder(Order order);
@@ -43,6 +45,7 @@ namespace BL
 
       
         void sendEmail(Order currrentOrder);
+        void deleteDatesMonthBack();
 
          IEnumerable<IGrouping<int, GuestRequest>> ListOfGustRequestByNumOfBeds();
         IEnumerable<IGrouping<Area, HostingUnit>> ListOfHostingUntisInArea();

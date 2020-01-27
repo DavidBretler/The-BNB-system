@@ -11,12 +11,13 @@
         <CollectionViewSource x:Key="orderViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Order}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource orderViewSource}">
-        <Button x:Name="goBack" Content="back" HorizontalAlignment="Left" Margin="607,344,0,0" VerticalAlignment="Top"  FontSize="24" FontFamily="David" Click="goBack_Click"/>
+        <Button x:Name="goBack" Content="back" HorizontalAlignment="Left" Margin="607,311,0,0" VerticalAlignment="Top"  FontSize="24" FontFamily="David" Click="goBack_Click"/>
         <Button Content="Orders" HorizontalAlignment="Left"  Margin="77,241,0,0" VerticalAlignment="Top"  Click="Manger_Order_Button"/>
         <Button x:Name="Guest_Request_button" Content="Guest Requests" HorizontalAlignment="Left" Margin="77,171,0,0" VerticalAlignment="Top"  Click="Guest_Request_button_Click"/>
         <Button Content="Hosting Units" HorizontalAlignment="Left"  Margin="77,101,0,0" VerticalAlignment="Top"  Click="Button_Click"/>
         <Button Content="hosts" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="77,311,0,0" Click="Button_Click_1"/>
-        <Button Content="hosting unit by area and host by number of unit" HorizontalAlignment="Left" Height="65" Margin="486,86,0,0" VerticalAlignment="Top" Width="271" Click="Button_Click_2"/>
-        <Button Content="List of guest request by area , by number of beds" HorizontalAlignment="Left" Height="65" Margin="486,156,0,0" VerticalAlignment="Top" Width="271" Click="Button_Click_3"/>
+        <Button Content="hosting unit by area and host by number of unit" HorizontalAlignment="Left" Height="65" Margin="311,31,0,0" VerticalAlignment="Top" Width="446" Click="Button_Click_2"/>
+        <Button Content="List of guest request by area , by number of beds" HorizontalAlignment="Left" Height="65" Margin="311,101,0,0" VerticalAlignment="Top" Width="446" Click="Button_Click_3"/>
+        <Button Content="Commission" HorizontalAlignment="Left" Margin="77,31,0,0" VerticalAlignment="Top" Click="Button_Click_4"/>
     </Grid>
 </Window>

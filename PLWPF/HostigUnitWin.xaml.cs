@@ -147,7 +147,7 @@ namespace PLWPF
             {
                 bl.NewOrder(GuestRequest, hostingUnit);
 
-                
+                // a thred that activates sending email to guest
                 workerThread = new BackgroundWorker();
                 workerThread.DoWork += new DoWorkEventHandler(workerThread_DoWork);
                 workerThread.RunWorkerCompleted += new RunWorkerCompletedEventHandler(workerThread_RunWorkerCompleted);
@@ -165,13 +165,17 @@ namespace PLWPF
 
         void workerThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("email sent.");
-
+            if (e.Error != null)
+                MessageBox.Show("Error: " + e.Error.Message);
+            else
+                MessageBox.Show("email sent.");
         }
         void workerThread_DoWork(object sender, DoWorkEventArgs e)
         {
             bl.sendEmailIfHasClearance(bl.getListOfOrder().Last());
         }
+
+
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
 

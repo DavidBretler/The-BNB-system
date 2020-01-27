@@ -69,5 +69,11 @@ namespace PLWPF
             Window Guestrequest_ByAreaAndNumOfBeds = new Guestrequest_ByAreaAndNumOfBeds();
             Guestrequest_ByAreaAndNumOfBeds.Show();
         }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Window Manger_Commission_win = new Manger_Commission_win();
+            Manger_Commission_win.Show();
+        }
     }
 }

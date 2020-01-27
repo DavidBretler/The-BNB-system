@@ -44,8 +44,8 @@ namespace PLWPF
         {
             try
             {
-                if (MainWindow.IsEmpty(Delete_Textbox.Text)) ;
-                if (MainWindow.IsInt(Delete_Textbox.Text)) ;
+                if (MainWindow.IsEmpty(Delete_Textbox.Text))
+                if (MainWindow.IsInt(Delete_Textbox.Text))
                 myIBL.DeleteHost(myIBL.SearchForHostByKey(Int32.Parse(Delete_Textbox.Text)));
                 MessageBox.Show("Deleted successfully.");
                 this.Close();

@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Threading;
+using System.ComponentModel;
 
 namespace PLWPF
 {
@@ -19,6 +21,8 @@ namespace PLWPF
     /// </summary>
     public partial class Order_ByHost : Window
     {
+         BE.Order order1;
+        BackgroundWorker workerThread;
         BL.IBL bl;
         BE.Order order;
         public Order_ByHost()
@@ -59,12 +63,15 @@ namespace PLWPF
         {
             try
             {
+
+                double Commission;
                 if (MainWindow.IsEmpty(guestRequestKeyTextBox.Text)) 
                 if (MainWindow.IsEmpty(hostingUnitKeyTextBox.Text)) 
 
                 bl = BL.Factory.GetBL();
-                bl.updateStatusOfOrder(order,(int)this.statusComboBox.SelectedItem);
-                MessageBox.Show("your details update successfully ");
+                Commission=bl.updateStatusOfOrder(order,(int)this.statusComboBox.SelectedItem);
+                MessageBox.Show("your details update successfully ." +
+                    "Commission is:"+ Commission);
             }
             catch (Exception E) { MessageBox.Show(E.ToString()); }
         }
@@ -73,9 +80,35 @@ namespace PLWPF
         {
             try
             {
-                bl.DeleteOrder(order);
+                // a thred that activates sending email to guest
+                workerThread = new BackgroundWorker();
+                workerThread.DoWork += new DoWorkEventHandler(workerThread_DoWork);
+                workerThread.RunWorkerCompleted += new RunWorkerCompletedEventHandler(workerThread_RunWorkerCompleted);
+                workerThread.RunWorkerAsync();
+                order1 = order;
+               
             }
             catch(Exception E) { MessageBox.Show(E.ToString()); }
         }
+        void workerThread_DoWork(object sender, DoWorkEventArgs e)
+        {
+            bl.sendEmailToCancell(order1);
+            bl.DeleteOrder(order);
+        }
+
+        void workerThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            
+
+                if (e.Error != null)
+                
+                    MessageBox.Show("Error: " + e.Error.Message);
+                
+                else
+         
+                     MessageBox.Show("email sent.");
+
+        }
     }
 }
+
