@@ -11,22 +11,23 @@ namespace DAL
 {
     class DAL_XML_imp : IDAL
     {
-        XElement configRoot;
+        static XElement configRoot;
         XElement OrderRoot;
-        XElement bankAccuntsRoot;
+        XElement bankBrunchRoot;
+
 
         static private readonly string
             OrderPath = @"OrderXML.xml",
             HostingUnitPath = @"HostingUnitXML.xml",
             HostPath = @"HostXML.xml",
             GuestRequestPath = @"GuestRequestXML.xml",
-            BankBranchPath = @"BankBranchXML.xml",
+            BankBranchPath = @"atm.xml",
             configPath = @"ConfigurationPathXML.xml";
 
         public static List<BE.HostingUnit> ListHostingUnit = new List<HostingUnit>();
         public static List<BE.Host> ListHost = new List<Host>();
         public static List<BE.GuestRequest> ListGuestRequest = new List<GuestRequest>();
-        public static List<BE.BankBranch> ListBankBranch = new List<BankBranch>();
+        public static List<BE.BankBranch> ListBankBranch = new List<BankBranch>();      
         public static List<BE.Order> ListOrder = new List<Order>();
 
         bool ListOrderChange;
@@ -43,6 +44,8 @@ namespace DAL
 
         internal DAL_XML_imp()////////////////////////////////////////////////////////////////////
         {
+            GetBankXml();
+
             if (!File.Exists(configPath))
             {
                 SaveConfigToXml();
@@ -76,15 +79,24 @@ namespace DAL
            
             if (!File.Exists(BankBranchPath))
                 SaveToXML(new List<BankBranch>(), BankBranchPath);
+            //if (!File.Exists(BankBranchPath))
+            //{
+            //    bankBrunchRoot = new XElement("Order");
+            //    OrderRoot.Save(OrderPath);
+            //}
 
+            bankBrunchRoot = XElement.Load(BankBranchPath);
             OrderRoot = XElement.Load(OrderPath);
             ListHost = LoadFromXML<List<Host>>(HostPath);        
             ListHostingUnit = LoadFromXML<List<HostingUnit>>(HostingUnitPath);
             ListGuestRequest = LoadFromXML<List<GuestRequest>>(GuestRequestPath);
-            ListBankBranch = LoadFromXML<List<BankBranch>>(BankBranchPath);
+            //ListBankBranch = LoadFromXML<List<BankBranch>>(BankBranchPath);
         }
         ~DAL_XML_imp()
         {
+
+            // configRoot.Save(configPath);
+            SaveConfigToXml();
             OrderRoot.Save(OrderPath);
             SaveToXML<List<GuestRequest>>(ListGuestRequest, GuestRequestPath);
             SaveToXML<List<HostingUnit>>(ListHostingUnit, HostingUnitPath);
@@ -98,6 +110,7 @@ namespace DAL
             FileStream file = new FileStream(path, FileMode.Create);
             XmlSerializer xmlSerializer = new XmlSerializer(source.GetType());
             xmlSerializer.Serialize(file, source);
+            //SaveConfigToXml();
             file.Close();
         }
 
@@ -394,33 +407,32 @@ namespace DAL
             }
             catch (Exception)
             {
-                throw new KeyNotFoundException("שגיאה בעדכון התלמיד " + TheOrder.OrderKey);
+                throw new KeyNotFoundException("the order is not exict " + TheOrder.OrderKey);
             }
         }
         #endregion Order
         public List<BankBranch> getListOfBankBranch()
-        { return ListBankBranch; }
-        //{                      //לראות מה עושים עם הרשימת בנקים... 
+        {                     
 
-        //    try
-        //    {
-        //        return (from bankAccunt in bankAccuntsRoot.Elements()
-        //                select new BankAccunt()
-        //                {
-        //                    BankName = bankAccunt.Element("שם_בנק").Value.Trim(),
-        //                    BankNumber = Convert.ToInt32(bankAccunt.Element("קוד_בנק").Value.Trim()),
-        //                    BranchAddress = bankAccunt.Element("כתובת_ה-ATM").Value.Trim(),
-        //                    BranchCity = bankAccunt.Element("ישוב").Value.Trim(),
-        //                    BranchNumber = Convert.ToInt32(bankAccunt.Element("קוד_סניף").Value.Trim())
-        //                }
-        //                ).Distinct().ToList();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // throw new Exception("file_problem_Order");
-        //        throw ex;
-        //    }
-        //}                  
+            try
+            {
+                return (from BankBranch in bankBrunchRoot.Elements()
+                        select new BankBranch()
+                        {
+                            BankName = BankBranch.Element("שם_בנק").Value.Trim(),
+                           // BankNumber = Convert.ToInt32(BankBranch.Element("קוד_בנק").Value.Trim()),
+                            BranchAddress = BankBranch.Element("כתובת_ה-ATM").Value.Trim(),
+                            BranchCity = BankBranch.Element("ישוב").Value.Trim(),
+                            BranchNumber = Convert.ToInt32(BankBranch.Element("קוד_סניף").Value.Trim())
+                        }
+                        ).Distinct().ToList();
+            }
+            catch (Exception ex)
+            {
+                 throw new Exception("file_problem_Order");
+               // throw ex;
+            }
+        }                  
     public void  GetBankXml()
         {
             const string xmlLocalPath = @"atm.xml";

@@ -18,9 +18,9 @@
             <Label Content="type of resort" Height="42"/>
 
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="177" Margin="507,56,0,0" VerticalAlignment="Top"  Width="100">
-            <TextBox x:Name="privte_Name_textbox" Height="30" TextWrapping="Wrap" Text="{Binding PrivateName}" Margin="0,0,-0.2,0"  Width="100"/>
-            <TextBox x:Name="last_name_textbox" Height="30" TextWrapping="Wrap" Text="{Binding FamilyName}" Margin="0,0,-0.2,0"  Width="100"/>
+        <StackPanel HorizontalAlignment="Left" Height="177" Margin="507,56,0,0" VerticalAlignment="Top"  Width="150">
+            <TextBox x:Name="privte_Name_textbox" Height="30" TextWrapping="Wrap" Text="{Binding PrivateName}" Margin="0,0,-0.2,0"  Width="150"/>
+            <TextBox x:Name="last_name_textbox" Height="30" TextWrapping="Wrap" Text="{Binding FamilyName}" Margin="0,0,-0.2,0"  Width="150"/>
             <TextBox x:Name="email_text_box" Height="30" TextWrapping="Wrap" Text="{Binding MailAddress}" Width="Auto"/>
             <ComboBox SelectedItem="{Binding Adults}" >
                 <ComboBoxItem Content="1"  />
