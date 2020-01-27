@@ -77,8 +77,6 @@ namespace PLWPF
             return true;
             }
         
-
-
         private void HostEntryButton_Click(object sender, RoutedEventArgs e)
         {
             Window FindHostWindow = new FindHostWindow();

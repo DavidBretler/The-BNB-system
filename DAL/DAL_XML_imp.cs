@@ -359,17 +359,11 @@ namespace DAL
                                        where Int32.Parse(t.Element("OrderKey").Value) == TheOrder.OrderKey
                                      select t).FirstOrDefault();
             if (OrderElement == null)
-                throw new KeyNotFoundException("לא נמצא תלמיד שמספרו " + TheOrder.OrderKey);
-            try
-            {
-                OrderElement.Remove();
-                // OrderListChainged = true;
+                throw new KeyNotFoundException("key: " + TheOrder.OrderKey+" not founed");
+             OrderElement.Remove();
                 OrderRoot.Save(OrderPath);
-            }
-            catch (Exception E)
-            {
-                throw E;
-            }
+            
+         
         }
         public void NewOrder(BE.Order TheOrder)
         {
