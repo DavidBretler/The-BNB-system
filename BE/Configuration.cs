@@ -13,6 +13,7 @@ namespace BE
         public static double Commission = 10; //commission for orders
         public static int Password = 999;
         public static string MangerPassword = "9999";
+        public static string SystemEmail = "";
         static public String getMangerPassword() { return MangerPassword; }
         static public int getPassword() { return ++Password; }
         static public double getCommission() { return Commission; }

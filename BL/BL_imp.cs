@@ -30,7 +30,7 @@ namespace BL
         public List<BankBranch> getListOfBankBranch()
         {
             return dal.getListOfBankBranch();
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public List<GuestRequest> getListOfGuestRequest()
@@ -500,15 +500,15 @@ namespace BL
                 }
                 else
                     throw new MisinigClearanceException("BL_imp", "Misinig Collection Clearance,to contact custumer aprove Clearance. ");
-            
 
+            //destict choose only one from the list if aperes more then ones..
         }
         /// <summary>
         /// send email to the costumor by the host and change the date 
         /// </summary>
         /// <param name="currrentOrder"></param>
-       
-       public void sendEmail(Order currrentOrder)
+
+        public void sendEmail(Order currrentOrder)
         {
            // יצירת אובייקט MailMessage
             MailMessage mail = new MailMessage();
