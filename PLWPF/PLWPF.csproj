@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="NotBooleanToVisibilityConverter.cs" />
     <Compile Include="fiend_G_RByKe_Delete.xaml.cs">
       <DependentUpon>fiend_G_RByKe_Delete.xaml</DependentUpon>
     </Compile>
@@ -255,7 +256,7 @@
     <Resource Include="RES\style\res.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Folder Include="convert\" />
     <Folder Include="Guset\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -46,6 +46,8 @@ namespace DAL
         {
             try
             {
+            //    if (!File.Exists(BankBranchPath))
+              //      bankBrunchRoot = new XElement("atm");
                 GetBankXml();
 
                 if (!File.Exists(configPath))
@@ -213,16 +215,19 @@ namespace DAL
             return temp2;
         }
         #endregion Hosting Unit
+
         #region Guest Request
         public void NewGuestRequests(GuestRequest GuestRequestToAdd)
         {//לעשות פונ מיוחדת למטריצה              
             try
             {
+               
                 for (int i = 0; i < ListGuestRequest.Count; i++)
                     if (ListGuestRequest[i].GuestRequestKey == GuestRequestToAdd.GuestRequestKey)
                         throw new IDalreadyExistsException("GuestRequest", GuestRequestToAdd.GuestRequestKey);
                 ListGuestRequest.Add(GuestRequestToAdd);
                 SaveToXML(ListGuestRequest, GuestRequestPath);
+                SaveConfigToXml();
             }
             catch (Exception E) { throw E; }
         }
@@ -278,6 +283,7 @@ namespace DAL
                         throw new IDalreadyExistsException("the host is allready exist");
                 ListHost.Add(HostToAdd);
                 SaveToXML(ListHost, HostPath);
+                SaveConfigToXml();
             }
             catch (Exception E) { throw E; }
         }
@@ -393,7 +399,8 @@ namespace DAL
                 ListOrderChange = true;
                 OrderRoot.Add(O);
                 OrderRoot.Save(OrderPath);
-              // ListChainged = true;
+                SaveConfigToXml();
+                // ListChainged = true;
             }
             catch (Exception E)
             { throw E; }
@@ -449,8 +456,11 @@ namespace DAL
             }
             catch (Exception)
             {
-                string xmlServerPath = @"https://drive.google.com/file/d/1FpcqslnRD6naLHOjrCvKArCg3Ihkb9hR/view?usp=sharing";
+                string xmlServerPath = @"http://www.jct.ac.il/~coshri/atm.xml";
+                 
                 wc.DownloadFile(xmlServerPath, xmlLocalPath);
+               
+                // @"https://drive.google.com/file/d/1FpcqslnRD6naLHOjrCvKArCg3Ihkb9hR/view?usp=sharing";
             }
             finally
             {

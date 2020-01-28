@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,10 +22,14 @@ namespace PLWPF
     {
         BL.IBL ibl;
         BE.GuestRequest guestRequest;
-
+        private ObservableCollection<BE.GuestRequest> _myCollection = 
+            new ObservableCollection<BE.GuestRequest>(); 
+      
         public NewGuestRequestWindoy ()
         {
             InitializeComponent();
+            this.ListBoxGR.DataContext = _myCollection;
+            
             guestRequest = new BE.GuestRequest(); 
             this.newGuestRequestGrid.DataContext = guestRequest;
              ibl = BL.Factory.GetBL();
@@ -41,11 +46,12 @@ namespace PLWPF
             //EndDatePicker.SelectedDate = DateTime.Today.AddDays(1);
 
         }
-
+        private int counter = 0;
         private void FinishGusetRequest_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+
                 MainWindow.IsEmpty(last_name_textbox.Text);
                 MainWindow.IsEmpty(privte_Name_textbox.Text);
 
@@ -53,12 +59,20 @@ namespace PLWPF
                 MainWindow.IsValidEmailAddress(email_text_box.Text);
 
                 //guestRequest.EndDate = this.calender.SelectedDates.Last;
-                guestRequest.GuestRequestKey = BE.Configuration.getNewGuestRequestKey();
+                //guestRequest.GuestRequestKey = BE.Configuration.getNewGuestRequestKey();
                   ibl.NewGuestRequests(guestRequest);              
                 MessageBox.Show("guest request key is:" + guestRequest.GuestRequestKey.ToString() );
+                _myCollection.Add(guestRequest);
                 guestRequest = new BE.GuestRequest();
-                this.newGuestRequestGrid.DataContext = guestRequest;               
-                this.Close();
+                this.newGuestRequestGrid.DataContext = guestRequest;
+               
+
+                //++counter; 
+                //_myCollection.Add(new BE.GuestRequest() { FirstName = "item " + counter,
+                //    LastName = "item " +  counter,
+                //    IsLecturer = counter % 3 == 0 });
+
+
             }
             catch (Exception exp)
             {

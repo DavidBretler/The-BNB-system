@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Manger_Hosts_win"
-        mc:Ignorable="d"
+     
+    mc:Ignorable="d"
         Title="Manger_Hosts_win" Height="450" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="hostViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Host}, CreateList=True}"/>

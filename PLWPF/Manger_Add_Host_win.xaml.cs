@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,9 @@ namespace PLWPF
     /// <summary>
     /// Interaction logic for Manger_Add_Host_win.xaml
     /// </summary>
+    /// 
+
+ 
     public partial class Manger_Add_Host_win : Window
     {
         public BE.Host host = new BE.Host();
@@ -86,6 +90,10 @@ namespace PLWPF
                 }
             }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
+    }
     }
 

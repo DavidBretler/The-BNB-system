@@ -3,10 +3,38 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PLWPF"
+        xmlns:local="clr-namespace:PLWPF"       
         mc:Ignorable="d"
-        Title="newOrder" Height="502.8" Width="800">
-    <Grid x:Name="newGuestRequestGrid" Margin="0,0,-0.4,13.8">
+        Title="newOrder" Height="535.2" Width="800">
+
+    <Window.Resources>
+      
+        
+        <DataTemplate DataType="local:MyData">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="First Name: " />
+                <TextBlock Grid.Column="1" Text="{Binding Path=PrivateName}" />
+                <TextBlock Grid.Column="2" Text="Last Name: " />
+                <TextBlock Grid.Column="3" Text="{Binding Path=FamilyName}" />
+                <CheckBox Grid.Column="4" Content="Is Lecturer?" IsEnabled="False" IsChecked="{Binding Path=IsLecturer}" />
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+
+
+    <Grid x:Name="newGuestRequestGrid" Margin="0,0,-0.4,13.6">
+        <ListBox x:Name="ListBoxGR" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" Margin="434,340,41,-12.2"/>
+
 
         <StackPanel Margin="414,56,285,136" RenderTransformOrigin="0.46,0.546">
             <Label Content="privte name"  Height="30"/>
@@ -64,7 +92,7 @@
             <Label Content="a-c"/>
             <Label Content="hikes"/>
         </StackPanel>
-        <Button Content="finish guest request" HorizontalAlignment="Left" Margin="476,338,0,0" VerticalAlignment="Top" Width="190" Height="38" Name="FinishGusetRequest" Click="FinishGusetRequest_Click"/>
+        <Button Content="finish guest request" HorizontalAlignment="Left" Margin="467,264,0,0" VerticalAlignment="Top" Width="246" Height="38" Name="FinishGusetRequest" Click="FinishGusetRequest_Click"/>
         <StackPanel HorizontalAlignment="Left" Height="200
                     " Margin="10,71,0,0" VerticalAlignment="Top" Width="83">
             <ComboBox SelectedItem="{Binding Pool}" Name="PoolCB"/>
@@ -77,6 +105,7 @@
         <TextBlock HorizontalAlignment="Left" Height="67" Margin="10,224,0,0" TextWrapping="Wrap" Text="{Binding GuestRequestKey}" VerticalAlignment="Top" Width="212" Name="DisplayG_R_Key" Visibility="Collapsed"/>
         <Calendar x:Name="calender" HorizontalAlignment="Left" Margin="180,31,0,0" VerticalAlignment="Top"  SelectedDate= "{Binding EntryDate}" />
         <Calendar HorizontalAlignment="Left" Margin="180,231,0,-7" VerticalAlignment="Top" SelectedDate="{Binding EndDate}"/>
+        <Label Content="the new guest request" HorizontalAlignment="Left" Height="36" Margin="532,312,0,0" VerticalAlignment="Top" Width="125"/>
 
     </Grid>
 </Window>

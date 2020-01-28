@@ -16,6 +16,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Globalization;
+
 
 namespace PLWPF
 {//  לראות האם להשתמש בuser control  !!
@@ -30,7 +32,7 @@ namespace PLWPF
         public MainWindow()
         {
             InitializeComponent();
-           
+
             myIBL = BL.Factory.GetBL();
             workerThread = new BackgroundWorker();
             workerThread.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
@@ -38,7 +40,7 @@ namespace PLWPF
             workerThread.RunWorkerAsync();
 
         }
-      
+
         //the thred get the bank info and resets the diary off the hosting units
         void workerThread_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -50,13 +52,13 @@ namespace PLWPF
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>
-        static public bool IsInt (string a)
+        static public bool IsInt(string a)
         {
             int n;
             if (int.TryParse(a, out n))
                 if (n >= 0)
                     return true;
-                     else
+                else
                     throw new Exception("Must enter a  positive number.");
             throw new Exception("Must enter a number.");
         }
@@ -66,17 +68,17 @@ namespace PLWPF
                 throw new Exception("Must Fill all the data.");
             else
                 return true;
-          
+
         }
-      
-            public static bool IsValidEmailAddress( string s)
-            {
-                Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+
+        public static bool IsValidEmailAddress(string s)
+        {
+            Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
             if (!regex.IsMatch(s))
                 throw new Exception("the email is incorecct.");
             return true;
-            }
-        
+        }
+
         private void HostEntryButton_Click(object sender, RoutedEventArgs e)
         {
             Window FindHostWindow = new FindHostWindow();
@@ -85,25 +87,26 @@ namespace PLWPF
 
         private void MangerEntryButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
             Window Manger_Password = new Manger_Password();
             Manger_Password.Show();
         }
 
         private void GuestEntryButton_Click(object sender, RoutedEventArgs e)
         {
-            Window GuestEntryWindow  = new GuestEntryWindow();
+            Window GuestEntryWindow = new GuestEntryWindow();
             GuestEntryWindow.Show();
         }
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-           
+
             if (e.Error != null)
             {
                 MessageBox.Show("Error: " + e.Error.Message);
             }
-           
+
         }
+        
     }
 }

@@ -444,7 +444,7 @@ namespace BL
             guestRequest.NumOfBeds = guestRequest.Adults + guestRequest.Children;
             
             checkDates(guestRequest.EntryDate, guestRequest.EndDate);
-
+            guestRequest.GuestRequestKey = BE.Configuration.getNewGuestRequestKey();
             dal.NewGuestRequests(guestRequest);
 
             
@@ -532,7 +532,7 @@ namespace BL
             smtp.Send(mail);
 
             Console.WriteLine("email has been sent to order num  " + currrentOrder.OrderKey + "aboute request num :" + currrentOrder.GuestRequestKey);
-            currrentOrder.contactCustumerDate = DateTime.Now;
+            currrentOrder.contactCustumerDate = DateTime.Today;
      
     }
         public void sendEmailToCancell(Order currrentOrder)
