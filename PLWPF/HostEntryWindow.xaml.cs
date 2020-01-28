@@ -40,9 +40,11 @@ namespace PLWPF
         {
             try
             {
+                if(this.hostDeteil.DataContext==null)
+                    throw new Exception ("must fill details.")
                 bl = BL.Factory.GetBL();
                 bl.UpdateHost((BE.Host)this.hostDeteil.DataContext);
-                MessageBox.Show("פרטיך עודכנו בהצלחה ");
+                MessageBox.Show("updated sucssuflly ");
             }
             catch (Exception E) { MessageBox.Show( E.ToString()); }
             //catch (BE.MissingIdException E2) { MessageBox.Show(E2.ToString()); }

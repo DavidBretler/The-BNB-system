@@ -264,7 +264,6 @@ namespace BL
         #region Order
         public void NewOrder(GuestRequest guestRequest, HostingUnit hostingUnit)
         {
-            if (CheakDatesAreFree(hostingUnit, guestRequest.EntryDate, guestRequest.EndDate))
 
             {
                 Order order = new Order();
@@ -277,7 +276,7 @@ namespace BL
                 
 
             }
-            else throw new GenralException("Order", "ERROR in creating order.");
+          //  else throw new GenralException("Order", "ERROR in creating order.");
         }
 
         public void UpdateOrder(GuestRequest guestRequest, HostingUnit hostingUnit, int orderKey)
@@ -388,7 +387,9 @@ namespace BL
                 order.Status = (Status)newStatus;
                 if (order.Status == (Status)2)
                 {
-                    BookDates(order);
+                    if (CheakDatesAreFree(GetHostingUnitFromOrder(order),GetGuestRequestFromOrder(order) .EntryDate,GetGuestRequestFromOrder(order).EndDate)) ;
+
+                        BookDates(order);
                     updateAllOrdersStatus(order);
                     dal.UpdateDateOrder(order);
                     return calcCommission(order);
