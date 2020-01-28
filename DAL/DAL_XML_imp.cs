@@ -458,9 +458,7 @@ namespace DAL
             {
                 string xmlServerPath = @"http://www.jct.ac.il/~coshri/atm.xml";
                  
-                wc.DownloadFile(xmlServerPath, xmlLocalPath);
-               
-                // @"https://drive.google.com/file/d/1FpcqslnRD6naLHOjrCvKArCg3Ihkb9hR/view?usp=sharing";
+                wc.DownloadFile(xmlServerPath, xmlLocalPath);                              
             }
             finally
             {
