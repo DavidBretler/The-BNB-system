@@ -40,8 +40,8 @@ namespace PLWPF
         {
             try
             {
-                if(this.hostDeteil.DataContext==null)
-                    throw new Exception ("must fill details.")
+                if (this.hostDeteil.DataContext == null)
+                    throw new Exception("must fill details.");
                 bl = BL.Factory.GetBL();
                 bl.UpdateHost((BE.Host)this.hostDeteil.DataContext);
                 MessageBox.Show("updated sucssuflly ");
