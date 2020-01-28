@@ -655,6 +655,7 @@ namespace BL
         {
             try
             {
+                CheakDatesAreFree(GetHostingUnitFromOrder(order), GetGuestRequestFromOrder(order).EntryDate, GetGuestRequestFromOrder(order).EndDate);
                 HostingUnit hostingUnit = GetHostingUnitFromOrder(order);
                 DateTime temp = GetGuestRequestFromOrder(order).EntryDate;
                 while (temp < GetGuestRequestFromOrder(order).EndDate)
@@ -734,14 +735,11 @@ namespace BL
         /// <returns></returns>
         public bool checkDates(DateTime StartDate, DateTime EndtDate)
         {
-            try
-            {
                 if (checkIfDatesAreInRange(StartDate, EndtDate) && CheakDateIfInOrder(StartDate, EndtDate))
                     return true;
                 return false;
-            }
-            catch
-            { throw; }
+            
+         
         }
 
         #endregion Date

@@ -43,9 +43,11 @@ namespace BL
         List<BE.BankBranch> getListOfBankBranch();
         List<Host> getListOfHost();
 
-      
+        bool CheakDatesAreFree(HostingUnit hostingUnit, DateTime StartDate, DateTime EndtDate);
         void sendEmail(Order currrentOrder);
         void deleteDatesMonthBack();
+
+        HostingUnit GetHostingUnitFromOrder(Order order);
 
          IEnumerable<IGrouping<int, GuestRequest>> ListOfGustRequestByNumOfBeds();
         IEnumerable<IGrouping<Area, HostingUnit>> ListOfHostingUntisInArea();
