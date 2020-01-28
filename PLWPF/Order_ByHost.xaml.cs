@@ -85,7 +85,6 @@ namespace PLWPF
                 // a thred that activates sending email to guest
                 workerThread = new BackgroundWorker();
                 workerThread.DoWork += new DoWorkEventHandler(workerThread_DoWork);
-                workerThread.RunWorkerCompleted += new RunWorkerCompletedEventHandler(workerThread_RunWorkerCompleted);
                 workerThread.RunWorkerAsync();
                 order1 = order;
                
@@ -105,20 +104,7 @@ namespace PLWPF
             }
         }
 
-        void workerThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            
-
-                if (e.Error != null)
-                
-                    MessageBox.Show("Error: " + e.Error.Message);
-                
-                else
-         
-                     MessageBox.Show("email sent.");
-
-        }
-
+      
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             foreach (Window window in Application.Current.Windows)

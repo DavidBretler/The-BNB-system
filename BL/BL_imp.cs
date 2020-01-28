@@ -304,6 +304,7 @@ namespace BL
         {
             //send email to the guest"
             dal.Deleteorder(TheOrder);
+            throw new Exception("deleted  and email sent.");
         }
 
         /// <summary>
@@ -387,9 +388,10 @@ namespace BL
                 order.Status = (Status)newStatus;
                 if (order.Status == (Status)2)
                 {
-                    if (CheakDatesAreFree(GetHostingUnitFromOrder(order),GetGuestRequestFromOrder(order) .EntryDate,GetGuestRequestFromOrder(order).EndDate)) ;
+                   
+                    BookDates(order);
+                    GetGuestRequestFromOrder(order).Status = (orderStatus)2;
 
-                        BookDates(order);
                     updateAllOrdersStatus(order);
                     dal.UpdateDateOrder(order);
                     return calcCommission(order);
@@ -561,12 +563,12 @@ namespace BL
              Configuration.SystemEmailPassward);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Send(mail);
+        
         }
 
         
         # endregion EMAIL
-       
-
+      
         #region Grouping
         /// <summary>
         /// create a list of hosting units by area
@@ -705,7 +707,7 @@ namespace BL
 
 
                     if (hostingUnit[StartDate])
-                        return false;
+                        throw new Exception("the dates are not avidable");
                     StartDate = StartDate.AddDays(1);
 
 
