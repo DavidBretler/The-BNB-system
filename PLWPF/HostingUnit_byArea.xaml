@@ -12,7 +12,10 @@
         <CollectionViewSource x:Key="hostViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Host}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource hostingUnitViewSource}" Margin="30,-45,106,16">
-        <DataGrid x:Name="hostingUnitDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}"  RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,80,59,245.4">
+        <DataGrid x:Name="hostingUnitDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}"  RowDetailsVisibilityMode="VisibleWhenSelected" Margin="49,80,9.6,245.4">
+            <DataGrid.Background>
+                <ImageBrush ImageSource="https://www.modernhomedecor.eu/wp-content/uploads/2016/12/Outstanding-Contemporary-Living-Room-Design-in-Kiev9_f.jpg"/>
+            </DataGrid.Background>
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="hostingUnitKeyColumn" Binding="{Binding HostingUnitKey}" Header="Hosting Unit Key" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="airConditionerColumn" Binding="{Binding AirConditioner}" Header="Air Conditioner" Width="SizeToHeader"/>
@@ -31,6 +34,9 @@
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="hostDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource hostViewSource}}" Margin="130,327,82.6,10.4" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Background>
+                <ImageBrush ImageSource="https://www.modernhomedecor.eu/wp-content/uploads/2016/12/Outstanding-Contemporary-Living-Room-Design-in-Kiev9_f.jpg"/>
+            </DataGrid.Background>
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="hostKeyColumn" Binding="{Binding HostKey}" Header="Host Key" Width="SizeToHeader"/>
                 <DataGridCheckBoxColumn x:Name="collectionClearanceColumn" Binding="{Binding CollectionClearance}" Header="Collection Clearance" Width="SizeToHeader"/>
@@ -44,5 +50,6 @@
         </DataGrid>
         <Label Content="  host by number of unit" HorizontalAlignment="Left" Height="32" Margin="369,295,0,0" VerticalAlignment="Top" Width="149"/>
         <Label Content="hosting unit by area" HorizontalAlignment="Left" Height="37" Margin="369,43,0,0" VerticalAlignment="Top" Width="138"/>
+        <Button Content="home page" HorizontalAlignment="Left" Height="73" Margin="905,424,-70.4,0" VerticalAlignment="Top" Width="107" Click="Button_Click"/>
     </Grid>
 </Window>

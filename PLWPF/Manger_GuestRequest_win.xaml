@@ -12,7 +12,7 @@
     </Window.Resources>
     <Grid DataContext="{StaticResource guestRequestViewSource}" Margin="0,0,2,0">
 
-        <DataGrid x:Name="guestRequestDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,0,10,10" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+        <DataGrid x:Name="guestRequestDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,0,209.4,10" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="guestRequestKeyColumn" Width="SizeToHeader" Header="Key" Binding="{Binding GuestRequestKey}" IsReadOnly="True"/>
                 <DataGridTextColumn x:Name="adultsColumn" Width="SizeToHeader" Header="Adults" Binding="{Binding Adults}" IsReadOnly="True"/>
@@ -39,6 +39,7 @@
                 <DataGridTextColumn x:Name="typeColumn" Width="40" Header="Type" Binding="{Binding Type}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="home page" HorizontalAlignment="Left" Height="68" Margin="1075,342,0,0" VerticalAlignment="Top" Width="171" Click="Button_Click"/>
 
     </Grid>
 </Window>

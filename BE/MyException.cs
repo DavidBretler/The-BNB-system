@@ -45,7 +45,7 @@ namespace BE
           override public string ToString()
            {
 
-             return base.Message + ID + "חסרה במחלקה  " + ClassName + "תעודת זהות חסרה : תעודת הזהות ";
+            return base.Message;
             }
        }
 

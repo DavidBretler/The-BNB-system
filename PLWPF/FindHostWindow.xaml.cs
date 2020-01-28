@@ -33,15 +33,15 @@ namespace PLWPF
             {
 
                 MainWindow.IsEmpty(HostNum.Text);
-                MainWindow.IsEmpty(hostPassword.Text);
+                MainWindow.IsEmpty(Passward.Password);
                 MainWindow.IsInt(HostNum.Text);
-                MainWindow.IsInt(hostPassword.Text);
+                MainWindow.IsInt(Passward.Password);
                 ibl = BL.Factory.GetBL();
                 // BE.Host host = new BE.Host();
                 Window HostEntryWindow = new HostEntryWindow();
                 host = ibl.SearchForHostByKey(Int32.Parse(HostNum.Text));
                 this.DataContext = host;
-                if (host.password == Int32.Parse(hostPassword.Text))
+                if (host.password == Int32.Parse(Passward.Password))
                 {
                     HostEntryWindow.Show();
                     this.Close();
@@ -50,7 +50,7 @@ namespace PLWPF
                 else
                     MessageBox.Show("One of the detalis is not corect");
             }
-            catch (Exception E) { MessageBox.Show(E.ToString()); }
+            catch (Exception E) { MessageBox.Show(E.Message); }
         }
     }
 }

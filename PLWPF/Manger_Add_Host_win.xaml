@@ -55,5 +55,6 @@
         <ComboBox x:Name="BankBranch_CB" HorizontalAlignment="Left" Margin="358,58,0,0" VerticalAlignment="Top" Width="120" Text="Choose Bank Branch" SelectionChanged="BankBranch_CB_SelectionChanged"  />
         <TextBox x:Name="Bank_Number_Textbox" HorizontalAlignment="Left" Height="35" Margin="531,45,0,0" TextWrapping="Wrap" Text="Enter acount number" VerticalAlignment="Top" Width="194"/>
         <Label Content="choose branch number" HorizontalAlignment="Left" Height="26" Margin="358,10,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="home page" HorizontalAlignment="Left" Height="38" Margin="791,372,0,0" VerticalAlignment="Top" Width="103"/>
     </Grid>
 </Window>

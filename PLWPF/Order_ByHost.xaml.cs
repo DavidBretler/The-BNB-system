@@ -109,6 +109,15 @@ namespace PLWPF
                      MessageBox.Show("email sent.");
 
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.Title != "MainWindow")
+                    window.Close();
+            }
+        }
     }
 }
 

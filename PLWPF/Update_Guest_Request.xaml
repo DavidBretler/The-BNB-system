@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Update_Guest_Request"
         mc:Ignorable="d"
-        Title="עדכון הזמנה" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="עדכון הזמנה" Height="484.8" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="guestRequestViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:GuestRequest}, CreateList=True}"/>
     </Window.Resources>
-    <Grid x:Name="UpadateGuestRequestGrid" DataContext="{StaticResource guestRequestViewSource}">
+    <Grid x:Name="UpadateGuestRequestGrid" DataContext="{StaticResource guestRequestViewSource}" Margin="0,0,-0.4,6.2">
 
         <StackPanel Margin="601,54,20.6,138" RenderTransformOrigin="0.46,0.546">
             <Label Content="privte name"  Height="30"/>
@@ -91,6 +91,7 @@
         <TextBlock HorizontalAlignment="Left" Height="67" Margin="10,224,0,0" TextWrapping="Wrap" Text="{Binding GuestRequestKey}" VerticalAlignment="Top" Width="212" x:Name="DisplayG_R_Key" Visibility="Collapsed"/>
         <Calendar HorizontalAlignment="Left" Margin="205,39,0,0" VerticalAlignment="Top" SelectedDate="{Binding EntryDate, Mode=TwoWay}" />
         <Calendar HorizontalAlignment="Left" Margin="205,224,0,0" VerticalAlignment="Top" SelectedDate="{Binding EndDate ,Mode=TwoWay}"/>
+        <Button Content="home page" HorizontalAlignment="Left" Height="51" Margin="654,359,0,0" VerticalAlignment="Top" Width="119"/>
 
     </Grid>
 </Window>

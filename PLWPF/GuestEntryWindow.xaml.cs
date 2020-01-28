@@ -50,5 +50,7 @@ namespace PLWPF
             fiend_G_RByKe_Delete.Show();
             this.Close();
         }
+
+     
     }
 }

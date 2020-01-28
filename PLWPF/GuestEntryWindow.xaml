@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="GuestEntryWindow" Height="450" Width="824">
+    <Window.Background>
+        <ImageBrush ImageSource="https://www.thespruce.com/thmb/FOa0NU7ayi5n0XOruKNLwEmkutI=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-9261821821-5c69c1b7c9e77c0001675a49.jpg"  />
+    </Window.Background>
     <Grid Margin="0,0,2,0">
         <Button x:Name="GoBack" Content="back" HorizontalAlignment="Left"  Margin="413,278,0,0" VerticalAlignment="Top"  Click="Go_back_Click"  FontFamily="David" />
         <Button x:Name="exsiting_Guest_Request_button_" Content=" existing request" HorizontalAlignment="Left" Margin="235,82,0,0" VerticalAlignment="Top" FontFamily="David" Click="Button_Click_1"/>

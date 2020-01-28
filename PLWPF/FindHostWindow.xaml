@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="FindHostWindow" Height="220" Width="187.434">
+        Title="FindHostWindow" Height="220" Width="316.17">
 
 
 
@@ -16,9 +16,11 @@
 
 
         <Grid HorizontalAlignment="Left" Height="100" Margin="-167,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
-        <TextBox x:Name="HostNum" HorizontalAlignment="Left" Height="51" Margin="22,-11,-13,0" TextWrapping="Wrap" Text="host number" VerticalAlignment="Top" Width="145"/>
-        <Button Content="Find Host " HorizontalAlignment="Left" Margin="43,105,0,0" VerticalAlignment="Top" Width="111" Height="46" Click="Button_Click"/>
-        <TextBox x:Name="hostPassword" HorizontalAlignment="Left" Height="45" Margin="22,45,-13,0" TextWrapping="Wrap" Text="passward" VerticalAlignment="Top" Width="145" />
+        <TextBox x:Name="HostNum" HorizontalAlignment="Left" Height="51" Margin="127,-12,-118,0" TextWrapping="Wrap" Text="host number" VerticalAlignment="Top" Width="145"/>
+        <Button Content="Find Host " HorizontalAlignment="Left" Margin="72,105,-75,0" VerticalAlignment="Top" Width="157" Height="46" Click="Button_Click"/>
+        <PasswordBox x:Name="Passward" HorizontalAlignment="Left" Margin="127,57,-118,0" VerticalAlignment="Top" Height="43" Width="145"/>
+        <Label Content="host number" HorizontalAlignment="Left" Margin="23,0,0,0" VerticalAlignment="Top"/>
+        <Label Content="passward" HorizontalAlignment="Left" Margin="42,57,0,0" VerticalAlignment="Top"/>
 
 
 

@@ -7,6 +7,9 @@
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.MangerEntryWindow"
         mc:Ignorable="d"
         Title="MangerEntryWindow" Height="450" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="https://www.thespruce.com/thmb/FOa0NU7ayi5n0XOruKNLwEmkutI=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-9261821821-5c69c1b7c9e77c0001675a49.jpg"  />
+    </Window.Background>
     <Window.Resources>
         <CollectionViewSource x:Key="orderViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Order}, CreateList=True}"/>
     </Window.Resources>

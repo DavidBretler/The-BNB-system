@@ -9,7 +9,7 @@
         Title="Order_ByHost" Height="450" Width="800" >
 
     <Grid >
-        <ComboBox x:Name="OrderCB" Text="choose order " HorizontalAlignment="Left" Margin="139,51,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="OrderCB_SelectionChanged"/>
+        <ComboBox x:Name="OrderCB" Text="choose order " HorizontalAlignment="Left" Margin="109,51,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="OrderCB_SelectionChanged"/>
         <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="275,68,0,0" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -44,6 +44,8 @@
         </Grid>
         <Button Content="update order" HorizontalAlignment="Left" Height="55" Margin="609,295,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
         <Button Content="delete order" HorizontalAlignment="Left" Height="51" Margin="609,239,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click_1"/>
+        <Button Content="home page" HorizontalAlignment="Left" Height="46" Margin="636,355,0,0" VerticalAlignment="Top" Width="128" Click="Button_Click_2"/>
+        <Label Content="choose order" HorizontalAlignment="Left" Height="28" Margin="132,18,0,0" VerticalAlignment="Top" Width="104"/>
 
     </Grid>
 </Window>

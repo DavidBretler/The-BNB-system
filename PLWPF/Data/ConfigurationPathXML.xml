@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <HostingUnitKey>0</HostingUnitKey>
+  <GuestRequestKey>0</GuestRequestKey>
+  <HostKey>0</HostKey>
+  <OrderKey>0</OrderKey>
+  <Commission>10</Commission>
+  <Password>999</Password>
+  <MangerPassword>9999</MangerPassword>
+  <MangerPassword>9999</MangerPassword>
+  <SystemEmail>israelhostingservice@gmail.com</SystemEmail>
+  <SystemEmailPassward>israel0000</SystemEmailPassward>
+</config>

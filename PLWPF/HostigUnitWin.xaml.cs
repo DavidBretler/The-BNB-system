@@ -202,5 +202,14 @@ namespace PLWPF
                 MessageBox.Show(exp.ToString());
             }
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.Title != "MainWindow")
+                    window.Close();
+            }
+        }
     }
 }

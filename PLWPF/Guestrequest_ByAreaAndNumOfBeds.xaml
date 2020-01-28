@@ -13,6 +13,9 @@
     <Grid Margin="10,0,3.8,38.8" DataContext="{StaticResource guestRequestViewSource}">
 
         <DataGrid x:Name="guestRequestDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="42,55,10,250" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+            <DataGrid.Background>
+                <ImageBrush ImageSource="https://www.modernhomedecor.eu/wp-content/uploads/2016/12/Outstanding-Contemporary-Living-Room-Design-in-Kiev9_f.jpg"/>
+            </DataGrid.Background>
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="guestRequestKeyColumn" Width="SizeToHeader" Header="Key" Binding="{Binding GuestRequestKey}" IsReadOnly="True"/>
                 <DataGridTextColumn x:Name="adultsColumn" Width="SizeToHeader" Header="Adults" Binding="{Binding Adults}" IsReadOnly="True"/>
@@ -40,6 +43,9 @@
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="guestRequestDataGrid1" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="42,325,10,-17.4" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Background>
+                <ImageBrush ImageSource="https://www.modernhomedecor.eu/wp-content/uploads/2016/12/Outstanding-Contemporary-Living-Room-Design-in-Kiev9_f.jpg"/>
+            </DataGrid.Background>
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="guestRequestKeyColumn1" Width="SizeToHeader" Header="Key" Binding="{Binding GuestRequestKey}" IsReadOnly="True"/>
                 <DataGridTextColumn x:Name="adultsColumn1" Width="SizeToHeader" Header="Adults" Binding="{Binding Adults}" IsReadOnly="True"/>

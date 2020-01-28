@@ -15,14 +15,15 @@ namespace DAL
         XElement OrderRoot;
         XElement bankBrunchRoot;
 
-
+       // static readonly string ProjectPath = Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory.ToString()).FullName).FullName;//path of xml files           
         static private readonly string
             OrderPath = @"OrderXML.xml",
             HostingUnitPath = @"HostingUnitXML.xml",
             HostPath = @"HostXML.xml",
             GuestRequestPath = @"GuestRequestXML.xml",
             BankBranchPath = @"atm.xml",
-            configPath = @"ConfigurationPathXML.xml";
+          configPath = @"ConfigurationPathXML.xml";
+       // configPath = ProjectPath + "/Data/ConfigurationPathXML.xml";
 
         public static List<BE.HostingUnit> ListHostingUnit = new List<HostingUnit>();
         public static List<BE.Host> ListHost = new List<Host>();
@@ -41,60 +42,62 @@ namespace DAL
             return newDAL;
         }
 
-
         internal DAL_XML_imp()////////////////////////////////////////////////////////////////////
         {
-
-            GetBankXml();
-
-            if (!File.Exists(configPath))
+            try
             {
-                SaveConfigToXml();
+                GetBankXml();
+
+                if (!File.Exists(configPath))
+                {
+                    SaveConfigToXml();
+                }
+                else
+                {
+                    configRoot = XElement.Load(configPath);
+                    BE.Configuration.HostingUnitKey = Convert.ToInt32(configRoot.Element("HostingUnitKey").Value);
+                    BE.Configuration.GuestRequestKey = Convert.ToInt32(configRoot.Element("GuestRequestKey").Value);
+                    BE.Configuration.HostKey = Convert.ToInt32(configRoot.Element("HostKey").Value);
+                    BE.Configuration.Commission = Convert.ToInt32(configRoot.Element("Commission").Value);
+                    BE.Configuration.Password = Convert.ToInt32(configRoot.Element("Password").Value);
+                    BE.Configuration.MangerPassword = configRoot.Element("MangerPassword").Value;
+                    BE.Configuration.SystemEmail = configRoot.Element("SystemEmail").Value;
+                    BE.Configuration.SystemEmailPassward = configRoot.Element("SystemEmailPassward").Value;
+
+                }
+
+                if (!File.Exists(OrderPath))
+                {
+                    OrderRoot = new XElement("Order");
+                    OrderRoot.Save(OrderPath);
+                }
+
+                if (!File.Exists(HostPath))
+                    SaveToXML(new List<Host>(), HostPath);
+
+                if (!File.Exists(HostingUnitPath))
+                    SaveToXML(new List<HostingUnit>(), HostingUnitPath);
+
+                if (!File.Exists(GuestRequestPath))
+                    SaveToXML(new List<GuestRequest>(), GuestRequestPath);
+
+                if (!File.Exists(BankBranchPath))
+                    SaveToXML(new List<BankBranch>(), BankBranchPath);
+                //if (!File.Exists(BankBranchPath))
+                //{
+                //    bankBrunchRoot = new XElement("Order");
+                //    OrderRoot.Save(OrderPath);
+                //}
+
+                bankBrunchRoot = XElement.Load(BankBranchPath);
+                OrderRoot = XElement.Load(OrderPath);
+                ListHost = LoadFromXML<List<Host>>(HostPath);
+                ListHostingUnit = LoadFromXML<List<HostingUnit>>(HostingUnitPath);
+                ListGuestRequest = LoadFromXML<List<GuestRequest>>(GuestRequestPath);
+                //ListBankBranch = LoadFromXML<List<BankBranch>>(BankBranchPath);
             }
-            else
-            {
-                configRoot = XElement.Load(configPath);
-                BE.Configuration.HostingUnitKey = Convert.ToInt32(configRoot.Element("HostingUnitKey").Value);
-                BE.Configuration.GuestRequestKey = Convert.ToInt32(configRoot.Element("GuestRequestKey").Value);
-                BE.Configuration.HostKey = Convert.ToInt32(configRoot.Element("HostKey").Value);
-                BE.Configuration.Commission = Convert.ToInt32(configRoot.Element("Commission").Value);
-                BE.Configuration.Password = Convert.ToInt32(configRoot.Element("Password").Value);
-                BE.Configuration.MangerPassword = configRoot.Element("MangerPassword").Value;
-                BE.Configuration.SystemEmail = configRoot.Element("SystemEmail").Value;
-                BE.Configuration.SystemEmailPassward = configRoot.Element("SystemEmailPassward").Value;
-                
+            catch { throw new FileProblem("Problem with one of the the Files"); }
             }
-
-            if (!File.Exists(OrderPath))
-            {
-                OrderRoot = new XElement("Order");
-                OrderRoot.Save(OrderPath);
-            }
-
-            if (!File.Exists(HostPath))
-                SaveToXML(new List<Host>(), HostPath);
-
-            if (!File.Exists(HostingUnitPath))
-                SaveToXML(new List<HostingUnit>(), HostingUnitPath);
-
-            if (!File.Exists(GuestRequestPath) )
-                SaveToXML(new List<GuestRequest>(), GuestRequestPath);
-           
-            if (!File.Exists(BankBranchPath))
-                SaveToXML(new List<BankBranch>(), BankBranchPath);
-            //if (!File.Exists(BankBranchPath))
-            //{
-            //    bankBrunchRoot = new XElement("Order");
-            //    OrderRoot.Save(OrderPath);
-            //}
-
-            bankBrunchRoot = XElement.Load(BankBranchPath);
-            OrderRoot = XElement.Load(OrderPath);
-            ListHost = LoadFromXML<List<Host>>(HostPath);        
-            ListHostingUnit = LoadFromXML<List<HostingUnit>>(HostingUnitPath);
-            ListGuestRequest = LoadFromXML<List<GuestRequest>>(GuestRequestPath);
-            //ListBankBranch = LoadFromXML<List<BankBranch>>(BankBranchPath);
-        }
         ~DAL_XML_imp()
         {
 
@@ -149,8 +152,9 @@ namespace DAL
                                new XElement("SystemEmailPassward", BE.Configuration.SystemEmailPassward));
                 configRoot.Save(configPath);
             }
-            catch (Exception e)
-            {      throw e; }
+            
+            catch 
+            {      throw new  FileProblem("there was a problem with the config file"); }
         }
         #endregion  XmL And ConfigtoXml Func
 
@@ -179,7 +183,7 @@ namespace DAL
                         SaveToXML(ListHostingUnit, HostingUnitPath);
                         return;
                     }
-                throw new IDalreadyExistsException("HostingUnit", HostingUnitToUpdate.HostingUnitKey);
+                throw new IDalreadyExistsException("the hosting unit is allready exist");
             }
             catch (Exception E) { throw E; }
         }
@@ -194,7 +198,7 @@ namespace DAL
                         SaveToXML(ListHostingUnit, HostingUnitPath);
                         return;
                     }
-                throw new IDalreadyExistsException("HostingUnit", hostUnitKey);
+                throw new MissingIdException("the hosting unit is not exist");
             }
             catch (Exception E) { throw E; }
         }
@@ -271,7 +275,7 @@ namespace DAL
             {
                 for (int i = 0; i < ListHost.Count; i++)
                     if (ListHost[i].HostKey == HostToAdd.HostKey)
-                        throw new IDalreadyExistsException("Host", HostToAdd.HostKey);
+                        throw new IDalreadyExistsException("the host is allready exist");
                 ListHost.Add(HostToAdd);
                 SaveToXML(ListHost, HostPath);
             }
@@ -290,7 +294,7 @@ namespace DAL
                         SaveToXML(ListHost, HostPath);
                         return;
                     }
-                throw new MissingIdException("HostUnit", HostToUpdate.HostKey);
+                throw new MissingIdException("the host  is not exist");
             }
             catch (Exception E) { throw E; }
         }
@@ -307,7 +311,7 @@ namespace DAL
                         SaveToXML(ListHost, HostPath);
                         return;
                     }
-                throw new IDalreadyExistsException("Host)", Host.HostKey);
+                throw new IDalreadyExistsException("the Host is not exist");
             }
             catch (Exception E) { throw E; }
         }

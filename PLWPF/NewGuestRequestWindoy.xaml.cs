@@ -51,8 +51,8 @@ namespace PLWPF
 
                 MainWindow.IsEmpty(email_text_box.Text);
                 MainWindow.IsValidEmailAddress(email_text_box.Text);
-                
 
+                //guestRequest.EndDate = this.calender.SelectedDates.Last;
                 guestRequest.GuestRequestKey = BE.Configuration.getNewGuestRequestKey();
                   ibl.NewGuestRequests(guestRequest);              
                 MessageBox.Show("guest request key is:" + guestRequest.GuestRequestKey.ToString() );

@@ -6,30 +6,33 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="HostEntryWindow" Height="450" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="https://www.thespruce.com/thmb/FOa0NU7ayi5n0XOruKNLwEmkutI=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-9261821821-5c69c1b7c9e77c0001675a49.jpg"  />
+    </Window.Background>
     <Grid x:Name="hostDeteil">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button x:Name="goBack" Content="show details" HorizontalAlignment="Left" Height="65" Margin="143,252,0,0" VerticalAlignment="Top" Width="150" FontSize="24" FontFamily="David" Click="goBack_Click" Grid.ColumnSpan="2"/>
-        <StackPanel HorizontalAlignment="Left" Height="207" Margin="616,162,0,0" VerticalAlignment="Top" Width="140" Grid.ColumnSpan="2">
-            <Label Content="Host key"/>
-            <Label Content="privte name"/>
-            <Label Content="last name"/>
-            <Label Content="phone number "/>
-            <Label Content="E mail"/>
-            <Label Content="number of units "/>
-            <Label Content="account number"/>
-            <Label Content="Collection Clearance"/>
+        <StackPanel HorizontalAlignment="Left" Height="207" Margin="639,162,0,0" VerticalAlignment="Top" Width="117" Grid.ColumnSpan="2">
+            <Label Content="Host key" FontFamily="Stencil" />
+            <Label Content="privte name" FontFamily="Stencil"/>
+            <Label Content="last name" FontFamily="Stencil"/>
+            <Label Content="phone number " FontFamily="Stencil"/>
+            <Label Content="E mail" FontFamily="Stencil"/>
+            <Label Content="number of units " FontFamily="Stencil"/>
+            <Label Content="account number" FontFamily="Stencil"/>
+            <Label Content="Collection Clearance" FontFamily="Stencil" />
         </StackPanel>
         <StackPanel x:Name="HostD" HorizontalAlignment="Left" Height="208" Margin="477,161,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2">
             <TextBox Height="27" TextWrapping="Wrap" Text="{Binding HostKey }" Margin="0,0,-0.2,0" IsEnabled="False"/>
-            <TextBox Height="29" TextWrapping="Wrap" Text="{Binding PrivateName }" Margin="0,0,-0.2,0"/>
-            <TextBox Height="29" TextWrapping="Wrap" Text="{Binding FamilyName }" Margin="0,0,-0.2,0"/>
-            <TextBox Height="28" TextWrapping="Wrap" Text="{Binding PhoneNumber }" Margin="0,0,-0.2,0"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding MailAddress }"/>
-            <TextBox Height="27" TextWrapping="Wrap" Text="{Binding numberOfUints }" Margin="0,0,-0.2,0"/>
-            <TextBox x:Name="BankText" Height="26" TextWrapping="Wrap" Text="" Margin="0,0,-1,0" RenderTransformOrigin="0.5,0.5" >
+            <TextBox Height="27" TextWrapping="Wrap" Text="{Binding PrivateName }" Margin="0,0,-17.2,0"/>
+            <TextBox Height="26" TextWrapping="Wrap" Text="{Binding FamilyName }" Margin="0,0,-17.2,0"/>
+            <TextBox Height="25" TextWrapping="Wrap" Text="{Binding PhoneNumber }" Margin="0,0,-17.2,0"/>
+            <TextBox Height="20" TextWrapping="Wrap" Text="{Binding MailAddress }" Margin="0,0,-17.2,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding numberOfUints }" Margin="0,0,-17.2,0"/>
+            <TextBox x:Name="BankText" Height="21" TextWrapping="Wrap" Text="" Margin="0,0,-17.2,0" RenderTransformOrigin="0.5,0.5" >
                 <TextBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>

@@ -11,7 +11,7 @@
         <CollectionViewSource x:Key="guestRequestViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:GuestRequest}, CreateList=True}"/>
     </Window.Resources>
 
-    <Grid Margin="0,37,17,-70.4" DataContext="{StaticResource guestRequestViewSource}">
+    <Grid Margin="0,37,17,-70.4" DataContext="{StaticResource guestRequestViewSource}" RenderTransformOrigin="0.537,0.499">
 
 
         <Grid.RowDefinitions>
@@ -134,8 +134,8 @@
                 </StackPanel>
             </Expander>
         </DockPanel>
-        <Button Content="updat hosting unit " HorizontalAlignment="Left" Margin="336,514,0,0" Grid.Row="2" VerticalAlignment="Top" Click="Button_Click"/>
-        <Button Content="delete hosting unit" HorizontalAlignment="Left" Margin="336,584,0,0" Grid.Row="2" VerticalAlignment="Top"  Click="Button_Click_1"/>
+        <Button Content="updat hosting unit " HorizontalAlignment="Left" Margin="336,514,0,0" Grid.Row="2" VerticalAlignment="Top" Click="Button_Click" Width="192"/>
+        <Button Content="delete hosting unit" HorizontalAlignment="Left" Margin="336,584,0,0" Grid.Row="2" VerticalAlignment="Top"  Click="Button_Click_1" Width="192"/>
         <ComboBox x:Name="guestRequestCB" HorizontalAlignment="Left" Text="choose geust request" Height="37" Margin="744,314,0,0" Grid.Row="2" VerticalAlignment="Top" Width="192" SelectionChanged="ComboBox_SelectionChanged"/>
         <Button Content="craete new order " HorizontalAlignment="Left" Height="58" Margin="768,371,0,0" Grid.Row="2" VerticalAlignment="Top" Width="163" Click="Button_Click_2"/>
         <Label Content="choose geust request" HorizontalAlignment="Left" Margin="744,288,0,0" Grid.Row="2" VerticalAlignment="Top" Width="192"/>
@@ -168,6 +168,7 @@
         </DataGrid>
         <Label Content="choose a hosting unit and a guest request to craete new order" HorizontalAlignment="Left" Margin="626,250,0,0" Grid.Row="2" VerticalAlignment="Top"/>
         <Label Content="all the guest request" HorizontalAlignment="Left" Height="44" Margin="206,-30,0,0" VerticalAlignment="Top" Width="507" Grid.RowSpan="3"/>
-        <Button x:Name="NewHostinUnit" Content="add new hosting unit " HorizontalAlignment="Left"  Margin="336,444,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Click="NewHostinUnit_Click"/>
+        <Button x:Name="NewHostinUnit" Content="add new hosting unit " HorizontalAlignment="Left"  Margin="336,444,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Click="NewHostinUnit_Click" Width="192"/>
+        <Button Content="home page " HorizontalAlignment="Left" Height="75" Margin="809,604,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="172" Click="Button_Click_3"/>
     </Grid>
 </Window>

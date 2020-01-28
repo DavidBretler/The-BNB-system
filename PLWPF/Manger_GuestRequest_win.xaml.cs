@@ -36,5 +36,14 @@ namespace PLWPF
             // Load data by setting the CollectionViewSource.Source property:
             // guestRequestViewSource.Source = [generic data source]
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.Title != "MainWindow")
+                    window.Close();
+            }
+        }
     }
 }
