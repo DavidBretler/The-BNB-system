@@ -385,7 +385,7 @@ namespace DAL
         {
           foreach(var Order in OrderRoot.Elements())         
             if (Int32.Parse(Order.Element("OrderKey").Value) == TheOrder.OrderKey)
-                throw new IDalreadyExistsException("the order is already exit");
+                throw new IDalreadyExistsException("the order is already exits");
             try
             {
                 XElement O = new XElement("Order") ;
