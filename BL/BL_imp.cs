@@ -6,7 +6,9 @@ using DAL;
 using System.Linq;
 using System.Net.Mail;
 
-
+/// <summary>
+/// /////////////////////////////////////////////////////
+/// </summary>
 
 namespace BL
 {
