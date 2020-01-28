@@ -33,7 +33,6 @@ namespace PLWPF
            
             myIBL = BL.Factory.GetBL();
             workerThread = new BackgroundWorker();
-            workerThread.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
             workerThread.DoWork += new DoWorkEventHandler(workerThread_DoWork);
             workerThread.RunWorkerAsync();
 
@@ -45,7 +44,7 @@ namespace PLWPF
             try
             {
                 myIBL.GetBankXml();
-                myIBL.deleteDatesMonthBack();
+        myIBL.deleteDatesMonthBack();
             }
             catch(Exception exp)
             {
@@ -104,15 +103,6 @@ namespace PLWPF
             GuestEntryWindow.Show();
         }
 
-        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            try { }
-            catch (Exception exp)
-            {
-
-                MessageBox.Show("Error: " + exp.Message);
-            }
-
-        }
+       
     }
 }

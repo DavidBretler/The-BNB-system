@@ -10,7 +10,7 @@ namespace BL
     {
         void NewHost(Host host);
 
-        void sendEmailToCancell(Order order);
+        void sendEmailToCancell(string email);
         IEnumerable<HostingUnit> getListOfHostingUnitsByOwnerKey(int OwnerKey);
          Host SearchForHostByKey(int Key);
         GuestRequest GetGuestRequestFromOrder(Order order);

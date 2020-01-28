@@ -21,7 +21,7 @@ namespace PLWPF
     /// </summary>
     public partial class Order_ByHost : Window
     {
-         BE.Order order1;
+        string email;
         BackgroundWorker workerThread;
         BL.IBL bl;
         BE.Order order;
@@ -82,21 +82,24 @@ namespace PLWPF
         {
             try
             {
+                 email = bl.GetGuestRequestFromOrder(order).MailAddress;
                 // a thred that activates sending email to guest
                 workerThread = new BackgroundWorker();
                 workerThread.DoWork += new DoWorkEventHandler(workerThread_DoWork);
                 workerThread.RunWorkerAsync();
-                order1 = order;
-               
+                bl.DeleteOrder(order);
+
             }
             catch(Exception E) { MessageBox.Show(E.ToString()); }
         }
         void workerThread_DoWork(object sender, DoWorkEventArgs e)
         {
+
+
             try
             {
-                bl.sendEmailToCancell(order1);
-                bl.DeleteOrder(order);
+                bl.sendEmailToCancell(email);
+                
             }
             catch(Exception exp)
             {
