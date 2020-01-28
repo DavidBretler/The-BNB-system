@@ -42,8 +42,7 @@ namespace PLWPF
             this.ChildrensAttractionsCB.ItemsSource = Enum.GetValues(typeof(BE.Choice));
             this.AirConditionerCB.ItemsSource = Enum.GetValues(typeof(BE.Choice));
             this.ResortTypeCB.ItemsSource = Enum.GetValues(typeof(BE.ResortType));
-            //EntryDatePicker.SelectedDate = DateTime.Today;
-            //EndDatePicker.SelectedDate = DateTime.Today.AddDays(1);
+           
 
         }
         private int counter = 0;
@@ -65,13 +64,13 @@ namespace PLWPF
                 _myCollection.Add(guestRequest);
                 guestRequest = new BE.GuestRequest();
                 this.newGuestRequestGrid.DataContext = guestRequest;
+
                
 
                 //++counter; 
                 //_myCollection.Add(new BE.GuestRequest() { FirstName = "item " + counter,
                 //    LastName = "item " +  counter,
                 //    IsLecturer = counter % 3 == 0 });
-
 
             }
             catch (Exception exp)

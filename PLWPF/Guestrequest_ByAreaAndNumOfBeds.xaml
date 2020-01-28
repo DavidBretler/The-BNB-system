@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Guestrequest_ByAreaAndNumOfBeds"
         mc:Ignorable="d"
-        Title="Guestrequest_ByAreaAndNumOfBeds" Height="595.857" Width="1111.337" Loaded="Window_Loaded">
+        Title="Guestrequest_ByAreaAndNumOfBeds" Height="594.257" Width="1109.737" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="guestRequestViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:GuestRequest}, CreateList=True}"/>
     </Window.Resources>
@@ -42,7 +42,7 @@
                 <DataGridTextColumn x:Name="typeColumn" Width="40" Header="Type" Binding="{Binding Type}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="guestRequestDataGrid1" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="42,325,10,-17.4" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="guestRequestDataGrid1" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="42,325,9.4,10" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Background>
                 <ImageBrush ImageSource="https://www.modernhomedecor.eu/wp-content/uploads/2016/12/Outstanding-Contemporary-Living-Room-Design-in-Kiev9_f.jpg"/>
             </DataGrid.Background>
@@ -74,6 +74,7 @@
         </DataGrid>
         <Label Content="List of guest request by area " HorizontalAlignment="Left" Height="40" Margin="396,10,0,0" VerticalAlignment="Top" Width="252"/>
         <Label Content="List of guest request  by number of beds" HorizontalAlignment="Left" Height="27" Margin="396,298,0,0" VerticalAlignment="Top" Width="229"/>
+        <Button Content="home page" HorizontalAlignment="Left" Height="42" Margin="946,521,0,-37" VerticalAlignment="Top" Width="134" Click="Button_Click"/>
 
     </Grid>
 </Window>

@@ -123,6 +123,8 @@ namespace PLWPF
 
                     bl.DeleteHostingUnit(this.hostingUnit.HostingUnitKey);
                     this.Close();
+                    Window HostigUnitWin = new HostigUnitWin();
+                    HostigUnitWin.Show();
 
                 }
 
@@ -147,16 +149,17 @@ namespace PLWPF
         {
             try
             {
-                bl.NewOrder(GuestRequest, hostingUnit);
+                if (bl.CheakDatesAreFree(hostingUnit, GuestRequest.EntryDate, GuestRequest.EndDate))
+                {
+                    bl.NewOrder(GuestRequest, hostingUnit);
 
-                // a thred that activates sending email to guest
-                workerThread = new BackgroundWorker();
-                workerThread.DoWork += new DoWorkEventHandler(workerThread_DoWork);
-                workerThread.RunWorkerAsync();
-
-
-      
-                MessageBox.Show("your order have been craeted" );
+                    // a thred that activates sending email to guest
+                    workerThread = new BackgroundWorker();
+                    workerThread.DoWork += new DoWorkEventHandler(workerThread_DoWork);
+                    workerThread.RunWorkerAsync();
+                    MessageBox.Show("your order have been craeted");
+                }
+                else MessageBox.Show("the dates of the order have been booked ");
             }
             catch (Exception exp)
             {
