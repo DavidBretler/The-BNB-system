@@ -174,7 +174,14 @@ namespace PLWPF
         }
         void workerThread_DoWork(object sender, DoWorkEventArgs e)
         {
-            bl.sendEmailIfHasClearance(bl.getListOfOrder().Last());
+            try
+            {
+                bl.sendEmailIfHasClearance(bl.getListOfOrder().Last());
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+             }
         }
 
 

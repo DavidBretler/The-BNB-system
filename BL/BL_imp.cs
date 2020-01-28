@@ -486,12 +486,15 @@ namespace BL
                 throw E;
             }
         }
+        #endregion Guest Request
+
+        #region EMAIL
         /// <summary>
         /// cheks if the host has Collection Clearance and  if it dos sends a Email to guest
         /// </summary>
         /// <param name="host"></param>
         /// <param name="guestRequest"></param>
-       public void sendEmailIfHasClearance(Order order)
+        public void sendEmailIfHasClearance(Order order)
         {
                 if (GetHostFromOrder(order).CollectionClearance)
                 {
@@ -558,7 +561,10 @@ namespace BL
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Send(mail);
         }
-        #endregion Guest Request
+
+        
+        # endregion EMAIL
+       
 
         #region Grouping
         /// <summary>
@@ -627,6 +633,7 @@ namespace BL
         /// </summary>
         public void deleteDatesMonthBack()
         {
+            
             foreach(var hostingUnit in getListOfHostingUnits())
             {
                 DateTime temp = DateTime.Now.AddMonths(-1);

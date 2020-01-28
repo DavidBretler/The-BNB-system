@@ -42,8 +42,16 @@ namespace PLWPF
         //the thred get the bank info and resets the diary off the hosting units
         void workerThread_DoWork(object sender, DoWorkEventArgs e)
         {
-            myIBL.GetBankXml();
-            myIBL.deleteDatesMonthBack();
+            try
+            {
+                myIBL.GetBankXml();
+                myIBL.deleteDatesMonthBack();
+            }
+            catch(Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+            
         }
         /// <summary>
         /// 
@@ -98,12 +106,13 @@ namespace PLWPF
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-           
-            if (e.Error != null)
+            try { }
+            catch (Exception exp)
             {
-                MessageBox.Show("Error: " + e.Error.Message);
+
+                MessageBox.Show("Error: " + exp.Message);
             }
-           
+
         }
     }
 }
