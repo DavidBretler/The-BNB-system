@@ -705,7 +705,6 @@ namespace BL
                 while (StartDate < EndtDate)
                 {
 
-
                     if (hostingUnit[StartDate])
                         throw new Exception("the dates are not avidable");
                     StartDate = StartDate.AddDays(1);
