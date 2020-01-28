@@ -69,7 +69,9 @@ namespace PLWPF
                 if (MainWindow.IsEmpty(hostingUnitKeyTextBox.Text)) 
 
                 bl = BL.Factory.GetBL();
-                Commission=bl.updateStatusOfOrder(order,(int)this.statusComboBox.SelectedItem);
+                bl.CheakDatesAreFree(bl.GetHostingUnitFromOrder(order), bl.GetGuestRequestFromOrder(order).EntryDate, bl.GetGuestRequestFromOrder(order).EndDate);
+
+                Commission = bl.updateStatusOfOrder(order,(int)this.statusComboBox.SelectedItem);
                 MessageBox.Show("your details update successfully ." +
                     "Commission is:"+ Commission);
             }
