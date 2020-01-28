@@ -47,7 +47,7 @@ namespace PLWPF
             {
                 
                 ibl.UpdateGuestRequests(guestRequest);
-                MessageBox.Show("מס ההזמנה שלך הוא :" + guestRequest.GuestRequestKey.ToString());
+                MessageBox.Show("youre guest request number is :" + guestRequest.GuestRequestKey.ToString());
                
                 this.UpadateGuestRequestGrid.DataContext = guestRequest;
                 this.Close();
@@ -67,6 +67,13 @@ namespace PLWPF
             // guestRequestViewSource.Source = [generic data source]
         }
 
-    
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.Title != "MainWindow")
+                    window.Close();
+            }
+        }
     }
 }

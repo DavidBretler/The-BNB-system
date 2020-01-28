@@ -123,6 +123,8 @@ namespace PLWPF
 
                     bl.DeleteHostingUnit(this.hostingUnit.HostingUnitKey);
                     this.Close();
+                    Window HostigUnitWin = new HostigUnitWin();
+                    HostigUnitWin.Show();
 
                 }
 

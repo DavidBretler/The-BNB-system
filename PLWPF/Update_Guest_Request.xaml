@@ -79,7 +79,7 @@
             <Label Content="a-c"/>
             <Label Content="hikes"/>
         </StackPanel>
-        <Button Content="לעדכון הזמנה" HorizontalAlignment="Left" Margin="28,296,0,0" VerticalAlignment="Top" Width="156" Height="63" x:Name="FinishGusetRequest" Click="FinishGusetRequest_Click"/>
+        <Button Content="update guest request" HorizontalAlignment="Left" Margin="10,296,0,0" VerticalAlignment="Top" Width="190" Height="63" x:Name="FinishGusetRequest" Click="FinishGusetRequest_Click"/>
         <StackPanel HorizontalAlignment="Left" Height="200                     " Margin="10,71,0,0" VerticalAlignment="Top" Width="83">
             <ComboBox SelectedItem="{Binding Pool}" x:Name="PoolCB" Height="24" Margin="0,0,0.2,0"/>
             <ComboBox SelectedItem="{Binding Jacuzzi}" x:Name="JacuzziCB" Margin="0,0,0.2,0" Height="25"/>
@@ -91,7 +91,7 @@
         <TextBlock HorizontalAlignment="Left" Height="67" Margin="10,224,0,0" TextWrapping="Wrap" Text="{Binding GuestRequestKey}" VerticalAlignment="Top" Width="212" x:Name="DisplayG_R_Key" Visibility="Collapsed"/>
         <Calendar HorizontalAlignment="Left" Margin="205,39,0,0" VerticalAlignment="Top" SelectedDate="{Binding EntryDate, Mode=TwoWay}" />
         <Calendar HorizontalAlignment="Left" Margin="205,224,0,0" VerticalAlignment="Top" SelectedDate="{Binding EndDate ,Mode=TwoWay}"/>
-        <Button Content="home page" HorizontalAlignment="Left" Height="51" Margin="654,359,0,0" VerticalAlignment="Top" Width="119"/>
+        <Button Content="home page" HorizontalAlignment="Left" Height="51" Margin="654,359,0,0" VerticalAlignment="Top" Width="119" Click="Button_Click"/>
 
     </Grid>
 </Window>

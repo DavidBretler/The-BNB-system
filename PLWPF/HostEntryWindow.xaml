@@ -14,7 +14,7 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="goBack" Content="show details" HorizontalAlignment="Left" Height="65" Margin="143,252,0,0" VerticalAlignment="Top" Width="150" FontSize="24" FontFamily="David" Click="goBack_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="goBack" Content="show details" HorizontalAlignment="Left" Height="65" Margin="477,74,0,0" VerticalAlignment="Top" Width="150" FontSize="24" FontFamily="David" Click="goBack_Click" Grid.ColumnSpan="2"/>
         <StackPanel HorizontalAlignment="Left" Height="207" Margin="639,162,0,0" VerticalAlignment="Top" Width="117" Grid.ColumnSpan="2">
             <Label Content="Host key" FontFamily="Stencil" />
             <Label Content="privte name" FontFamily="Stencil"/>
@@ -46,7 +46,7 @@
         </StackPanel>
         <Button Content="update details" HorizontalAlignment="Left" Margin="143,322,0,0" VerticalAlignment="Top"  Click="Button_Click" Grid.ColumnSpan="2"/>
         <Button Content="my hosting unit and create new order" HorizontalAlignment="Left" Height="65" Margin="53,112,0,0" VerticalAlignment="Top" Width="343" Grid.ColumnSpan="2" Click="Button_Click_1"/>
-        <Button Content="my orders" HorizontalAlignment="Left" Height="65" Margin="143,182,0,0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="2" Click="Button_Click_2" />
+        <Button Content="my orders" HorizontalAlignment="Left" Height="65" Margin="143,209,0,0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="2" Click="Button_Click_2" />
 
     </Grid>
 </Window>

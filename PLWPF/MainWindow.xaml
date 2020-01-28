@@ -7,7 +7,7 @@
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.MainWindow"
         mc:Ignorable="d"    
         Title="MainWindow" Height="450" Width="800" 
-    ResizeMode="NoResize"  
+      
      >
     <Window.Background>
         <ImageBrush ImageSource="https://www.thespruce.com/thmb/FOa0NU7ayi5n0XOruKNLwEmkutI=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-9261821821-5c69c1b7c9e77c0001675a49.jpg"  />
