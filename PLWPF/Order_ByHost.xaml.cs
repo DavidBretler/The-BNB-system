@@ -92,8 +92,15 @@ namespace PLWPF
         }
         void workerThread_DoWork(object sender, DoWorkEventArgs e)
         {
-            bl.sendEmailToCancell(order1);
-            bl.DeleteOrder(order);
+            try
+            {
+                bl.sendEmailToCancell(order1);
+                bl.DeleteOrder(order);
+            }
+            catch(Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
         }
 
         void workerThread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
