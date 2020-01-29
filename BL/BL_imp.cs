@@ -392,7 +392,7 @@ namespace BL
                 {
                    
                     BookDates(order);
-                    GetGuestRequestFromOrder(order).Status = (orderStatus)2;
+                    
 
                     updateAllOrdersStatus(order);
                     dal.UpdateDateOrder(order);

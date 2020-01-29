@@ -67,11 +67,12 @@ namespace PLWPF
                 double Commission;
                 if (MainWindow.IsEmpty(guestRequestKeyTextBox.Text)) 
                 if (MainWindow.IsEmpty(hostingUnitKeyTextBox.Text)) 
-
+                
                 bl = BL.Factory.GetBL();
                 bl.CheakDatesAreFree(bl.GetHostingUnitFromOrder(order), bl.GetGuestRequestFromOrder(order).EntryDate, bl.GetGuestRequestFromOrder(order).EndDate);
 
                 Commission = bl.updateStatusOfOrder(order,(int)this.statusComboBox.SelectedItem);
+                bl.GetGuestRequestFromOrder(order).Status = (BE.orderStatus)2;
                 MessageBox.Show("your details update successfully ." +
                     "Commission is:"+ Commission);
             }
@@ -88,6 +89,8 @@ namespace PLWPF
                 workerThread.DoWork += new DoWorkEventHandler(workerThread_DoWork);
                 workerThread.RunWorkerAsync();
                 bl.DeleteOrder(order);
+                MessageBox.Show("order deleted.");
+                this.Close();
 
             }
             catch(Exception E) { MessageBox.Show(E.ToString()); }
