@@ -306,7 +306,7 @@ namespace BL
         {
             //send email to the guest"
             dal.Deleteorder(TheOrder);
-            throw new Exception("deleted  and email sent.");
+         
         }
 
         /// <summary>
@@ -543,17 +543,17 @@ namespace BL
             currrentOrder.contactCustumerDate = DateTime.Today;
      
     }
-        public void sendEmailToCancell(Order currrentOrder)
+        public void sendEmailToCancell(string email)
         {
             // יצירת אובייקט MailMessage
             MailMessage mail = new MailMessage();
 
             //כתובת הנמען)ניתן להוסיף יותר מאחד( //
-            mail.To.Add(SearchGetGuestRequestByKey(currrentOrder.GuestRequestKey).MailAddress);
+            mail.To.Add(email);
             // הכתובת ממנה נשלח המייל //
             mail.From = new MailAddress(Configuration.SystemEmail);
             mail.Subject = "VACTION!";
-            mail.Body = "Youre vaction has been canceld for more information .please contact:" + (GetHostFromOrder(currrentOrder)).MailAddress + "to confirm. ";
+            mail.Body = "Youre vaction has been canceld for more information .please contact host to confirm. ";
             mail.IsBodyHtml = true;
 
             SmtpClient smtp = new SmtpClient();
