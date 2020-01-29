@@ -7,13 +7,13 @@
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Manger_Hosts_win"
      
     mc:Ignorable="d"
-        Title="Manger_Hosts_win" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Manger_Hosts_win" Height="450" Width="866" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="hostViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Host}, CreateList=True}"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource hostViewSource}">
+    <Grid DataContext="{StaticResource hostViewSource}" Margin="0,0,3.2,0">
 
-        <DataGrid x:Name="hostDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,10,125,10" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+        <DataGrid x:Name="hostDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,10,186,59" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn x:Name="collectionClearanceColumn" Width="SizeToHeader" Header="Collection Clearance" Binding="{Binding CollectionClearance}"/>
                 <DataGridTextColumn x:Name="familyNameColumn" Width="SizeToHeader" Header="Family Name" Binding="{Binding FamilyName}"/>
@@ -26,10 +26,10 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Delete" HorizontalAlignment="Left" Height="36" Margin="691,91,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click"/>
-        <TextBox x:Name="Delete_Textbox" HorizontalAlignment="Left" Height="25" Margin="691,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="91"/>
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="691,40,0,0" TextWrapping="Wrap" Text="Enter Key" VerticalAlignment="Top" Width="91"/>
-        <Button Content="To add new Host" HorizontalAlignment="Left" Margin="672,353,0,0" VerticalAlignment="Top" Width="110" Height="36" Click="Button_Click_1"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Height="36" Margin="737,113,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click"/>
+        <TextBox x:Name="Delete_Textbox" HorizontalAlignment="Left" Height="25" Margin="737,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="91"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="737,62,0,0" TextWrapping="Wrap" Text="Enter Key" VerticalAlignment="Top" Width="91"/>
+        <Button Content="To add new Host" HorizontalAlignment="Left" Margin="675,361,0,0" VerticalAlignment="Top" Width="153" Height="49" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

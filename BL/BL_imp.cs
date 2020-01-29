@@ -250,7 +250,7 @@ namespace BL
         {
             IEnumerable<HostingUnit> hostingUnitsOfOwner = getListOfHostingUnits().FindAll(item => item.Owner.HostKey== OwnerKey);
             if (!hostingUnitsOfOwner.Any())
-                throw new GenralException("host", "אין יחידות אירוח למארח זה.");
+                throw new GenralException("host", "this host has no hosting units, please add hosting unit.");
             return hostingUnitsOfOwner;
         }
         public IEnumerable<Order> getListOfOrdersByOwnerKey(int OwnerKey)

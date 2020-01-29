@@ -15,7 +15,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button x:Name="goBack" Content="show details" HorizontalAlignment="Left" Height="65" Margin="477,74,0,0" VerticalAlignment="Top" Width="150" FontSize="24" FontFamily="David" Click="goBack_Click" Grid.ColumnSpan="2"/>
-        <StackPanel HorizontalAlignment="Left" Height="207" Margin="639,162,0,0" VerticalAlignment="Top" Width="117" Grid.ColumnSpan="2">
+        <StackPanel HorizontalAlignment="Left" Height="207" Margin="629,180,0,0" VerticalAlignment="Top" Width="117" Grid.ColumnSpan="2">
             <Label Content="Host key" FontFamily="Stencil" />
             <Label Content="privte name" FontFamily="Stencil"/>
             <Label Content="last name" FontFamily="Stencil"/>
@@ -25,13 +25,13 @@
             <Label Content="account number" FontFamily="Stencil"/>
             <Label Content="Collection Clearance" FontFamily="Stencil" />
         </StackPanel>
-        <StackPanel x:Name="HostD" HorizontalAlignment="Left" Height="208" Margin="477,161,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2">
+        <StackPanel x:Name="HostD" HorizontalAlignment="Left" Height="208" Margin="467,179,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2">
             <TextBox Height="27" TextWrapping="Wrap" Text="{Binding HostKey }" Margin="0,0,-0.2,0" IsEnabled="False"/>
             <TextBox Height="27" TextWrapping="Wrap" Text="{Binding PrivateName }" Margin="0,0,-17.2,0"/>
             <TextBox Height="26" TextWrapping="Wrap" Text="{Binding FamilyName }" Margin="0,0,-17.2,0"/>
             <TextBox Height="25" TextWrapping="Wrap" Text="{Binding PhoneNumber }" Margin="0,0,-17.2,0"/>
-            <TextBox Height="20" TextWrapping="Wrap" Text="{Binding MailAddress }" Margin="0,0,-17.2,0"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding numberOfUints }" Margin="0,0,-17.2,0"/>
+            <TextBox Height="27" TextWrapping="Wrap" Text="{Binding MailAddress }" Margin="0,0,-17.2,0"/>
+            <TextBox Height="26" TextWrapping="Wrap" Text="{Binding numberOfUints }" Margin="0,0,-17.2,0"/>
             <TextBox x:Name="BankText" Height="21" TextWrapping="Wrap" Text="" Margin="0,0,-17.2,0" RenderTransformOrigin="0.5,0.5" >
                 <TextBox.RenderTransform>
                     <TransformGroup>
