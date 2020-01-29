@@ -89,7 +89,7 @@ namespace PLWPF
         }
         private void studentsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.studentsComboBox.SelectedItem is BE.HostingUnit) { 
+            if (this.studentsComboBox.SelectedItem is BE.HostingUnit) {
                 this.hostingUnit = ((BE.HostingUnit)this.studentsComboBox.SelectedItem).GetCopy();
                 this.hostigUnit.DataContext = hostingUnit; 
             }
@@ -163,7 +163,7 @@ namespace PLWPF
             }
             catch (Exception exp)
             {
-                MessageBox.Show(exp.ToString());
+                MessageBox.Show(exp.Message);
             }
         }
 

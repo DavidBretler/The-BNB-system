@@ -65,7 +65,7 @@ namespace DAL
                     BE.Configuration.MangerPassword = configRoot.Element("MangerPassword").Value;
                     BE.Configuration.SystemEmail = configRoot.Element("SystemEmail").Value;
                     BE.Configuration.SystemEmailPassward = configRoot.Element("SystemEmailPassward").Value;
-
+                    BE.Configuration.OrderKey = Convert.ToInt32(configRoot.Element("OrderKey").Value);
                 }
 
                 if (!File.Exists(OrderPath))
@@ -207,10 +207,10 @@ namespace DAL
         public List<HostingUnit> getListOfHostingUnits()
         {   //לעשות שכפול לרשימה של היחידות אירוח 
 
-            var temp = from item in ListHostingUnit
-                       select item;
+            //var temp = from item in ListHostingUnit
+             //          select item;
             List<HostingUnit> temp2 = new List<HostingUnit>();
-            foreach (var item in temp)
+            foreach (var item in ListHostingUnit)
                 temp2.Add(Cloning.Clone(item));
             return temp2;
         }
@@ -394,12 +394,14 @@ namespace DAL
                     new XElement("OrderKey", TheOrder.OrderKey.ToString()),
                       new XElement("Status", TheOrder.Status.ToString()),
                       new XElement("contactCustumerDate", TheOrder.contactCustumerDate.ToString()),
-                      new XElement("CreateDate", TheOrder.CreateDate.ToString())   );
+                      new XElement("CreateDate", TheOrder.CreateDate.ToString())  );
 
                 ListOrderChange = true;
                 OrderRoot.Add(O);
                 OrderRoot.Save(OrderPath);
                 SaveConfigToXml();
+
+                SaveToXML(ListHostingUnit, HostingUnitPath);
                 // ListChainged = true;
             }
             catch (Exception E)
@@ -415,6 +417,8 @@ namespace DAL
                 
                   t.Element("Status").Value = TheOrder.Status.ToString();
                 OrderRoot.Save(OrderPath);
+             
+                SaveToXML(ListHostingUnit, HostingUnitPath);
             }
             catch (Exception)
             {

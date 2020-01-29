@@ -331,7 +331,7 @@ namespace BL
             var guestRequest = dal.getListOfGuestRequest().Find(x => x.GuestRequestKey == Key);
 
             if (guestRequest == null)
-                throw new MissingIdException("GuestRequest", Key, "מספר הזמנה שגוי, אנא נסה שוב.");
+                throw new MissingIdException("GuestRequest", Key, "guest request key wrong.");
             return guestRequest;
         }
         /// <summary>
@@ -387,10 +387,10 @@ namespace BL
                 throw new GenralException("Order", "Order closed,can not change Status.");
             else
             {
-                order.Status = (Status)newStatus;
+
+                order.Status = (Status)newStatus;                
                 if (order.Status == (Status)2)
-                {
-                   
+                {                                      
                     BookDates(order);
                     GetGuestRequestFromOrder(order).Status = (orderStatus)2;
 
@@ -671,6 +671,8 @@ namespace BL
                     temp = temp.AddDays(1);
 
                 }
+
+                dal.UpdateHostingUnit(hostingUnit);
             }
             catch { throw; }
         }
@@ -707,7 +709,7 @@ namespace BL
                 while (StartDate < EndtDate)
                 {
 
-                    if (hostingUnit[StartDate])
+                    if (hostingUnit[StartDate]==true)
                         throw new Exception("the dates are not avidable");
                     StartDate = StartDate.AddDays(1);
 
