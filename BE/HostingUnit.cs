@@ -58,6 +58,7 @@ namespace BE
 
     public bool this[DateTime date]
         {
+          
             set => Diary[ date.Month - 1,date.Day - 1] = value;
             get => Diary[ date.Month - 1, date.Day - 1];
         }
