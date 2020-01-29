@@ -44,8 +44,7 @@ namespace PLWPF
         {
             try
             {
-                MainWindow.IsEmpty(numberOfUintsTextBox.Text);
-                MainWindow.IsInt(numberOfUintsTextBox.Text);
+              
                 MainWindow.IsEmpty(familyNameTextBox.Text);
                 MainWindow.IsValidEmailAddress(mailAddressTextBox.Text);
                 MainWindow.IsEmpty(mailAddressTextBox.Text);

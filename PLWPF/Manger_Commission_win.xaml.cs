@@ -32,6 +32,7 @@ namespace PLWPF
             MainWindow.IsEmpty(Commission_textbok.Text);
             MainWindow.IsInt(Commission_textbok.Text);
             BE.Configuration.Commission = Int32.Parse(Commission_textbok.Text);
+            this.Close();
         }
     }
 }

@@ -44,7 +44,7 @@ namespace PLWPF
             try
             {
                 myIBL.GetBankXml();
-        myIBL.deleteDatesMonthBack();
+                myIBL.deleteDatesMonthBack();
             }
             catch(Exception exp)
             {

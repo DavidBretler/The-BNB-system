@@ -59,9 +59,11 @@ namespace PLWPF
 
                 //guestRequest.EndDate = this.calender.SelectedDates.Last;
                 //guestRequest.GuestRequestKey = BE.Configuration.getNewGuestRequestKey();
+                guestRequest.NumOfBeds = guestRequest.Adults + guestRequest.Children;
                   ibl.NewGuestRequests(guestRequest);              
                 MessageBox.Show("guest request key is:" + guestRequest.GuestRequestKey.ToString() );
                 _myCollection.Add(guestRequest);
+               
                 guestRequest = new BE.GuestRequest();
                 this.newGuestRequestGrid.DataContext = guestRequest;
 

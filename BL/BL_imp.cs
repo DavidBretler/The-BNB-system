@@ -542,7 +542,6 @@ namespace BL
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Send(mail);
 
-            Console.WriteLine("email has been sent to order num  " + currrentOrder.OrderKey + "aboute request num :" + currrentOrder.GuestRequestKey);
             currrentOrder.contactCustumerDate = DateTime.Today;
      
     }

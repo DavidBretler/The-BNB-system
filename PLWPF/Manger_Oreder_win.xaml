@@ -12,13 +12,7 @@
     <DataGrid x:Name="orderDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="33,41,112,140" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5" >
       
         <DataGrid.Columns>
-            <DataGridTemplateColumn x:Name="contactCustumerDateColumn" Width="SizeToHeader" Header="Date custumer contacted">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <DatePicker SelectedDate="{Binding contactCustumerDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true }" IsEnabled="False"/>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
+    
             <DataGridTemplateColumn x:Name="createDateColumn" Width="SizeToHeader" Header="Date created" >
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>

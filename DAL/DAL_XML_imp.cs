@@ -46,8 +46,7 @@ namespace DAL
         {
             try
             {
-            //    if (!File.Exists(BankBranchPath))
-              //      bankBrunchRoot = new XElement("atm");
+            
                 GetBankXml();
 
                 if (!File.Exists(configPath))
@@ -85,18 +84,14 @@ namespace DAL
 
                 if (!File.Exists(BankBranchPath))
                     SaveToXML(new List<BankBranch>(), BankBranchPath);
-                //if (!File.Exists(BankBranchPath))
-                //{
-                //    bankBrunchRoot = new XElement("Order");
-                //    OrderRoot.Save(OrderPath);
-                //}
+             
 
                 bankBrunchRoot = XElement.Load(BankBranchPath);
                 OrderRoot = XElement.Load(OrderPath);
                 ListHost = LoadFromXML<List<Host>>(HostPath);
                 ListHostingUnit = LoadFromXML<List<HostingUnit>>(HostingUnitPath);
                 ListGuestRequest = LoadFromXML<List<GuestRequest>>(GuestRequestPath);
-                //ListBankBranch = LoadFromXML<List<BankBranch>>(BankBranchPath);
+               
             }
             catch { throw new FileProblem("Problem with one of the the Files"); }
             }
