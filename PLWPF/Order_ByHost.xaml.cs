@@ -70,13 +70,16 @@ namespace PLWPF
                 
                 bl = BL.Factory.GetBL();
                 bl.CheakDatesAreFree(bl.GetHostingUnitFromOrder(order), bl.GetGuestRequestFromOrder(order).EntryDate, bl.GetGuestRequestFromOrder(order).EndDate);
-
-                Commission = bl.updateStatusOfOrder(order,(int)this.statusComboBox.SelectedItem);
-                bl.GetGuestRequestFromOrder(order).Status = (BE.orderStatus)2;
-                MessageBox.Show("your details update successfully ." +
-                    "Commission is:"+ Commission);
+                if ((int)this.statusComboBox.SelectedItem == 2)
+                {
+                    Commission = bl.updateStatusOfOrder(order, (int)this.statusComboBox.SelectedItem);
+                    MessageBox.Show("your details update successfully ." +
+                        "Commission is:" + Commission);
+                }
+                else
+                    MessageBox.Show("your details update successfully .");
             }
-            catch (Exception E) { MessageBox.Show(E.ToString()); }
+            catch (Exception E) { MessageBox.Show(E.Message); }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

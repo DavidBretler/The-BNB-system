@@ -383,6 +383,8 @@ namespace BL
         /// <returns></returns>
         public double updateStatusOfOrder(Order order, int newStatus)
         {
+            GuestRequest guestRequest = new GuestRequest();
+            guestRequest = GetGuestRequestFromOrder(order);
             if (order.Status == (Status)2)
                 throw new GenralException("Order", "Order closed,can not change Status.");
             else
@@ -392,10 +394,11 @@ namespace BL
                 if (order.Status == (Status)2)
                 {                                      
                     BookDates(order);
-                    
+                    guestRequest.Status = (orderStatus)2;
 
                     updateAllOrdersStatus(order);
                     dal.UpdateDateOrder(order);
+                    dal.UpdateGuestRequests(guestRequest);
                     return calcCommission(order);
                 }
                 dal.UpdateDateOrder(order);
