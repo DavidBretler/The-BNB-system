@@ -5,12 +5,22 @@ using System.Collections.Generic;
 using System.Linq;
 namespace UI
 {
+    public class TestIndiaBix
+    {
+        public void TestSub<M>(M arg) { Console.Write(arg); }
+    }
+
     class Program
     {
         static void Main(string[] args)
-        { }
+        {
+            
+            Console.Write("1");
+        }
     }
+
 }
+
 //            try
 //            {
 

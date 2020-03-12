@@ -437,7 +437,7 @@ namespace DAL
                         }
                         ).Distinct().ToList();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                  throw new FileProblem("file_problem_banks_brunches ");
                // throw ex;

@@ -27,7 +27,7 @@ namespace DAL
 
         #region Hosting Unit
         public void GetBankXml() {
-            const string xmlLocalPath = @"atm.xml";
+            //const string xmlLocalPath = @"atm.xml";
             //WebClient wc = new WebClient();
             //try
             //{

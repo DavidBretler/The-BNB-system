@@ -85,20 +85,7 @@ namespace BL
 
             if (cheakIfHostExsits(NewHostingUnit.Owner.HostKey, ref host))//need enter the host key.
             {
-                //HostingUnit EnterdHostingUnit = new HostingUnit();
-                //EnterdHostingUnit.HostingUnitKey = Configuration.getNewHostingUnitKey();
-                //EnterdHostingUnit.HostingUnitName= NewHostingUnit.HostingUnitName;
-                //EnterdHostingUnit.NumOfRooms= NewHostingUnit.NumOfRooms;
-                //EnterdHostingUnit.NumOfBeds= NewHostingUnit.NumOfBeds;
-                //EnterdHostingUnit.pool= NewHostingUnit.pool;
-                //EnterdHostingUnit.Jacuzzi= NewHostingUnit.Jacuzzi;
-                //EnterdHostingUnit.Area= NewHostingUnit.Area;
-                //EnterdHostingUnit.Garden= NewHostingUnit.Garden;
-                //EnterdHostingUnit.AirConditioner=(NewHostingUnit.AirConditioner);
-                //EnterdHostingUnit.ChildrensAttractions=(NewHostingUnit.ChildrensAttractions);
-                //EnterdHostingUnit.Type=(NewHostingUnit.Type);
-                //EnterdHostingUnit.Hikes=(NewHostingUnit.Hikes);
-                //EnterdHostingUnit.Owner=(host); //??
+             
                 NewHostingUnit.HostingUnitKey= Configuration.getNewHostingUnitKey();
                 dal.AddNewHostingUnit(NewHostingUnit);
             }
@@ -127,20 +114,7 @@ namespace BL
             Host host = new Host();
             if (cheakIfHostExsits(theHostingUnit.Owner.HostKey, ref host))//need enter the host key.
             {
-                //HostingUnit EnterdHostingUnit = new HostingUnit();
-                //EnterdHostingUnit.HostingUnitKey = Configuration.getNewHostingUnitKey();
-                //EnterdHostingUnit.HostingUnitName=HostingUnitName;
-                //EnterdHostingUnit.NumOfRooms=NumOfRooms;
-                //EnterdHostingUnit.NumOfBeds=NumOfBeds;
-                //EnterdHostingUnit.pool=pool;
-                //EnterdHostingUnit.Jacuzzi=Jacuzzi;
-                //EnterdHostingUnit.Area=Area;
-                //EnterdHostingUnit.Garden=Garden;
-                //EnterdHostingUnit.AirConditioner=(AirConditioner);
-                //EnterdHostingUnit.ChildrensAttractions=(ChildrensAttractions);
-                //EnterdHostingUnit.Type=(Type);
-                //EnterdHostingUnit.Hikes=(Hikes);
-                //EnterdHostingUnit.Owner=(host);
+               
                 dal.UpdateHostingUnit(theHostingUnit);
             }
             else
